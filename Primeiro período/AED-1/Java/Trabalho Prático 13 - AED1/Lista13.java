@@ -35,10 +35,25 @@ public class Lista13
             "5 - Verificar inconsistências\n" +
             "\n=> "
         );
-        int op = leia.nextInt(); 
-        switch(op){
+        int opcao = leia.nextInt(); 
+        switch(opcao)
+        {//Inicio switch
+            case 0:
+                break;
+            case 1: 
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            default:
+                break;                        
 
-        }
+        }//Fim switch
 
     }//Fim menu
 
