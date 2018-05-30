@@ -6,17 +6,17 @@ public class Lista13
     public static void main(String[]args)
     {//Inicio main
         Triangulo[] tri = new Triangulo[100];
-        menu();
+        menu(tri);
     }//Fim main
 
-    public static void menu()
+    public static void menu(Triangulo[] tri)
     {//Inicio menu
         Scanner leia = new Scanner(System.in);
         boolean executando = true;
         while(executando)
         {//Inicio while executando
             System.out.printf(
-                "\t MENU DOS TRIANGULOS\n" +
+                "\n\t MENU DOS TRIANGULOS\n" +
                 "0 - Sair do programa\n"   +
                 "1 - Criar um triângulo\n" +
                 "2 - Listar Triângulos\n"  +
@@ -29,8 +29,10 @@ public class Lista13
             switch(opcao)
             {//Inicio switch
                 case 0:
+                    executando = false;
                     break;
                 case 1: 
+                    criaTriangulo(tri);
                     break;
                 case 2:
                     break;
@@ -47,6 +49,16 @@ public class Lista13
         }//Fim while executando
     }//Fim menu
 
+    public static void criaTriangulo(Triangulo[] tri)
+    {//Inicio criaTriangulo
+        int i = Triangulo.instancias;
+        if(i < tri.length){
+            tri[i] = new Triangulo();
+            tri[i].leLados();
+        }
+        else System.out.println("Erro! Limite alcançado");
+    }//Fim criaTriangulo
+
 }//Fim classe Exer01 
 
 class Triangulo
@@ -58,9 +70,6 @@ class Triangulo
 
     public static int instancias = 0;
 
-    //Instancia de Scanner para leitura de valores do teclado.
-    private static Scanner ler = new Scanner(System.in);
-    
     Triangulo()
     {//Construdor Vazio
         setA(0);
@@ -126,6 +135,7 @@ class Triangulo
 
     public void leLados()
     {//Inicio leLados
+        Scanner ler = new Scanner(System.in);
         double lado1, lado2, lado3;
         boolean ehErro = true;
 
