@@ -257,8 +257,7 @@ public class Lista05{
        valor = s.nextDouble();  
     }
     return maior;    
- 
-
+   
  }   
    
   
