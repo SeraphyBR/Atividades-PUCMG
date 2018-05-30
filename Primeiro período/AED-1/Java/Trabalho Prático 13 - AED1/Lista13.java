@@ -35,6 +35,7 @@ public class Lista13
                     criaTriangulo(tri);
                     break;
                 case 2:
+                    listaTriangulos(tri);
                     break;
                 case 3:
                     break;
@@ -59,12 +60,20 @@ public class Lista13
         else System.out.println("Erro! Limite alcançado");
     }//Fim criaTriangulo
 
-    public static void listaTriangulos(Triangulo[] tri){
+    public static void listaTriangulos(Triangulo[] tri)
+    {//Inicio listaTriangulos
         int i = Triangulo.instancias;
-        for(int cont = 0; cont <= i; cont++){
-            
-        }
-    }
+        for(int cont = 0; cont < i; cont++)
+        {//Inicio for
+            System.out.println(
+                "Triangulo " + cont + ":" +
+                "\n\tLado A: " + tri[cont].getA() + 
+                "\n\tLado B: " + tri[cont].getB() +
+                "\n\tLado C: " + tri[cont].getC() +
+                "\n\tPerimetro: " + tri[cont].perimetro() + "\n"
+            );
+        }//Fim for
+    }//Inicio listaTriangulos
 
 }//Fim classe Exer01 
 
@@ -144,23 +153,19 @@ class Triangulo
     {//Inicio leLados
         Scanner ler = new Scanner(System.in);
         double lado1, lado2, lado3;
-        boolean ehErro = true;
 
-        while(ehErro)
-        {//Inicio while
-            System.out.print("Digite o lado A: ");
-            lado1 = ler.nextDouble();
+        System.out.print("Digite o lado A: ");
+        lado1 = ler.nextDouble();
 
-            System.out.print("Digite o lado B: ");
-            lado2 = ler.nextDouble();
+        System.out.print("Digite o lado B: ");
+        lado2 = ler.nextDouble();
             
-            System.out.print("Digite o lado C: ");
-            lado3 = ler.nextDouble();
+        System.out.print("Digite o lado C: ");
+        lado3 = ler.nextDouble();
 
-            setA(lado1);
-            setB(lado2);
-            setC(lado3);
-        }//Fim while         
+        setA(lado1);
+        setB(lado2);
+        setC(lado3);
     }//Fim leLados
 
     public static boolean ehTrianguloValido(double A, double B, double C)
