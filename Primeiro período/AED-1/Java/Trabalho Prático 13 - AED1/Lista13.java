@@ -6,55 +6,45 @@ public class Lista13
     public static void main(String[]args)
     {//Inicio main
         Triangulo[] tri = new Triangulo[100];
-        Scanner ler = new Scanner(System.in);
-        for(int i = 0; i < tri.length; i++)
-        {//Inicio for
-            tri[i] = new Triangulo();
-            System.out.printf("\nValores do Triangulo %d:\n", i + 1);
-            tri[i].leLados();
-            System.out.println("Tipo do triângulo: " + tri[i].tipo());
-        }//Fim for 
-
-        System.out.println("Deseja comparar quais triângulos? [1..5]:");
-        int op1 = ler.nextInt();
-        int op2 = ler.nextInt();
-        if(tri[op1 - 1].ehIgual(tri[op2 - 1])) System.out.println("Os dois Triangulos são iguais!");
-        else System.out.println("Não são iguais!");
+        menu();
     }//Fim main
 
     public static void menu()
     {//Inicio menu
         Scanner leia = new Scanner(System.in);
-        System.out.printf(
-            "\t MENU DOS TRIANGULOS\n" +
-            "0 - Sair do programa\n"   +
-            "1 - Criar um triângulo\n" +
-            "2 - Listar Triângulos\n"  +
-            "3 - Triângulos Iguais\n"  +
-            "4 - Listar os triângulos de um determinado tipo\n" +
-            "5 - Verificar inconsistências\n" +
-            "\n=> "
-        );
-        int opcao = leia.nextInt(); 
-        switch(opcao)
-        {//Inicio switch
-            case 0:
-                break;
-            case 1: 
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            default:
-                break;                        
+        boolean executando = true;
+        while(executando)
+        {//Inicio while executando
+            System.out.printf(
+                "\t MENU DOS TRIANGULOS\n" +
+                "0 - Sair do programa\n"   +
+                "1 - Criar um triângulo\n" +
+                "2 - Listar Triângulos\n"  +
+                "3 - Triângulos Iguais\n"  +
+                "4 - Listar os triângulos de um determinado tipo\n" +
+                "5 - Verificar inconsistências\n" +
+                "\n=> "
+            );
+            int opcao = leia.nextInt(); 
+            switch(opcao)
+            {//Inicio switch
+                case 0:
+                    break;
+                case 1: 
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                default:
+                    break;                        
 
-        }//Fim switch
-
+            }//Fim switch
+        }//Fim while executando
     }//Fim menu
 
 }//Fim classe Exer01 
