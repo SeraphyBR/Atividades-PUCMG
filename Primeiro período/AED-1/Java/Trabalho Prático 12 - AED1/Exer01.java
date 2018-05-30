@@ -33,17 +33,34 @@ class Triangulo
 
     //Instancia de Scanner para leitura de valores do teclado.
     private static Scanner ler = new Scanner(System.in);
+    
+    Triangulo()
+    {//Construdor Vazio
+        setA(0);
+        setB(0);
+        setC(0);
+    }//Fim construtor
+    
+    Triangulo(double ladoA, double ladoB, double ladoC)
+    {//Contrutor 3 lados
+        setA(ladoA);
+        setB(ladoB);
+        setC(ladoC); 
+    }//Fim construtor
 
-    private void setA(double ladoA){
-        this.ladoA = ladoA;
+    public void setA(double ladoA){
+        if(ladoA < 0) this.ladoA = 0;
+        else this.ladoA = ladoA;
     }//Fim setA
 
-    private void setB(double ladoB){
-        this.ladoB = ladoB;
+    public void setB(double ladoB){
+        if(ladoB < 0) this.ladoB = 0;
+        else this.ladoB = ladoB;
     }//Fim setB
     
-    private void setC(double ladoC){
-        this.ladoC = ladoC;
+    public void setC(double ladoC){
+        if(ladoA < 0) this.ladoC = 0;
+        else this.ladoC = ladoC;
     }//Fim setC
 
     public double getA(){
