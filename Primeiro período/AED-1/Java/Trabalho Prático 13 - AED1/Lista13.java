@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 
-public class Exer01
+public class Lista13
 {//Inicio classe Exer01
     public static void main(String[]args)
     {//Inicio main
@@ -24,16 +24,21 @@ public class Exer01
 
     public static void menu()
     {//Inicio menu
+        Scanner leia = new Scanner(System.in);
         System.out.printf(
             "\t MENU DOS TRIANGULOS\n" +
-            "0 - Sair do programa\n" +
+            "0 - Sair do programa\n"   +
             "1 - Criar um triângulo\n" +
-            "2 - Listar Triângulos\n" +
-            "3 - Triângulos Iguais\n" +
+            "2 - Listar Triângulos\n"  +
+            "3 - Triângulos Iguais\n"  +
             "4 - Listar os triângulos de um determinado tipo\n" +
-            "5 - Verificar inconsistências"
+            "5 - Verificar inconsistências\n" +
+            "\n=> "
         );
+        int op = leia.nextInt(); 
+        switch(op){
 
+        }
 
     }//Fim menu
 
