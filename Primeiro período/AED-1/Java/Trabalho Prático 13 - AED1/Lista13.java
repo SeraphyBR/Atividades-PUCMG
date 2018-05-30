@@ -59,6 +59,13 @@ public class Lista13
         else System.out.println("Erro! Limite alcançado");
     }//Fim criaTriangulo
 
+    public static void listaTriangulos(Triangulo[] tri){
+        int i = Triangulo.instancias;
+        for(int cont = 0; cont <= i; cont++){
+            
+        }
+    }
+
 }//Fim classe Exer01 
 
 class Triangulo
