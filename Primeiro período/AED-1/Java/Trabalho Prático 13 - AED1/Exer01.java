@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class Exer01
 {//Inicio classe Exer01
     public static void main(String[]args)
-    {
-        Triangulo[] tri = new Triangulo[5];
+    {//Inicio main
+        Triangulo[] tri = new Triangulo[100];
         Scanner ler = new Scanner(System.in);
         for(int i = 0; i < tri.length; i++)
         {//Inicio for
@@ -20,7 +20,22 @@ public class Exer01
         int op2 = ler.nextInt();
         if(tri[op1 - 1].ehIgual(tri[op2 - 1])) System.out.println("Os dois Triangulos são iguais!");
         else System.out.println("Não são iguais!");
-    }
+    }//Fim main
+
+    public static void menu()
+    {//Inicio menu
+        System.out.printf(
+            "\t MENU DOS TRIANGULOS\n" +
+            "0 - Sair do programa\n" +
+            "1 - Criar um triângulo\n" +
+            "2 - Listar Triângulos\n" +
+            "3 - Triângulos Iguais\n" +
+            "4 - Listar os triângulos de um determinado tipo\n" +
+            "5 - Verificar inconsistências"
+        );
+
+
+    }//Fim menu
 
 }//Fim classe Exer01 
 
@@ -31,19 +46,40 @@ class Triangulo
     private double ladoB;
     private double ladoC;
 
+    public static int instancias = 0;
+
     //Instancia de Scanner para leitura de valores do teclado.
     private static Scanner ler = new Scanner(System.in);
+    
+    Triangulo()
+    {//Construdor Vazio
+        setA(0);
+        setB(0);
+        setC(0);
+        instancias++;
+    }//Fim construtor
+    
+    Triangulo(double ladoA, double ladoB, double ladoC)
+    {//Contrutor 3 lados
+        setA(ladoA);
+        setB(ladoB);
+        setC(ladoC); 
+        instancias++;
+    }//Fim construtor
 
-    private void setA(double ladoA){
-        this.ladoA = ladoA;
+    public void setA(double ladoA){
+        if(ladoA < 0) this.ladoA = 0;
+        else this.ladoA = ladoA;
     }//Fim setA
 
-    private void setB(double ladoB){
-        this.ladoB = ladoB;
+    public void setB(double ladoB){
+        if(ladoB < 0) this.ladoB = 0;
+        else this.ladoB = ladoB;
     }//Fim setB
     
-    private void setC(double ladoC){
-        this.ladoC = ladoC;
+    public void setC(double ladoC){
+        if(ladoA < 0) this.ladoC = 0;
+        else this.ladoC = ladoC;
     }//Fim setC
 
     public double getA(){
@@ -86,28 +122,17 @@ class Triangulo
         while(ehErro)
         {//Inicio while
             System.out.print("Digite o lado A: ");
-            do{
-                lado1 = ler.nextDouble();
-            }while(lado1 <= 0);
+            lado1 = ler.nextDouble();
 
             System.out.print("Digite o lado B: ");
-            do{
-                lado2 = ler.nextDouble();
-            }while(lado2 <= 0);
-
+            lado2 = ler.nextDouble();
+            
             System.out.print("Digite o lado C: ");
-            do{
-                lado3 = ler.nextDouble();
-            }while(lado3 <= 0);
+            lado3 = ler.nextDouble();
 
-            if(ehTrianguloValido(lado1, lado2, lado3))
-            {//Inicio if 
-                setA(lado1);
-                setB(lado2);
-                setC(lado3);
-                ehErro = false;
-            }//Fim if 
-            else System.out.println("Os valores inseridos não correspondem a um triângulo!");
+            setA(lado1);
+            setB(lado2);
+            setC(lado3);
         }//Fim while         
     }//Fim leLados
 
