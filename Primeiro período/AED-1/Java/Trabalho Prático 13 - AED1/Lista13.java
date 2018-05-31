@@ -38,8 +38,10 @@ public class Lista13
                     listaTriangulos(tri);
                     break;
                 case 3:
+                    triangulosIguais(tri);
                     break;
                 case 4:
+                    listaTriangulos(tri, escolheTipo());
                     break;
                 case 5:
                     break;
@@ -49,6 +51,22 @@ public class Lista13
             }//Fim switch
         }//Fim while executando
     }//Fim menu
+
+    public static int escolheTipo(){
+        int tipo;
+        boolean erro;
+        Scanner ler = new Scanner(System.in);
+        System.out.println("Qual o tipo de Triangulo a ser listado?");
+        System.out.println("1=Equilátero; 2=Isóscele; 3=Escaleno");
+        System.out.print("\n=> ");
+        do{
+            tipo = ler.nextInt();
+            erro = tipo < 1 || tipo > 3;
+            if(erro) System.out.print("Tipo não existente!\n=> ");
+        }while(erro);
+
+        return tipo;
+    }
 
     public static void criaTriangulo(Triangulo[] tri)
     {//Inicio criaTriangulo
@@ -66,14 +84,47 @@ public class Lista13
         for(int cont = 0; cont < i; cont++)
         {//Inicio for
             System.out.println(
-                "Triangulo " + cont + ":" +
+                "Triangulo " + (cont + 1) + ":" +
                 "\n\tLado A: " + tri[cont].getA() + 
                 "\n\tLado B: " + tri[cont].getB() +
                 "\n\tLado C: " + tri[cont].getC() +
                 "\n\tPerimetro: " + tri[cont].perimetro() + "\n"
             );
         }//Fim for
-    }//Inicio listaTriangulos
+    }//FIm listaTriangulos
+
+    public static void listaTriangulos(Triangulo[] tri, int tipo)
+    {//Inicio listaTriangulos
+        int i = Triangulo.instancias;
+
+        for(int cont = 0; cont < i; cont++)
+        {//Inicio for
+            if(tri[cont].tipo() == tipo){
+                System.out.println(
+                    "Triangulo " + (cont + 1) + ":" +
+                    "\n\tLado A: " + tri[cont].getA() + 
+                    "\n\tLado B: " + tri[cont].getB() +
+                    "\n\tLado C: " + tri[cont].getC() +
+                    "\n\tPerimetro: " + tri[cont].perimetro() + "\n"
+                );
+            }
+        }//Fim for
+    }//Fim listaTriangulos
+
+    public static void triangulosIguais(Triangulo[] tri){
+        int iguais = 0;
+        int i = Triangulo.instancias;
+        Scanner ler = new Scanner(System.in);
+
+        System.out.printf("Deseja comparar com base em qual triângulo? [1..%d]: ",i);
+        int op1 = ler.nextInt() - 1;
+        for(int cont = 0; cont < i; cont++){
+            if(op1 != cont  && tri[op1].ehIgual(tri[cont])) iguais++;
+        }
+        if(iguais == 0) System.out.println("\nNão há triângulos iguais a este!");
+        else if(iguais == 1) System.out.printf("\nTem um Triangulo igual a este!\n");
+        else System.out.printf("\nHá %d Triangulos iguais a este!\n",iguais);
+    }
 
 }//Fim classe Exer01 
 
