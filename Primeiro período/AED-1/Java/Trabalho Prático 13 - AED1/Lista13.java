@@ -1,4 +1,5 @@
-
+//Autor: Luiz Junio <luisjuniorbr@gmail.com>
+//Data:  30-05-2018
 import java.util.Scanner;
 
 public class Lista13
@@ -44,6 +45,7 @@ public class Lista13
                     listaTriangulos(tri, escolheTipo());
                     break;
                 case 5:
+                    listaTriangulosInvalidos(tri);
                     break;
                 default:
                     break;                        
@@ -52,7 +54,8 @@ public class Lista13
         }//Fim while executando
     }//Fim menu
 
-    public static int escolheTipo(){
+    public static int escolheTipo()
+    {//Inicio escolheTipo
         int tipo;
         boolean erro;
         Scanner ler = new Scanner(System.in);
@@ -66,7 +69,7 @@ public class Lista13
         }while(erro);
 
         return tipo;
-    }
+    }//Fim escolheTipo
 
     public static void criaTriangulo(Triangulo[] tri)
     {//Inicio criaTriangulo
@@ -94,7 +97,7 @@ public class Lista13
     }//FIm listaTriangulos
 
     public static void listaTriangulos(Triangulo[] tri, int tipo)
-    {//Inicio listaTriangulos
+    {//Inicio listaTriangulos tipo
         int i = Triangulo.instancias;
 
         for(int cont = 0; cont < i; cont++)
@@ -106,12 +109,33 @@ public class Lista13
                     "\n\tLado B: " + tri[cont].getB() +
                     "\n\tLado C: " + tri[cont].getC() +
                     "\n\tPerimetro: " + tri[cont].perimetro() + "\n"
-                );
-            }
+                );//Fim println
+            }//Fim if 
         }//Fim for
-    }//Fim listaTriangulos
+    }//Fim listaTriangulos tipo 
 
-    public static void triangulosIguais(Triangulo[] tri){
+    public static void listaTriangulosInvalidos(Triangulo[] tri)
+    {//Inicio listaTriangulosInvalidos
+        int i = Triangulo.instancias;
+        double A, B, C;
+        int invalidos = 0;
+        for(int cont = 0; cont < i; cont++)
+        {//Inicio for
+            A = tri[cont].getA();
+            B = tri[cont].getB();
+            C = tri[cont].getC();
+            if(!Triangulo.ehTrianguloValido(A, B, C))
+            {//Inicio if 
+                System.out.printf("O triângulo %d é inválido!\n", cont + 1);
+                invalidos++;
+            }//Fim if 
+            
+        }//Fim for
+        if(invalidos == 0) System.out.println("Não há casos de inválidez!");
+    }//Fim listaTriangulosInvalidos
+
+    public static void triangulosIguais(Triangulo[] tri)
+    {//Inicio triangulosIguais
         int iguais = 0;
         int i = Triangulo.instancias;
         Scanner ler = new Scanner(System.in);
@@ -124,7 +148,7 @@ public class Lista13
         if(iguais == 0) System.out.println("\nNão há triângulos iguais a este!");
         else if(iguais == 1) System.out.printf("\nTem um Triangulo igual a este!\n");
         else System.out.printf("\nHá %d Triangulos iguais a este!\n",iguais);
-    }
+    }//Fim triangulosIguais
 
 }//Fim classe Exer01 
 
@@ -180,10 +204,11 @@ class Triangulo
         return this.ladoC;
     }//Fim getC
 
-    public double perimetro(){//Calcula perimetro do Triangulo
+    public double perimetro()
+    {//Calcula perimetro do Triangulo
         double perimetro = getA() + getB() + getC();
         return perimetro;
-    }//FIm perimetro
+    }//Fim perimetro
 
     public int tipo()
     {//Inicio tipo 
