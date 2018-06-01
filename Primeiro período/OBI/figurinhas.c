@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main()
-{
+{//Inicio main 
     int N = 0;//Número total de figurinhas 
     int C = 0;//Número total de figurinhas carimbadas 
     int M = 0;//Número de figurinhas compradas
@@ -27,32 +27,28 @@ int main()
 
     for(cont = 0; cont < C; cont++)
     {//Inicio for C
-	do{
+	    do{
     	    scanf("%d", &carimbada[cont]);
-	}while(carimbada[cont] < 1 || carimbada[cont] > N);
+	    }while(carimbada[cont] < 1 || carimbada[cont] > N);
     }//Fim for C
 
     for(cont = 0; cont < M; cont++)
     {//Inicio for M
-
-	do{
-	    scanf("%d", &figurinha[cont]);
-	}while(figurinha[cont] < 1 || figurinha[cont] > N);
+    	do{
+    	    scanf("%d", &figurinha[cont]);
+    	}while(figurinha[cont] < 1 || figurinha[cont] > N);
     }//Fim for M
     
     faltaC = C;//Definindo o total de carimbadas
 	
     for(cont = 0; cont < C; cont++)
     {//Inicio for cont
-	for(cont2 = 0; cont2 < M; cont2++)
-        {//Inicio for cont2
-	    if(carimbada[cont] == figurinha[cont2]) faltaC--;
-	    
-	}//Fim for cont2
-
+	    for(cont2 = 0; cont2 < M; cont2++){//Inicio for cont2
+	        if(carimbada[cont] == figurinha[cont2]) faltaC--;
+	    }//Fim for cont2
     }//Fim for cont	
 
     printf("%d\n", faltaC);
 
     return(0);
-}
+}//Fim main 

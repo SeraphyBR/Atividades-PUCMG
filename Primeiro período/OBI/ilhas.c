@@ -26,7 +26,7 @@ int main()
 
     	do{
     	    scanf("%d",&conexao[i][1]);
-            }while(conexao[i][1] < 1 || conexao[i][1] > N);
+        }while(conexao[i][1] < 1 || conexao[i][1] > N);
 
     	do{
     	    scanf("%d",&conexao[i][2]);
