@@ -8,9 +8,10 @@ public class Exer1
     {//Inicio main 
         Carro[] carro = new Carro[5];
         String placa;
-        int ano;
-        int anoAtual;
+        int ano, anoAtual;
+        double imposto;
         Scanner ler = new Scanner(System.in);
+
         for(int cont = 0; cont < carro.length; cont++)
         {//Inicio for 
             carro[cont] = new Carro();
@@ -22,16 +23,19 @@ public class Exer1
             ano = ler.nextInt();
             carro[cont].setAno(ano);    
         }//Fim for
+
         System.out.print("\nDigite o ano atual para calculo do imposto: ");
         anoAtual = ler.nextInt();
-        for(int cont = 0; cont < carro.length; cont++){
-            double imposto = carro[cont].calculaImposto(anoAtual);
+
+        for(int cont = 0; cont < carro.length; cont++)
+        {//Inicio for 2
+            imposto = carro[cont].calculaImposto(anoAtual);
             System.out.printf("\nO imposto do carro %d eh: R$%.2f",cont + 1, imposto);
-        }
+        }//Fim for 2
+
         System.out.printf("\nO total de imposto eh: R$%.2f", Carro.somaImposto(carro, anoAtual));
         System.out.printf("\nO número de carros que não pagam imposto eh: %d", Carro.qntdSemImposto(carro, anoAtual)); 
     }//Fim main 
-
 }//Fim classe Exer1
 
 class Carro
@@ -41,11 +45,18 @@ class Carro
     public static int quantidade = 0;
 
     Carro()
-    {//Inicio contrutor vazio
+    {//Inicio construtor vazio
         setPlaca(" ");
         setAno(0);
         quantidade++;
     }//Fim construtor vazio;
+
+    Carro(String placa, int ano)
+    {//Inicio construtor cheio
+        setPlaca(placa);
+        setAno(ano);
+        quantidade++;
+    }//Fim construtor cheio
 
     public String getPlaca(){
         return this.placa;
