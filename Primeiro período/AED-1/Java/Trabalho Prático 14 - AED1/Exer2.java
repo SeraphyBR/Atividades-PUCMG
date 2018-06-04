@@ -53,7 +53,7 @@ class Cliente
     public String getNome(){
         return this.nome;
     }
-    
+
     public char getGenero(){
         return this.genero;
     }
@@ -70,9 +70,12 @@ class Cliente
         this.genero = genero;
     }
 
-    public double descontoAdicional(){
-
-    }
+    public double descontoAdicional(Produto p1)
+    {//Inicio descontoAdicional
+        double adicional = 0;
+        if(Character.toUpperCase(this.getGenero()) == 'F') adicional = p1.getPreco() * 0.05; 
+        return adicional;
+    }//Fim descontoAdicional
 
 }//Fim classe Cliente 
 
