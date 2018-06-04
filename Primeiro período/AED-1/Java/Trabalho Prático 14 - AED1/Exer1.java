@@ -77,7 +77,21 @@ class Carro
         return imposto;
     }//Fim calculaImposto;
 
-    public static double somaImposto(Carro[] carro){
+    public static double somaImposto(Carro[] carro, int anoAtual)
+    {//Inicio somaImposto
+        double soma = 0;
+        for(int cont = 0; cont < Carro.quantidade; cont++){
+            soma += carro[cont].calculaImposto(anoAtual);
+        }
+        return soma;
+    }//Fim somaImposto
 
-    }
+    public static int qntdSemImposto(Carro[] carro, int anoAtual)
+    {//Inicio semImposto
+        int quantidade = 0;
+        for(int cont = 0; cont < Carro.quantidade; cont++){
+            if(carro[cont].calculaImposto(anoAtual) == 0) quantidade++;
+        }
+        return quantidade;
+    }//Fim semImposto
 }//Fim classe Carro 
