@@ -36,6 +36,14 @@ class Carro
 {//Inicio classe Carro 
     private String placa;
     private int ano;
+    public static int quantidade = 0;
+
+    Carro()
+    {//Inicio contrutor vazio
+        setPlaca(" ");
+        setAno(0);
+        quantidade++;
+    }//Fim construtor vazio;
 
     public String getPlaca(){
         return this.placa;
@@ -68,4 +76,8 @@ class Carro
         }//Fim if 1 
         return imposto;
     }//Fim calculaImposto;
+
+    public static double somaImposto(Carro[] carro){
+
+    }
 }//Fim classe Carro 
