@@ -27,7 +27,9 @@ public class Exer1
         for(int cont = 0; cont < carro.length; cont++){
             double imposto = carro[cont].calculaImposto(anoAtual);
             System.out.printf("\nO imposto do carro %d eh: R$%.2f",cont + 1, imposto);
-        } 
+        }
+        System.out.printf("\nO total de imposto eh: R$%.2f", Carro.somaImposto(carro, anoAtual));
+        System.out.printf("\nO número de carros que não pagam imposto eh: %d", Carro.qntdSemImposto(carro, anoAtual)); 
     }//Fim main 
 
 }//Fim classe Exer1
