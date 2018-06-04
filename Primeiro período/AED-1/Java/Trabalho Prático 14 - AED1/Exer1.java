@@ -1,5 +1,5 @@
 //Autor: Luiz Junio <luisjuniorbr@gmail.com>
-//Data:  30-05-2018
+//Data:  04-06-2018
 import java.util.Scanner;
 
 public class Exer1
