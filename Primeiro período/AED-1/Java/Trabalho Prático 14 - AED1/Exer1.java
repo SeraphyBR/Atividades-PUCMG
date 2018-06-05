@@ -46,15 +46,15 @@ class Carro
 
     Carro()
     {//Inicio construtor vazio
-        setPlaca(" ");
-        setAno(0);
+        this.setPlaca(" ");
+        this.setAno(0);
         quantidade++;
     }//Fim construtor vazio;
 
     Carro(String placa, int ano)
     {//Inicio construtor cheio
-        setPlaca(placa);
-        setAno(ano);
+        this.setPlaca(placa);
+        this.setAno(ano);
         quantidade++;
     }//Fim construtor cheio
 

@@ -81,5 +81,45 @@ class Cliente
 
 class Compra
 {//Inicio classe Compra
+    private int numeroProduto;
+    private int numeroCliente;
+    private int quantidade;
+    private double valorTotal;
 
+
+    public void setNumeroProduto(int produto){
+        this.numeroProduto = produto;
+    }
+
+    public void setNumeroCliente(int cliente){
+        this.numeroCliente = cliente;
+    }
+
+    public void setQuantidade(int quantidade){
+        this.quantidade = quantidade;
+    }
+
+    public void setValorTotal(int total){
+        this.valorTotal = total;
+    }
+
+    public int getNumeroProduto(){
+        return this.numeroProduto;
+    }
+
+    public int getNumeroCliente(){
+        return this.numeroCliente;
+    }
+
+    public int getQuantidade(){
+        return this.quantidade;
+    }
+
+    public double getValorTotal(){
+        return this.valorTotal;
+    }
+
+    public double calcValorTotal(Produto p1, Cliente c1, int quantidade){
+        
+    }
 }//Fim classe Compra
