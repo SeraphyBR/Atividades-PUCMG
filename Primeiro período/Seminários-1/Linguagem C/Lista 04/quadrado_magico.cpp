@@ -1,9 +1,13 @@
 #include <stdio.h>
+#define true 1
+#define false 0
 
 int main()
 {//Inicio main 
     int N = 0, i = 0, j = 0;
     int somaLinha = 0, somaColuna = 0, somaDiagonal = 0;
+    int antigoValor = 0;
+    int repetido;
 
     do{
         scanf("%d", &N);
@@ -17,6 +21,8 @@ int main()
             do{
                 scanf("%d", &quadrado[i][j]);
             }while(quadrado[i][j] < 1 || quadrado[i][j] > 100);
+            //if(quadrado[i][j] == antigoValor) repetido = true;
+            //else antigoValor = quadrado[i][j];
         }//Fim for j 
     }//Fim for i  
 
