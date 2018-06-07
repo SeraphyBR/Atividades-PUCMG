@@ -21,7 +21,7 @@ int main()
         }while(Y[i] < 1 || Y[i] > N);
     }//Fim for 
 
-    //Dividindo o quadrado em Quatro partes, em sentido Horario
+    //Dividindo a barra de chocolate em Quatro partes, em sentido Horario: (Ideia dos quadrantes de uma circunferência)
     for(int i = 0; i < 2; i++)
     {//Inicio for 
         if(X[i] <= N/2)
