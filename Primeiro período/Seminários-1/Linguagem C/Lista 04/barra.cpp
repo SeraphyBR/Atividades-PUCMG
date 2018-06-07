@@ -38,4 +38,6 @@ int main()
 
     if(localFigura[0] == localFigura[1]) printf("N\n");
     else printf("S\n");
+
+    return(0);
 }//Fim main 
