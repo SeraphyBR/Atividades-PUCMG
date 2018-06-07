@@ -5,6 +5,8 @@ int main()
 
     int alunos = 0;
     int a, j;
+    int aprovados = 0, reprovados = 0;
+    float sucesso = 0;
 
     do{
         scanf("%d", &alunos);
@@ -30,9 +32,23 @@ int main()
         }//Fim for j
     }//Fim for a 
 
-    for(a = 0; a < alunos; a++){
-        printf("%s %d\n", nome[a], notaFinal[a]);
-    }
+    for(a = 0; a < alunos; a++)
+    {//Inicio for 
+        printf("%s ", nome[a]);
+        if(notaFinal[a] >= 60){
+            printf("APROVADO\n");
+            aprovados++;
+        }    
+        else{
+            printf("REPROVADO\n");
+            reprovados++;
+        }
+    }//Fim for 
+
+    printf("%d APROVADOS\n", aprovados);
+    printf("%d REPROVADOS\n", reprovados);
+    sucesso = (float)aprovados/(float)alunos * 100;
+    printf("%.0f%%\n", sucesso);
 
     return(0);
 }//Fim main 
