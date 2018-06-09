@@ -1,3 +1,4 @@
+//Autor: Luiz Junio Veloso Dos Santos <luisjuniorbr@gmail.com>
 #include <stdio.h>
 
 int main()
