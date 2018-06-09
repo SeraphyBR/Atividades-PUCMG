@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int main()
-{
+{//Inicio main 
     int L = 0, C = 0;
     int tipo1 = 0, tipo2 = 0;	
     
@@ -20,16 +20,5 @@ int main()
     printf("%d\n",tipo1);
     printf("%d\n",tipo2);
 
-
     return(0);
-}
-
-
-
-
-
-
-
-
-
-
+}//Fim main 
