@@ -5,14 +5,14 @@ public class Calculadora
 {//Inicio Calculadora
     public static void main(String[]args)
     {//Inicio main
-        boolean continuaLaco = true; 
+        boolean sairDoPrograma = false; 
         do{
             try{
-            operacoes(menu());
+                if(operacoes(menu()) == 0 ) sairDoPrograma = true;
             }
             catch(InputMismatchException inputMismatchException){
                 System.out.println("Valor inserido é Inválido!");
-                System.out.println("Faça novamente: \n");
+                System.out.println("Faça novamente: ");
             } 
             catch(ArithmeticException arithmeticException){
                 System.out.println("Erro! Divisão por zero!\n");
@@ -20,7 +20,7 @@ public class Calculadora
             catch(OpcaoNaoDefinida opcaoNaoDefinida){
                 System.out.println("Essa operação não existe!");
             }   
-        }while(continuaLaco);
+        }while(!sairDoPrograma);
     }//Fim main 
 
     public static int menu()
@@ -40,33 +40,36 @@ public class Calculadora
         return op;
     }//Fim menu 
 
-    public static void operacoes(int op) throws OpcaoNaoDefinida
+    public static int operacoes(int op) throws OpcaoNaoDefinida
     {//Inicio operacoes
-        System.out.print("Digite o primeiro operando: ");
-        double num1 = leReal();
-        System.out.print("Digite o segundo operando: ");
-        double num2 = leReal();
-        switch (op)
-        {//Inicio switch
-            case 0:
-                break;
-            case 1:
-                imprimeSoma(num1,num2);
-                break;
-            case 2:
-                imprimeSubtracao(num1,num2);
-                break;
-            case 3:
-                imprimeMultiplicacao(num1, num2);
-                break;
-            case 4:   
-                imprimeDivisao(num1, num2);  
-                break;
-            default:
-                throw new OpcaoNaoDefinida();
-        }//Fim switch
+        int retorno = op;
+        if(op == 0) retorno = 0;
+        else
+        {//Inicio else 
+            System.out.print("Digite o primeiro operando: ");
+            double num1 = leReal();
+            System.out.print("Digite o segundo operando: ");
+            double num2 = leReal();
+            switch (op)
+            {//Inicio switch
+                case 1:
+                    imprimeSoma(num1,num2);
+                    break;
+                case 2:
+                    imprimeSubtracao(num1,num2);
+                    break;
+                case 3:
+                    imprimeMultiplicacao(num1, num2);
+                    break;
+                case 4:   
+                    imprimeDivisao(num1, num2);  
+                    break;
+                default:
+                    throw new OpcaoNaoDefinida();
+            }//Fim switch
+        }//Fim else 
+        return retorno;
     }//Fim operacoes
-
 
     public static double leReal() throws InputMismatchException
     {//Inicio leReal
