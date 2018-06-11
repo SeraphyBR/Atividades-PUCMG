@@ -50,6 +50,6 @@ public class Soma02
     }
 
     public static void imprimeSoma(double num1, double num2){
-        System.out.printf("%2f + %.2f = %.2f", num1, num2, soma(num1,num2));
+        System.out.printf("%.2f + %.2f = %.2f", num1, num2, soma(num1,num2));
     }
 }//Inicio classe Exer01 
