@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
-public class Soma01
+public class Soma02
 {//Inicio classe Exer01
     public static void main(String[]args)
     {//Inicio main 
