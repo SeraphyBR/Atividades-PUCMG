@@ -7,9 +7,7 @@ public class Soma03
     public static void main(String[]args)
     {//Inicio main 
         double num1 = 0, num2 = 0;
-        
         System.out.println("O programa calcula a soma de dois Números reais.\n");
-       
         System.out.print("Digite o primeiro número: ");
         num1 = leReal();
         System.out.print("Digite o segundo número: ");
@@ -24,11 +22,12 @@ public class Soma03
         Scanner ler = new Scanner(System.in);
         double real = 0;
         do{
-            try{
+            try{//Inicio try 
                 real = ler.nextDouble();
                 continuaLaco = false;
-            }
-            catch(InputMismatchException inputMismatchException){
+            }//Fim try 
+            catch(InputMismatchException inputMismatchException)
+            {
                 System.out.print("Valor inserido não compativel! \nDigite novamente: ");
                 ler.nextLine();
             }//Fim catch
@@ -38,9 +37,10 @@ public class Soma03
 
     public static double soma(double num1, double num2){
         return num1 + num2;
-    }
+    }//Fim soma 
 
     public static void imprimeSoma(double num1, double num2){
         System.out.printf("%.2f + %.2f = %.2f", num1, num2, soma(num1,num2));
-    }
+    }//Fim imprimeSoma 
+    
 }//Inicio classe Exer01 
