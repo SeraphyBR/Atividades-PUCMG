@@ -6,35 +6,48 @@ public class Soma02
     public static void main(String[]args)
     {//Inicio main 
         double num1 = 0, num2 = 0;
-        Scanner ler = new Scanner(System.in);
         boolean continuaLaco = true;
+
         System.out.println("O programa calcula a soma de dois Números reais.\n");
         do{
             try
             {//Inicio try
                 System.out.print("Digite o primeiro número: ");
-                num1 = ler.nextDouble();
+                num1 = leReal();
                 continuaLaco = false;
             }//Fim try 
             catch(InputMismatchException inputMismatchException){
                 System.out.println("Valor inserido não compativel, digite novamente.");
-                ler.nextLine();
             }//Fim catch
         }while(continuaLaco);
+
         do{
             try{//Inicio try
                 continuaLaco = true;
                 System.out.print("Digite o segundo número: ");
-                num2 = ler.nextDouble();
+                num2 = leReal();
                 continuaLaco = false;
             }//Fim try 
             catch(InputMismatchException inputMismatchException){
                 System.out.println("Valor inserido não compativel, digite novamente.");
-                ler.nextLine();//Limpar Buffer
             }//Fim catch 
         }while(continuaLaco);
-        
-        System.out.printf("\nA soma eh: %.2f \n",num1 + num2);
+        System.out.println("Soma = ");
+        imprimeValor(soma(num1, num2));
     }//Fim main 
 
+    public static double leReal() throws InputMismatchException
+    {//Inicio leReal
+        Scanner ler = new Scanner(System.in);
+        double real = ler.nextDouble();
+        return real;
+    }//Fim leReal
+
+    public static double soma(double num1, double num2){
+        return num1 + num2;
+    }
+
+    public static void imprimeValor(double num){
+        System.out.print(num);
+    }
 }//Inicio classe Exer01 
