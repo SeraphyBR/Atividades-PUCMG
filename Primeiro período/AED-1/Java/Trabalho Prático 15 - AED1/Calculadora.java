@@ -1,12 +1,12 @@
 import java.util.Scanner;
-import java.lang.Arithmetic; 
+import java.lang.close; 
 
 
 public class Calculadora
 {//Inicio Calculadora
     public static void main(String[]args)
     {//Inicio main 
-        try{
+        
         menu();
     }//Fim main 
 
@@ -51,7 +51,7 @@ public class Calculadora
         return num1 + num2;
     }//Fim soma 
 
-    public static double divide(double num1, double num2) throw Ari{
+    public static double divide(double num1, double num2) throws ArithmeticException{
         return num1 / num2;
     }
 }//Fim classe Calculadora 
