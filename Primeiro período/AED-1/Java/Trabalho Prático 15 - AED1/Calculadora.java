@@ -16,6 +16,9 @@ public class Calculadora
             } 
             catch(ArithmeticException arithmeticException){
                 System.out.println("Erro! Divisão por zero!\n");
+            }
+            catch(OpcaoNaoDefinida opcaoNaoDefinida){
+                System.out.println("Essa operação não existe!");
             }   
         }while(continuaLaco);
     }//Fim main 
@@ -37,7 +40,7 @@ public class Calculadora
         return op;
     }//Fim menu 
 
-    public static void operacoes(int op)
+    public static void operacoes(int op) throws OpcaoNaoDefinida
     {//Inicio operacoes
         System.out.print("Digite o primeiro operando: ");
         double num1 = leReal();
@@ -60,9 +63,10 @@ public class Calculadora
                 imprimeDivisao(num1, num2);  
                 break;
             default:
-                break;
+                throw new OpcaoNaoDefinida();
         }//Fim switch
     }//Fim operacoes
+
 
     public static double leReal() throws InputMismatchException
     {//Inicio leReal
@@ -104,3 +108,10 @@ public class Calculadora
         System.out.printf("%.2f / %.2f = %.2f\n", num1, num2, divide(num1,num2));
     }//Fim imprimeDivisao
 }//Fim classe Calculadora 
+
+class OpcaoNaoDefinida extends Exception {
+    @Override
+    public String getMessage(){
+        return "Opção inexistente!";
+    }
+}
