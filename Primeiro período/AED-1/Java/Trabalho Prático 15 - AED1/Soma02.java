@@ -1,3 +1,4 @@
+//Autor: Luiz Junio <luisjuniorbr@gmail.com>
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
@@ -32,8 +33,9 @@ public class Soma02
                 System.out.println("Valor inserido não compativel, digite novamente.");
             }//Fim catch 
         }while(continuaLaco);
-        System.out.println("Soma = ");
-        imprimeValor(soma(num1, num2));
+
+        System.out.println("Resultado: ");
+        imprimeSoma(num1, num2);
     }//Fim main 
 
     public static double leReal() throws InputMismatchException
@@ -47,7 +49,7 @@ public class Soma02
         return num1 + num2;
     }
 
-    public static void imprimeValor(double num){
-        System.out.print(num);
+    public static void imprimeSoma(double num1, double num2){
+        System.out.printf("%2f + %.2f = %.2f", num1, num2, soma(num1,num2));
     }
 }//Inicio classe Exer01 
