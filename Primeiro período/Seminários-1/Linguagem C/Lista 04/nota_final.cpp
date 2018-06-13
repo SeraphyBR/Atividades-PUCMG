@@ -21,6 +21,7 @@ int main()
 
     for(a = 0; a < alunos; a++)
     {//Inicio for a 
+        notaFinal[a] = 0;
         for(j = 0; j < 4; j++)
         {//Inicio for j 
             do{
