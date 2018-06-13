@@ -40,13 +40,14 @@ int main()
     float mediaProva[4];
     for(int p = 0; p < 4; p++)
     {//Inicio for p 
+        mediaProva[p] = 0;
         for(a = 0; a < alunos; a++){
             mediaProva[p] += nota[a][p];
         }
         mediaProva[p] /= (float)alunos;
     }//Fim for p 
 
-    for(a = 0; a < alunos; a++){ 
+    for(a = 0; a < alunos - 1; a++){ 
         printf("PROVA %d %.2f\n", a + 1, mediaProva[a]);
     }//Fim for 
     printf("%s %d\n", nome[alunoMaiorNota], maiorNota);
