@@ -15,7 +15,7 @@ int main()
     char nome[alunos][10];
 
     for(int i = 0; i < alunos; i++){
-        scanf("%s", &nome[i]);
+        scanf("%s", nome[i]);
     }
 
     int nota[alunos][4];
