@@ -53,6 +53,5 @@ int main()
     }//Fim for 
     printf("%s %d\n", nome[alunoMaiorNota], maiorNota);//Saída do nome do aluno que obteve a maior nota, e a sua nota;
     
-
     return(0);
 }//Fim main 
