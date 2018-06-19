@@ -114,8 +114,11 @@ class Data
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int dia = 1, mes = 1, ano = 2000;
         try{
+            System.out.print("Digite o dia: ");
             dia = Integer.parseInt(br.readLine());
+            System.out.print("Digite o mês: ");
             mes = Integer.parseInt(br.readLine());
+            System.out.print("Digite o ano: ");
             ano = Integer.parseInt(br.readLine());
         }
         catch(Exception exception){
@@ -124,7 +127,10 @@ class Data
         this.setDia(dia);
         this.setMes(mes);
         this.setAno(ano);
-
     }//Fim leData
+
+    public void imprimeData(){
+        System.out.printf("%02d/%02d/%d", this.getDia(), this.getMes(), this.getAno());
+    }
 
 }//Fim classe Data
