@@ -5,6 +5,8 @@ public class Lista16
 {//Inicio classe Lista16
     public static void main(String[]args)
     {//Inicio main 
+        Data nascimento = new Data(16,9,1998);
+        nascimento.imprimeData();
 
     }//Fim main 
 }//Fim classe Lista16
@@ -17,15 +19,15 @@ class Data
     private int ano;
 
     Data(int dd, int mm, int aa){
-        this.setAno(dd);
+        this.setAno(aa);
         this.setMes(mm);
         this.setDia(dd);
     }
 
     Data(){
-        this.setAno(2000);
-        this.setMes(1);
-        this.setDia(1);
+        this.setAno(0);
+        this.setMes(0);
+        this.setDia(0);
     }
 
     public int getDia(){
@@ -130,7 +132,7 @@ class Data
     }//Fim leData
 
     public void imprimeData(){
-        System.out.printf("%02d/%02d/%d", this.getDia(), this.getMes(), this.getAno());
+        System.out.printf("%02d/%02d/%d\n", this.getDia(), this.getMes(), this.getAno());
     }
 
 }//Fim classe Data
