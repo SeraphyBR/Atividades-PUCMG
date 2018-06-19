@@ -137,3 +137,14 @@ class Data
     }
 
 }//Fim classe Data
+
+class Funcionario
+{//Inicio classe Funcionario
+    private String nome;
+    private long cpf;
+    private Data nascimento;
+    private Data admissao;
+    private double salario;
+
+
+}//Fim classe Funcionario
