@@ -5,7 +5,8 @@ public class Lista16
 {//Inicio classe Lista16
     public static void main(String[]args)
     {//Inicio main 
-        Data nascimento = new Data(16,9,1998);
+        Data nascimento = new Data();
+        nascimento.leData();
         nascimento.imprimeData();
 
     }//Fim main 
