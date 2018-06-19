@@ -1,4 +1,6 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class Lista16
 {//Inicio classe Lista16
     public static void main(String[]args)
@@ -13,6 +15,18 @@ class Data
     private int dia;
     private int mes;
     private int ano;
+
+    Data(int dd, int mm, int aa){
+        this.setAno(dd);
+        this.setMes(mm);
+        this.setDia(dd);
+    }
+
+    Data(){
+        this.setAno(2000);
+        this.setMes(1);
+        this.setDia(1);
+    }
 
     public int getDia(){
         return this.dia;
@@ -94,5 +108,23 @@ class Data
         }
         return ehRecente;
     }//Fim ehMaisRecente
+
+    public void leData()
+    {//Inicio leData
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int dia = 1, mes = 1, ano = 2000;
+        try{
+            dia = Integer.parseInt(br.readLine());
+            mes = Integer.parseInt(br.readLine());
+            ano = Integer.parseInt(br.readLine());
+        }
+        catch(Exception exception){
+            System.out.print("Erro!");
+        }
+        this.setDia(dia);
+        this.setMes(mes);
+        this.setAno(ano);
+
+    }//Fim leData
 
 }//Fim classe Data
