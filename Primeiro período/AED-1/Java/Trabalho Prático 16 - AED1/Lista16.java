@@ -50,7 +50,7 @@ public class Lista16
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int op = 0;
         System.out.print(
-            "\n\tSistema de Gestão de Funcionários" +
+            "\n\n\tSistema de Gestão de Funcionários" +
             "\nDigite uma opção seguinte: " +
             "\n0 - Sair" +
             "\n1 - Adicionar um novo Funcionário" +
