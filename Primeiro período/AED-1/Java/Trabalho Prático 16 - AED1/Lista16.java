@@ -14,7 +14,8 @@ public class Lista16
         System.out.print("Para começar a usar o Sistema,\ndigite a quantidade máxima de Funcionarios: ");
         try{
             quantidade = Integer.parseInt(br.readLine());
-        }catch(NumberFormatException numberFormatException){
+        }
+        catch(NumberFormatException numberFormatException){
             System.out.print("Valor inserido é inválido!");
         }
 
@@ -66,7 +67,7 @@ public class Lista16
             switch (op)
             {//Inicio switch
                 case 1:
-                    if(Funcionario.quantidade < funcionario.length) Funcionario[Funcionario.quantidade] = new Funcionario();
+                    if(Funcionario.quantidade < funcionario.length) funcionario[Funcionario.quantidade] = new Funcionario();
                     break;
                 case 2:
                     
