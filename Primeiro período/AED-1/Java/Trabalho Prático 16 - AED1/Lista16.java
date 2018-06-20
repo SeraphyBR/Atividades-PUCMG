@@ -279,13 +279,19 @@ class Funcionario
     public static int buscaCPF(long chave, Funcionario[] funcionario)
     {//Inicio buscaCPF
         int inicio = 0, meio, fim = funcionario.length - 1;
-        while(inicio <= fim){
+        boolean continuaLaco = true;
+        int posicao = -1;
+        Funcionario.ordena(funcionario);
+        while(inicio <= fim && continuaLaco){
             meio = (inicio + fim) / 2;
-            if(funcionario[meio].getCPF() == chave) return meio;
+            if(funcionario[meio].getCPF() == chave){ 
+                posicao = meio;
+                continuaLaco = false;
+            }    
             else if(funcionario[meio].getCPF() < chave) inicio = meio + 1;
-            else fim = meio - 1;
+            else if(funcionario[meio].getCPF() > chave) fim = meio - 1;
         }
-        return -1;
+        return posicao;
     }//Fim buscaCPF
 
     public static void ordena(Funcionario[] funcionario)
