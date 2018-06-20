@@ -7,10 +7,22 @@ public class Lista16
 {//Inicio classe Lista16
     public static void main(String[]args)
     {//Inicio main
-        boolean sairDoPrograma = false; 
+        boolean sairDoPrograma = false;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int quantidade = 0;
+
+        System.out.print("Para começar a usar o Sistema,\ndigite a quantidade máxima de Funcionarios: ");
+        try{
+            quantidade = Integer.parseInt(br.readLine());
+        }catch(NumberFormatException numberFormatException){
+            System.out.print("Valor inserido é inválido!");
+        }
+
+        Funcionario[] funcionario = new Funcionario[quantidade];    
+
         do{
             try{
-                if(acoes(menu()) == 0 ) sairDoPrograma = true;
+                if(acoes(menu(), funcionario) == 0 ) sairDoPrograma = true;
             }
             catch(InputMismatchException inputMismatchException){
                 System.out.println("Valor inserido é Inválido!");
@@ -30,7 +42,7 @@ public class Lista16
             "\n\tSistema de Gestão de Funcionários" +
             "\nDigite uma opção seguinte: " +
             "\n0 - Sair" +
-            "\t1 - Adição" +
+            "\t1 - Adicionar um novo Funcionário" +
             "\n2 - Subtração" +
             "\t3 - Multiplicação" +
             "\n\t4 - Divisão" +
@@ -45,7 +57,7 @@ public class Lista16
         return op;
     }//Fim menu 
 
-    public static int acoes(int op) throws OpcaoNaoDefinida
+    public static int acoes(int op, Funcionario[] funcionario) throws OpcaoNaoDefinida
     {//Inicio acoes
         int retorno = op;
         if(op == 0) retorno = 0;
@@ -54,7 +66,7 @@ public class Lista16
             switch (op)
             {//Inicio switch
                 case 1:
-                    
+                    if(Funcionario.quantidade < funcionario.length) Funcionario[Funcionario.quantidade] = new Funcionario();
                     break;
                 case 2:
                     
@@ -207,6 +219,7 @@ class Funcionario
     private Data nascimento;
     private Data admissao;
     private double salario;
+    public static int quantidade = 0;
 
     Funcionario()
     {//Construtor Vazio Funcionario 
@@ -215,6 +228,7 @@ class Funcionario
         this.setNascimento(new Data());
         this.setAdmissao(new Data());
         this.setSalario(0);
+        quantidade++;
     }//Fim Construtor
 
     Funcionario(String nome, long cpf, Data nascimento, Data admissao, double salario)
@@ -224,6 +238,7 @@ class Funcionario
         this.setNascimento(nascimento);
         this.setAdmissao(admissao);
         this.setSalario(salario);
+        quantidade++;
     }//Fim Construtor 
 
     public void setNome(String nome){
