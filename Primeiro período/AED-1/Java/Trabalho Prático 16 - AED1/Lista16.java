@@ -146,5 +146,100 @@ class Funcionario
     private Data admissao;
     private double salario;
 
+    Funcionario()
+    {//Construtor Vazio Funcionario 
+        this.setNome("");
+        this.setCPF(0);
+        this.setNascimento(new Data());
+        this.setAdmissao(new Data());
+        this.setSalario(0);
+    }//Fim Construtor
 
+    Funcionario(String nome, long cpf, Data nascimento, Data admissao, double salario)
+    {//Construtor Funcionario com parametros
+        this.setNome(nome);
+        this.setCPF(cpf);
+        this.setNascimento(nascimento);
+        this.setAdmissao(admissao);
+        this.setSalario(salario);
+    }//Fim Construtor 
+
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+
+    public void setCPF(long cpf){
+        this.cpf = cpf;
+    }
+
+    public void setNascimento(Data nascimento){
+        this.nascimento = nascimento;
+    }
+
+    public void setAdmissao(Data admissao){
+        this.admissao = admissao;
+    }
+
+    public void setSalario(double salario){
+        this.salario = salario;
+    }
+
+    public String getNome(){
+        return this.nome;
+    }
+
+    public long getCPF(){
+        return this.cpf;
+    }
+
+    public Data getNascimento(){
+        return this.nascimento;
+    }    
+
+    public Data getAdmissao(){
+        return this.admissao;
+    }
+
+    public double getSalario(){
+        return this.salario;
+    }
+
+    public void leFuncionario()
+    {//Inicio leFuncionario
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String nome = "";
+        long cpf = 0;
+        int dia = 0, mes = 0, ano = 0, salario = 0;
+        Data nascimento = new Data(), admissao = new Data();
+        try{
+            System.out.print("\nDigite o nome do Funcionario: ");
+            nome = br.readLine();
+            System.out.print("\nDigite o CPF: ");
+            cpf = Integer.parseInt(br.readLine());
+            System.out.print("\nDigite a data de Nascimento: ");
+            nascimento.leData();
+            System.out.print("\nDigite a data de admissão: ");
+            admissao.leData();
+            System.out.print("\nDigite o salario do Funcionario: ");
+            salario = Integer.parseInt(br.readLine());
+        }
+        catch(Exception exception){
+
+        }
+        this.setNome(nome);
+        this.setCPF(cpf);
+        this.setNascimento(nascimento);
+        this.setAdmissao(admissao);
+        this.setSalario(salario);   
+    }//Fim leFuncionario
+
+    public void imprimeFuncionario(){
+        System.out.println("\nFuncionario: ");
+        System.out.print("\n\tNome: " + this.getNome());
+        System.out.printf("\n\tCPF: %011d ", this.getCPF());
+        System.out.print("\nData de nascimento: ");
+        this.getNascimento().imprimeData();
+        System.out.print("\nData de admissão: ");
+        this.getAdmissao().imprimeData();
+    }
 }//Fim classe Funcionario
