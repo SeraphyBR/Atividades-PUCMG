@@ -27,7 +27,7 @@ public class Lista16
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int op = 0;
         System.out.print(
-            "\n\tMenu Calculadora" +
+            "\n\tSistema de Gestão de Funcionários" +
             "\nDigite uma opção seguinte: " +
             "\n0 - Sair" +
             "\t1 - Adição" +
@@ -73,13 +73,6 @@ public class Lista16
     }//Fim acoes
 
 }//FIm classe Lista16
-
-class OpcaoNaoDefinida extends Exception {
-    @Override
-    public String getMessage(){
-        return "Opção inexistente!";
-    }
-}
 
 class Data
 {//Inicio classe Data
@@ -379,3 +372,10 @@ class Funcionario
     }//Fim ordena
 
 }//Fim classe Funcionario
+
+class OpcaoNaoDefinida extends Exception {
+    @Override
+    public String getMessage(){
+        return "Opção inexistente!";
+    }
+}
