@@ -247,7 +247,8 @@ class Funcionario
         this.setSalario(salario);   
     }//Fim leFuncionario
 
-    public void imprimeFuncionario(){
+    public void imprimeFuncionario()
+    {//Inicio imprimeFuncionario
         System.out.println("\nFuncionario: ");
         System.out.print("\n\tNome: " + this.getNome());
         System.out.printf("\n\tCPF: %011d ", this.getCPF());
@@ -256,5 +257,12 @@ class Funcionario
         System.out.print("\nData de admissão: ");
         this.getAdmissao().imprimeData();
         System.out.printf("\nSalario: R$%.2f ", this.getSalario());
+    }//Fim imprimeFuncionario
+
+    public boolean ehMaiorSalario(double salario){
+        boolean ehMaior = true;
+        if(this.getSalario() < salario) ehMaior = false;
+        return ehMaior;
     }
+
 }//Fim classe Funcionario
