@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Lista16
@@ -209,21 +210,27 @@ class Funcionario
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String nome = "";
         long cpf = 0;
-        int dia = 0, mes = 0, ano = 0, salario = 0;
+        double salario = 0;
         Data nascimento = new Data(), admissao = new Data();
         try{
             System.out.print("\nDigite o nome do Funcionario: ");
             nome = br.readLine();
             System.out.print("\nDigite o CPF: ");
-            cpf = Integer.parseInt(br.readLine());
+            cpf = Long.parseLong(br.readLine());
             System.out.print("\nDigite a data de Nascimento: ");
             nascimento.leData();
             System.out.print("\nDigite a data de admissão: ");
             admissao.leData();
             System.out.print("\nDigite o salario do Funcionario: ");
-            salario = Integer.parseInt(br.readLine());
+            salario = Double.parseDouble(br.readLine());
         }
-        catch(Exception exception){
+        catch(IOException ioException){
+
+        }
+        catch(NullPointerException nullPointerException){
+
+        }
+        catch(NumberFormatException numberFormatException){
 
         }
         this.setNome(nome);
@@ -241,5 +248,6 @@ class Funcionario
         this.getNascimento().imprimeData();
         System.out.print("\nData de admissão: ");
         this.getAdmissao().imprimeData();
+        System.out.printf("\nSalario: R$%.2f ", this.getSalario());
     }
 }//Fim classe Funcionario
