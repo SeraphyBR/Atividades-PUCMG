@@ -212,27 +212,34 @@ class Funcionario
         long cpf = 0;
         double salario = 0;
         Data nascimento = new Data(), admissao = new Data();
-        try{
-            System.out.print("\nDigite o nome do Funcionario: ");
-            nome = br.readLine();
-            System.out.print("\nDigite o CPF: ");
-            cpf = Long.parseLong(br.readLine());
-            System.out.print("\nDigite a data de Nascimento: ");
-            nascimento.leData();
-            System.out.print("\nDigite a data de admissão: ");
-            admissao.leData();
-            System.out.print("\nDigite o salario do Funcionario: ");
-            salario = Double.parseDouble(br.readLine());
-        }
-        catch(IOException ioException){
-
-        }
-        catch(NullPointerException nullPointerException){
-
-        }
-        catch(NumberFormatException numberFormatException){
-
-        }
+        boolean continuaLaco = true;
+        do{ 
+            try{
+                System.out.print("\nDigite o nome do Funcionario: ");
+                nome = br.readLine();
+                System.out.print("\nDigite o CPF: ");
+                cpf = Long.parseLong(br.readLine());
+                System.out.print("\nDigite a data de Nascimento: ");
+                nascimento.leData();
+                System.out.print("\nDigite a data de admissão: ");
+                admissao.leData();
+                System.out.print("\nDigite o salario do Funcionario: ");
+                salario = Double.parseDouble(br.readLine());
+                continuaLaco = false;
+            }
+            catch(IOException ioException){
+                System.out.println("\nErro de leitura do teclado!");
+                System.out.println("Tente Novamente:\n");
+            }
+            catch(NullPointerException nullPointerException){
+                System.out.println("\nVocê não digitou todos os dados!");
+                System.out.println("Por favor, tente novamente:\n");
+            }
+            catch(NumberFormatException numberFormatException){
+                System.out.println("\nO valor digitado é inválido!");
+                System.out.println("Tente novamente:\n");
+            }
+        }while(continuaLaco);
         this.setNome(nome);
         this.setCPF(cpf);
         this.setNascimento(nascimento);
