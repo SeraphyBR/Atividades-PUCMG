@@ -226,7 +226,7 @@ class Funcionario
                 System.out.print("\nDigite o salario do Funcionario: ");
                 salario = Double.parseDouble(br.readLine());
                 continuaLaco = false;
-            }
+            }//Fim try 
             catch(IOException ioException){
                 System.out.println("\nErro de leitura do teclado!");
                 System.out.println("Tente Novamente:\n");
@@ -259,19 +259,50 @@ class Funcionario
         System.out.printf("\nSalario: R$%.2f ", this.getSalario());
     }//Fim imprimeFuncionario
 
-    public boolean ehMaiorSalario(double salario){
+    public boolean ehMaiorSalario(double salario)
+    {//Inicio ehMaiorSalario
         boolean ehMaior = true;
         if(this.getSalario() < salario) ehMaior = false;
         return ehMaior;
-    }
+    }//Fim ehMaiorSalario
 
     public static void buscaNome(String chave, Funcionario[] funcionario)
     {//Inicio buscaNome
-        for(int cont = 0; cont < funcionario.length; cont++){
+        for(int cont = 0; cont < funcionario.length; cont++)
+        {//Inicio for 
             if(chave.toLowerCase() == funcionario[cont].getNome().toLowerCase().substring(0, chave.length())){
                 funcionario[cont].imprimeFuncionario();
             }    
-        }
+        }//Fim for 
     }//Fim buscaNome
+
+    public static int buscaCPF(long chave, Funcionario[] funcionario)
+    {//Inicio buscaCPF
+        int inicio = 0, meio, fim = funcionario.length - 1;
+        while(inicio <= fim){
+            meio = (inicio + fim) / 2;
+            if(funcionario[meio].getCPF() == chave) return meio;
+            else if(funcionario[meio].getCPF() < chave) inicio = meio + 1;
+            else fim = meio - 1;
+        }
+        return -1;
+    }//Fim buscaCPF
+
+    public static void ordena(Funcionario[] funcionario)
+    {//Inicio ordena
+        Funcionario aux;
+        for(int j = 0; j < funcionario.length; j++){
+            for (int i = 0; i < funcionario.length - 1; i++) {
+                if(funcionario[i].getCPF() > funcionario[i + 1].getCPF())
+                {//Inicio If
+                    aux = funcionario[i];
+                    funcionario[i] = funcionario[i + 1];
+                    funcionario[i + 1] = aux;
+                }//Fim if 
+            }//Fim for i 
+        }//Fim for j
+        System.out.println("\nOs funcionários foram ordenados!"); 
+    }//Fim ordena
+
 
 }//Fim classe Funcionario
