@@ -1,17 +1,85 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.InputMismatchException;
 
 public class Lista16
 {//Inicio classe Lista16
     public static void main(String[]args)
-    {//Inicio main 
-        Data nascimento = new Data();
-        nascimento.leData();
-        nascimento.imprimeData();
-
+    {//Inicio main
+        boolean sairDoPrograma = false; 
+        do{
+            try{
+                if(acoes(menu()) == 0 ) sairDoPrograma = true;
+            }
+            catch(InputMismatchException inputMismatchException){
+                System.out.println("Valor inserido é Inválido!");
+                System.out.println("Faça novamente: ");
+            } 
+            catch(OpcaoNaoDefinida opcaoNaoDefinida){
+                System.out.println("Essa operação não existe!");
+            }   
+        }while(!sairDoPrograma);
     }//Fim main 
-}//Fim classe Lista16
+
+    public static int menu()
+    {//Fim menu
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int op = 0;
+        System.out.print(
+            "\n\tMenu Calculadora" +
+            "\nDigite uma opção seguinte: " +
+            "\n0 - Sair" +
+            "\t1 - Adição" +
+            "\n2 - Subtração" +
+            "\t3 - Multiplicação" +
+            "\n\t4 - Divisão" +
+            "\n=> "
+        );//Fim println
+        try{
+            op = Integer.parseInt(br.readLine());
+        }catch(IOException ioException){
+            System.out.println("Erro na leitura do teclado!");
+        }
+        
+        return op;
+    }//Fim menu 
+
+    public static int acoes(int op) throws OpcaoNaoDefinida
+    {//Inicio acoes
+        int retorno = op;
+        if(op == 0) retorno = 0;
+        else
+        {//Inicio else 
+            switch (op)
+            {//Inicio switch
+                case 1:
+                    
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    
+                    break;
+                case 4:   
+                     
+                    break;
+                default:
+                    throw new OpcaoNaoDefinida();
+            }//Fim switch
+        }//Fim else 
+        return retorno;
+    }//Fim acoes
+
+}//FIm classe Lista16
+
+class OpcaoNaoDefinida extends Exception {
+    @Override
+    public String getMessage(){
+        return "Opção inexistente!";
+    }
+}
 
 class Data
 {//Inicio classe Data
@@ -290,7 +358,7 @@ class Funcionario
             }    
             else if(funcionario[meio].getCPF() < chave) inicio = meio + 1;
             else if(funcionario[meio].getCPF() > chave) fim = meio - 1;
-        }
+        }//Fim while
         return posicao;
     }//Fim buscaCPF
 
@@ -309,6 +377,5 @@ class Funcionario
         }//Fim for j
         System.out.println("\nOs funcionários foram ordenados!"); 
     }//Fim ordena
-
 
 }//Fim classe Funcionario
