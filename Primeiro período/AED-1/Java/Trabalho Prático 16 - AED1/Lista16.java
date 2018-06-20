@@ -265,4 +265,13 @@ class Funcionario
         return ehMaior;
     }
 
+    public static void buscaNome(String chave, Funcionario[] funcionario)
+    {//Inicio buscaNome
+        for(int cont = 0; cont < funcionario.length; cont++){
+            if(chave.toLowerCase() == funcionario[cont].getNome().toLowerCase().substring(0, chave.length())){
+                funcionario[cont].imprimeFuncionario();
+            }    
+        }
+    }//Fim buscaNome
+
 }//Fim classe Funcionario
