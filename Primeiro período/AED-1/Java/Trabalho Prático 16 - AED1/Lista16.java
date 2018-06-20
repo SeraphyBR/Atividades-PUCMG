@@ -11,12 +11,15 @@ public class Lista16
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int quantidade = 0;
 
-        System.out.print("Para começar a usar o Sistema,\ndigite a quantidade máxima de Funcionarios: ");
+        System.out.print("Para começar a usar o Sistema,\nDigite a quantidade máxima de Funcionarios: ");
         try{
             quantidade = Integer.parseInt(br.readLine());
         }
         catch(NumberFormatException numberFormatException){
             System.out.print("Valor inserido é inválido!");
+        }
+        catch(IOException ioException){
+            System.out.print("Erro de leitura!");
         }
 
         Funcionario[] funcionario = new Funcionario[quantidade];    
@@ -24,6 +27,13 @@ public class Lista16
         do{
             try{
                 if(acoes(menu(), funcionario) == 0 ) sairDoPrograma = true;
+            }
+            catch(IOException ioException){
+                System.out.println("Erro ao ler o teclado!");
+            }
+            catch(NumberFormatException numberFormatException){
+                System.out.println("\nO valor digitado é inválido!");
+                System.out.println("Tente novamente:\n");
             }
             catch(InputMismatchException inputMismatchException){
                 System.out.println("Valor inserido é Inválido!");
@@ -35,7 +45,7 @@ public class Lista16
         }while(!sairDoPrograma);
     }//Fim main 
 
-    public static int menu()
+    public static int menu() throws NumberFormatException, IOException
     {//Fim menu
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int op = 0;
@@ -43,23 +53,19 @@ public class Lista16
             "\n\tSistema de Gestão de Funcionários" +
             "\nDigite uma opção seguinte: " +
             "\n0 - Sair" +
-            "\t1 - Adicionar um novo Funcionário" +
-            "\n2 - Subtração" +
-            "\t3 - Multiplicação" +
-            "\n\t4 - Divisão" +
+            "\n1 - Adicionar um novo Funcionário" +
+            "\n2 - Buscar Funcionario por Nome" +
+            "\n3 - Buscar Funcionario pelo CPF" +
+            "\n4 - Divisão" +
             "\n=> "
         );//Fim println
-        try{
-            op = Integer.parseInt(br.readLine());
-        }catch(IOException ioException){
-            System.out.println("Erro na leitura do teclado!");
-        }
-        
+        op = Integer.parseInt(br.readLine());
         return op;
     }//Fim menu 
 
-    public static int acoes(int op, Funcionario[] funcionario) throws OpcaoNaoDefinida
+    public static int acoes(int op, Funcionario[] funcionario) throws OpcaoNaoDefinida, IOException
     {//Inicio acoes
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int retorno = op;
         if(op == 0) retorno = 0;
         else
@@ -67,10 +73,17 @@ public class Lista16
             switch (op)
             {//Inicio switch
                 case 1:
-                    if(Funcionario.quantidade < funcionario.length) funcionario[Funcionario.quantidade] = new Funcionario();
+                    if(Funcionario.quantidade < funcionario.length){ 
+                        funcionario[Funcionario.quantidade] = new Funcionario();
+                        funcionario[Funcionario.quantidade - 1].leFuncionario();
+                        System.out.println("Adicionado novo funcionario com sucesso!");
+                    }
+                    else System.out.println("Número máximo de funcionários atingido!");    
                     break;
                 case 2:
-                    
+                    System.out.print("Digite o nome a ser buscado: ");
+                    String nome = br.readLine();
+                    Funcionario.buscaNome(nome, funcionario);
                     break;
                 case 3:
                     
@@ -192,11 +205,11 @@ class Data
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int dia = 1, mes = 1, ano = 2000;
         try{
-            System.out.print("Digite o dia: ");
+            System.out.print("\nDia: ");
             dia = Integer.parseInt(br.readLine());
-            System.out.print("Digite o mês: ");
+            System.out.print("Mês: ");
             mes = Integer.parseInt(br.readLine());
-            System.out.print("Digite o ano: ");
+            System.out.print("Ano: ");
             ano = Integer.parseInt(br.readLine());
         }
         catch(Exception exception){
@@ -294,13 +307,13 @@ class Funcionario
             try{
                 System.out.print("\nDigite o nome do Funcionario: ");
                 nome = br.readLine();
-                System.out.print("\nDigite o CPF: ");
+                System.out.print("Digite o CPF: ");
                 cpf = Long.parseLong(br.readLine());
-                System.out.print("\nDigite a data de Nascimento: ");
+                System.out.print("Digite a data de Nascimento: ");
                 nascimento.leData();
-                System.out.print("\nDigite a data de admissão: ");
+                System.out.print("Digite a data de admissão: ");
                 admissao.leData();
-                System.out.print("\nDigite o salario do Funcionario: ");
+                System.out.print("Digite o salario do Funcionario: ");
                 salario = Double.parseDouble(br.readLine());
                 continuaLaco = false;
             }//Fim try 
@@ -326,14 +339,14 @@ class Funcionario
 
     public void imprimeFuncionario()
     {//Inicio imprimeFuncionario
-        System.out.println("\nFuncionario: ");
+        System.out.print("\nFuncionario: ");
         System.out.print("\n\tNome: " + this.getNome());
         System.out.printf("\n\tCPF: %011d ", this.getCPF());
-        System.out.print("\nData de nascimento: ");
+        System.out.print("\n\tData de nascimento: ");
         this.getNascimento().imprimeData();
-        System.out.print("\nData de admissão: ");
+        System.out.print("\tData de admissão: ");
         this.getAdmissao().imprimeData();
-        System.out.printf("\nSalario: R$%.2f ", this.getSalario());
+        System.out.printf("\tSalario: R$%.2f ", this.getSalario());
     }//Fim imprimeFuncionario
 
     public boolean ehMaiorSalario(double salario)
@@ -345,9 +358,9 @@ class Funcionario
 
     public static void buscaNome(String chave, Funcionario[] funcionario)
     {//Inicio buscaNome
-        for(int cont = 0; cont < funcionario.length; cont++)
+        for(int cont = 0; cont < Funcionario.quantidade; cont++)
         {//Inicio for 
-            if(chave.toLowerCase() == funcionario[cont].getNome().toLowerCase().substring(0, chave.length())){
+            if(chave.equalsIgnoreCase(funcionario[cont].getNome().substring(0, chave.length()))){
                 funcionario[cont].imprimeFuncionario();
             }    
         }//Fim for 

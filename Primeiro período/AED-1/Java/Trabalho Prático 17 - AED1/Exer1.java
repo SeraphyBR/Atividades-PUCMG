@@ -6,27 +6,25 @@ import java.io.BufferedReader;
 public class Exer1
 {
     public static void main(String[] args){
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String nomeArquivo;
-        System.out.printf("Digite o nome do arquivo: ");
+        String nomeArquivo = "";
         try{
+            System.out.printf("Digite o nome do arquivo: ");
             nomeArquivo = br.readLine();
         }
-        catch(){
-            
-        }
+        catch(IOException ioException){
 
-
-        File arquivo = new File("exemplo.txt");
+        }    
+        File arquivo = new File(nomeArquivo);
         try{
             if(arquivo.createNewFile()){
-                System.out.println("Foi criado o arquivo exemplo.txt");
+                System.out.println("Foi criado o arquivo");
             }
-        }
-        catch(IOException ioException)
-        {
-            System.out.print(ioException);
-        }
+        }    
+        catch(IOException ioException){
+
+        }    
         if(arquivo.exists()){
             System.out.println("Nome: " + arquivo.getName());
             System.out.println("Tamanho: " + arquivo.length());
