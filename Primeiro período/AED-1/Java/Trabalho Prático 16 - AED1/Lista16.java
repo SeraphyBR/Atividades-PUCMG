@@ -1,6 +1,13 @@
 import java.io.BufferedReader;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.InputMismatchException;
 
 public class Lista16
@@ -56,7 +63,8 @@ public class Lista16
             "\n1 - Adicionar um novo Funcionário" +
             "\n2 - Buscar Funcionario por Nome" +
             "\n3 - Buscar Funcionario pelo CPF" +
-            "\n4 - Divisão" +
+            "\n4 - Salvar todos os funcionários em arquivo" +
+            "\n5 - Ler os Funcionarios do arquivo" +
             "\n=> "
         );//Fim println
         op = Integer.parseInt(br.readLine());
@@ -86,11 +94,17 @@ public class Lista16
                     Funcionario.buscaNome(nome, funcionario);
                     break;
                 case 3:
-                    
+                    System.out.print("Digite o CPF do funcionário a ser buscado: ");
+                    long cpf = Long.parseLong(br.readLine());
+                    funcionario[Funcionario.buscaCPF(cpf, funcionario)].imprimeFuncionario();
                     break;
                 case 4:   
-                     
+                    Funcionario.gravaArquivo(funcionario);
                     break;
+                case 5:
+                    funcionario = null;
+                    funcionario = Funcionario.leArquivo(); 
+                    break;   
                 default:
                     throw new OpcaoNaoDefinida();
             }//Fim switch
@@ -100,7 +114,7 @@ public class Lista16
 
 }//FIm classe Lista16
 
-class Data
+class Data implements Serializable
 {//Inicio classe Data
 
     private int dia;
@@ -226,7 +240,7 @@ class Data
 
 }//Fim classe Data
 
-class Funcionario
+class Funcionario implements Serializable
 {//Inicio classe Funcionario
     private String nome;
     private long cpf;
@@ -397,8 +411,44 @@ class Funcionario
                 }//Fim if 
             }//Fim for i 
         }//Fim for j
-        System.out.println("\nOs funcionários foram ordenados!"); 
+        //System.out.println("\nOs funcionários foram ordenados!"); 
     }//Fim ordena
+
+    public static void gravaArquivo(Funcionario[] funcionario)
+    {//Inicio gravaArquivo
+        try{
+            FileOutputStream arquivo = new FileOutputStream("backup.txt");
+            ObjectOutputStream output = new ObjectOutputStream(arquivo);
+            output.writeObject(funcionario);
+            output.close();
+        }
+        catch(FileNotFoundException fileNotFoundException){
+            System.out.print("Erro ao tentar criar o arquivo, verifique se não tem nenhuma pasta com mesmo nome!");
+        }  
+        catch(IOException ioException){
+            System.out.print("Erro ao manipular arquivo!");
+        }   
+    }//Fim gravaArquivo
+
+    public static Funcionario[] leArquivo(){
+        Funcionario[] funcionario = null;
+        try{
+            FileInputStream arquivo = new FileInputStream("backup.txt");
+            ObjectInputStream input = new ObjectInputStream(arquivo);
+            funcionario = (Funcionario[]) input.readObject();
+            input.close();
+        }
+        catch(FileNotFoundException fileNotFoundException){
+            System.out.print("Erro ao tentar ler o arquivo, verifique se o arquivo backup.sgf existe!");
+        }
+        catch(ClassNotFoundException classNotFoundException){
+            System.out.print("Funcionario não encontrado!");
+        }  
+        catch(IOException ioException){
+            System.out.print("Erro ao manipular arquivo!");
+        }   
+        return funcionario;
+    }
 
 }//Fim classe Funcionario
 
