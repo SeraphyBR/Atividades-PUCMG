@@ -68,13 +68,14 @@ public class Lista16
             "\n5 - Ler os Funcionarios do arquivo" +
             "\n6 - Listar Funcionarios com salario acima de X" +
             "\n7 - Listar Funcionarios admitidos na Data dd/mm/aa" +
+            "\n8 - Listar Funcionarios aniversariantes do Mês" +
             "\n=> "
         );//Fim println
         op = Integer.parseInt(br.readLine());
         return op;
     }//Fim menu 
 
-    public static int acoes(int op, Funcionario[] funcionario) throws OpcaoNaoDefinida, IOException
+    public static int acoes(int op, Funcionario[] funcionario) throws OpcaoNaoDefinida, NumberFormatException, IOException
     {//Inicio acoes
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int retorno = op;
@@ -122,7 +123,13 @@ public class Lista16
                     System.out.print("Digite a data de pesquisa: ");
                     Data admissao = new Data();
                     admissao.leData();
-                    Funcionario.imprimeAdmitidos(admissao, funcionario);        
+                    Funcionario.imprimeAdmitidos(admissao, funcionario);
+                    break;
+                case 8:
+                    System.out.print("Digite o mês: ");
+                    int mes = Integer.parseInt(br.readLine());
+                    Funcionario.imprimeAniversariantesMes(mes, funcionario);
+                    break;
                 default:
                     throw new OpcaoNaoDefinida();
             }//Fim switch
