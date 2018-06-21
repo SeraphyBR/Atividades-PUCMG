@@ -507,7 +507,6 @@ class Funcionario implements Serializable
         catch(IOException ioException){
             System.out.print("Erro ao manipular arquivo!");
         }   
-        System.out.println("Importados " + i + "Funcionarios com sucesso!");
     }//Fim importaArquivo
 
     public static void imprimeAdmitidos(Data admissao, Funcionario[] funcionario)
