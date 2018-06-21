@@ -65,6 +65,7 @@ public class Lista16
             "\n3 - Buscar Funcionario pelo CPF" +
             "\n4 - Salvar todos os funcionários em arquivo" +
             "\n5 - Ler os Funcionarios do arquivo" +
+            "\n6 - Listar Funcionarios com salario acima de X" +
             "\n=> "
         );//Fim println
         op = Integer.parseInt(br.readLine());
@@ -103,11 +104,18 @@ public class Lista16
                     }
                     break;
                 case 4:   
-                    Funcionario.gravaArquivo(funcionario);
+                    Funcionario.exportaArquivo(funcionario);
                     break;
                 case 5:
-                    Funcionario.leArquivo(funcionario); 
-                    break;   
+                    Funcionario.importaArquivo(funcionario); 
+                    break;  
+                case 6:
+                    System.out.print("\nDigite o valor de X:");
+                    double x = Double.parseDouble(br.readLine());
+                    for(int cont = 0; cont < Funcionario.quantidade; cont++){
+                        if(funcionario[cont].ehMaiorSalario(x)) funcionario[cont].imprimeFuncionario();
+                    }     
+                    break;     
                 default:
                     throw new OpcaoNaoDefinida();
             }//Fim switch
@@ -328,6 +336,7 @@ class Funcionario implements Serializable
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String nome = "";
         long cpf = 0;
+        boolean erro;
         double salario = 0;
         Data nascimento = new Data(), admissao = new Data();
         boolean continuaLaco = true;
@@ -337,10 +346,22 @@ class Funcionario implements Serializable
                 nome = br.readLine();
                 System.out.print("Digite o CPF: ");
                 cpf = Long.parseLong(br.readLine());
-                System.out.print("Digite a data de Nascimento: ");
-                nascimento.leData();
-                System.out.print("Digite a data de admissão: ");
-                admissao.leData();
+                do{
+                    System.out.print("Digite a data de Nascimento: ");
+                    nascimento.leData();
+                    if(!nascimento.ehValido()){
+                        System.out.println("Data incorreta!");
+                        erro = true;
+                    }else erro = false;
+                }while(erro);
+                do{
+                    System.out.print("Digite a data de admissão: ");
+                    admissao.leData();
+                    if(!admissao.ehValido()){
+                        System.out.println("Data incorreta!");
+                        erro = true;
+                    }else erro = false;
+                }while(erro);
                 System.out.print("Digite o salario do Funcionario: ");
                 salario = Double.parseDouble(br.readLine());
                 continuaLaco = false;
@@ -416,7 +437,7 @@ class Funcionario implements Serializable
     {//Inicio ordena
         Funcionario aux;
         for(int j = 0; j < Funcionario.quantidade; j++){
-            for (int i = 0; i < Funcionario.quantidade - 1; i++) {
+            for(int i = 0; i < Funcionario.quantidade - 1; i++){
                 if(funcionario[i].getCPF() > funcionario[i + 1].getCPF())
                 {//Inicio If
                     aux = funcionario[i];
@@ -428,15 +449,15 @@ class Funcionario implements Serializable
         //System.out.println("\nOs funcionários foram ordenados!"); 
     }//Fim ordena
 
-    public static void gravaArquivo(Funcionario[] funcionario)
-    {//Inicio gravaArquivo
+    public static void exportaArquivo(Funcionario[] funcionario)
+    {//Inicio exportaArquivo
         try{
             ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("backup.txt"));
             for(int i = 0; i < Funcionario.quantidade; i++){
                 output.writeObject(funcionario[i]);
             }
             output.close();
-        }
+        }//Fim try 
         catch(FileNotFoundException fileNotFoundException){
             System.out.print("Erro ao tentar criar o arquivo, verifique se não tem nenhuma pasta com mesmo nome!");
         }  
@@ -444,18 +465,19 @@ class Funcionario implements Serializable
             System.out.print("Erro ao manipular arquivo!");
         }
         System.out.print("Backup feito com sucesso!");   
-    }//Fim gravaArquivo
+    }//Fim exportaArquivo
 
-    public static void leArquivo(Funcionario[] funcionario){
-        try(ObjectInputStream input = new ObjectInputStream(new FileInputStream("backup.txt"))){
-            int i = 0;
+    public static void importaArquivo(Funcionario[] funcionario)
+    {//Inicio importaArquivo
+        int i = 0;
+        try(ObjectInputStream input = new ObjectInputStream(new FileInputStream("backup.txt")))
+        {//Inicio try 
             Funcionario.quantidade = 0;
             while(true){
                 funcionario[i] = new Funcionario((Funcionario) input.readObject());
-                funcionario[i].imprimeFuncionario();
                 i++;
-            }
-        }
+            }//Fim while
+        }//Fim try 
         catch(EOFException eofException){
             return;
         }
@@ -464,11 +486,15 @@ class Funcionario implements Serializable
         }
         catch(ClassNotFoundException classNotFoundException){
             System.out.print("Funcionario não encontrado!");
+        }
+        catch(ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException){
+            System.out.print("O número de funcionarios no arquivo é maior do que a quantidade máxima de Funcionarios!");
         }  
         catch(IOException ioException){
             System.out.print("Erro ao manipular arquivo!");
         }   
-    }
+        System.out.println("Importados " + i + "Funcionarios com sucesso!");
+    }//Fim importaArquivo
 
 }//Fim classe Funcionario
 
