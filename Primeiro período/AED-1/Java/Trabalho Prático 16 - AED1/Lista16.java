@@ -96,14 +96,17 @@ public class Lista16
                 case 3:
                     System.out.print("Digite o CPF do funcionário a ser buscado: ");
                     long cpf = Long.parseLong(br.readLine());
+                    try{
                     funcionario[Funcionario.buscaCPF(cpf, funcionario)].imprimeFuncionario();
+                    }catch(NullPointerException nullPointerException){
+                        System.out.print("Não encontrado!");
+                    }
                     break;
                 case 4:   
                     Funcionario.gravaArquivo(funcionario);
                     break;
                 case 5:
-                    funcionario = null;
-                    funcionario = Funcionario.leArquivo(); 
+                    Funcionario.leArquivo(funcionario); 
                     break;   
                 default:
                     throw new OpcaoNaoDefinida();
@@ -417,9 +420,10 @@ class Funcionario implements Serializable
     public static void gravaArquivo(Funcionario[] funcionario)
     {//Inicio gravaArquivo
         try{
-            FileOutputStream arquivo = new FileOutputStream("backup.txt");
-            ObjectOutputStream output = new ObjectOutputStream(arquivo);
-            output.writeObject(funcionario);
+            ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("backup.txt"));
+            for(int i = 0; i < Funcionario.quantidade; i++){
+                output.writeObject(funcionario[i]);
+            }
             output.close();
         }
         catch(FileNotFoundException fileNotFoundException){
@@ -430,13 +434,16 @@ class Funcionario implements Serializable
         }   
     }//Fim gravaArquivo
 
-    public static Funcionario[] leArquivo(){
-        Funcionario[] funcionario = null;
-        try{
-            FileInputStream arquivo = new FileInputStream("backup.txt");
-            ObjectInputStream input = new ObjectInputStream(arquivo);
-            funcionario = (Funcionario[]) input.readObject();
-            input.close();
+    public static void leArquivo(Funcionario[] funcionario){
+        try(ObjectInputStream input = new ObjectInputStream(new FileInputStream("backup.txt"))){
+            int i = 0;
+            while(true){
+                funcionario[i] = (Funcionario) input.readObject();
+                i++;
+            }
+        }
+        catch(EOFException eofException){
+            return;
         }
         catch(FileNotFoundException fileNotFoundException){
             System.out.print("Erro ao tentar ler o arquivo, verifique se o arquivo backup.sgf existe!");
@@ -447,7 +454,6 @@ class Funcionario implements Serializable
         catch(IOException ioException){
             System.out.print("Erro ao manipular arquivo!");
         }   
-        return funcionario;
     }
 
 }//Fim classe Funcionario
