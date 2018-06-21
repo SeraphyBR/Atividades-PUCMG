@@ -1,3 +1,4 @@
+//Autor: Luiz Junio Veloso Dos Santos
 import java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.FileInputStream;
@@ -66,6 +67,7 @@ public class Lista16
             "\n4 - Salvar todos os funcionários em arquivo" +
             "\n5 - Ler os Funcionarios do arquivo" +
             "\n6 - Listar Funcionarios com salario acima de X" +
+            "\n7 - Listar Funcionarios admitidos na Data dd/mm/aa" +
             "\n=> "
         );//Fim println
         op = Integer.parseInt(br.readLine());
@@ -115,7 +117,12 @@ public class Lista16
                     for(int cont = 0; cont < Funcionario.quantidade; cont++){
                         if(funcionario[cont].ehMaiorSalario(x)) funcionario[cont].imprimeFuncionario();
                     }     
-                    break;     
+                    break; 
+                case 7:
+                    System.out.print("Digite a data de pesquisa: ");
+                    Data admissao = new Data();
+                    admissao.leData();
+                    Funcionario.imprimeAdmitidos(admissao, funcionario);        
                 default:
                     throw new OpcaoNaoDefinida();
             }//Fim switch
@@ -496,6 +503,18 @@ class Funcionario implements Serializable
         System.out.println("Importados " + i + "Funcionarios com sucesso!");
     }//Fim importaArquivo
 
+    public static void imprimeAdmitidos(Data admissao, Funcionario[] funcionario)
+    {//Inicio imprimeAdmitidos
+        for(int i = 0; i < Funcionario.quantidade; i++){
+            if(funcionario[i].getAdmissao() == admissao) funcionario[i].imprimeFuncionario();
+        }
+    }//Fim imprimeAdmitidos
+
+    public static void imprimeAniversariantesMes(int mes, Funcionario[] funcionario){
+        for(int i = 0; i < Funcionario.quantidade; i++){
+            if(funcionario[i].getNascimento().getMes() == mes) funcionario[i].imprimeFuncionario();
+        }
+    }
 }//Fim classe Funcionario
 
 class OpcaoNaoDefinida extends Exception {
