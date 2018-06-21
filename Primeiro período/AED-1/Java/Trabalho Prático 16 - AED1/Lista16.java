@@ -35,9 +35,6 @@ public class Lista16
             try{
                 if(acoes(menu(), funcionario) == 0 ) sairDoPrograma = true;
             }
-            catch(IOException ioException){
-                System.out.println("Erro ao ler o teclado!");
-            }
             catch(NumberFormatException numberFormatException){
                 System.out.println("\nO valor digitado é inválido!");
                 System.out.println("Tente novamente:\n");
@@ -48,7 +45,10 @@ public class Lista16
             } 
             catch(OpcaoNaoDefinida opcaoNaoDefinida){
                 System.out.println("Essa operação não existe!");
-            }   
+            }
+            catch(IOException ioException){
+                System.out.println("Erro ao ler o teclado!");
+            } 
         }while(!sairDoPrograma);
     }//Fim main 
 
@@ -97,7 +97,7 @@ public class Lista16
                     System.out.print("Digite o CPF do funcionário a ser buscado: ");
                     long cpf = Long.parseLong(br.readLine());
                     try{
-                    funcionario[Funcionario.buscaCPF(cpf, funcionario)].imprimeFuncionario();
+                        funcionario[Funcionario.buscaCPF(cpf, funcionario)].imprimeFuncionario();
                     }catch(NullPointerException nullPointerException){
                         System.out.print("Não encontrado!");
                     }
@@ -120,7 +120,8 @@ public class Lista16
 class Data implements Serializable
 {//Inicio classe Data
 
-    private int dia;
+    private static final long serialVersionUID = 1L;
+	private int dia;
     private int mes;
     private int ano;
 
@@ -245,7 +246,8 @@ class Data implements Serializable
 
 class Funcionario implements Serializable
 {//Inicio classe Funcionario
-    private String nome;
+    private static final long serialVersionUID = 1L;
+	private String nome;
     private long cpf;
     private Data nascimento;
     private Data admissao;
@@ -270,7 +272,16 @@ class Funcionario implements Serializable
         this.setAdmissao(admissao);
         this.setSalario(salario);
         quantidade++;
-    }//Fim Construtor 
+    }//Fim Construtor
+    
+    Funcionario(Funcionario funcionario){
+        this.setNome(funcionario.getNome());
+        this.setCPF(funcionario.getCPF());
+        this.setNascimento(funcionario.getNascimento());
+        this.setAdmissao(funcionario.getAdmissao());
+        this.setSalario(funcionario.getSalario());
+        quantidade++;
+    }
 
     public void setNome(String nome){
         this.nome = nome;
@@ -334,10 +345,6 @@ class Funcionario implements Serializable
                 salario = Double.parseDouble(br.readLine());
                 continuaLaco = false;
             }//Fim try 
-            catch(IOException ioException){
-                System.out.println("\nErro de leitura do teclado!");
-                System.out.println("Tente Novamente:\n");
-            }
             catch(NullPointerException nullPointerException){
                 System.out.println("\nVocê não digitou todos os dados!");
                 System.out.println("Por favor, tente novamente:\n");
@@ -345,6 +352,10 @@ class Funcionario implements Serializable
             catch(NumberFormatException numberFormatException){
                 System.out.println("\nO valor digitado é inválido!");
                 System.out.println("Tente novamente:\n");
+            }
+            catch(IOException ioException){
+                System.out.println("\nErro de leitura do teclado!");
+                System.out.println("Tente Novamente:\n");
             }
         }while(continuaLaco);
         this.setNome(nome);
@@ -437,8 +448,10 @@ class Funcionario implements Serializable
     public static void leArquivo(Funcionario[] funcionario){
         try(ObjectInputStream input = new ObjectInputStream(new FileInputStream("backup.txt"))){
             int i = 0;
+            Funcionario.quantidade = 0;
             while(true){
-                funcionario[i] = (Funcionario) input.readObject();
+                funcionario[i] = new Funcionario((Funcionario) input.readObject());
+                funcionario[i].imprimeFuncionario();
                 i++;
             }
         }
@@ -459,7 +472,9 @@ class Funcionario implements Serializable
 }//Fim classe Funcionario
 
 class OpcaoNaoDefinida extends Exception {
-    @Override
+    private static final long serialVersionUID = 1L;
+
+	@Override
     public String getMessage(){
         return "Opção inexistente!";
     }
