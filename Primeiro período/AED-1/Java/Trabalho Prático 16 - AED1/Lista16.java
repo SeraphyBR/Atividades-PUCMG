@@ -396,16 +396,16 @@ class Funcionario implements Serializable
 
     public static int buscaCPF(long chave, Funcionario[] funcionario)
     {//Inicio buscaCPF
-        int inicio = 0, meio, fim = funcionario.length - 1;
+        int inicio = 0, meio, fim = Funcionario.quantidade;
         boolean continuaLaco = true;
         int posicao = -1;
         Funcionario.ordena(funcionario);
         while(inicio <= fim && continuaLaco){
-            meio = (inicio + fim) / 2;
+            meio = inicio + ((fim - inicio) / 2);
             if(funcionario[meio].getCPF() == chave){ 
                 posicao = meio;
                 continuaLaco = false;
-            }    
+            }  
             else if(funcionario[meio].getCPF() < chave) inicio = meio + 1;
             else if(funcionario[meio].getCPF() > chave) fim = meio - 1;
         }//Fim while
@@ -415,8 +415,8 @@ class Funcionario implements Serializable
     public static void ordena(Funcionario[] funcionario)
     {//Inicio ordena
         Funcionario aux;
-        for(int j = 0; j < funcionario.length; j++){
-            for (int i = 0; i < funcionario.length - 1; i++) {
+        for(int j = 0; j < Funcionario.quantidade; j++){
+            for (int i = 0; i < Funcionario.quantidade - 1; i++) {
                 if(funcionario[i].getCPF() > funcionario[i + 1].getCPF())
                 {//Inicio If
                     aux = funcionario[i];
@@ -442,7 +442,8 @@ class Funcionario implements Serializable
         }  
         catch(IOException ioException){
             System.out.print("Erro ao manipular arquivo!");
-        }   
+        }
+        System.out.print("Backup feito com sucesso!");   
     }//Fim gravaArquivo
 
     public static void leArquivo(Funcionario[] funcionario){
