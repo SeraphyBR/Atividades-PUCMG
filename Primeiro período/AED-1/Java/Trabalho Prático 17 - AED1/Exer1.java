@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader; 
 public class Exer1
-{
-    public static void main(String[] args){
-
+{//Inicio classe Exer1 
+    public static void main(String[] args)
+    {//Inicio main 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String nomeArquivo = "";
         try{
@@ -14,16 +14,16 @@ public class Exer1
             nomeArquivo = br.readLine();
         }
         catch(IOException ioException){
-
+            System.out.print("Erro ao ler o teclado!");
         }    
         File arquivo = new File(nomeArquivo);
         try{
             if(arquivo.createNewFile()){
-                System.out.println("Foi criado o arquivo");
+                System.out.println("Foi criado o arquivo!");
             }
         }    
         catch(IOException ioException){
-
+            System.out.print("Erro ao criar o arquivo!");
         }    
         if(arquivo.exists()){
             System.out.println("Nome: " + arquivo.getName());
@@ -33,8 +33,5 @@ public class Exer1
         else {
             System.out.println("Arquivo inexistente.");
         }
-    }
-
-
-
-}
+    }//Fim main 
+}//Fim classe Exer1 
