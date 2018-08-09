@@ -1,13 +1,12 @@
-PWD /home/seraphybr/Área de trabalho/Ciência da Computação - PUCMG/Textos no Latex/TP02 - ICC
+PWD /home/seraphybr-fun/Atividades-PUCMG/Primeiro período/Textos no Latex/TP02 - ICC
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/seraphybr/Área de trabalho/Ciência da Computação - PUCMG/Textos no Latex/TP02 - ICC/TP02.tex
+INPUT TP02.tex
 OUTPUT TP02.log
 INPUT /usr/share/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texmf-dist/tex/latex/base/size12.clo
 INPUT /usr/share/texmf-dist/tex/latex/base/size12.clo
-INPUT /usr/share/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texmf-dist/tex/latex/base/inputenc.sty
 INPUT /usr/share/texmf-dist/tex/latex/base/inputenc.sty
@@ -21,11 +20,6 @@ INPUT /usr/share/texmf-dist/tex/latex/base/omsenc.dfu
 INPUT /usr/share/texmf-dist/tex/latex/base/omsenc.dfu
 INPUT /usr/share/texmf-dist/tex/generic/babel/babel.sty
 INPUT /usr/share/texmf-dist/tex/generic/babel/babel.sty
-INPUT /usr/share/texmf-dist/tex/generic/babel/switch.def
-INPUT /usr/share/texmf-dist/tex/generic/babel-portuges/portuges.ldf
-INPUT /usr/share/texmf-dist/tex/generic/babel-portuges/portuges.ldf
-INPUT /usr/share/texmf-dist/tex/generic/babel/babel.def
-INPUT /usr/share/texmf-dist/tex/generic/babel/txtbabel.def
 INPUT /usr/share/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/share/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/share/texmf-dist/tex/latex/graphics/keyval.sty

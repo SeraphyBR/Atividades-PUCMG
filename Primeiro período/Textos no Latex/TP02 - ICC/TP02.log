@@ -1,15 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2018.3.15)  13 APR 2018 10:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.8.6)  6 AUG 2018 16:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/home/seraphybr/Área de trabalho/Ciência da Computação - PUCMG/Textos no
- Latex/TP02 - ICC/TP02.tex"
-
-(/home/seraphybr/Área de trabalho/Ciência da Computação - PUCMG/Textos no L
-atex/TP02 - ICC/TP02.tex
-LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+**TP02.tex
+(./TP02.tex
+LaTeX2e <2017/01/01> patch level 3
+Babel <3.10> and hyphenation patterns for 3 language(s) loaded.
 (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/base/size12.clo
@@ -26,20 +23,17 @@ File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-)
-(/usr/share/texmf-dist/tex/latex/base/inputenc.sty
+) (/usr/share/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
-
-(/usr/share/texmf-dist/tex/latex/base/utf8.def
+ (/usr/share/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
-
-(/usr/share/texmf-dist/tex/latex/base/t1enc.dfu
+ (/usr/share/texmf-dist/tex/latex/base/t1enc.dfu
 File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
@@ -279,8 +273,7 @@ File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
 )
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
-
-(/usr/share/texmf-dist/tex/latex/base/ot1enc.dfu
+ (/usr/share/texmf-dist/tex/latex/base/ot1enc.dfu
 File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
@@ -320,8 +313,7 @@ File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
 )
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
-
-(/usr/share/texmf-dist/tex/latex/base/omsenc.dfu
+ (/usr/share/texmf-dist/tex/latex/base/omsenc.dfu
 File: omsenc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -344,57 +336,84 @@ Now handling font encoding U ...
    defining Unicode char U+2026 (decimal 8230)
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
-))
-(/usr/share/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2018/02/14 3.18 The Babel package
+)) (/usr/share/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2017/05/19 3.10 The Babel package
 
-(/usr/share/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2018/02/14 3.18 Babel switching mechanism
-)
-(/usr/share/texmf-dist/tex/generic/babel-portuges/portuges.ldf
-Language: portuges 2008/03/18 v1.2q Portuguese support from the babel system
 
-(/usr/share/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2018/02/14 3.18 Babel common definitions
-\babel@savecnt=\count87
-\U@D=\dimen103
+/usr/share/texmf-dist/tex/generic/babel/babel.sty:393: Package babel Error: Unknown option `brazilian'. Either you misspelled it
+(babel)                or the language definition file brazilian.ldf was not found.
 
-(/usr/share/texmf-dist/tex/generic/babel/txtbabel.def)
-\bbl@dirlevel=\count88
-)
-\l@brazilian = a dialect from \language\l@portuges 
-Package babel Info: Making " an active character on input line 145.
-))
-(/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.393 \ProcessOptions*
+                      
+Valid options are: shorthands=, KeepShorthandsActive,
+activeacute, activegrave, noconfigs, safe=, main=, math=
+headfoot=, strings=, config=, hyphenmap=, or a language name.
+
+
+/usr/share/texmf-dist/tex/generic/babel/babel.sty:426: Package babel Error: You haven't specified a language option.
+
+See the babel package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.426 ...ry to proceed from here, type x to quit.}
+                                                  
+You need to specify a language, either as a global option
+or as an optional argument to the \usepackage command;
+You shouldn't try to proceed from here, type x to quit.
+
+) (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
-
-(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+ (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks16
-)
-(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+) (/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
-)
-(/usr/share/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+) (/usr/share/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
-)
-(/usr/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+) (/usr/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count89
-\Gm@cntv=\count90
-\c@Gm@tempcnt=\count91
-\Gm@bindingoffset=\dimen104
-\Gm@wd@mp=\dimen105
-\Gm@odd@mp=\dimen106
-\Gm@even@mp=\dimen107
-\Gm@layoutwidth=\dimen108
-\Gm@layoutheight=\dimen109
-\Gm@layouthoffset=\dimen110
-\Gm@layoutvoffset=\dimen111
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks17
-) (./TP02.aux)
+) (./TP02.aux
+./TP02.aux:3: Undefined control sequence.
+l.3 \babel@aux
+              {brazilian}{}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./TP02.aux:3: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.3 \babel@aux{b
+                razilian}{}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+)
 \openout1 = `TP02.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
@@ -454,19 +473,14 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./TP02.aux) ) 
 Here is how much of TeX's memory you used:
- 1587 strings out of 492982
- 19643 string characters out of 6138579
- 91365 words of memory out of 5000000
- 5174 multiletter control sequences out of 15000+600000
+ 1158 strings out of 494939
+ 13658 string characters out of 6181379
+ 71758 words of memory out of 5000000
+ 4491 multiletter control sequences out of 15000+600000
  6992 words of font info for 25 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 23i,4n,23p,336b,169s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/s
-hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+ 14 hyphenation exceptions out of 8191
+ 23i,4n,19p,166b,169s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 Output written on TP02.pdf (1 page, 59711 bytes).
 PDF statistics:
  32 PDF objects out of 1000 (max. 8388607)
