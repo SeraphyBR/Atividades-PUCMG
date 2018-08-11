@@ -16,7 +16,7 @@ public class Palindromo
 
         do{//Leitura da entrada padrao  
             palavra[numEntrada] = MyIO.readLine();
-        }while (ehIgual(palavra[numEntrada++],"FIM") == false);
+        }while (!ehIgual(palavra[numEntrada++],"FIM"));
 
         numEntrada--;   //Desconsiderar ultima linha contendo a palavra FIM
 
