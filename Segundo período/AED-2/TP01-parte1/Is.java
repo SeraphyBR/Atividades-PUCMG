@@ -15,7 +15,16 @@
 public class Is
 {//Inicio classe Is
     public static void main(String[] args)
-    {//Inicio main 
+    {//Inicio main
+     /***************************************************************
+      * Nome do método: main
+      * Data da elaboração: 12/08/2018
+      * Data da última alteração: 13/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Metodo Principal
+      * Valor gerado: Nenhum.
+      ****************************************************************
+      */  
         String[] palavra = new String[1000];
         int numEntrada = 0;
 
@@ -24,38 +33,131 @@ public class Is
         }while (!ehIgual(palavra[numEntrada++],"FIM"));
 
         numEntrada--;   //Desconsiderar ultima linha contendo a palavra FIM
+
+        for(int i = 0; i < numEntrada; i++)
+        {//Inicio for
+            if(ehApenasVogais(palavra[i])) MyIO.print("SIM ");
+            else MyIO.print("NAO ");
+            if(ehApenasConsoantes(palavra[i])) MyIO.print("SIM ");
+            else MyIO.print("NAO ");
+            if(ehNumInteiro(palavra[i])) MyIO.print("SIM ");
+            else MyIO.print("NAO ");
+            if(ehNumReal(palavra[i])) MyIO.println("SIM");
+            else MyIO.println("NAO");
+        }//Fim for
     }//Fim main
 
     public static boolean ehApenasVogais(String palavra)
     {//Inicio ehApenasVogais
-        int tam = palavra.length();
-        while()
-
-
+     /***************************************************************
+      * Nome do método: ehApenasVogais
+      * Data da elaboração: 12/08/2018
+      * Data da última alteração: 13/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Verifica se uma String possue apenas vogais.
+      * Valor gerado: Verdadeiro se tiver apenas vogais, falso caso contrário.
+      ****************************************************************
+      */ 
+        int tam = palavra.length(), i = 0;
+        char c;
+        boolean soVogal = true;
+        while( i < tam && soVogal)
+        {//Inicio while
+            c = paraMaiusculo(palavra.charAt(i++));
+            if(c < 'A' || c > 'Z') soVogal = false;
+            else if(c != 'A' && c != 'E' && c != 'I' && c != 'O' && c != 'U')
+                    soVogal = false;
+        }//Fim while
+        return soVogal;
     }//Fim ehApenasVogais
 
     public static boolean ehApenasConsoantes(String palavra)
-    {//Inicio ehApenasConsoantes
-
-
+    {//Inicio ehApenasConsoantes 
+     /***************************************************************
+      * Nome do método: ehApenasConsoantes
+      * Data da elaboração: 12/08/2018
+      * Data da última alteração: 13/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Verifica se uma String possue apenas consoantes.
+      * Valor gerado: Verdadeiro se tiver apenas consoantes, falso caso contrário.
+      ****************************************************************
+      */    
+        int tam = palavra.length(), i = 0;
+        char c;
+        boolean soConsoante = true;
+        while(i < tam && soConsoante)
+        {//Inicio while
+            c = paraMaiusculo(palavra.charAt(i++));
+            if(c < 'A' || c > 'Z') soConsoante = false;
+            else if(c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U')
+                    soConsoante = false;
+        }//Fim while
+        return soConsoante; 
     }//Fim ehApenasConsoantes
 
     public static boolean ehNumInteiro(String palavra)
     {//Inicio ehNumInteiro
-
-
+     /***************************************************************
+      * Nome do método: ehNumInteiro
+      * Data da elaboração: 13/08/2018
+      * Data da última alteração: 13/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Verifica se uma String compoe um numero inteiro.
+      * Valor gerado: Verdadeiro se for um numero inteiro, falso caso contrário.
+      ****************************************************************
+      */ 
+        int tam = palavra.length(), i = 0;
+        char c;
+        boolean soNumInteiro = true;
+        while(i < tam && soNumInteiro)
+        {//Inicio while
+            c = palavra.charAt(i++);
+            if(c < '0' || c > '9')
+                soNumInteiro = false;
+        }//Fim while
+        return soNumInteiro;
     }//Fim ehNumInteiro
 
     public static boolean ehNumReal(String palavra)
     {//Inicio ehNumReal
-
-
+     /***************************************************************
+      * Nome do método: ehNumReal
+      * Data da elaboração: 13/08/2018
+      * Data da última alteração: 13/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Verifica a string compoe um numero real.
+      * Valor gerado: Verdadeiro se for um numero real, falso caso contrário.
+      ****************************************************************
+      */ 
+        int tam = palavra.length();
+        int i = 0, cont = 0;
+        char c;
+        boolean soNumReal = true;
+        while(i < tam && soNumReal)
+        {//Inicio while
+            c = palavra.charAt(i++);
+            if(c != ',' && c != '.' && (c < '0' || c > '9'))
+                soNumReal = false;
+            else if (c == ',' || c == '.') cont++;
+        }//Fim while
+        if(soNumReal && cont >= 2) soNumReal = false;
+        return soNumReal;
     }//Fim ehNumReal
 
     public static char paraMaiusculo(char letra)
     {//Inicio paraMaisculo
-        char modificado = '0'
-        if(letra <= 'z' && letra >= 'a') modificado = letra - 40;
+     /***************************************************************
+      * Nome do método: paraMaisculo
+      * Data da elaboração: 13/08/2018
+      * Data da última alteração: 13/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Converter uma letra Minuscula em maiscula.
+      * Valor gerado: Se for uma letra, irá retornar o respectivo maisculo.
+      *               Senão, irá retornar o proprio char de entrada.
+      ****************************************************************
+      */ 
+        char modificado = ' ';
+        if(letra <= 'z' && letra >= 'a') modificado = (char) ((int) letra - 32); //Tabela ASCII
         else modificado = letra;
         return modificado;
     }//Fim paraMaiusculo
