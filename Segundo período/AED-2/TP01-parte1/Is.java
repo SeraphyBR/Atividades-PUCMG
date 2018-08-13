@@ -184,5 +184,4 @@ public class Is
         return igual;
     }//Fim ehIgual
 
-
 }//Fim classe Is
