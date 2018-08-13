@@ -1,0 +1,156 @@
+Nome: Luiz Junio Veloso Dos Santos
+Matricula: 624037
+
+Exercicios Guia01:
+
+    01.) Fazer as conversões de decimal para binário: 
+
+    a.) 26(10)        = 11010(2)
+
+        operação    quociente   resto
+        26 / 2   =     13     +   0   (último)
+        13 / 2   =      6     +   1
+         6 / 2   =      3     +   0
+         3 / 2   =      1     +   1 
+         1 / 2   =      0     +   1   (primeiro)
+
+    b.) 53(10)        = 110101(2) 
+
+        operação    quociente   resto
+        53 / 2   =     26     +   1   (último)
+        26 / 2   =     13     +   0
+        13 / 2   =      6     +   1
+         6 / 2   =      3     +   0
+         3 / 2   =      1     +   1 
+         1 / 2   =      0     +   1   (primeiro)
+
+    c.) 713(10)       = 1011001001(2)
+
+       operação     quociente   resto
+       713 / 2   =    365     +   1   (último)
+       356 / 2   =    178     +   0
+       178 / 2   =     89     +   0
+        89 / 2   =     44     +   1
+        44 / 2   =     22     +   0
+        22 / 2   =     11     +   0
+        11 / 2   =      5     +   1
+         5 / 2   =      2     +   1
+         2 / 2   =      1     +   0
+         1 / 2   =      0     +   1   (primeiro)
+
+    d.) 134(10)       = 10000110(2) 
+
+       operação     quociente   resto
+       134 / 2   =     67     +   0   (último)
+        67 / 2   =     33     +   1
+        33 / 2   =     16     +   1
+        16 / 2   =      8     +   0 
+         8 / 2   =      4     +   0
+         4 / 2   =      2     +   0
+         2 / 2   =      1     +   0 
+         1 / 2   =      0     +   1   (primeiro)
+ 
+    e.) 365(10)       = X(2)
+
+        operação     quociente   resto
+        365 / 2   =    182     +   1   (último)
+        182 / 2   =     91     +   0
+         91 / 2   =     45     +   1
+         45 / 2   =     22     +   1
+         22 / 2   =     11     +   0
+         11 / 2   =      5     +   1
+          5 / 2   =      2     +   1
+          2 / 2   =      1     +   0
+          1 / 2   =      0     +   1   (primeiro)
+
+    02.) Fazer as conversões de binário para decimal: 
+ 
+    a.) 10011(2)   = 19(10) 
+                            1x2⁰+1x2¹+1x2⁴ = 19
+    b.) 10110(2)   = 22(10)
+                            1x2¹+1x2²+1x2⁴ = 22
+    c.) 100101(2) = 37(10)
+                            1x2⁰+1x2²+1x2⁵ = 37
+    d.) 110011(2) = 51(10)
+                            1x2⁰+1x2¹+1x2⁴+1x2⁵ = 51
+    e.) 101011(2) = 41(10)
+                            1x2⁰+1x2³+1x2⁵ = 41
+
+    03.) Fazer as conversões de decimal para a base indicada: 
+ 
+    a.)   72(10)      = 1020(4) 
+   
+        operação     quociente   resto
+         72 / 4   =     18     +   0   (último)
+         18 / 4   =      4     +   2
+          4 / 4   =      1     +   0
+          1 / 4   =      0     +   1   (primeiro)
+                            
+    b.)   45(10)      = 55(8) 
+
+        operação     quociente   resto
+         45 / 8   =      5     +   5   (último)
+          5 / 8   =      0     +   5   (primeiro)
+   
+    c.)   61(10)      = 3D(16)
+
+        operação     quociente   resto
+         61 / 16  =      3     +  13 => D   (último)
+          3 / 16  =      0     +   3        (primeiro)
+   
+    d.) 174(10)      = AE(16)
+
+        operação     quociente   resto
+        174 / 16   =    10     +  14 => E  (último)
+         10 / 16   =     0     +  10 => A  (primeiro)
+   
+    e.) 125(10)        = 7D(16) 
+   
+        operação     quociente   resto
+        125 / 16  =      7     +  13 => D  (último)
+          7 / 16  =      0     +   7       (primeiro)
+
+
+ 
+    04.) Fazer as conversões de base entre as bases indicadas por agrupamento: 
+ 
+    a.) 10111(2)   = 113(4)
+
+        1x2⁰+1x2¹ = 3 (último)
+        1x2⁰+0x2¹ = 1
+        1x2⁰+0x2⁰ = 1 (primeiro)
+
+    b.) 11001(2)   = 31(8)
+
+        1x2⁰+0x2¹+0x2² = 1 (último)
+        1x2⁰+1x2¹+0x2² = 3 (primeiro)
+
+    c.) 101011(2) = 2B(16)
+
+        1x2⁰+1x2¹+0x2²+1x2³ = 11 => B (último)
+        0x2⁰+1x2¹+0x2²+0x2³ = 2       (primeiro)
+
+    d.) 101101(2) = 55(8)
+
+        1x2⁰+0x2¹+1x2² = 5 (último)
+        1x2⁰+0x2¹+1x2² = 5 (primeiro)
+
+    e.) 101111(2) = 233(4)
+
+        1x2⁰+1x2¹ = 3 (último)
+        1x2⁰+1x2¹ = 3
+        0x2⁰+1x2¹ = 2 (primeiro)
+
+    05.) Converter entre símbolos e códigos de representação: 
+ 
+    a.) “PUC-Minas”              = 50 55 43 2D 4D 69 6E 61 73(16_ASCII)
+
+    b.) “2018-2”                 = 32 30 31 38 2D 32(16_ASCII)  
+
+    c.) “Brasil”                 = 0100 0010(2) 0111 0010(2) 0110 0001(2) 0111 0011(2) 0110 1001(2) 0110 1100(2) (2_ASCII)
+
+    d.)   078     111    105    116   101(10)  = Noite(ASCII)
+        64+14   96+15   96+9  112+4  96+5
+
+    e.) 42 2E 48 2E 2D 4D 47(16) = B.H.-MG(ASCII) 
+ 
