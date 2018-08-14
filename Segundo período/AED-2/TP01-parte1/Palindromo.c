@@ -36,7 +36,7 @@ int main()
         scanf(" %[^\n]s", palavra[numEntrada]);
         //Esse scanf irá ler a string, incluindo espaços.
         //O espaço antes de % serve para limpar o buffer do teclado
-    }while(strcmp(palavra[numEntrada++], "FIM"));
+    }while(strcmp(palavra[numEntrada++], "FIM") != 0);//Repete enquanto não for igual a FIM
 
     numEntrada--; //Desconsiderar ultima linha contendo a palavra FIM
 
