@@ -31,31 +31,33 @@ public class Algebra
 
     public static boolean expressaoBool(String expressao)
     {//Inicio expressaoBool
+        boolean resultado = true;
         int[] entrada = new int[3];
         char operacaoEx;
         int p = 0;
 
-        int numEntradas = expressao.charAt(0) - 48;
+        int numEntradas = expressao.charAt(p) - 48;
         for(int i = 0; i < numEntradas; i++)
         {//Inicio for
             p = 2 + (2 * i);//Posicao das entradas, considerando espacos
             entrada[i] = expressao.charAt(p) - 48;
         }//Fim for
         p += 2; //Avanca para a operacao principal, mais externa
-        if(expressao.charAt(p) == 'a'){
-            operacaoEx = 'a';//and
-            p += 4;
-        }
-        else if(expressao.charAt(p) == 'o'){
-            operacaoEx = 'o';//or
-            p += 3;
-        }
-        else if(expressao.charAt(p) == 'n'){
-            operacaoEx = 'n';//not
-            p += 4;
-        }
-
-
+        do{
+            if(expressao.charAt(p) == 'a'){
+                operacaoEx = 'a';//and
+                p += 4;
+            }
+            else if(expressao.charAt(p) == 'o'){
+                operacaoEx = 'o';//or
+                p += 3;
+            }
+            else if(expressao.charAt(p) == 'n'){
+                operacaoEx = 'n';//not
+                p += 4;
+            }
+        }while(p < expressao.length());
+        return resultado;
     }//Fim expressaoBool
 
     public static boolean ehIgual(String p1, String p2)
