@@ -85,7 +85,6 @@ public class PaginaWeb
                     "consoante(" + cs + ") " + "<br>(" + br + ") " + "<table>(" + tb + ") " + nomePagina
             );//Fim println
         }//Fim for
-
     }//Fim main 
 
     public static int contaCaracteres(char alvo, String palavra)
@@ -107,10 +106,8 @@ public class PaginaWeb
         {//Inicio for
             c = paraMaiusculo(palavra.charAt(i));
             if(c > 'A' && c <= 'Z')
-            {//Inicio if 1
-                if(c != 'E' && c != 'I' && c != 'O' && c != 'U')
+                if( c != 'E' && c != 'I' && c != 'O' && c != 'U')
                     quantidade++;
-            }//Fim if 1
         }//Fim for
         return quantidade;
     }//Fim contaConsoantes
