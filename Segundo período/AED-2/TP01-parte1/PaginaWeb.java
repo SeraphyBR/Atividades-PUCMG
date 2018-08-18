@@ -49,12 +49,14 @@ public class PaginaWeb
 
         for(int i = 0; i < numLinks; i++)
         {//Inicio for
-            a1 = contaCaracteres('a', codigoFonte[i]);
+            br = contaTermo("<br>", codigoFonte[i]);
+            tb = contaTermo("<table>", codigoFonte[i]); 
+            a1 = contaCaracteres('a', codigoFonte[i]) - 1 * tb;
             a2 = contaCaracteres('á', codigoFonte[i]);
             a3 = contaCaracteres('à', codigoFonte[i]);
             a4 = contaCaracteres('ã', codigoFonte[i]);
             a5 = contaCaracteres('â', codigoFonte[i]);
-            e1 = contaCaracteres('e', codigoFonte[i]);
+            e1 = contaCaracteres('e', codigoFonte[i]) - 1 * tb;
             e2 = contaCaracteres('é', codigoFonte[i]);
             e3 = contaCaracteres('è', codigoFonte[i]);
             e4 = contaCaracteres('ê', codigoFonte[i]);
@@ -71,9 +73,7 @@ public class PaginaWeb
             u2 = contaCaracteres('ú', codigoFonte[i]);
             u3 = contaCaracteres('ù', codigoFonte[i]);
             u4 = contaCaracteres('û', codigoFonte[i]);
-            cs = contaConsoantes(codigoFonte[i]);
-            br = contaTermo("<br>", codigoFonte[i]);
-            tb = contaTermo("<table>", codigoFonte[i]);
+            cs = contaConsoantes(codigoFonte[i]) - (3 * tb) - (2 * br);//Desconsiderando table e br
             nomePagina = palavra[i * 2];
             MyIO.println
             (//Inicio println
@@ -104,10 +104,11 @@ public class PaginaWeb
         char c;
         for(int i = 0; i < palavra.length(); i++)
         {//Inicio for
-            c = paraMaiusculo(palavra.charAt(i));
-            if(c > 'A' && c <= 'Z')
-                if( c != 'E' && c != 'I' && c != 'O' && c != 'U')
+            c = palavra.charAt(i);
+            if(c > 'a' && c <= 'z'){
+                if(c != 'e' && c != 'i' && c != 'o' && c != 'u')
                     quantidade++;
+            }    
         }//Fim for
         return quantidade;
     }//Fim contaConsoantes
@@ -161,7 +162,7 @@ public class PaginaWeb
             br.close();//Fecha instancia de BufferedReader
             isr.close();//Fecha instancia de InputStreamReader
         }//Fim try 
-        catch (IOException ioException) {
+        catch (IOException ioException){
             ioException.printStackTrace();
         }
 
@@ -189,24 +190,4 @@ public class PaginaWeb
         }//Fim while
         return igual;
     }//Fim ehIgual
-     
-    public static char paraMaiusculo(char letra)
-    {//Inicio paraMaisculo
-     /***************************************************************
-      * Nome do método: paraMaisculo
-      * Data da elaboração: 13/08/2018
-      * Data da última alteração: 13/08/2018
-      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
-      * Contexto de ação: Converter uma letra Minuscula em maiscula.
-      * Valor gerado: Se for uma letra, irá retornar o respectivo maisculo.
-      *               Senão, irá retornar o proprio char de entrada.
-      ****************************************************************
-      */ 
-        char modificado = ' ';
-        if(letra <= 'z' && letra >= 'a') modificado = (char) ((int) letra - 32); //Tabela ASCII
-        else modificado = letra;
-        return modificado;
-    }//Fim paraMaiusculo
-
- 
 }//Fim classe PaginaWeb
