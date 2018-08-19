@@ -35,7 +35,7 @@ public class PaginaWeb
             palavra[numEntrada] = MyIO.readLine();
         }while(!ehIgual(palavra[numEntrada++], "FIM"));
 
-        numEntrada--;
+        numEntrada--;//Desconsiderando a String "FIM"
 
         //Armazena os codigos html de cada Link de Entrada
         for(int i = 0; i < numEntrada / 2; i++){
@@ -43,36 +43,39 @@ public class PaginaWeb
             numLinks++;
         }
 
+        //Variaveis inteiras para armazenar a quantidade de cada caractere
         int a1, a2, a3, a4, a5, e1, e2, e3, e4, i1, i2, i3, i4;
         int o1, o2, o3, o4, o5, u1, u2, u3, u4, cs, br, tb;
+
         String nomePagina;
 
+        //Saida do programa
         for(int i = 0; i < numLinks; i++)
         {//Inicio for
             br = contaTermo("<br>", codigoFonte[i]);
             tb = contaTermo("<table>", codigoFonte[i]); 
-            a1 = contaCaracteres('a', codigoFonte[i]) - 1 * tb;
-            a2 = contaCaracteres('á', codigoFonte[i]);
-            a3 = contaCaracteres('à', codigoFonte[i]);
-            a4 = contaCaracteres('ã', codigoFonte[i]);
-            a5 = contaCaracteres('â', codigoFonte[i]);
-            e1 = contaCaracteres('e', codigoFonte[i]) - 1 * tb;
-            e2 = contaCaracteres('é', codigoFonte[i]);
-            e3 = contaCaracteres('è', codigoFonte[i]);
-            e4 = contaCaracteres('ê', codigoFonte[i]);
-            i1 = contaCaracteres('i', codigoFonte[i]);  
-            i2 = contaCaracteres('í', codigoFonte[i]);
-            i3 = contaCaracteres('ì', codigoFonte[i]);
-            i4 = contaCaracteres('î', codigoFonte[i]);
-            o1 = contaCaracteres('o', codigoFonte[i]);
-            o2 = contaCaracteres('ó', codigoFonte[i]);
-            o3 = contaCaracteres('ò', codigoFonte[i]);
-            o4 = contaCaracteres('õ', codigoFonte[i]);
-            o5 = contaCaracteres('ô', codigoFonte[i]);
-            u1 = contaCaracteres('u', codigoFonte[i]);
-            u2 = contaCaracteres('ú', codigoFonte[i]);
-            u3 = contaCaracteres('ù', codigoFonte[i]);
-            u4 = contaCaracteres('û', codigoFonte[i]);
+            a1 = contaCaractere('a', codigoFonte[i]) - 1 * tb;//Desconsiderando table
+            a2 = contaCaractere('á', codigoFonte[i]);
+            a3 = contaCaractere('à', codigoFonte[i]);
+            a4 = contaCaractere('ã', codigoFonte[i]);
+            a5 = contaCaractere('â', codigoFonte[i]);
+            e1 = contaCaractere('e', codigoFonte[i]) - 1 * tb;//Desconsiderando table
+            e2 = contaCaractere('é', codigoFonte[i]);
+            e3 = contaCaractere('è', codigoFonte[i]);
+            e4 = contaCaractere('ê', codigoFonte[i]);
+            i1 = contaCaractere('i', codigoFonte[i]);  
+            i2 = contaCaractere('í', codigoFonte[i]);
+            i3 = contaCaractere('ì', codigoFonte[i]);
+            i4 = contaCaractere('î', codigoFonte[i]);
+            o1 = contaCaractere('o', codigoFonte[i]);
+            o2 = contaCaractere('ó', codigoFonte[i]);
+            o3 = contaCaractere('ò', codigoFonte[i]);
+            o4 = contaCaractere('õ', codigoFonte[i]);
+            o5 = contaCaractere('ô', codigoFonte[i]);
+            u1 = contaCaractere('u', codigoFonte[i]);
+            u2 = contaCaractere('ú', codigoFonte[i]);
+            u3 = contaCaractere('ù', codigoFonte[i]);
+            u4 = contaCaractere('û', codigoFonte[i]);
             cs = contaConsoantes(codigoFonte[i]) - (3 * tb) - (2 * br);//Desconsiderando table e br
             nomePagina = palavra[i * 2];
             MyIO.println
@@ -87,19 +90,38 @@ public class PaginaWeb
         }//Fim for
     }//Fim main 
 
-    public static int contaCaracteres(char alvo, String palavra)
-    {//Inicio contaCaracteres
+    public static int contaCaractere(char alvo, String palavra)
+    {//Inicio contaCaractere
+     /***************************************************************
+      * Nome do método: contaCaractere
+      * Data da elaboração: 16/08/2018
+      * Data da última alteração: 16/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Contar o numero de ocorrencias de um caractere na String.
+      * Valor gerado: A quantidade de um Char que aparece na String.
+      ****************************************************************
+      */        
         int quantidade = 0;
         for(int i = 0; i < palavra.length(); i++){
             if(palavra.charAt(i) == alvo)
                 quantidade++;
         }
         return quantidade;
-    }//Fim contaCaracteres
+    }//Fim contaCaractere
 
 
     public static int contaConsoantes(String palavra)
     {//Inicio contaConsoantes
+     /***************************************************************
+      * Nome do método: contaConsoantes
+      * Data da elaboração: 16/08/2018
+      * Data da última alteração: 18/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Contar o numero de consoantes de uma String.
+      * Valor gerado: O numero de consoantes.
+      * Observação: As letras maiusculas não foram consideradas na conta
+      ****************************************************************
+      */        
         int quantidade = 0;
         char c;
         for(int i = 0; i < palavra.length(); i++)
@@ -115,6 +137,15 @@ public class PaginaWeb
 
     public static int contaTermo(String alvo, String frase)
     {//Inicio contaPalavras
+     /***************************************************************
+      * Nome do método: contaTermo
+      * Data da elaboração: 16/08/2018
+      * Data da última alteração: 17/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Encontrar uma palavra dentro de uma String.
+      * Valor gerado: A quantidade de vezes que a palavra aparece.
+      ****************************************************************
+      */        
         int quantidade = 0, i = 0;
         int p = 0;// p = posição na frase;
         boolean ehAlvo;
@@ -143,6 +174,15 @@ public class PaginaWeb
 
     public static String capturaHTML(String url)
     {//Inicio capturaHTML
+     /***************************************************************
+      * Nome do método: capturaHTML
+      * Data da elaboração: 16/08/2018
+      * Data da última alteração: 17/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Obter o codigo html de uma URL.
+      * Valor gerado: Uma String contendo todo o codigo html.
+      ****************************************************************
+      */        
         String codigo = ""; 
         try
         {//Inicio try
