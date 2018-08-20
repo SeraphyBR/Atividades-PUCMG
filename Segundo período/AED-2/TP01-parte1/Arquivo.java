@@ -41,7 +41,7 @@ public class Arquivo
             {
                 file.seek(file.getFilePointer() - i - 1);
                 MyIO.println(file.readLine());
-              
+
             }
 
         }//Fim try
