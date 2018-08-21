@@ -24,25 +24,27 @@ public class Arquivo
 
             RandomAccessFile file = new RandomAccessFile("numeros.txt", "rw");
             int numEntrada = MyIO.readInt();
-
+            double valor;
             for(int i = 0; i < numEntrada; i++)
             {//Inicio for
-                file.writeChars(MyIO.readLine() + "\n" );
-
+                file.writeDouble(MyIO.readDouble());
             }//Fim for
-            long pointer = file.getFilePointer() - 1;//Obtem posicao do ponteiro, no caso a ultima
 
             file.close();//Fecha o arquivo
 
             file = new RandomAccessFile("numeros.txt", "r");
-            file.seek(pointer);
 
             for(int i = 0; i < numEntrada; i++)
             {
-                file.seek(file.getFilePointer() - i - 1);
-                MyIO.println(file.readLine());
-
+                file.seek(((numEntrada - i - 1) * 8 ));
+                valor = file.readDouble();
+                if(valor % 1 == 0)
+                    MyIO.println((int) valor);
+                else
+                    MyIO.println(valor);
             }
+
+            file.close();
 
         }//Fim try
         catch(FileNotFoundException fileNotFoundException){
@@ -53,5 +55,8 @@ public class Arquivo
         }
 
     }//Fim main 
+
+
+
 
 }//Fim classe Arquivo
