@@ -1,24 +1,35 @@
 
-public class Aquecimento
-{//Inicio Classe Aquecimento
-    public static void main(String[] args)
-    {//Inicio main
-        //String palavra = MyIO.readString();
-        MyIO.println(numMaiusculo("LuiZ"));
 
-    }//Fim main 
+class Aquecimento {
+   public static boolean isMaiuscula (char c){
+      return (c >= 'A' && c <= 'Z');
+   }
 
-    public static int numMaiusculo(String palavra)
-    {//Inicio numMaiusculo
-        int palavra_ascci = 0;
-        int cont = 0;
-        for(int i = 0; i < palavra.length(); i++){
-            palavra_ascci = (int) palavra.charAt(i);
-            if(palavra_ascci >= 65 && palavra_ascci <= 90) cont++;
-        
-        }
-        return cont;
-    }//Fim numMaiusculo
+   public static int contarLetrasMaiusculas (String s){
+      int resp = 0;
 
+      for(int i = 0; i < s.length(); i++){
+         if(isMaiuscula(s.charAt(i)) == true){
+            resp ++; 
+         }
+      }
 
-}//Fim Classe Aquecimento
+      return resp;
+   }
+
+   public static void main (String[] args){
+      String[] entrada = new String[1000];
+      int numEntrada = 0;
+
+      //Leitura da entrada padrao
+      do {
+         entrada[numEntrada] = MyIO.readLine();
+      } while (entrada[numEntrada++].equals("FIM") == false);
+      numEntrada--;   //Desconsiderar ultima linha contendo a palavra FIM
+
+      //Para cada linha de entrada, gerando uma de saida contendo o numero de letras maiusculas da entrada
+      for(int i = 0; i < numEntrada; i++){
+         MyIO.println(contarLetrasMaiusculas(entrada[i]));
+      }
+   }
+}
