@@ -59,7 +59,7 @@ public class Ciframento
     {//Inicio main
         String[] palavra = new String[1000];
         int numEntrada = 0;
-
+     
         do{//Leitura da entrada padrao  
             palavra[numEntrada] = MyIO.readLine();
         }while (ehIgual(palavra[numEntrada++],"FIM") == false);
