@@ -58,8 +58,8 @@ public class AquecimentoRecursivo
     {//Inicio ehIgual
      /***************************************************************
       * Nome do método: ehIgual
-      * Data da elaboração: 08/08/2018
-      * Data da última alteração: 08/08/2018
+      * Data da elaboração: 23/08/2018
+      * Data da última alteração: 23/08/2018
       * Autor: Luiz Junio <luisjuniorbr@gmail.com>
       * Contexto de ação: Verifica se uma String é igual a outra.
       * Valor gerado: verdadeiro se forem iguais, falso caso contrário.
@@ -67,7 +67,7 @@ public class AquecimentoRecursivo
       */ 
         boolean igual = true;
         if(i < p1.length()){
-            if(p1.charAt(i) == p1.charAt(i))
+            if(p1.charAt(i) == p2.charAt(i))
                 igual = true && ehIgual(p1,p2,i + 1);
             else
                 igual = false;
