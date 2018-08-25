@@ -8,7 +8,7 @@
     que enviava aos seus generais durante as batalhas. A ideia basica e um simples deslocamento
     de caracteres. Assim, por exemplo, se a chave utilizada para criptografar as mensagens for 3,
     todas as ocorrencias do caractere ’a’ sao substituıdas pelo caractere ’d’, as do ’b’ por ’e’, e assim
-    sucessivamente. Crie um metodo iterativo que recebe uma string como parametro e retorna
+    sucessivamente. Crie um metodo *Recursivo que recebe uma string como parametro e retorna
     outra contendo a entrada de forma cifrada. Neste exercıcio, suponha a chave de ciframento tres.
     Na saida padrao, para cada linha de entrada, escreva uma linha com a mensagem criptografada.
 */
@@ -34,6 +34,16 @@ public class CiframentoRecursivo
 
     public static boolean ehIgual(String p1, String p2)
     {//Inicio ehIgual
+     /***************************************************************
+      * Nome do método: ehIgual
+      * Data da elaboração: 23/08/2018
+      * Data da última alteração: 23/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Verifica se uma String é igual a outra.
+      * Valor gerado: Se tiverem tamanho diferente, retorna falso.
+      * Caso contrário, chama o metodo recursivo com o contador em 0.
+      ****************************************************************
+      */  
         boolean resp = true;
         if(p1.length() != p2.length())
             resp = false;
@@ -71,16 +81,48 @@ class Cesar
 
     public static String descifre(String mensagem, int senha)
     {//Inicio descifre
+     /***************************************************************
+      * Nome do método: descifre
+      * Data da elaboração: 24/08/2018
+      * Data da última alteração: 24/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Descriptografar uma String com base na senha,
+      * usando o Ciframento de Cesar.
+      * Valor gerado:Faz chamada do metodo recursivo com contador em 0,
+      * e retorna a String descriptografada.
+      ****************************************************************
+      */ 
         return descifre(mensagem, senha, 0);
     }//Fim descifre
 
     public static String cripto(String mensagem, int senha)
     {//Inicio cripto
+     /***************************************************************
+      * Nome do método: cripto
+      * Data da elaboração: 24/08/2018
+      * Data da última alteração: 24/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Criptografa uma String com base na senha,
+      * usando o Ciframento de Cesar.
+      * Valor gerado: Faz chamada do metodo recursivo, e retorna a string
+      * Criptografada
+      ****************************************************************
+      */ 
         return cripto(mensagem, senha, 0);
     }//Fim cripto
 
     private static String descifre(String mensagem, int senha, int i)
-    {//Inicio descifre Private 
+    {//Inicio descifre Private
+     /***************************************************************
+      * Nome do método: descifre
+      * Data da elaboração: 28/06/2018
+      * Data da última alteração: 24/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Descriptografar uma String com base na senha,
+      * usando o Ciframento de Cesar.
+      * Valor gerado: Retorna a String descriptografada.
+      ****************************************************************
+      */ 
         String resultado = "";
         if(i < mensagem.length())
         {//Inicio if
@@ -92,6 +134,16 @@ class Cesar
 
     private static String cripto(String mensagem, int senha, int i)
     {//Inicio cripto Private
+     /***************************************************************
+      * Nome do método: cripto
+      * Data da elaboração: 28/06/2018
+      * Data da última alteração: 24/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Criptografa uma String com base na senha,
+      * usando o Ciframento de Cesar.
+      * Valor gerado: Retorna a String criptografada.
+      ****************************************************************
+      */ 
         String resultado = "";
         if(i < mensagem.length())
         {//Inicio if

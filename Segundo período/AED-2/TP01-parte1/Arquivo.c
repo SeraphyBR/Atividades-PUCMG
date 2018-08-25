@@ -7,24 +7,27 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main()
 {//Inicio main
 
     FILE *arquivo;
     int numEntrada = 0;
-    float valor = 0.0;
-    int posicao = 0;
+    double valor = 0.0;
+    char string[30];
+    char *tmp;
+
     if((arquivo = fopen("numeros.txt", "w")) == NULL ){
         printf("Arquivo não pode ser aberto\n");
     }
     else
     {//Inicio else
         scanf("%d", &numEntrada);
-
         for(int i = 0; i < numEntrada; i++){
-            scanf("%f", &valor);
-            fprintf(arquivo, "%f\n", valor);
+            scanf("%s", string);
+            valor = strtod(string, &tmp);
+            fprintf(arquivo, "%lf\n", valor);
         }
         fclose(arquivo);
 
@@ -32,21 +35,12 @@ int main()
             printf("Arquivo não pode ser aberto\n");
         }
         else{
-            fseek(arquivo, 0, SEEK_END);
-            posicao = ftell(arquivo);
-            for(int i = 0; ftell(arquivo) != 0 && i < numEntrada; i++){
-                printf("Posicao i: %ld\n" ,ftell(arquivo));
-                fseek(arquivo, 1 * sizeof(float), SEEK_CUR);
-                printf("Posicao m: %ld\n", ftell(arquivo));
-                fscanf(arquivo ,"%f", &valor);
-                printf("Posicao f: %ld\n", ftell(arquivo));
-                if(valor == (int) valor){//Se for um numero inteiro, será impresso como inteiro
-                    printf("%d\n", (int) valor);
-                }
-                else{
-                    printf("%g\n",valor);// g -> Imprime sem os zeros finais
-                }
-                fseek(arquivo, -1 * sizeof(float), SEEK_CUR);
+            for(int i = numEntrada; i > -1; i--){ 
+                fseek(arquivo, i * sizeof(double), SEEK_SET);
+                fread(string, sizeof(double), 1, arquivo);
+                //fscanf(arquivo ,"%s", string);
+                valor = strtod(string , &tmp);//Converte String para double
+                printf("%g\n", valor);
             }//Fim for
 
             fclose(arquivo);
