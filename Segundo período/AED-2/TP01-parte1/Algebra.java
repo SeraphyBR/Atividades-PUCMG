@@ -31,9 +31,10 @@ public class Algebra
 
     public static boolean expressaoBool(String expressao)
     {//Inicio expressaoBool
-        boolean resultado = true;
         int[] entrada = new int[3];
+        boolean resultado = true;
         char operacaoEx;
+
         int p = 0;
 
         int numEntradas = expressao.charAt(p) - 48;
@@ -42,32 +43,17 @@ public class Algebra
             p = 2 + (2 * i);//Posicao das entradas, considerando espacos
             entrada[i] = expressao.charAt(p) - 48;
         }//Fim for
-        p += 2; //Avanca para a operacao principal, mais externa
-        do{
-            if(expressao.charAt(p) == 'a'){
-                operacaoEx = 'a';//and
-                p += 4;
-            }
-            else if(expressao.charAt(p) == 'o'){
-                operacaoEx = 'o';//or
-                p += 3;
-            }
-            else if(expressao.charAt(p) == 'n'){
-                operacaoEx = 'n';//not
-                p += 4;
-            }
-        }while(p < expressao.length());
         return resultado;
     }//Fim expressaoBool
      
-    public static String trocaLetrasRandom(String palavra, char letraI, char letraF)
-    {//Inicio trocaLetrasRandom
+    public static String trocaLetras(String palavra, char letraI, char letraF)
+    {//Inicio trocaLetras
      /***************************************************************
-      * Nome do método: trocaLetrasRandom
+      * Nome do método: trocaLetras
       * Data da elaboração: 10/08/2018
       * Data da última alteração: 11/08/2018
       * Autor: Luiz Junio <luisjuniorbr@gmail.com>
-      * Contexto de ação: Receber uma String, gerar duas letras aleatorias e
+      * Contexto de ação: Receber uma String e
       * trocar as ocorrencias da primeira letra na String pela segunda letra
       * Valor gerado: A string com as alteracoes feitas.
       ****************************************************************
@@ -76,13 +62,13 @@ public class Algebra
         for(int i = 0; i < palavra.length(); i++)
         {//Inicio for
             if(palavra.charAt(i) == letraI)
-                modificado += letraF;//Se o caractere da String for igual ao primeiro gerado, irá colocar o segundo no lugar.
+                modificado += letraF;//Se o caractere da String for igual a letraI, irá colocar o letraF no lugar.
             else modificado += palavra.charAt(i);
         }//Fim for
 
         return modificado; 
-    }//Fim trocaLetrasRandom
-                    
+    }//Fim trocaLetras
+
     public static boolean ehIgual(String p1, String p2)
     {//Inicio ehIgual
      /***************************************************************

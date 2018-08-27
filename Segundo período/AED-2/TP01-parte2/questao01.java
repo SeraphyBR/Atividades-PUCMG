@@ -41,6 +41,17 @@ class Instituicao
     private double despesaPesquisa;
     private double despesaOutras;
 
+    Instituicao()
+    {//Inicio construtor vazio
+        this.setCodigo(0);
+
+    }//Fim construtor vazio
+
+    Instituicao(int codigo)
+    {//Inicio construtor 2
+        this.setCodigo(codigo);
+    }//Fim cosntrutor 2
+
     public int getCodigo(){
         return this.codigo;
     }
@@ -137,6 +148,101 @@ class Instituicao
         this.tecnico = tecnico;
     }
 
+    public int getPeriodico(){
+        return this.periodico;
+    }
 
+    public void setPeriodico(int periodico){
+        this.periodico = periodico;
+    }
+
+    public int getLivro(){
+        return this.livro;
+    }
+
+    public void setLivro(int livro){
+        this.livro = livro;
+    }
+
+    public double getReceita(){
+        return this.receita;
+    }
+
+    public void setReceita(double receita){
+        this.receita = receita;
+    }
+
+    public double getTransferencia(){
+        return this.transferencia;
+    }
+
+    public void setTransferencia(double transferencia){
+        this.transferencia = transferencia;
+    }
+     
+    public double getOutraReceita(){
+        return this.outraReceita;
+    }
+
+    public void setOutraReceita(double outraReceita){
+        this.outraReceita = outraReceita;
+    }
+
+    public double getDespesaDocente(){
+        return this.despesaDocente;
+    }
+
+    public void setDespesaDocente(double despesaDocente){
+        this.despesaDocente = despesaDocente;
+    }
+
+    public double getDespesaTecnico(){
+        return this.despesaTecnico;
+    }
+
+    public void setDespesaTecnico(double despesaTecnico){
+        this.despesaTecnico = despesaTecnico;
+    }
+
+    public double getDespesaEncargo(){
+        return this.despesaEncargo;
+    }
+
+    public void setDespesaEncargo(double despesaEncargo){
+        this.despesaEncargo = despesaEncargo;
+    }
+
+    public double getDespesaCusteio(){
+        return this.despesaCusteio;
+    }
+
+    public void setDespesaCusteio(double despesaCusteio){
+        this.despesaCusteio = despesaCusteio;
+    }
+
+    public double getDespesaInvestimento(){
+        return this.despesaInvestimento;
+    }
+
+    public void setDespesaInvestimento(double despesaInvestimento){
+        this.despesaInvestimento = despesaInvestimento;
+    }
+
+    public double getDespesaPesquisa(){
+        return this.despesaPesquisa;
+    }
+
+    public void setDespesaPesquisa(double despesaPesquisa){
+        this.despesaPesquisa = despesaPesquisa;
+    }
+
+    public double getDespesaOutras(){
+        return this.despesaOutras;
+    }
+
+    public void setDespesaOutras(double despesaOutras){
+        this.despesaOutras = despesaOutras;
+    }
+     
 
 }//Fim classe Instituicao

@@ -1,6 +1,7 @@
 /*
  * Autor: Luiz Junio <luisjuniorbr@gmail.com>
  * Criado em: 21/08/2018
+ * Ultima alteracao: 27/08/2018
  */
 
 #include <stdio.h>
@@ -17,6 +18,7 @@ int main()
     char *tmp;
 
     if((arquivo = fopen("numeros.txt", "wb+")) == NULL ){
+        //Abrindo o arquivo para escrita em Byte
         printf("Arquivo não pode ser aberto\n");
     }
     else
@@ -25,6 +27,7 @@ int main()
         for(int i = 0; i < numEntrada; i++){
             scanf("%lf", &valor);
             //fprintf(arquivo, "%lf\n", valor);
+            //Usando o fwrite para escrever em bytes
             fwrite(&valor, sizeof(double), 1, arquivo);
         }
         fclose(arquivo);
@@ -39,7 +42,6 @@ int main()
                 //fscanf(arquivo ,"%s", string);
                 printf("%g\n", valor);
             }//Fim for
-
             fclose(arquivo);
         }//Fim else 2
     }//Fim else
