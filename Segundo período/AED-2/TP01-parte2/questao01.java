@@ -43,13 +43,35 @@ class Instituicao
 
     Instituicao()
     {//Inicio construtor vazio
-        this.setCodigo(0);
-
+        this(0, "", "");
     }//Fim construtor vazio
 
-    Instituicao(int codigo)
+    Instituicao(int codigo, String nome, String sigla)
     {//Inicio construtor 2
         this.setCodigo(codigo);
+        this.setNome(nome);
+        this.setSigla(sigla);
+        this.setCodigoMantenedora(0);
+        this.setMantenedora("");
+        this.setCategoria(0);
+        this.setOrganizacao(0);
+        this.setCodigoMunicipio(0);
+        this.setMunicipio("");
+        this.setUF("");
+        this.setRegiao("");
+        this.setTecnico(0);
+        this.setPeriodico(0);
+        this.setLivro(0);
+        this.setReceita(0.0);
+        this.setTransferencia(0.0);
+        this.setOutraReceita(0.0);
+        this.setDespesaDocente(0.0);
+        this.setDespesaTecnico(0.0);
+        this.setDespesaEncargo(0.0);
+        this.setDespesaCusteio(0.0);
+        this.setDespesaInvestimento(0.0);
+        this.setDespesaPesquisa(0.0);
+        this.setDespesaOutras(0.0); 
     }//Fim cosntrutor 2
 
     public int getCodigo(){
@@ -64,7 +86,7 @@ class Instituicao
         return this.nome;
     }
 
-    public void setName(String nome){
+    public void setNome(String nome){
         this.nome = nome;
     }
 
