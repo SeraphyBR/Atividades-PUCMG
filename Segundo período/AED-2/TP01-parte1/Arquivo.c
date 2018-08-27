@@ -1,8 +1,6 @@
 /*
  * Autor: Luiz Junio <luisjuniorbr@gmail.com>
  * Criado em: 21/08/2018
- *
- *
  */
 
 #include <stdio.h>
@@ -18,28 +16,27 @@ int main()
     char string[30];
     char *tmp;
 
-    if((arquivo = fopen("numeros.txt", "w")) == NULL ){
+    if((arquivo = fopen("numeros.txt", "wb+")) == NULL ){
         printf("Arquivo não pode ser aberto\n");
     }
     else
     {//Inicio else
         scanf("%d", &numEntrada);
         for(int i = 0; i < numEntrada; i++){
-            scanf("%s", string);
-            valor = strtod(string, &tmp);
-            fprintf(arquivo, "%g\n", valor);
+            scanf("%lf", &valor);
+            //fprintf(arquivo, "%lf\n", valor);
+            fwrite(&valor, sizeof(double), 1, arquivo);
         }
         fclose(arquivo);
 
-        if((arquivo = fopen("numeros.txt", "r")) == NULL){
+        if((arquivo = fopen("numeros.txt", "r+")) == NULL){
             printf("Arquivo não pode ser aberto\n");
         }
         else{
-            for(int i = numEntrada; i > -1; i--){ 
+            for(int i = numEntrada - 1; i > -1; i--){ 
                 fseek(arquivo, i * sizeof(double), SEEK_SET);
-                fread(string, sizeof(double), 1, arquivo);
+                fread(&valor, sizeof(double), 1, arquivo);
                 //fscanf(arquivo ,"%s", string);
-                valor = strtod(string , &tmp);//Converte String para double
                 printf("%g\n", valor);
             }//Fim for
 

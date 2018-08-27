@@ -59,7 +59,30 @@ public class Algebra
         }while(p < expressao.length());
         return resultado;
     }//Fim expressaoBool
+     
+    public static String trocaLetrasRandom(String palavra, char letraI, char letraF)
+    {//Inicio trocaLetrasRandom
+     /***************************************************************
+      * Nome do método: trocaLetrasRandom
+      * Data da elaboração: 10/08/2018
+      * Data da última alteração: 11/08/2018
+      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+      * Contexto de ação: Receber uma String, gerar duas letras aleatorias e
+      * trocar as ocorrencias da primeira letra na String pela segunda letra
+      * Valor gerado: A string com as alteracoes feitas.
+      ****************************************************************
+      */   
+        String modificado = "";
+        for(int i = 0; i < palavra.length(); i++)
+        {//Inicio for
+            if(palavra.charAt(i) == letraI)
+                modificado += letraF;//Se o caractere da String for igual ao primeiro gerado, irá colocar o segundo no lugar.
+            else modificado += palavra.charAt(i);
+        }//Fim for
 
+        return modificado; 
+    }//Fim trocaLetrasRandom
+                    
     public static boolean ehIgual(String p1, String p2)
     {//Inicio ehIgual
      /***************************************************************
