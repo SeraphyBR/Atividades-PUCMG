@@ -27,7 +27,7 @@ int main()
         for(int i = 0; i < numEntrada; i++){
             scanf("%s", string);
             valor = strtod(string, &tmp);
-            fprintf(arquivo, "%lf\n", valor);
+            fprintf(arquivo, "%g\n", valor);
         }
         fclose(arquivo);
 
