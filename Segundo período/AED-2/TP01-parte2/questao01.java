@@ -3,6 +3,9 @@
  * Criado em: 20/08/2018
  * Enunciado:   
  */
+import java.io.RandomAccessFile;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class questao01
 {//Inicio classe questao01
@@ -12,6 +15,28 @@ public class questao01
 
     }//Fim main
 
+    public static String[] leArquivo(String arquivo)
+    {//Inicio ler
+        String[] linha = new String[1000]; 
+        try{
+            RandomAccessFile file = new RandomAccessFile(arquivo, "r");
+        
+            String temp;
+            int numEntrada = 0;
+            while((temp = file.readLine()) != null)
+            {//Inicio while
+                linha[numEntrada++] = temp;
+            }//Fim while
+            file.close();
+        }
+        catch(FileNotFoundException fileNotFoundException){
+            
+        }
+        catch(IOException ioException){
+
+        }
+        return linha;
+    }//Fim ler 
 }//Fim classe questao01
 
 class Instituicao
@@ -124,6 +149,37 @@ class Instituicao
         );//Fim println
     }//Fim imprime
 
+    public static Instituicao leDados(String dados)
+    {//Inicio leDados
+        Instituicao instituicao = new Instituicao();
+        String[] valor = new String[24];
+        valor = dados.split("\\t+", 24);//Separa em varias strings, cortando os Tabs da String dados
+        instituicao.setCodigo(Integer.parseInt(valor[0]));
+        instituicao.setNome(valor[1]);
+        instituicao.setSigla(valor[2]);
+        instituicao.setCodigoMantenedora(Integer.parseInt(valor[3]));
+        instituicao.setMantenedora(valor[4]);
+        instituicao.setCategoria(Integer.parseInt(valor[5]));
+        instituicao.setOrganizacao(Integer.parseInt(valor[6]));
+        instituicao.setCodigoMunicipio(Integer.parseInt(valor[7]));
+        instituicao.setMunicipio(valor[8]);
+        instituicao.setUF(valor[9]);
+        instituicao.setRegiao(valor[10]);
+        instituicao.setTecnico(Integer.parseInt(valor[11]));
+        instituicao.setPeriodico(Integer.parseInt(valor[12]));
+        instituicao.setLivro(Integer.parseInt(valor[13]));
+        instituicao.setReceita(Double.parseDouble(valor[14]));
+        instituicao.setTransferencia(Double.parseDouble(valor[15]));
+        instituicao.setOutraReceita(Double.parseDouble(valor[16]));
+        instituicao.setDespesaDocente(Double.parseDouble(valor[17]));
+        instituicao.setDespesaTecnico(Double.parseDouble(valor[18]));
+        instituicao.setDespesaEncargo(Double.parseDouble(valor[19]));
+        instituicao.setDespesaCusteio(Double.parseDouble(valor[20]));
+        instituicao.setDespesaInvestimento(Double.parseDouble(valor[21]));
+        instituicao.setDespesaPesquisa(Double.parseDouble(valor[22]));
+        instituicao.setDespesaOutras(Double.parseDouble(valor[23])); 
+        return instituicao;
+    }//Fim leDados
 
     public int getCodigo(){
         return this.codigo;
