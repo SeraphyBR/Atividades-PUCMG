@@ -14,7 +14,7 @@ public class questao01
 
 }//Fim classe questao01
 
-class Instituicao
+class Instituicao implements Cloneable
 {//Inicio classe Instituicao
     private int codigo;
     private String nome;
@@ -73,6 +73,34 @@ class Instituicao
         this.setDespesaPesquisa(0.0);
         this.setDespesaOutras(0.0); 
     }//Fim cosntrutor 2
+
+    public Instituicao getClone()
+    {//Inicio clone
+        try{
+            return (Instituicao) this.clone();
+        }
+        catch(CloneNotSupportedException cloneNotSupportedException){
+            cloneNotSupportedException.printStackTrace();
+            return null;
+        }
+    }//Fim clone 
+
+    public void imprime()
+    {//Inicio imprime
+        MyIO.println(
+        //Inicio println
+            this.getCodigo() + " " + this.getNome() + " " + this.getSigla() + " " +
+            this.getCodigoMantenedora() + " " + this.getMantenedora() + " " +
+            this.getCategoria() + " " + this.getOrganizacao() + " " + 
+            this.getCodigoMunicipio() + " " + this.getMunicipio() + " " + this.getUF() + " " +
+            this.getRegiao() + " " + this.getTecnico() + " " + this.getPeriodico() + " " +
+            this.getLivro() + " " + this.getReceita() + " " + this.getTransferencia() + " " +
+            this.getOutraReceita() + " " + this.getDespesaDocente() + " " +
+            this.getDespesaTecnico() + " " + this.getDespesaEncargo() + " " +
+            this.getDespesaCusteio() + " " + this.getDespesaInvestimento() + " " +
+            this.getDespesaPesquisa() + " " + this.getDespesaOutras()
+        );//Fim println
+    }//Fim imprime
 
     public int getCodigo(){
         return this.codigo;
