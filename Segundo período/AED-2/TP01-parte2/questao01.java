@@ -14,7 +14,7 @@ public class questao01
 
 }//Fim classe questao01
 
-class Instituicao implements Cloneable
+class Instituicao
 {//Inicio classe Instituicao
     private int codigo;
     private String nome;
@@ -74,15 +74,37 @@ class Instituicao implements Cloneable
         this.setDespesaOutras(0.0); 
     }//Fim cosntrutor 2
 
+    private Instituicao(Instituicao instituicao)
+    {//Inicio construtor Clone
+        this.setCodigo(              instituicao.getCodigo()                );
+        this.setNome(                instituicao.getNome()                  );
+        this.setSigla(               instituicao.getSigla()                 );
+        this.setCodigoMantenedora(   instituicao.getCodigoMantenedora()     );
+        this.setMantenedora(         instituicao.getMantenedora()           );
+        this.setCategoria(           instituicao.getCategoria()             );
+        this.setOrganizacao(         instituicao.getOrganizacao()           );
+        this.setCodigoMunicipio(     instituicao.getCodigoMunicipio()       );
+        this.setMunicipio(           instituicao.getMunicipio()             );
+        this.setUF(                  instituicao.getUF()                    );
+        this.setRegiao(              instituicao.getRegiao()                );
+        this.setTecnico(             instituicao.getTecnico()               );
+        this.setPeriodico(           instituicao.getPeriodico()             );
+        this.setLivro(               instituicao.getLivro()                 );
+        this.setReceita(             instituicao.getReceita()               );
+        this.setTransferencia(       instituicao.getTransferencia()         );
+        this.setOutraReceita(        instituicao.getOutraReceita()          );
+        this.setDespesaDocente(      instituicao.getDespesaDocente()        );
+        this.setDespesaTecnico(      instituicao.getDespesaTecnico()        );
+        this.setDespesaEncargo(      instituicao.getDespesaEncargo()        );
+        this.setDespesaCusteio(      instituicao.getDespesaCusteio()        );
+        this.setDespesaInvestimento( instituicao.getDespesaInvestimento()   );
+        this.setDespesaPesquisa(     instituicao.getDespesaPesquisa()       );
+        this.setDespesaOutras(       instituicao.getDespesaOutras()         );
+    }//Fim construtor Clone
+
     public Instituicao getClone()
     {//Inicio clone
-        try{
-            return (Instituicao) this.clone();
-        }
-        catch(CloneNotSupportedException cloneNotSupportedException){
-            cloneNotSupportedException.printStackTrace();
-            return null;
-        }
+        return new Instituicao(this);
     }//Fim clone 
 
     public void imprime()
@@ -101,6 +123,7 @@ class Instituicao implements Cloneable
             this.getDespesaPesquisa() + " " + this.getDespesaOutras()
         );//Fim println
     }//Fim imprime
+
 
     public int getCodigo(){
         return this.codigo;
