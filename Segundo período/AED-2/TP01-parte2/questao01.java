@@ -1,12 +1,12 @@
-/*
- * Autor: Luiz Junio <luisjuniorbr@gmail.com>
- * Criado em: 20/08/2018
- * Enunciado:   
- */
+
 import java.io.RandomAccessFile;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/**
+ * @author Luiz Junio Veloso Dos Santos
+ * @version 1.0
+ */
 public class questao01
 {//Inicio classe questao01
     public static void main(String[] args)
@@ -20,7 +20,7 @@ public class questao01
 
         i--; //Desconsiderar ultima linha contendo 0
 
-        String[] registro = leArquivo("censo.dat");
+        String[] registro = leArquivo("/tmp/censo.dat");
 
         Instituicao[] instituicao = new Instituicao[i];
 
@@ -29,7 +29,6 @@ public class questao01
             instituicao[cont] = Instituicao.leDados(registro[linha[cont]]);
             instituicao[cont].imprime();
         }
-
     }//Fim main
 
     public static String[] leArquivo(String arquivo)
@@ -57,6 +56,11 @@ public class questao01
 
 }//Fim classe questao01
 
+/**
+ * Descreve uma instituição
+ * @author Luiz Junio Veloso Dos Santos
+ * @version 1.0
+ */
 class Instituicao
 {//Inicio classe Instituicao
     private int codigo;
@@ -84,12 +88,22 @@ class Instituicao
     private double despesaPesquisa;
     private double despesaOutras;
 
-    Instituicao()
+    /**
+     * Método construtor
+     * 
+     */
+    public Instituicao()
     {//Inicio construtor vazio
         this(0, "", "");
     }//Fim construtor vazio
 
-    Instituicao(int codigo, String nome, String sigla)
+    /**
+     * Método construtor
+     * @param codigo Codigo da Instituição
+     * @param nome Nome da Instituição
+     * @param sigla Sigla da Instituição
+     */
+    public Instituicao(int codigo, String nome, String sigla)
     {//Inicio construtor 2
         this.setCodigo(codigo);
         this.setNome(nome);
@@ -117,6 +131,10 @@ class Instituicao
         this.setDespesaOutras(0.0); 
     }//Fim cosntrutor 2
 
+    /**
+     * Método construtor para clonar objeto de Instituição
+     * @param instituicao Objeto de Instituição
+     */  
     private Instituicao(Instituicao instituicao)
     {//Inicio construtor Clone
         this.setCodigo(              instituicao.getCodigo()                );
@@ -145,11 +163,18 @@ class Instituicao
         this.setDespesaOutras(       instituicao.getDespesaOutras()         );
     }//Fim construtor Clone
 
+    /**
+     * Método clone
+     * @return Um clone de Instituicao
+     */  
     public Instituicao getClone()
     {//Inicio clone
         return new Instituicao(this);
     }//Fim clone 
-
+    
+    /**
+     * Imprime o conteudo de uma Instituição
+     */  
     public void imprime()
     {//Inicio imprime
         MyIO.println(
@@ -167,11 +192,16 @@ class Instituicao
         );//Fim println
     }//Fim imprime
 
+    /**
+     * Lê uma String com as informações para descrever uma Instituição
+     * @param dados Uma string contendo informações da Instituição
+     * @return Uma instituição
+     */
     public static Instituicao leDados(String dados)
     {//Inicio leDados
         Instituicao instituicao = new Instituicao();
-        String[] valor = new String[24];
-        valor = dados.split("\\t", 24);//Separa em varias strings, cortando os Tabs da String dados
+        //Separa em varias strings, cortando os Tabs da String dados
+        String[] valor = dados.split("\\t", 24);
         instituicao.setCodigo(Integer.parseInt(valor[0]));
         instituicao.setNome(valor[1]);
         instituicao.setSigla(valor[2]);
