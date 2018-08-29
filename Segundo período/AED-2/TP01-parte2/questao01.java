@@ -11,13 +11,30 @@ public class questao01
 {//Inicio classe questao01
     public static void main(String[] args)
     {//Inicio main
+        int[] linha = new int[1000];
+        int i = 0;
 
+        do{
+            linha[i] = MyIO.readInt();
+        }while(linha[i++] != 0);
+
+        i--; //Desconsiderar ultima linha contendo 0
+
+        String[] registro = leArquivo("censo.dat");
+
+        Instituicao[] instituicao = new Instituicao[i];
+
+        for(int cont = 0; cont < i; cont++){
+            //Ignorando primeira linha do arquivo
+            instituicao[cont] = Instituicao.leDados(registro[linha[cont]]);
+            instituicao[cont].imprime();
+        }
 
     }//Fim main
 
     public static String[] leArquivo(String arquivo)
     {//Inicio ler
-        String[] linha = new String[1000]; 
+        String[] linha = new String[3000]; 
         try{
             RandomAccessFile file = new RandomAccessFile(arquivo, "r");
         
@@ -30,13 +47,14 @@ public class questao01
             file.close();
         }
         catch(FileNotFoundException fileNotFoundException){
-            
+            fileNotFoundException.printStackTrace();
         }
         catch(IOException ioException){
-
+            ioException.printStackTrace();
         }
         return linha;
-    }//Fim ler 
+    }//Fim ler
+
 }//Fim classe questao01
 
 class Instituicao
@@ -153,7 +171,7 @@ class Instituicao
     {//Inicio leDados
         Instituicao instituicao = new Instituicao();
         String[] valor = new String[24];
-        valor = dados.split("\\t+", 24);//Separa em varias strings, cortando os Tabs da String dados
+        valor = dados.split("\\t", 24);//Separa em varias strings, cortando os Tabs da String dados
         instituicao.setCodigo(Integer.parseInt(valor[0]));
         instituicao.setNome(valor[1]);
         instituicao.setSigla(valor[2]);
