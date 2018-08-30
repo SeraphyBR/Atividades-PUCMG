@@ -31,12 +31,16 @@ public class questao01
         }
     }//Fim main
 
+    /**
+     * Metodo que le o conteudo de um arquivo.
+     * @param arquivo Nome do Arquivo
+     * @return Arranjo de String contendo as linhas do arquivo
+     */
     public static String[] leArquivo(String arquivo)
     {//Inicio ler
         String[] linha = new String[3000]; 
         try{
             RandomAccessFile file = new RandomAccessFile(arquivo, "r");
-        
             String temp;
             int numEntrada = 0;
             while((temp = file.readLine()) != null)
@@ -53,11 +57,10 @@ public class questao01
         }
         return linha;
     }//Fim ler
-
 }//Fim classe questao01
 
 /**
- * Descreve uma instituição
+ * Descreve uma instituicao
  * @author Luiz Junio Veloso Dos Santos
  * @version 1.0
  */
@@ -89,8 +92,7 @@ class Instituicao
     private double despesaOutras;
 
     /**
-     * Método construtor
-     * 
+     * Metodo construtor
      */
     public Instituicao()
     {//Inicio construtor vazio
@@ -99,9 +101,9 @@ class Instituicao
 
     /**
      * Método construtor
-     * @param codigo Codigo da Instituição
-     * @param nome Nome da Instituição
-     * @param sigla Sigla da Instituição
+     * @param codigo Codigo da Instituicao
+     * @param nome Nome da Instituicao
+     * @param sigla Sigla da Instituicao
      */
     public Instituicao(int codigo, String nome, String sigla)
     {//Inicio construtor 2
@@ -132,8 +134,8 @@ class Instituicao
     }//Fim cosntrutor 2
 
     /**
-     * Método construtor para clonar objeto de Instituição
-     * @param instituicao Objeto de Instituição
+     * Metodo construtor para clonar objeto de Instituicao
+     * @param instituicao Objeto de Instituicao
      */  
     private Instituicao(Instituicao instituicao)
     {//Inicio construtor Clone
@@ -164,7 +166,7 @@ class Instituicao
     }//Fim construtor Clone
 
     /**
-     * Método clone
+     * Metodo clone
      * @return Um clone de Instituicao
      */  
     public Instituicao getClone()
@@ -173,7 +175,7 @@ class Instituicao
     }//Fim clone 
     
     /**
-     * Imprime o conteudo de uma Instituição
+     * Imprime o conteudo de uma Instituicao
      */  
     public void imprime()
     {//Inicio imprime
@@ -193,9 +195,9 @@ class Instituicao
     }//Fim imprime
 
     /**
-     * Lê uma String com as informações para descrever uma Instituição
-     * @param dados Uma string contendo informações da Instituição
-     * @return Uma instituição
+     * Le uma String com as informacoes para descrever uma Instituicao
+     * @param dados Uma string contendo informacoes da Instituicao
+     * @return Uma instituicao
      */
     public static Instituicao leDados(String dados)
     {//Inicio leDados
@@ -229,98 +231,181 @@ class Instituicao
         return instituicao;
     }//Fim leDados
 
+    /**
+     * Metodo para obter o codigo de uma instituicao
+     * @return O codigo da instituicao
+     */
     public int getCodigo(){
         return this.codigo;
     }
-
+    /**
+     * Atribue um codigo de uma Instituicao
+     */
     public void setCodigo(int codigo){
         this.codigo = codigo;
     }
-     
+
+    /**
+     * Metodo para obter o codigo de uma instituicao
+     * @return O nome da instituicao
+     */
     public String getNome(){
         return this.nome;
     }
 
+    /**
+     * Atribue um nome de uma instituicao
+     */
     public void setNome(String nome){
         this.nome = nome;
     }
 
+    /**
+     * Metodo para obter a sigla da instituicao
+     * @return A sigla da instituicao
+     */
     public String getSigla(){
         return this.sigla;
     }
 
+    /**
+     * Atribue uma Sigla de uma Instituicao
+     */
     public void setSigla(String sigla){
         this.sigla = sigla;
     }
 
+    /**
+     * Metodo para obter o codigo da mantenedora
+     * @return O codigo da mantenedora da instituicao
+     */
     public int getCodigoMantenedora(){
         return this.codigoMantenedora;
     }
 
+    /**
+     * Atribue o Codigo de uma Mantenedora a instituicao
+     */
     public void setCodigoMantenedora(int codigoMantenedora){
         this.codigoMantenedora = codigoMantenedora;
     }
 
+    /**
+     * Metodo para obter o nome da mantenedora
+     * @return O nome da mantenedora
+     */
     public String getMantenedora(){
         return this.mantenedora;
     }
 
+    /**
+     * Atribue o nome da mantenedora
+     */
     public void setMantenedora(String mantenedora){
         this.mantenedora = mantenedora;
     }
 
+    /**
+     * Metodo para obter a categoria da instituicao
+     * @return A categoria da instituicao
+     */
     public int getCategoria(){
         return this.categoria;
     }
 
+    /**
+     * Atribue a categoria da instituicao
+     */
     public void setCategoria(int categoria){
         this.categoria = categoria;
     }
 
+    /**
+     * Metodo para obter o numero da organizacao 
+     * @return O numero da organizacao a que a instituicao pertence
+     */
     public int getOrganizacao(){
         return this.organizacao;
     }
 
+    /**
+     * Atribue o numero da organizacao
+     */
     public void setOrganizacao(int organizacao){
         this.organizacao = organizacao;
     }
 
+    /**
+     * Metodo para obter o codigo do municipio da instituicao
+     * @return O codigo do municipio
+     */
     public int getCodigoMunicipio(){
         return this.codigoMunicio;
     }
 
+    /**
+     * Atribue o codigo do municipio da instituicao
+     */
     public void setCodigoMunicipio(int codigoMunicio){
         this.codigoMunicio = codigoMunicio;
     }
 
+    /**
+     * Metodo para obter o nome do municipio
+     * @return O nome do municipio
+     */
     public String getMunicipio(){
         return this.municipio;
     }
 
+    /**
+     * Atribue o nome do municipio da instituicao
+     */
     public void setMunicipio(String municipio){
         this.municipio = municipio;
     }
 
+    /**
+     * Metodo para obter o Estado do municipio da instituicao
+     * @return A unidade federativa
+     */
     public String getUF(){
         return this.uf;
     }
 
+    /**
+     * Atribue o nome do Estado do municipio da instituicao
+     */
     public void setUF(String UF){
         this.uf = UF;
     }
 
+    /**
+     * Metodo para obter a Regiao brasileira
+     * @return A regiao do Brasil em que esta o Estado do municipio da instituicao
+     */
     public String getRegiao(){
         return this.regiao;
     }
 
+    /**
+     * Atribue a Regiao brasileira em que esta localizada a instuicao
+     */
     public void setRegiao(String regiao){
         this.regiao = regiao;
     }
 
+    /**
+     * Metodo para obter o nivel tecnico da instituicao
+     * @return Nivel tecnico
+     */
     public int getTecnico(){
         return this.tecnico;
     }
 
+    /**
+     * Atribue o valor do nivel tecnico
+     */
     public void setTecnico(int tecnico){
         this.tecnico = tecnico;
     }
