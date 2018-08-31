@@ -1,0 +1,70 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage{graphicx,url}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}  
+
+\sloppy
+
+\title{Resumo de Somátorios}
+
+\author{Luiz Junio Veloso Dos Santos}
+
+\address{Departamento de Ciência da Computação\\ Pontificia Universidade Catolica
+  (PUC-MG)\\
+  Caixa Postal 1.686 -- 30535-901 -- Belo Horizonte -- MG -- Brasil
+  \email{ljvsantos@sga.pucminas.br}
+}
+
+\begin{document} 
+
+\maketitle
+
+\begin{enumerate}
+    \item O que é somátorio?
+    \\
+    Somátorio significa a soma de termos, sendo geralmente associada ao operador mátematico da soma de termos
+    de uma sequencia. Usualmente é comum o uso da letra grega sigma maiúscula ($\Sigma$) para representar de forma mais clara uma
+    soma de n termos de uma sequencia.\\
+    Exemplo:
+    \begin{enumerate}
+        \item Convencional:
+            $$S = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10$$
+        \item Representação com Sigma:
+            $$S = \sum_{N = 1}^{10} N $$
+    \end{enumerate}
+    ~\\ Exemplo 2: Soma dos números pares até 20
+    \begin{enumerate}
+        \item Convencional:
+            $$ S = 0 + 2 + 4 + 6 + 8 + 10 + 12 + 14 + 16 + 18 + 20 $$
+        \item Representação com Sigma:
+            $$ 
+            S = \sum_{N = 0}^{10} N * 2 = 0*2 + 1*2 + 2*2 + 3*2 + 4*2 + 5*2 + 6*2 + 7*2 + 8*2 + 9*2 + 10*2
+            $$
+        \end{enumerate}
+            Lê-se um somátorio $\sum\limits_{i = 1}^{n} X_i$   como: somatório de X índice i, com i
+            variando de 1 até n, onde:\\
+            \textbf{n,} é a ordem da última parcela do Somátorio;
+            \\
+            \textbf{i = 1,} é a ordem da primeira parcela da soma;
+            \\
+            \textbf{i,} é o índice que está indexando os valores da variável X (outras letras tambem podem
+            ser usadas).
+            \\
+            No caso do exemplo 2b, podemos ler como: somatório de N vezes 2, com N
+            variando de 0 a 10.
+            \vspace{4mm} 
+        \item Propriedades dos Somátorios:
+            \begin{enumerate}
+                \item Propriedade Aditiva:
+                    $$\sum_{i=m}^{n}(a_i + b_i) = \sum_{i=m}^{n} a_i  + \sum_{i=m}^{n} b_i$$
+            \end{enumerate}
+
+\end{enumerate}
+
+
+\bibliographystyle{sbc}
+\bibliography{sbc-template}
+
+\end{document}
