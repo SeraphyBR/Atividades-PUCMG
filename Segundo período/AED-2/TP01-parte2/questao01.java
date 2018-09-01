@@ -26,7 +26,7 @@ public class questao01
 
         for(int cont = 0; cont < i; cont++){
             //Ignorando primeira linha do arquivo
-            instituicao[cont] = Instituicao.leDados(registro[linha[cont]]);
+            instituicao[cont] = new Instituicao(registro[linha[cont]]);
             instituicao[cont].imprime();
         }
     }//Fim main
@@ -60,7 +60,7 @@ public class questao01
 }//Fim classe questao01
 
 /**
- * Descreve uma instituicao
+ * Descreve uma Instituicao de Ensino Superior (IES)
  * @author Luiz Junio Veloso Dos Santos
  * @version 1.0
  */
@@ -131,7 +131,41 @@ class Instituicao
         this.setDespesaInvestimento(0.0);
         this.setDespesaPesquisa(0.0);
         this.setDespesaOutras(0.0); 
-    }//Fim cosntrutor 2
+    }//Fim construtor 2
+
+    /**
+     * Metodo construtor
+     * @param dados Uma string contendo dados de uma IES separadas por Tabs
+     */
+    public Instituicao(String dados)
+    {//Inicio construtor 3 String
+        //Separa em varias strings, cortando os Tabs da String dados
+        String[] valor = dados.split("\\t", 24);
+        this.setCodigo(Integer.parseInt(valor[0]));
+        this.setNome(valor[1]);
+        this.setSigla(valor[2]);
+        this.setCodigoMantenedora(Integer.parseInt(valor[3]));
+        this.setMantenedora(valor[4]);
+        this.setCategoria(Integer.parseInt(valor[5]));
+        this.setOrganizacao(Integer.parseInt(valor[6]));
+        this.setCodigoMunicipio(Integer.parseInt(valor[7]));
+        this.setMunicipio(valor[8]);
+        this.setUF(valor[9]);
+        this.setRegiao(valor[10]);
+        this.setTecnico(Integer.parseInt(valor[11]));
+        this.setPeriodico(Integer.parseInt(valor[12]));
+        this.setLivro(Integer.parseInt(valor[13]));
+        this.setReceita(Double.parseDouble(valor[14]));
+        this.setTransferencia(Double.parseDouble(valor[15]));
+        this.setOutraReceita(Double.parseDouble(valor[16]));
+        this.setDespesaDocente(Double.parseDouble(valor[17]));
+        this.setDespesaTecnico(Double.parseDouble(valor[18]));
+        this.setDespesaEncargo(Double.parseDouble(valor[19]));
+        this.setDespesaCusteio(Double.parseDouble(valor[20]));
+        this.setDespesaInvestimento(Double.parseDouble(valor[21]));
+        this.setDespesaPesquisa(Double.parseDouble(valor[22]));
+        this.setDespesaOutras(Double.parseDouble(valor[23])); 
+    }//Fim construtor 3 String
 
     /**
      * Metodo construtor para clonar objeto de Instituicao
@@ -175,7 +209,7 @@ class Instituicao
     }//Fim clone 
     
     /**
-     * Imprime o conteudo de uma Instituicao
+     * Imprime os dados de uma Instituicao de Ensino Superior
      */  
     public void imprime()
     {//Inicio imprime
@@ -195,58 +229,21 @@ class Instituicao
     }//Fim imprime
 
     /**
-     * Le uma String com as informacoes para descrever uma Instituicao
-     * @param dados Uma string contendo informacoes da Instituicao
-     * @return Uma instituicao
-     */
-    public static Instituicao leDados(String dados)
-    {//Inicio leDados
-        Instituicao instituicao = new Instituicao();
-        //Separa em varias strings, cortando os Tabs da String dados
-        String[] valor = dados.split("\\t", 24);
-        instituicao.setCodigo(Integer.parseInt(valor[0]));
-        instituicao.setNome(valor[1]);
-        instituicao.setSigla(valor[2]);
-        instituicao.setCodigoMantenedora(Integer.parseInt(valor[3]));
-        instituicao.setMantenedora(valor[4]);
-        instituicao.setCategoria(Integer.parseInt(valor[5]));
-        instituicao.setOrganizacao(Integer.parseInt(valor[6]));
-        instituicao.setCodigoMunicipio(Integer.parseInt(valor[7]));
-        instituicao.setMunicipio(valor[8]);
-        instituicao.setUF(valor[9]);
-        instituicao.setRegiao(valor[10]);
-        instituicao.setTecnico(Integer.parseInt(valor[11]));
-        instituicao.setPeriodico(Integer.parseInt(valor[12]));
-        instituicao.setLivro(Integer.parseInt(valor[13]));
-        instituicao.setReceita(Double.parseDouble(valor[14]));
-        instituicao.setTransferencia(Double.parseDouble(valor[15]));
-        instituicao.setOutraReceita(Double.parseDouble(valor[16]));
-        instituicao.setDespesaDocente(Double.parseDouble(valor[17]));
-        instituicao.setDespesaTecnico(Double.parseDouble(valor[18]));
-        instituicao.setDespesaEncargo(Double.parseDouble(valor[19]));
-        instituicao.setDespesaCusteio(Double.parseDouble(valor[20]));
-        instituicao.setDespesaInvestimento(Double.parseDouble(valor[21]));
-        instituicao.setDespesaPesquisa(Double.parseDouble(valor[22]));
-        instituicao.setDespesaOutras(Double.parseDouble(valor[23])); 
-        return instituicao;
-    }//Fim leDados
-
-    /**
-     * Metodo para obter o codigo de uma instituicao
-     * @return O codigo da instituicao
+     * Metodo para obter o Codigo unico de identificacao da IES
+     * @return O codigo unico de identificacao da IES
      */
     public int getCodigo(){
         return this.codigo;
     }
     /**
-     * Atribue um codigo de uma Instituicao
+     * Atribue o codigo unico de identificacao da IES
      */
     public void setCodigo(int codigo){
         this.codigo = codigo;
     }
 
     /**
-     * Metodo para obter o codigo de uma instituicao
+     * Metodo para obter o Nome da IES
      * @return O nome da instituicao
      */
     public String getNome(){
@@ -254,14 +251,14 @@ class Instituicao
     }
 
     /**
-     * Atribue um nome de uma instituicao
+     * Atribue um nome da IES
      */
     public void setNome(String nome){
         this.nome = nome;
     }
 
     /**
-     * Metodo para obter a sigla da instituicao
+     * Metodo para obter a sigla da IES
      * @return A sigla da instituicao
      */
     public String getSigla(){
@@ -269,14 +266,14 @@ class Instituicao
     }
 
     /**
-     * Atribue uma Sigla de uma Instituicao
+     * Atribue uma Sigla de uma IES
      */
     public void setSigla(String sigla){
         this.sigla = sigla;
     }
 
     /**
-     * Metodo para obter o codigo da mantenedora
+     * Metodo para obter o codigo unico de identificacao da mantenedora
      * @return O codigo da mantenedora da instituicao
      */
     public int getCodigoMantenedora(){
@@ -284,7 +281,7 @@ class Instituicao
     }
 
     /**
-     * Atribue o Codigo de uma Mantenedora a instituicao
+     * Atribue o Codigo unico de identificacao da mantenedora
      */
     public void setCodigoMantenedora(int codigoMantenedora){
         this.codigoMantenedora = codigoMantenedora;
@@ -306,7 +303,7 @@ class Instituicao
     }
 
     /**
-     * Metodo para obter a categoria da instituicao
+     * Metodo para obter o codigo da categoria administrativa da IES
      * @return A categoria da instituicao
      */
     public int getCategoria(){
@@ -314,29 +311,29 @@ class Instituicao
     }
 
     /**
-     * Atribue a categoria da instituicao
+     * Atribue o codigo da categoria administrativa da IES
      */
     public void setCategoria(int categoria){
         this.categoria = categoria;
     }
 
     /**
-     * Metodo para obter o numero da organizacao 
-     * @return O numero da organizacao a que a instituicao pertence
+     * Metodo para obter o codigo da organizacao academica 
+     * @return O codigo da organizacao academica
      */
     public int getOrganizacao(){
         return this.organizacao;
     }
 
     /**
-     * Atribue o numero da organizacao
+     * Atribue o codigo da organizacao academica
      */
     public void setOrganizacao(int organizacao){
         this.organizacao = organizacao;
     }
 
     /**
-     * Metodo para obter o codigo do municipio da instituicao
+     * Metodo para obter o codigo do municipio da IES (reitoria/sede)
      * @return O codigo do municipio
      */
     public int getCodigoMunicipio(){
@@ -344,14 +341,14 @@ class Instituicao
     }
 
     /**
-     * Atribue o codigo do municipio da instituicao
+     * Atribue o codigo do municipio da IES (reitoria/sede)
      */
     public void setCodigoMunicipio(int codigoMunicio){
         this.codigoMunicio = codigoMunicio;
     }
 
     /**
-     * Metodo para obter o nome do municipio
+     * Metodo para obter o nome do municipio da IES (reitoria/sede)
      * @return O nome do municipio
      */
     public String getMunicipio(){
@@ -359,14 +356,14 @@ class Instituicao
     }
 
     /**
-     * Atribue o nome do municipio da instituicao
+     * Atribue o nome do municipio da IES (reitoria/sede)
      */
     public void setMunicipio(String municipio){
         this.municipio = municipio;
     }
 
     /**
-     * Metodo para obter o Estado do municipio da instituicao
+     * Metodo para obter a sigla da Unidade federativa do municipio da IES
      * @return A unidade federativa
      */
     public String getUF(){
@@ -374,7 +371,7 @@ class Instituicao
     }
 
     /**
-     * Atribue o nome do Estado do municipio da instituicao
+     * Atribue a sigla da Unidade federativa do municipio da IES
      */
     public void setUF(String UF){
         this.uf = UF;
@@ -382,129 +379,243 @@ class Instituicao
 
     /**
      * Metodo para obter a Regiao brasileira
-     * @return A regiao do Brasil em que esta o Estado do municipio da instituicao
+     * @return A regiao do Brasil em que esta o municipio da IES
      */
     public String getRegiao(){
         return this.regiao;
     }
 
     /**
-     * Atribue a Regiao brasileira em que esta localizada a instuicao
+     * Atribue a Regiao brasileira em que esta localizada a IES
      */
     public void setRegiao(String regiao){
         this.regiao = regiao;
     }
 
     /**
-     * Metodo para obter o nivel tecnico da instituicao
-     * @return Nivel tecnico
+     * Metodo para obter o numero de funcionarios tecnico-administrativos
+     * @return O numero de funcionarios tecnico-administrativos da IES
      */
     public int getTecnico(){
         return this.tecnico;
     }
 
     /**
-     * Atribue o valor do nivel tecnico
+     * Atribue o numero de funcionarios tecnico-administrativos
      */
     public void setTecnico(int tecnico){
         this.tecnico = tecnico;
     }
 
+    /**
+     * Metodo para obter a Quantidade de titulos de periodicos eletronicos
+     * adquiridos pela biblioteca da IES por meio de compra, doação ou permuta.
+     * @return A quantidade de titulos de periodicos eletronicos adquiridos pela IES
+     */
     public int getPeriodico(){
         return this.periodico;
     }
 
+    /**
+     * Atribue a Quantidade de titulos de periódicos eletronicos adquiridos
+     * pela biblioteca da IES por meio de compra, doacao ou permuta. 
+     */
     public void setPeriodico(int periodico){
         this.periodico = periodico;
     }
 
+    /**
+     * Metodo para obter a Quantidade de titulos de livros eletronicos
+     * disponibilizados pela biblioteca convertidos ao formato digital 
+     * ou originalmente produzidos nesse formato para serem lidos em computador
+     * ou outros dispositivos.
+     * @return A quantidade de titulos de livros eletronicos digitais da IES
+     */
     public int getLivro(){
         return this.livro;
     }
 
+    /**
+     * Atribue a Quantidade de títulos de livros eletrônicos
+     * disponibilizados pela biblioteca convertidos ao formato digital
+     * ou originalmente produzidos nesse formato para serem lidos em computador
+     * ou outros dispositivos.
+     */
     public void setLivro(int livro){
         this.livro = livro;
     }
 
+    /**
+     * Metodo para obter o valor das receitas proprias auferidas 
+     * pela Mantenedora ou pela IES no ano de referencia
+     * @return O valor das receitas proprias auferidas pela mantenedora ou IES
+     */
     public double getReceita(){
         return this.receita;
     }
 
+    /**
+     * Atribue o valor das receitas proprias auferidas
+     * pela Mantenedora ou pela IES no ano de referencia
+     */
     public void setReceita(double receita){
         this.receita = receita;
     }
 
+    /**
+     * Metodo para obter o valor de transferencias auferidas
+     * pela Mantenedora ou pela IES no ano de referencia
+     * @return O valor de transferenciaas auferidas
+     */
     public double getTransferencia(){
         return this.transferencia;
     }
 
+    /**
+     * Atribue o valor de transferências auferidas
+     * pela Mantenedora ou pela IES no ano de referência
+     */
     public void setTransferencia(double transferencia){
         this.transferencia = transferencia;
     }
-     
+
+    /**
+     * Metodo para obter o valor de outras receitas auferidas
+     * pela Mantenedora ou pela IES no ano de referencia.
+     * @return O valor de outras receitas auferidas
+     */
     public double getOutraReceita(){
         return this.outraReceita;
     }
 
+    /**
+     * Atribue o valor de outras receitas auferidas
+     * pela Mantenedora ou pela IES no ano de referencia.
+     *
+     */
     public void setOutraReceita(double outraReceita){
         this.outraReceita = outraReceita;
     }
 
+    /**
+     * Metodo para obter as despesas com remuneracao de pessoal - docentes
+     * ativos da IES ou da mantenedora.
+     * @return As despesas com remuneracao de docentes
+     */
     public double getDespesaDocente(){
         return this.despesaDocente;
     }
 
+    /**
+     * Atribue o valor das despesas com remuneracao de pessoal - docentes
+     * ativos da IES ou da mantenedora.
+     */
     public void setDespesaDocente(double despesaDocente){
         this.despesaDocente = despesaDocente;
     }
 
+    /**
+     * Metodo para obter as despesas com remuneração de pessoal
+     * tecnico-administrativo/pedagogicos da IES ou da mantenedora.
+     * @return As despesas com remuneracao de pessoal tecnico-administrativo/pedagogicos 
+     */
     public double getDespesaTecnico(){
         return this.despesaTecnico;
     }
 
+    /**
+     * Atribue o valor das despesas com remuneração de pessoal
+     * tecnico-administrativo/pedagogicos da IES ou da mantenedora.
+     */
     public void setDespesaTecnico(double despesaTecnico){
         this.despesaTecnico = despesaTecnico;
     }
 
+    /**
+     * Metodo para obter as despesas com beneficios e encargos sociais
+     * de todo o pessoal da IES ou da mantenedora.
+     * @return As despesas com beneficios e engargos sociais
+     */
     public double getDespesaEncargo(){
         return this.despesaEncargo;
     }
 
+    /**
+     * Atribue o valor das despesas com beneficios e encargos sociais
+     * de todo o pessoal da IES ou da mantenedora.
+     */
     public void setDespesaEncargo(double despesaEncargo){
         this.despesaEncargo = despesaEncargo;
     }
 
+    /**
+     * Metodo para obter as despesas para a manutencao 
+     * e custeio da IES ou da mantenedora
+     * (Não inclui  despesas com pessoal.)
+     * @return As despesas para manutencao
+     */
     public double getDespesaCusteio(){
         return this.despesaCusteio;
     }
 
+    /**
+     * Atribue o valor das despesas para a manutencao
+     * e custeio da IES ou da mantenedora
+     * (Não inclui  despesas com pessoal.)
+     */
     public void setDespesaCusteio(double despesaCusteio){
         this.despesaCusteio = despesaCusteio;
     }
 
+    /**
+     * Metodo para obter as despesas de investimentos (despesas de capital)
+     * realizadas nas IES ou na mantenedora.
+     * @return As despesas de investimentos 
+     */
     public double getDespesaInvestimento(){
         return this.despesaInvestimento;
     }
 
+    /**
+     * Atribue o valor das despesas de investimentos (despesas de capital)
+     * realizadas nas IES ou na mantenedora.
+     */
     public void setDespesaInvestimento(double despesaInvestimento){
         this.despesaInvestimento = despesaInvestimento;
     }
 
+    /**
+     * Metodo para obter as despesas com Pesquisa e Desenvolvimento
+     * da IES ou da mantenedora.
+     * @return As despesas com pesquisa e investimento
+     */
     public double getDespesaPesquisa(){
         return this.despesaPesquisa;
     }
 
+    /**
+     * Atribue o valor das despesas com Pesquisa e Desenvolvimento
+     * da IES ou da mantenedora.
+     */
     public void setDespesaPesquisa(double despesaPesquisa){
         this.despesaPesquisa = despesaPesquisa;
     }
 
+    /**
+     * Metodo para obter o valor de dispendios 
+     * nao contemplados nos demais campos relativos a despesa
+     * @return O valor de dispendios nao contemplados nos demais campos
+     */
     public double getDespesaOutras(){
         return this.despesaOutras;
     }
 
+    /**
+     * Atribue o valor de dispendios
+     * nao contemplados nos demais campos relativos a despesa
+     */
     public void setDespesaOutras(double despesaOutras){
         this.despesaOutras = despesaOutras;
     }
-     
 
 }//Fim classe Instituicao
