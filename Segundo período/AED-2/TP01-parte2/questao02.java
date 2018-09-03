@@ -11,23 +11,44 @@ public class questao02
 {//Inicio classe questao01
     public static void main(String[] args)
     {//Inicio main
-        int[] linha = new int[1000];
-        int i = 0;
+        try
+        {//Inicio try
+            int[] linha = new int[1000];
+            int i = 0;
 
-        do{
-            linha[i] = MyIO.readInt();
-        }while(linha[i++] != 0);
+            do{
+                linha[i] = MyIO.readInt();
+            }while(linha[i++] != 0);
 
-        i--; //Desconsiderar ultima linha contendo 0
+            i--; //Desconsiderar ultima linha contendo 0
 
-        String[] registro = leArquivo("/tmp/censo.dat");
+            String[] registro = leArquivo("/tmp/censo.dat");
 
-        Instituicao[] instituicao = new Instituicao[i];
+            Lista listaInstituicao = new Lista(i);
 
-        for(int cont = 0; cont < i; cont++){
-            //Ignorando primeira linha do arquivo
-            instituicao[cont] = new Instituicao(registro[linha[cont]]);
-            instituicao[cont].imprime();
+            for(int cont = 0; cont < i; cont++){
+                //Ignorando primeira linha do arquivo
+                listaInstituicao.inserirFim(new Instituicao(registro[linha[cont]]));
+            }
+
+            int numAlteracoes = MyIO.readInt();
+
+            String operacao = "";
+            for(int cont = 0; cont < numAlteracoes; i++){
+                operacao = MyIO.readString();
+                switch(operacao)
+                {//Inicio switch
+                    case "II":
+                        break;
+                    case "I*":
+                        break;
+                    case "IF":
+
+                }//Fim switch
+            }
+        }//Fim try
+        catch(Exception exception){
+
         }
     }//Fim main
 
@@ -648,6 +669,10 @@ class Lista
         numElementos = 0;
     }
 
+    public int length(){
+        return numElementos;
+    }
+
     /**
      * Insere um elemento na primeira posicao da lista e move os demais
      * elementos para o fim da lista.
@@ -687,10 +712,99 @@ class Lista
 
     }//Fim inserirFim
 
+    /**
+     * Insere um elemento em uma posicao especifica e move os demais
+     * elementos para o fim da lista
+     * @param instituicao Elemento a ser inserido
+     * @param posicao Posicao de insercao
+     * @throws Exception Se a lista estiver cheia ou a posicao invalida
+     */
     public void inserir(Instituicao instituicao, int posicao) throws Exception
     {//Inicio inserir
+        //validar insercao
+        if(numElementos >= array.length || posicao < 0 || posicao > numElementos ){
+            throw new Exception("Erro ao inserir!");
+        }
 
+        //levar elementos para o fim do array
+        for(int i = numElementos; i > posicao; i--){
+            array[i] = array[i-1];
+        }
 
-
+        array[posicao] = instituicao;
+        numElementos++;
     }//Fim inserir
+
+    /**
+     * Remove um elemento da primeira posicao da lista e movimenta
+     * os demais elementos para o inicio da mesma.
+     * @return Elemento a ser removido
+     * @throws Exception Se a lista estiver vazia
+     */
+    public Instituicao removerInicio() throws Exception
+    {//Inicio removerInicio
+        //validar remocao
+        if(numElementos == 0){
+            throw new Exception("Erro ao remover!");
+        }
+
+        Instituicao removido = array[0];
+        numElementos--;
+
+        for(int i = 0; i < numElementos; i++){
+            array[i] = array[i+1];
+        }
+
+        return removido;
+    }//Fim removerInicio
+
+    /**
+     * Remove um elemento da ultima posicao da lista.
+     * @return Elemento a ser removido
+     * @throws Exception Se a lista estiver vazia
+     */
+    public Instituicao removerFim() throws Exception
+    {//Inicio removerFim
+        //validar remocao
+        if(numElementos == 0){
+            throw new Exception("Erro ao remover!");
+        }
+
+        return array[--numElementos];
+    }//Fim removerFim
+
+    /**
+     * Remove um elemento de uma posicao especifica da lista e
+     * movimenta os demais elementos para o inicio da mesma.
+     * @param posicao Posicao de remocao.
+     * @return Elemento a ser removido.
+     * @throws Exception Se a lista estiver vazia ou posicao for inválida.
+     */
+    public Instituicao remover(int posicao) throws Exception
+    {//Inicio remover
+        //validar remocao
+        if(numElementos == 0 || posicao < 0 || posicao >= numElementos){
+            throw new Exception("Erro ao remover");
+        }
+
+        Instituicao removido = array[posicao];
+        numElementos--;
+
+        for(int i = posicao; i < numElementos; i++){
+            array[i] = array[i+1];
+        }
+
+        return removido;
+    }//Fim remover
+
+    /**
+     * Mostra os elementos da lista separados por espacos
+     */
+    public void mostrar()
+    {//Inicio mostrar
+        for(int i = 0; i < numElementos; i++){
+            array[i].imprime();
+        }
+    }//Fim mostrar
+
 }//Fim classe Lista
