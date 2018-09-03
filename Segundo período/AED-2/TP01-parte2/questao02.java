@@ -16,6 +16,7 @@ public class questao02
             int[] linha = new int[1000];
             int i = 0;
 
+            //Inicio parte 1
             do{
                 linha[i] = MyIO.readInt();
             }while(linha[i++] != 0);
@@ -24,31 +25,59 @@ public class questao02
 
             String[] registro = leArquivo("/tmp/censo.dat");
 
-            Lista listaInstituicao = new Lista(i);
+            Lista listaInstituicao = new Lista(1000);
 
             for(int cont = 0; cont < i; cont++){
-                //Ignorando primeira linha do arquivo
                 listaInstituicao.inserirFim(new Instituicao(registro[linha[cont]]));
             }
 
-            int numAlteracoes = MyIO.readInt();
+            //Inicio Parte 2
+            int numAlteracoes = MyIO.readInt();//Numero de modificacoes que serao feitas na lista
 
-            String operacao = "";
-            for(int cont = 0; cont < numAlteracoes; i++){
+            String operacao = "";//variavel para armazenar a operacao a ser lida
+            int linhaArquivo;//Linha do arquivo que contem a instituicao a ser inserida
+            int posicao;//Posicao do elemento a ser removido/inserido
+            Instituicao removido;//Instituicao que fora removida
+
+            for(int cont = 0; cont < numAlteracoes; cont++)
+            {//Inicio for
                 operacao = MyIO.readString();
                 switch(operacao)
                 {//Inicio switch
                     case "II":
+                        linhaArquivo = MyIO.readInt();
+                        listaInstituicao.inserirInicio(new Instituicao(registro[linhaArquivo]));
                         break;
                     case "I*":
+                        posicao = MyIO.readInt();
+                        linhaArquivo = MyIO.readInt();
+                        listaInstituicao.inserir(new Instituicao(registro[linhaArquivo]), posicao);
                         break;
                     case "IF":
-
+                        linhaArquivo = MyIO.readInt();
+                        listaInstituicao.inserirFim(new Instituicao(registro[linhaArquivo]));
+                        break;
+                    case "RI":
+                        removido = listaInstituicao.removerInicio();
+                        MyIO.println("(R) " + removido.getNome());
+                        break;
+                    case "R*":
+                        posicao = MyIO.readInt();
+                        removido = listaInstituicao.remover(posicao);
+                        MyIO.println("(R) " + removido.getNome());
+                        break;
+                    case "RF":
+                        removido = listaInstituicao.removerFim();
+                        MyIO.println("(R) " + removido.getNome()); 
+                        break;
                 }//Fim switch
-            }
+            }//Fim for
+
+            listaInstituicao.mostrar();
+
         }//Fim try
         catch(Exception exception){
-
+            System.err.println(exception);
         }
     }//Fim main
 
@@ -784,7 +813,7 @@ class Lista
     {//Inicio remover
         //validar remocao
         if(numElementos == 0 || posicao < 0 || posicao >= numElementos){
-            throw new Exception("Erro ao remover");
+            throw new Exception("Erro ao remover!");
         }
 
         Instituicao removido = array[posicao];

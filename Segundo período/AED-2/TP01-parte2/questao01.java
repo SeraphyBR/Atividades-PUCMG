@@ -25,7 +25,6 @@ public class questao01
         Instituicao[] instituicao = new Instituicao[i];
 
         for(int cont = 0; cont < i; cont++){
-            //Ignorando primeira linha do arquivo
             instituicao[cont] = new Instituicao(registro[linha[cont]]);
             instituicao[cont].imprime();
         }
