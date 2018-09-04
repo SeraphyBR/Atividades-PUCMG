@@ -7,7 +7,7 @@ import java.io.IOException;
  * @author Luiz Junio Veloso Dos Santos
  * @version 1.0
  */
-public class questao02
+public class questao03
 {//Inicio classe questao01
     public static void main(String[] args)
     {//Inicio main
@@ -25,10 +25,10 @@ public class questao02
 
             String[] registro = leArquivo("/tmp/censo.dat");
 
-            Lista listaInstituicao = new Lista(1000);
+            Pilha pilhaInstituicao = new Pilha(1000);
 
             for(int cont = 0; cont < i; cont++){
-                listaInstituicao.inserirFim(new Instituicao(registro[linha[cont]]));
+                pilhaInstituicao.inserir(new Instituicao(registro[linha[cont]]));
             }
 
             //Inicio Parte 2
@@ -36,7 +36,6 @@ public class questao02
 
             String operacao = "";//variavel para armazenar a operacao a ser lida
             int linhaArquivo;//Linha do arquivo que contem a instituicao a ser inserida
-            int posicao;//Posicao do elemento a ser removido/inserido
             Instituicao removido;//Instituicao que fora removida
 
             for(int cont = 0; cont < numAlteracoes; cont++)
@@ -44,36 +43,18 @@ public class questao02
                 operacao = MyIO.readString();
                 switch(operacao)
                 {//Inicio switch
-                    case "II":
+                    case "I":
                         linhaArquivo = MyIO.readInt();
-                        listaInstituicao.inserirInicio(new Instituicao(registro[linhaArquivo]));
+                        pilhaInstituicao.inserir(new Instituicao(registro[linhaArquivo]));
                         break;
-                    case "I*":
-                        posicao = MyIO.readInt();
-                        linhaArquivo = MyIO.readInt();
-                        listaInstituicao.inserir(new Instituicao(registro[linhaArquivo]), posicao);
-                        break;
-                    case "IF":
-                        linhaArquivo = MyIO.readInt();
-                        listaInstituicao.inserirFim(new Instituicao(registro[linhaArquivo]));
-                        break;
-                    case "RI":
-                        removido = listaInstituicao.removerInicio();
-                        MyIO.println("(R) " + removido.getNome());
-                        break;
-                    case "R*":
-                        posicao = MyIO.readInt();
-                        removido = listaInstituicao.remover(posicao);
-                        MyIO.println("(R) " + removido.getNome());
-                        break;
-                    case "RF":
-                        removido = listaInstituicao.removerFim();
+                    case "R":
+                        removido = pilhaInstituicao.remover();
                         MyIO.println("(R) " + removido.getNome()); 
                         break;
                 }//Fim switch
             }//Fim for
 
-            listaInstituicao.mostrar();
+            pilhaInstituicao.mostrar();
 
         }//Fim try
         catch(Exception exception){
@@ -670,170 +651,79 @@ class Instituicao
 
 }//Fim classe Instituicao
 
-
 /**
- * Lista estatica de Instituicao
+ * Pilha de Instituicao estatica
  * @author Luiz Junio Veloso Dos Santos
  * @version 1.0
  */
 
-class Lista
-{//Inicio classe Lista
+class Pilha
+{//Inicio classe Pilha
     private Instituicao[] array;
-    private int numElementos;
+    private int topo;
 
     /**
      * Construtor da classe
      */
-    public Lista(){
+    public Pilha(){
         this(6);
     }
 
     /**
      * Construtor da classe
-     * @param tamanho Tamanho da lista
+     * @param tamanho Tamanho da pilha
      */
-    public Lista(int tamanho){
+    public Pilha(int tamanho){
         array = new Instituicao[tamanho];
-        numElementos = 0;
-    }
-
-    public int length(){
-        return numElementos;
+        topo = 0;
     }
 
     /**
-     * Insere um elemento na primeira posicao da lista e move os demais
-     * elementos para o fim da lista.
-     * @param instituicao Elemento a ser inserido
-     * @throws Exception Se a lista estiver cheia
+     * Insere um elemento na ultima posicao da pilha.
+     * @param instituicao Instituicao a ser inserida
+     * @throws Exception Se a pilha estiver cheia
      */
-    public void inserirInicio(Instituicao instituicao) throws Exception
-    {//Inicio inserirInicio
-        //validar insercao
-        if(numElementos >= array.length){
-            throw new Exception("Erro ao inserir!");
-        }
-
-        //levar elementos para o fim do array
-        for(int i = numElementos; i > 0; i--){
-            this.array[i] = array[i - 1];
-        }
-
-        array[0] = instituicao;
-        numElementos++;
-    }//Fim inserirInicio
-
-    /**
-     * Insere um elemento na ultima posicao da lista
-     * @param instituicao Elemento a ser inserido
-     * @throws Exception Se a lista estiver cheia
-     */
-    public void inserirFim(Instituicao instituicao) throws Exception
-    {//Inicio inserirFim
-        //validar insercao
-        if(numElementos >= array.length){
-            throw new Exception("Erro ao inserir!");
-        }
-
-        array[numElementos] = instituicao;
-        numElementos++;
-
-    }//Fim inserirFim
-
-    /**
-     * Insere um elemento em uma posicao especifica e move os demais
-     * elementos para o fim da lista
-     * @param instituicao Elemento a ser inserido
-     * @param posicao Posicao de insercao
-     * @throws Exception Se a lista estiver cheia ou a posicao invalida
-     */
-    public void inserir(Instituicao instituicao, int posicao) throws Exception
+    public void inserir(Instituicao instituicao) throws Exception
     {//Inicio inserir
         //validar insercao
-        if(numElementos >= array.length || posicao < 0 || posicao > numElementos ){
+        if(topo >= array.length){
             throw new Exception("Erro ao inserir!");
         }
 
-        //levar elementos para o fim do array
-        for(int i = numElementos; i > posicao; i--){
-            array[i] = array[i-1];
-        }
-
-        array[posicao] = instituicao;
-        numElementos++;
+        array[topo] = instituicao;
+        topo++;
     }//Fim inserir
-
+    
     /**
-     * Remove um elemento da primeira posicao da lista e movimenta
-     * os demais elementos para o inicio da mesma.
-     * @return Elemento a ser removido
-     * @throws Exception Se a lista estiver vazia
+     * Remove um elemento da ultima posicao da pilha.
+     * @return Instituicao a ser removida.
+     * @throws Exception Se a pilha estiver vazia.
      */
-    public Instituicao removerInicio() throws Exception
-    {//Inicio removerInicio
-        //validar remocao
-        if(numElementos == 0){
-            throw new Exception("Erro ao remover!");
-        }
-
-        Instituicao removido = array[0];
-        numElementos--;
-
-        for(int i = 0; i < numElementos; i++){
-            array[i] = array[i+1];
-        }
-
-        return removido;
-    }//Fim removerInicio
-
-    /**
-     * Remove um elemento da ultima posicao da lista.
-     * @return Elemento a ser removido
-     * @throws Exception Se a lista estiver vazia
-     */
-    public Instituicao removerFim() throws Exception
-    {//Inicio removerFim
-        //validar remocao
-        if(numElementos == 0){
-            throw new Exception("Erro ao remover!");
-        }
-
-        return array[--numElementos];
-    }//Fim removerFim
-
-    /**
-     * Remove um elemento de uma posicao especifica da lista e
-     * movimenta os demais elementos para o inicio da mesma.
-     * @param posicao Posicao de remocao.
-     * @return Elemento a ser removido.
-     * @throws Exception Se a lista estiver vazia ou posicao for inválida.
-     */
-    public Instituicao remover(int posicao) throws Exception
+    public Instituicao remover() throws Exception 
     {//Inicio remover
         //validar remocao
-        if(numElementos == 0 || posicao < 0 || posicao >= numElementos){
+        if(topo ==0){
             throw new Exception("Erro ao remover!");
         }
 
-        Instituicao removido = array[posicao];
-        numElementos--;
-
-        for(int i = posicao; i < numElementos; i++){
-            array[i] = array[i+1];
-        }
-
-        return removido;
+        return array[--topo];
     }//Fim remover
 
     /**
-     * Mostra os elementos da lista separados por espacos
+     * Mostra a pilha de instituicao
      */
     public void mostrar()
     {//Inicio mostrar
-        for(int i = 0; i < numElementos; i++){
+        for(int i = 0; i < topo; i++){
             array[i].imprime();
         }
     }//Fim mostrar
 
-}//Fim classe Lista
+    /**
+     * Retorna um boolean indicando se a pilha esta vazia
+     * @return Um boolean indicando se a pilha esta vazia
+     */
+    public boolean isVazia(){
+        return topo == 0;
+    }
+}//Fim classe Pilha
