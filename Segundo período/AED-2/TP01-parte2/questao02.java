@@ -697,7 +697,10 @@ class Lista
         array = new Instituicao[tamanho];
         numElementos = 0;
     }
-
+    /**
+     * Metodo para obter o tamanho da lista 
+     * @return tamanho da Lista
+     */
     public int length(){
         return numElementos;
     }

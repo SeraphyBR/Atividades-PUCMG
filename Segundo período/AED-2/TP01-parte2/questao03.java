@@ -25,10 +25,10 @@ public class questao03
 
             String[] registro = leArquivo("/tmp/censo.dat");
 
-            Pilha pilhaInstituicao = new Pilha(1000);
+            Pilha pilhaInstituicao = new Pilha(1000);//criando uma pilha de instituicoes
 
             for(int cont = 0; cont < i; cont++){
-                pilhaInstituicao.inserir(new Instituicao(registro[linha[cont]]));
+                pilhaInstituicao.inserir(new Instituicao(registro[linha[cont]]));//adicionando objetos na pilha
             }
 
             //Inicio Parte 2
@@ -43,18 +43,18 @@ public class questao03
                 operacao = MyIO.readString();
                 switch(operacao)
                 {//Inicio switch
-                    case "I":
+                    case "I"://insercao
                         linhaArquivo = MyIO.readInt();
                         pilhaInstituicao.inserir(new Instituicao(registro[linhaArquivo]));
                         break;
-                    case "R":
+                    case "R"://remocao
                         removido = pilhaInstituicao.remover();
                         MyIO.println("(R) " + removido.getNome()); 
                         break;
                 }//Fim switch
             }//Fim for
 
-            pilhaInstituicao.mostrar();
+            pilhaInstituicao.mostrar();//impressao do conteudo da pilha
 
         }//Fim try
         catch(Exception exception){
