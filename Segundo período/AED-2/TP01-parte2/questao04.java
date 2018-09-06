@@ -63,14 +63,13 @@ public class questao04
                             filaInstituicao.inserir(temp.getClone());
                         }
                         //Imprime o arredondamento da media
-                        MyIO.println((int) Math.round(filaInstituicao.getMediaDespesaDocente())); 
+                        MyIO.println((int) Math.round(filaInstituicao.getMediaDespesaDocente()));  
                         break;
                     case "R"://remocao
                         removido = filaInstituicao.remover();
                         break;
                 }//Fim switch 
             }//Fim for
-
         }//Fim try
         catch(Exception exception){
             System.err.println(exception);
@@ -749,21 +748,31 @@ class FilaInstituicao
     public boolean isVazia(){
         return (numElementos == 0);
     }
-
+    /**
+     * Retorna um boolean indicando se a fila esta cheia
+     * @return Um boolean indicando se a fila esta cheia
+     */
     public boolean isCheia(){
         return (numElementos == array.length);
     }
 
-    public double getMediaDespesaDocente(){
+    /**
+     * Retorna a media das despesas do docente de cada IES da Fila
+     * @return A media das despesas do docente de cada IES da Fila
+     */
+    public double getMediaDespesaDocente()
+    {//Inicio getMediaDespesaDocente
         double somaDespesas = 0.0;
         double mediaDespesas = 0.0;
-        if(numElementos > 0)
+        int cont = 0;
+        if(!this.isVazia())
         {//Inicio if
-            for(int i = 0; i < numElementos; i++){
+            for(int i = primeiro; cont++ < numElementos ; i = (i + 1) % array.length){
                 somaDespesas += array[i].getDespesaDocente();
             }
             mediaDespesas = somaDespesas / numElementos;
         }//Fim if
         return mediaDespesas;
-    }
+    }//Fim getMediaDespesasDocente
+
 }//Fim classe FilaInstituicao
