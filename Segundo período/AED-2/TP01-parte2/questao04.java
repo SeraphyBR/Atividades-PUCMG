@@ -736,7 +736,8 @@ class FilaInstituicao
      */
     public void mostrar()
     {//Inicio mostrar
-        for(int i = primeiro; i != ultimo; i = (i + 1) % array.length){
+        int cont = 0;
+        for(int i = primeiro; cont++ < numElementos; i = (i + 1) % array.length){
             array[i].imprime();
         }
     }//Fim mostrar
