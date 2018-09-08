@@ -727,7 +727,7 @@ class Instituicao
 /**
  * Lista estatica de Instituicao
  * @author Luiz Junio Veloso Dos Santos
- * @version 1.0
+ * @version 1.5
  */
 
 class Lista
@@ -807,7 +807,7 @@ class Lista
     public void inserir(Instituicao instituicao, int posicao) throws Exception
     {//Inicio inserir
         //validar insercao
-        if(numElementos >= array.length || posicao < 0 || posicao > numElementos ){
+        if(numElementos >= array.length || posicao < 0 || posicao >= numElementos ){
             throw new Exception("Erro ao inserir!");
         }
 
@@ -898,7 +898,7 @@ class Lista
      * @return Verdadeiro se encontrar na lista, falso caso contrario.
      */
     public boolean pesquisaBinaria(String sigla)
-    {//Inicio pesquisaSequencial
+    {//Inicio pesquisaBinaria
         int inicio = 0, meio, fim = numElementos;
         boolean encontrei = false;
         int compareResult;
@@ -912,20 +912,20 @@ class Lista
             else if(compareResult < 0) fim = meio - 1;
         }
         return encontrei;
-    }//Fim pesquisaSequencial
+    }//Fim pesquisaBinaria
 
     /**
      * Troca dois elementos de posicao na lista
      * @param posicao1 Posicao do elemento a ser trocado
-     * @param posicao2 Posicao do outro elemento que será trocado
+     * @param posicao2 Posicao do outro elemento que sera trocado
      */
     public void swap(int posicao1, int posicao2) throws Exception
     {//Inicio swap
-        if(posicao1 > numElementos || posicao2 > numElementos || posicao1 < 0 || posicao2 < 0){
+        if(posicao1 >= numElementos || posicao2 >= numElementos || posicao1 < 0 || posicao2 < 0){
             throw new Exception("Posicao invalida!");
         }
-        Instituicao temp = array[posicao1];
-        array[posicao1] = array[posicao2];
+        Instituicao temp = array[posicao1].getClone();
+        array[posicao1] = array[posicao2].getClone();
         array[posicao2] = temp;
     }//Fim swap
 
@@ -934,7 +934,8 @@ class Lista
      * com base na ordem lexicografica das Siglas das IES.
      */
     public void ordenarSigla() throws Exception{
-        ordenarSigla(0, numElementos - 1);
+        int fim = numElementos - 1;
+        if(fim > 0) ordenarSigla(0, fim);
     }
 
     /**
