@@ -114,7 +114,7 @@ public class questao07
             tempoFinal = System.currentTimeMillis();
         }//Fim try
         catch(Exception exception){
-            System.err.println(exception);
+            exception.printStackTrace();
         }
 
         Arq.openWrite("matrícula_binaria.txt");//Abrindo arquivo de Log para escrita
@@ -160,6 +160,7 @@ public class questao07
         else
             MyIO.println("NÃO");
     }//Fim booleanToString
+
 }//Fim classe questao01
 
 /**
