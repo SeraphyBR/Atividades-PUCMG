@@ -72,7 +72,7 @@ class Conta
  * @author Luiz Junio Veloso Dos Santos
  * @version 1.2
  */            
-public class questao07
+public class questao09
 {//Inicio classe questao01
     public static void main(String[] args)
     {//Inicio main
@@ -98,28 +98,18 @@ public class questao07
                 listaInstituicao.inserirFim(new Instituicao(registro[linha[cont]]));
             }
 
-            listaInstituicao.ordenarSigla();//Ordena a lista com base nas siglas das IES
-
-            //Inicio Parte 2
-            String sigla;
             tempoInicial = System.currentTimeMillis();
-            boolean ehFIM = false;
-            do{
-                sigla = MyIO.readLine();
-                if(sigla.equals("FIM"))
-                    ehFIM = true;
-                else
-                    imprimeBool(listaInstituicao.pesquisaBinaria(sigla));
-            }while(!ehFIM);
-            MyIO.println("");
+            listaInstituicao.ordenarCodigo();//Ordena a lista com base no codigo das IES
             tempoFinal = System.currentTimeMillis();
+
+            listaInstituicao.mostrar();
         }//Fim try
         catch(Exception exception){
             exception.printStackTrace();
         }
 
-        Arq.openWrite("matrícula_binaria.txt");//Abrindo arquivo de Log para escrita
-        Arq.println("624037" + "\t" + (tempoFinal - tempoInicial) + "\t" + Conta.getNumComparacoes());
+        Arq.openWrite("matrícula_selecaoRecursiva.txt");//Abrindo arquivo de Log para escrita
+        Arq.println("624037" + "\t" + Conta.getNumComparacoes() + "\t" + Conta.getNumMovimentacoes() + "\t" + (tempoFinal - tempoInicial));
         Arq.close();
     }//Fim main
 
@@ -750,14 +740,14 @@ class Lista
      */
     public Lista(int tamanho){
         array = new Instituicao[tamanho];
-        numElementos = 0;
+        this.numElementos = 0;
     }
     /**
      * Metodo para obter o tamanho da lista 
      * @return tamanho da Lista
      */
     public int length(){
-        return numElementos;
+        return this.numElementos;
     }
 
     /**
@@ -895,28 +885,6 @@ class Lista
     }//Fim mostrar
 
     /**
-     * Pesquisa uma instituicao na Lista, por meio da sigla.
-     * @param sigla Sigla da instituicao a ser buscada.
-     * @return Verdadeiro se encontrar na lista, falso caso contrario.
-     */
-    public boolean pesquisaBinaria(String sigla)
-    {//Inicio pesquisaBinaria
-        int inicio = 0, meio, fim = numElementos - 1;
-        boolean encontrei = false;
-        int compareResult;
-        while(inicio <= fim && !encontrei){
-            meio = inicio + ((fim - inicio) / 2);
-            compareResult = array[meio].getSigla().compareTo(sigla);
-            Conta.somaComparacoes();
-            if(compareResult == 0)
-                encontrei = true;
-            else if(compareResult > 0) inicio = meio + 1;
-            else if(compareResult < 0) fim = meio - 1;
-        }
-        return encontrei;
-    }//Fim pesquisaBinaria
-
-    /**
      * Troca dois elementos de posicao na lista
      * @param posicao1 Posicao do elemento a ser trocado
      * @param posicao2 Posicao do outro elemento que sera trocado
@@ -929,43 +897,57 @@ class Lista
         Instituicao temp = array[posicao1].getClone();
         array[posicao1] = array[posicao2].getClone();
         array[posicao2] = temp;
+        Conta.somaMovimentacoes(3);//Soma as 3 movimentacoes entre elementos do array do swap.
     }//Fim swap
 
     /**
-     * Algoritmo de ordenacao Quicksort,
-     * com base na ordem lexicografica das Siglas das IES.
+     * Algoritmo de ordenacao por selecao,
+     * com base no codigo das IES.
      */
-    public void ordenarSigla() throws Exception{
-        int fim = numElementos - 1;
-        if(fim > 0) ordenarSigla(0, fim);
-        else throw new Exception("Erro!, nao ha elementos para ordenar!");
+    public void ordenarCodigo() throws Exception{
+        this.ordenarCodigo(0);
     }
 
     /**
-     * Algoritmo de ordenacao Quicksort,
-     * com base na ordem lexicografica das Siglas das IES.
-     * @param esq Inicio do array a ser ordenado
-     * @param dir Fim do array a ser ordenado
+     * Algoritmo recursivo de ordenacao por selecao,
+     * com base no codigo das IES.
      */
-    private void ordenarSigla(int esq, int dir) throws Exception
-    {//Inicio ordenarSigla
-        int i = esq, j = dir;
-        String pivo = array[(dir + esq)/2].getSigla();
-        while(i <= j)
-        {//Inicio while
-            //Compara se a sigla na posicao i e lexicograficamente menor que o pivo.
-            while(array[i].getSigla().compareToIgnoreCase(pivo) > 0) i++;
-
-            //Compara se a sigla na posicao j e lexicograficamente maior que o pivo.
-            while(array[j].getSigla().compareToIgnoreCase(pivo) < 0) j--;
-
-            if(i <= j){
-                swap(i,j);
-                i++;
-                j--;
+    private void ordenarCodigo(int i) throws Exception
+    {//Inicio ordenarCodigoRecursivo
+        int menor;
+        if(i < (numElementos - 1))
+        {//Inicio if
+            menor = i;
+            for(int j = (i + 1); j < numElementos; j++){
+                if(array[menor].getCodigo() > array[j].getCodigo()){
+                    menor = j;
+                }
+                Conta.somaComparacoes();//Soma a comparacao entre elementos do array da ordenacao
             }
+            swap(menor, i);
+            this.ordenarCodigo(i + 1);
+        }//Fim if
+    }//Fim ordenarCodigoRecursivo
+
+    /**
+     * Pesquisa uma instituicao na Lista, por meio do codigo.
+     * @param codigo Codigo da instituicao a ser buscada.
+     * @return Verdadeiro se encontrar na lista, falso caso contrario.
+     */
+    public boolean pesquisa(int codigo)
+    {//Inicio pesquisaBinaria
+        int inicio = 0, meio, fim = numElementos - 1;
+        boolean encontrei = false;
+        int val;
+        while(inicio <= fim && !encontrei)
+        {//Inicio while
+            meio = inicio + ((fim - inicio) / 2);
+            val = array[meio].getCodigo();
+            if(val == codigo)
+                encontrei = true;
+            else if(val < codigo) inicio = meio + 1;
+            else if(val > codigo) fim = meio - 1;
         }//Fim while
-        if(esq < j) this.ordenarSigla(esq, j);
-        if(i < dir) this.ordenarSigla(i, dir);
-    }//Fim ordenarSigla
+        return encontrei;
+    }//Fim pesquisaBinaria 
 }//Fim classe Lista
