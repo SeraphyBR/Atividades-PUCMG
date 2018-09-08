@@ -5,44 +5,73 @@ import java.io.IOException;
 
 /**
  * @author Luiz Junio Veloso Dos Santos
- * @version 1.2
+ * @version 1.0
  */
-
 class Conta
 {//Inicio classe Conta
     private static int numComparacoes;
     private static int numMovimentacoes;
 
+    /**
+     * Metodo para zerar o numero de comparacoes
+     * e movimentacoes.
+     */
     public static void zerar(){
         numComparacoes = 0;
         numMovimentacoes = 0;
     }
-
+    
+    /**
+     * Metodo para obter o numero de comparacoes.
+     * @return Numero de comparacoes.
+     */
     public static int getNumComparacoes(){
         return numComparacoes;
     }
 
+    /**
+     * Metodo para obter o numero de movimentacoes.
+     * @return Numero de comparacoes.
+     */
     public static int getNumMovimentacoes(){
         return numMovimentacoes;
     }
-
+    
+    /**
+     * Atribue um valor a ser somado ao numero de comparacoes.
+     * @param quantidade Valor a ser somado.
+     */
     public static void somaComparacoes(int quantidade){
         numComparacoes += quantidade;
     }
 
+    /**
+     * Soma mais 1 ao numero de comparacoes.
+     */
     public static void somaComparacoes(){
         numComparacoes++;
     }
-     
+    
+    /**
+     * Atribue um valor a ser somado ao numero de movimentacoes.
+     * @param quantidade Valor a ser somado.
+     */
     public static void somaMovimentacoes(int quantidade){
         numMovimentacoes += quantidade;
     }
 
+    /**
+     * Soma mais 1 ao numero de movimentacoes.
+     */
     public static void somaMovimentacoes(){
         numMovimentacoes++;
     }
 }//Fim classe conta
-
+ 
+/**
+ * @author Luiz Junio Veloso Dos Santos
+ * @version 1.2
+ */            
 public class questao06
 {//Inicio classe questao01
     public static void main(String[] args)
