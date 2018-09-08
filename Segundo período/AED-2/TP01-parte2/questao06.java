@@ -76,7 +76,8 @@ public class questao06
 {//Inicio classe questao01
     public static void main(String[] args)
     {//Inicio main
-        long tempoInicial = System.currentTimeMillis();//Obtencao do tempo de execucao
+        long tempoInicial = 0;
+        long tempoFinal = 0;
         try
         {//Inicio try
             int[] linha = new int[1000];
@@ -100,6 +101,7 @@ public class questao06
             //Inicio Parte 2
             String sigla;
             boolean ehFIM = false;
+            tempoInicial = System.currentTimeMillis();
             do{
                 sigla = MyIO.readLine();
                 if(sigla.equals("FIM"))
@@ -107,13 +109,12 @@ public class questao06
                 else
                     imprimeBool(listaInstituicao.pesquisaSequencial(sigla));
             }while(!ehFIM);
-
+            tempoFinal = System.currentTimeMillis();
         }//Fim try
         catch(Exception exception){
             System.err.println(exception);
         }
 
-        long tempoFinal = System.currentTimeMillis();//Obtencao do tempo final de execucao
         Arq.openWrite("matrícula_sequencial.txt");//Abrindo arquivo de Log para escrita
         Arq.print("624037" + "\t" + (tempoFinal - tempoInicial) + "\t" + Conta.getNumComparacoes());
         Arq.close();

@@ -76,7 +76,8 @@ public class questao07
 {//Inicio classe questao01
     public static void main(String[] args)
     {//Inicio main
-        long tempoInicial = System.currentTimeMillis();//Obtencao do tempo de execucao
+        long tempoInicial = 0;
+        long tempoFinal = 0;
         try
         {//Inicio try
             int[] linha = new int[1000];
@@ -101,23 +102,23 @@ public class questao07
 
             //Inicio Parte 2
             String sigla;
+            tempoInicial = System.currentTimeMillis();
             boolean ehFIM = false;
             do{
                 sigla = MyIO.readLine();
                 if(sigla.equals("FIM"))
                     ehFIM = true;
                 else
-                    imprimeBool(listaInstituicao.pesquisaSequencial(sigla));
+                    imprimeBool(listaInstituicao.pesquisaBinaria(sigla));
             }while(!ehFIM);
-
+            tempoFinal = System.currentTimeMillis();
         }//Fim try
         catch(Exception exception){
             System.err.println(exception);
         }
 
-        long tempoFinal = System.currentTimeMillis();//Obtencao do tempo final de execucao
         Arq.openWrite("matrícula_binaria.txt");//Abrindo arquivo de Log para escrita
-        Arq.print("624037" + "\t" + (tempoFinal - tempoInicial) + "\t" + Conta.getNumComparacoes() + "\t" + Conta.getNumMovimentacoes());
+        Arq.print("624037" + "\t" + (tempoFinal - tempoInicial) + "\t" + Conta.getNumComparacoes());
         Arq.close();
     }//Fim main
 
@@ -148,6 +149,10 @@ public class questao07
         return linha;
     }//Fim ler
 
+    /**
+     * Metodo que pega um valor booleano e imprime SIM ou NAO
+     * @param bool Um booleano
+     */
     public static void imprimeBool(boolean bool)
     {//Inicio booleanToString
         if(bool)
@@ -892,19 +897,28 @@ class Lista
      * @param sigla Sigla da instituicao a ser buscada.
      * @return Verdadeiro se encontrar na lista, falso caso contrario.
      */
-    public boolean pesquisaSequencial(String sigla)
+    public boolean pesquisaBinaria(String sigla)
     {//Inicio pesquisaSequencial
+        int inicio = 0, meio, fim = numElementos;
         boolean encontrei = false;
-        int i = 0;
-        while(i < numElementos && !encontrei){
-            if(array[i].getSigla().equals(sigla))
-                encontrei = true;
-            i++;
+        int compareResult;
+        while(inicio <= fim && !encontrei){
+            meio = inicio + ((fim - inicio) / 2);
+            compareResult = array[meio].getSigla().compareTo(sigla);
             Conta.somaComparacoes();
+            if(compareResult == 0)
+                encontrei = true;
+            else if(compareResult > 0) inicio = meio + 1;
+            else if(compareResult < 0) fim = meio - 1;
         }
         return encontrei;
     }//Fim pesquisaSequencial
 
+    /**
+     * Troca dois elementos de posicao na lista
+     * @param posicao1 Posicao do elemento a ser trocado
+     * @param posicao2 Posicao do outro elemento que será trocado
+     */
     public void swap(int posicao1, int posicao2) throws Exception
     {//Inicio swap
         if(posicao1 > numElementos || posicao2 > numElementos || posicao1 < 0 || posicao2 < 0){
@@ -913,7 +927,6 @@ class Lista
         Instituicao temp = array[posicao1];
         array[posicao1] = array[posicao2];
         array[posicao2] = temp;
-        Conta.somaMovimentacoes(3);
     }//Fim swap
 
     /**
@@ -921,7 +934,7 @@ class Lista
      * com base na ordem lexicografica das Siglas das IES.
      */
     public void ordenarSigla() throws Exception{
-        ordenarSigla(0, numElementos);
+        ordenarSigla(0, numElementos - 1);
     }
 
     /**
@@ -941,6 +954,7 @@ class Lista
 
             //Compara se a sigla na posicao j e lexicograficamente maior que o pivo.
             while(array[j].getSigla().compareToIgnoreCase(pivo) < 0) j--;
+
             if(i <= j){
                 swap(i,j);
                 i++;
