@@ -5,12 +5,49 @@ import java.io.IOException;
 
 /**
  * @author Luiz Junio Veloso Dos Santos
- * @version 1.0
+ * @version 1.2
  */
+
+class Conta
+{//Inicio classe Conta
+    private static int numComparacoes;
+    private static int numMovimentacoes;
+
+    public static void zerar(){
+        numComparacoes = 0;
+        numMovimentacoes = 0;
+    }
+
+    public static int getNumComparacoes(){
+        return numComparacoes;
+    }
+
+    public static int getNumMovimentacoes(){
+        return numMovimentacoes;
+    }
+
+    public static void somaComparacoes(int quantidade){
+        numComparacoes += quantidade;
+    }
+
+    public static void somaComparacoes(){
+        numComparacoes++;
+    }
+     
+    public static void somaMovimentacoes(int quantidade){
+        numMovimentacoes += quantidade;
+    }
+
+    public static void somaMovimentacoes(){
+        numMovimentacoes++;
+    }
+}//Fim classe conta
+
 public class questao06
 {//Inicio classe questao01
     public static void main(String[] args)
     {//Inicio main
+        long tempoInicial = System.currentTimeMillis();//Obtencao do tempo de execucao
         try
         {//Inicio try
             int[] linha = new int[1000];
@@ -41,10 +78,16 @@ public class questao06
                 else
                     imprimeBool(listaInstituicao.pesquisaSequencial(sigla));
             }while(!ehFIM);
+
         }//Fim try
         catch(Exception exception){
             System.err.println(exception);
         }
+
+        long tempoFinal = System.currentTimeMillis();//Obtencao do tempo final de execucao
+        Arq.openWrite("matrícula_sequencial.txt");//Abrindo arquivo de Log para escrita
+        Arq.print("624037" + "\t" + (tempoFinal - tempoInicial) + "\t" + Conta.getNumComparacoes());
+        Arq.close();
     }//Fim main
 
     /**
@@ -813,6 +856,11 @@ class Lista
         }
     }//Fim mostrar
 
+    /**
+     * Pesquisa uma instituicao na Lista, por meio da sigla.
+     * @param sigla Sigla da instituicao a ser buscada.
+     * @return Verdadeiro se encontrar na lista, falso caso contrario.
+     */
     public boolean pesquisaSequencial(String sigla)
     {//Inicio pesquisaSequencial
         boolean encontrei = false;
@@ -821,6 +869,7 @@ class Lista
             if(array[i].getSigla().equals(sigla))
                 encontrei = true;
             i++;
+            Conta.somaComparacoes();
         }
         return encontrei;
     }//Fim pesquisaSequencial
