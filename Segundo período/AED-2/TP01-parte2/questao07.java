@@ -906,12 +906,12 @@ class Lista
         int compareResult;
         while(inicio <= fim && !encontrei){
             meio = inicio + ((fim - inicio) / 2);
-            compareResult = array[meio].getSigla().compareTo(sigla);
+            compareResult = array[meio].getSigla().compareToIgnoreCase(sigla);
             Conta.somaComparacoes();
             if(compareResult == 0)
                 encontrei = true;
-            else if(compareResult > 0) inicio = meio + 1;
-            else if(compareResult < 0) fim = meio - 1;
+            else if(compareResult < 0) inicio = meio + 1;
+            else if(compareResult > 0) fim = meio - 1;
         }
         return encontrei;
     }//Fim pesquisaBinaria
@@ -954,10 +954,10 @@ class Lista
         while(i <= j)
         {//Inicio while
             //Compara se a sigla na posicao i e lexicograficamente menor que o pivo.
-            while(array[i].getSigla().compareToIgnoreCase(pivo) > 0) i++;
+            while(array[i].getSigla().compareToIgnoreCase(pivo) < 0) i++;
 
             //Compara se a sigla na posicao j e lexicograficamente maior que o pivo.
-            while(array[j].getSigla().compareToIgnoreCase(pivo) < 0) j--;
+            while(array[j].getSigla().compareToIgnoreCase(pivo) > 0) j--;
 
             if(i <= j){
                 swap(i,j);
