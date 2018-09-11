@@ -933,8 +933,11 @@ class Lista
             {//Inicio while
                 array[j + passo] = array[j].getClone();
                 j -= passo;
+                Conta.somaMovimentacoes();
+                Conta.somaComparacoes(3);
             }//Fim while
             array[j + passo] = tmp;
+            Conta.somaMovimentacoes(2);
         }//Fim for
     }//Fim insercaoPorCor
 
