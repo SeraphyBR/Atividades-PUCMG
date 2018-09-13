@@ -902,7 +902,7 @@ class Lista
 
     /**
      * Algoritmo de ordenacao Quicksort,
-     * com base na ordem lexicografica das Siglas das IES.
+     * com base na ordem lexicografica dos Nomes das IES.
      */
     public void ordenarNome() throws Exception{
         int fim = numElementos - 1;
@@ -912,21 +912,21 @@ class Lista
 
     /**
      * Algoritmo de ordenacao Quicksort,
-     * com base na ordem lexicografica das Siglas das IES.
+     * com base na ordem lexicografica dos Nomes das IES.
      * @param esq Inicio do array a ser ordenado
      * @param dir Fim do array a ser ordenado
      */
     private void ordenarNome(int esq, int dir) throws Exception
     {//Inicio ordenarSigla
         int i = esq, j = dir;
-        String pivo = array[(dir + esq)/2].getSigla();
+        String pivo = array[(dir + esq)/2].getNome();
         while(i <= j)
         {//Inicio while
             //Compara se a sigla na posicao i e lexicograficamente menor que o pivo.
-            while(array[i].getNome().compareToIgnoreCase(pivo) < 0) i++;
+            while(array[i].getNome().compareTo(pivo) < 0) i++;
 
             //Compara se a sigla na posicao j e lexicograficamente maior que o pivo.
-            while(array[j].getNome().compareToIgnoreCase(pivo) > 0) j--;
+            while(array[j].getNome().compareTo(pivo) > 0) j--;
 
             if(i <= j){
                 swap(i,j);
@@ -949,7 +949,7 @@ class Lista
         int compareResult;
         while(inicio <= fim && !encontrei){
             meio = inicio + ((fim - inicio) / 2);
-            compareResult = array[meio].getSigla().compareToIgnoreCase(nome);
+            compareResult = array[meio].getNome().compareTo(nome);
             Conta.somaComparacoes();
             if(compareResult == 0)
                 encontrei = true;
