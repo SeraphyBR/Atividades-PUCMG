@@ -70,7 +70,7 @@ class Conta
  
 /**
  * @author Luiz Junio Veloso Dos Santos
- * @version 1.2
+ * @version 1.5
  */            
 public class questao12
 {//Inicio classe questao01
@@ -108,7 +108,7 @@ public class questao12
             exception.printStackTrace();
         }
 
-        Arq.openWrite("matrícula_selecao.txt");//Abrindo arquivo de Log para escrita
+        Arq.openWrite("matrícula_heapsort.txt");//Abrindo arquivo de Log para escrita
         Arq.println("624037" + "\t" + Conta.getNumComparacoes() + "\t" + Conta.getNumMovimentacoes() + "\t" + (tempoFinal - tempoInicial));
         Arq.close();
     }//Fim main
@@ -939,15 +939,18 @@ class Lista
      */
     private void constroiHeap(int tamHeap) throws Exception
     {//Inicio constroiHeap
-        int i = tamHeap;
-        boolean compare = i > 1 && array[i].getCodigoMunicipio() >= array[i/2].getCodigoMunicipio();
-        compare = compare || (i > 1 && (array[i].getCodigoMunicipio() == array[i/2].getCodigoMunicipio() && (array[i].getSigla().compareTo(array[i/2].getSigla()) > 0)));
-        while(compare){
-            swap(i, i/2);
-            i /= 2;
-            compare = i > 1 && array[i].getCodigoMunicipio() >= array[i/2].getCodigoMunicipio();
-            compare = compare || (i > 1 && (array[i].getCodigoMunicipio() == array[i/2].getCodigoMunicipio() && (array[i].getSigla().compareTo(array[i/2].getSigla()) > 0)));
-        };
+        for(int i = tamHeap; i > 1 && array[i].getCodigoMunicipio() >= array[i/2].getCodigoMunicipio(); i /= 2)
+        {//Inicio for
+            Conta.somaComparacoes();
+            if(array[i].getCodigoMunicipio() == array[i/2].getCodigoMunicipio()){
+                if(array[i].getSigla().compareTo(array[i/2].getSigla()) > 0){
+                    swap(i, i/2);
+                }
+                Conta.somaComparacoes();
+            }
+            else swap(i, i/2);
+            Conta.somaComparacoes();
+        }//Fim for
     }//Fim constroiHeap
 
     /**
@@ -957,45 +960,41 @@ class Lista
     private void reconstroiHeap(int tamHeap) throws Exception
     {//Inicio reconstroiHeap
         int i = 1, filho;
-        boolean compare;
         while(i <= (tamHeap/2))
         {//Inicio while
-            compare = array[2*i].getCodigoMunicipio() >= array[2*i+1].getCodigoMunicipio() || 2*i == tamHeap;;
-            compare = compare || (array[2*i].getCodigoMunicipio() == array[2*i+1].getCodigoMunicipio() && (array[2*i].getSigla().compareTo(array[2*i+1].getSigla()) > 0 ));
-            if(compare){
-                filho = 2*i;
+            //Verifica qual o maior filho de cada no
+            if(array[2*i].getCodigoMunicipio() >= array[2*i+1].getCodigoMunicipio() || 2*i == tamHeap){
+                if(array[2*i].getCodigoMunicipio() == array[2*i+1].getCodigoMunicipio()){
+                    if(array[2*i].getSigla().compareTo(array[2*i+1].getSigla()) > 0){
+                        filho = 2*i;
+                    }
+                    else filho = 2*i + 1;
+                    Conta.somaComparacoes();
+                }
+                else filho = 2*i;
+                Conta.somaComparacoes();
             }
             else filho = 2*i + 1;
+            Conta.somaComparacoes();
 
-            compare = array[i].getCodigoMunicipio() <= array[filho].getCodigoMunicipio();
-            compare = compare || (array[i].getCodigoMunicipio() == array[filho].getCodigoMunicipio() && (array[i].getSigla().compareTo(array[filho].getSigla()) < 0));
-            if(compare){
-                swap(i, filho);
-                i = filho;
+            //Verifica se o pai e menor que o filho, se for o filho passa a ser o pai.
+            if(array[i].getCodigoMunicipio() <= array[filho].getCodigoMunicipio()){
+                if(array[i].getCodigoMunicipio() == array[filho].getCodigoMunicipio()){
+                    if(array[i].getSigla().compareTo(array[filho].getSigla()) < 0){
+                        swap(i,filho);
+                        i = filho;
+                    }
+                    Conta.somaComparacoes();
+                }
+                else{
+                    swap(i,filho);
+                    i = filho;
+                }
+                Conta.somaComparacoes();
             }
             else i = tamHeap;
+            Conta.somaComparacoes();
         }//Fim while
     }//Fim reconstroiHeap
 
-    /**
-     * Pesquisa uma instituicao na Lista, por meio do codigo.
-     * @param codigo Codigo da instituicao a ser buscada.
-     * @return Verdadeiro se encontrar na lista, falso caso contrario.
-     */
-    public boolean pesquisa(int codigo)
-    {//Inicio pesquisaBinaria
-        int inicio = 0, meio, fim = numElementos - 1;
-        boolean encontrei = false;
-        int val;
-        while(inicio <= fim && !encontrei)
-        {//Inicio while
-            meio = inicio + ((fim - inicio) / 2);
-            val = array[meio].getCodigo();
-            if(val == codigo)
-                encontrei = true;
-            else if(val < codigo) inicio = meio + 1;
-            else if(val > codigo) fim = meio - 1;
-        }//Fim while
-        return encontrei;
-    }//Fim pesquisaBinaria 
 }//Fim classe Lista
