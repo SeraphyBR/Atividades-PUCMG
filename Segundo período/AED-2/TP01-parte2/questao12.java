@@ -941,12 +941,12 @@ class Lista
     {//Inicio constroiHeap
         int i = tamHeap;
         boolean compare = i > 1 && array[i].getCodigoMunicipio() >= array[i/2].getCodigoMunicipio();
-        compare = compare || (i > 1 && array[i].getCodigoMunicipio() == array[i/2].getCodigoMunicipio() && (array[i].getSigla().compareTo(array[i/2].getSigla()) > 0));
+        compare = compare || (i > 1 && (array[i].getCodigoMunicipio() == array[i/2].getCodigoMunicipio() && (array[i].getSigla().compareTo(array[i/2].getSigla()) > 0)));
         while(compare){
             swap(i, i/2);
             i /= 2;
             compare = i > 1 && array[i].getCodigoMunicipio() >= array[i/2].getCodigoMunicipio();
-            compare = compare || (i > 1 && array[i].getCodigoMunicipio() == array[i/2].getCodigoMunicipio() && (array[i].getSigla().compareTo(array[i/2].getSigla()) > 0));
+            compare = compare || (i > 1 && (array[i].getCodigoMunicipio() == array[i/2].getCodigoMunicipio() && (array[i].getSigla().compareTo(array[i/2].getSigla()) > 0)));
         };
     }//Fim constroiHeap
 
