@@ -891,7 +891,7 @@ class Lista
      */
     public void swap(int posicao1, int posicao2) throws Exception
     {//Inicio swap
-        if(posicao1 >= numElementos || posicao2 >= numElementos || posicao1 < 0 || posicao2 < 0){
+        if(posicao1 > numElementos || posicao2 > numElementos || posicao1 < 0 || posicao2 < 0){
             throw new Exception("Posicao invalida!");
         }
         Instituicao temp = array[posicao1].getClone();
@@ -921,7 +921,7 @@ class Lista
         //Ordenacao propriamente dita
         int tamHeap = numElementos;
         while(tamHeap > 1){
-            swap(1, tamHeap);
+            swap(1, tamHeap--);
             reconstroiHeap(tamHeap);
         }
 
@@ -939,9 +939,15 @@ class Lista
      */
     private void constroiHeap(int tamHeap) throws Exception
     {//Inicio constroiHeap
-        for(int i = tamHeap; i > 1 && array[i].getCodigoMunicipio() > array[i/2].getCodigoMunicipio(); i /= 2){
+        int i = tamHeap;
+        boolean compare = i > 1 && array[i].getCodigoMunicipio() >= array[i/2].getCodigoMunicipio();
+        compare = compare || (i > 1 && array[i].getCodigoMunicipio() == array[i/2].getCodigoMunicipio() && (array[i].getSigla().compareTo(array[i/2].getSigla()) > 0));
+        while(compare){
             swap(i, i/2);
-        }
+            i /= 2;
+            compare = i > 1 && array[i].getCodigoMunicipio() >= array[i/2].getCodigoMunicipio();
+            compare = compare || (i > 1 && array[i].getCodigoMunicipio() == array[i/2].getCodigoMunicipio() && (array[i].getSigla().compareTo(array[i/2].getSigla()) > 0));
+        };
     }//Fim constroiHeap
 
     /**
@@ -951,14 +957,19 @@ class Lista
     private void reconstroiHeap(int tamHeap) throws Exception
     {//Inicio reconstroiHeap
         int i = 1, filho;
+        boolean compare;
         while(i <= (tamHeap/2))
         {//Inicio while
-            if(array[2*i].getCodigoMunicipio() > array[2*i+1].getCodigoMunicipio()){
+            compare = array[2*i].getCodigoMunicipio() >= array[2*i+1].getCodigoMunicipio() || 2*i == tamHeap;;
+            compare = compare || (array[2*i].getCodigoMunicipio() == array[2*i+1].getCodigoMunicipio() && (array[2*i].getSigla().compareTo(array[2*i+1].getSigla()) > 0 ));
+            if(compare){
                 filho = 2*i;
             }
             else filho = 2*i + 1;
 
-            if(array[i].getCodigoMunicipio() < array[filho].getCodigoMunicipio()){
+            compare = array[i].getCodigoMunicipio() <= array[filho].getCodigoMunicipio();
+            compare = compare || (array[i].getCodigoMunicipio() == array[filho].getCodigoMunicipio() && (array[i].getSigla().compareTo(array[filho].getSigla()) < 0));
+            if(compare){
                 swap(i, filho);
                 i = filho;
             }
