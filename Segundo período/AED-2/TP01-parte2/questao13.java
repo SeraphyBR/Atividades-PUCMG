@@ -923,10 +923,16 @@ class Lista
         while(i <= j)
         {//Inicio while
             //Compara se a sigla na posicao i e lexicograficamente menor que o pivo.
-            while(array[i].getNome().compareTo(pivo) < 0) i++;
+            while(array[i].getNome().compareTo(pivo) < 0){
+                i++;
+                Conta.somaComparacoes();
+            }
 
             //Compara se a sigla na posicao j e lexicograficamente maior que o pivo.
-            while(array[j].getNome().compareTo(pivo) > 0) j--;
+            while(array[j].getNome().compareTo(pivo) > 0){
+                j--;
+                Conta.somaComparacoes();
+            }
 
             if(i <= j){
                 swap(i,j);
