@@ -99,7 +99,7 @@ public class questao10
             }
 
             tempoInicial = System.currentTimeMillis();
-            listaInstituicao.ordenarCodigo();//Ordena a lista com base no codigo da Mantenedora das IES
+            listaInstituicao.ordenarCodigoMantenedora();//Ordena a lista com base no codigo da Mantenedora das IES
             tempoFinal = System.currentTimeMillis();
 
             listaInstituicao.mostrar();
@@ -903,7 +903,7 @@ class Lista
      * ALgoritmo de ordenacao por insercao, com base
      * no codigo da Mantenedora da IES.
      */
-    public void ordenarCodigo() throws Exception
+    public void ordenarCodigoMantenedora() throws Exception
     {//Inicior ordenarCodigo
         Instituicao tmp;
         int j;

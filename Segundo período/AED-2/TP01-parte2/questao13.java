@@ -72,7 +72,7 @@ class Conta
  * @author Luiz Junio Veloso Dos Santos
  * @version 1.5
  */            
-public class questao12
+public class questao13
 {//Inicio classe questao01
     public static void main(String[] args)
     {//Inicio main
@@ -99,7 +99,7 @@ public class questao12
             }
 
             tempoInicial = System.currentTimeMillis();
-            listaInstituicao.ordenarCodigoMunicipio();//Ordena a lista com base no codigo das IES
+            listaInstituicao.ordenarNome();//Ordena a lista com base no codigo das IES
             tempoFinal = System.currentTimeMillis();
 
             listaInstituicao.mostrar();
@@ -108,7 +108,7 @@ public class questao12
             exception.printStackTrace();
         }
 
-        Arq.openWrite("matrícula_heapsort.txt");//Abrindo arquivo de Log para escrita
+        Arq.openWrite("matrícula_quicksort.txt");//Abrindo arquivo de Log para escrita
         Arq.println("624037" + "\t" + Conta.getNumComparacoes() + "\t" + Conta.getNumMovimentacoes() + "\t" + (tempoFinal - tempoInicial));
         Arq.close();
     }//Fim main
@@ -891,7 +891,7 @@ class Lista
      */
     public void swap(int posicao1, int posicao2) throws Exception
     {//Inicio swap
-        if(posicao1 > numElementos || posicao2 > numElementos || posicao1 < 0 || posicao2 < 0){
+        if(posicao1 >= numElementos || posicao2 >= numElementos || posicao1 < 0 || posicao2 < 0){
             throw new Exception("Posicao invalida!");
         }
         Instituicao temp = array[posicao1].getClone();
@@ -901,100 +901,61 @@ class Lista
     }//Fim swap
 
     /**
-     * Algoritmo de ordenacao Heapsort Invertido com base no codigo
-     * do municipio.
+     * Algoritmo de ordenacao Quicksort,
+     * com base na ordem lexicografica das Siglas das IES.
      */
-    public void ordenarCodigoMunicipio() throws Exception
-    {//Inicio ordenarCodigo 
-        //Alterar o vetor ignorando a posicao zero
-        Instituicao[] tmp = new Instituicao[numElementos + 1];
-        for(int i = 0; i < numElementos; i++){
-            tmp[i+1] = array[i];
-        }
-        array = tmp;
-
-        //Construcao do heap
-        for(int tamHeap = 2; tamHeap <= numElementos; tamHeap++){
-            constroiHeap(tamHeap);
-        }
-
-        //Ordenacao propriamente dita
-        int tamHeap = numElementos;
-        while(tamHeap > 1){
-            swap(1, tamHeap--);
-            reconstroiHeap(tamHeap);
-        }
-
-        //Alterar o vetor para voltar a posicao zero
-        tmp = array;
-        array  = new Instituicao[numElementos];
-        for(int i = 0; i < numElementos; i++){
-            array[i] = tmp[i+1];
-        }
-    }//Fim ordenarCodigo
+    public void ordenarNome() throws Exception{
+        int fim = numElementos - 1;
+        if(fim > 0) ordenarNome(0, fim);
+        else throw new Exception("Erro!, nao ha elementos para ordenar!");
+    }
 
     /**
-     * Constroi o formato de Heap Invertido
-     * @param tamHeap Tamanho do Heap
+     * Algoritmo de ordenacao Quicksort,
+     * com base na ordem lexicografica das Siglas das IES.
+     * @param esq Inicio do array a ser ordenado
+     * @param dir Fim do array a ser ordenado
      */
-    private void constroiHeap(int tamHeap) throws Exception
-    {//Inicio constroiHeap
-        for(int i = tamHeap; i > 1 && array[i].getCodigoMunicipio() >= array[i/2].getCodigoMunicipio(); i /= 2)
-        {//Inicio for
-            Conta.somaComparacoes();
-            if(array[i].getCodigoMunicipio() == array[i/2].getCodigoMunicipio()){
-                if(array[i].getSigla().compareTo(array[i/2].getSigla()) > 0){
-                    swap(i, i/2);
-                }
-                Conta.somaComparacoes();
-            }
-            else swap(i, i/2);
-            Conta.somaComparacoes();
-        }//Fim for
-    }//Fim constroiHeap
-
-    /**
-     * Reconstroi o formato de Heap Invertido
-     * @param tamHeap Tamanho do heap
-     */
-    private void reconstroiHeap(int tamHeap) throws Exception
-    {//Inicio reconstroiHeap
-        int i = 1, filho;
-        while(i <= (tamHeap/2))
+    private void ordenarNome(int esq, int dir) throws Exception
+    {//Inicio ordenarSigla
+        int i = esq, j = dir;
+        String pivo = array[(dir + esq)/2].getSigla();
+        while(i <= j)
         {//Inicio while
-            //Verifica qual o maior filho de cada no
-            if(array[2*i].getCodigoMunicipio() >= array[2*i+1].getCodigoMunicipio() || 2*i == tamHeap){
-                if(array[2*i].getCodigoMunicipio() == array[2*i+1].getCodigoMunicipio()){
-                    if(array[2*i].getSigla().compareTo(array[2*i+1].getSigla()) > 0){
-                        filho = 2*i;
-                    }
-                    else filho = 2*i + 1;
-                    Conta.somaComparacoes();
-                }
-                else filho = 2*i;
-                Conta.somaComparacoes();
-            }
-            else filho = 2*i + 1;
-            Conta.somaComparacoes();
+            //Compara se a sigla na posicao i e lexicograficamente menor que o pivo.
+            while(array[i].getNome().compareToIgnoreCase(pivo) < 0) i++;
 
-            //Verifica se o pai e menor que o filho, se for o filho passa a ser o pai.
-            if(array[i].getCodigoMunicipio() <= array[filho].getCodigoMunicipio()){
-                if(array[i].getCodigoMunicipio() == array[filho].getCodigoMunicipio()){
-                    if(array[i].getSigla().compareTo(array[filho].getSigla()) < 0){
-                        swap(i,filho);
-                        i = filho;
-                    }
-                    Conta.somaComparacoes();
-                }
-                else{
-                    swap(i,filho);
-                    i = filho;
-                }
-                Conta.somaComparacoes();
+            //Compara se a sigla na posicao j e lexicograficamente maior que o pivo.
+            while(array[j].getNome().compareToIgnoreCase(pivo) > 0) j--;
+
+            if(i <= j){
+                swap(i,j);
+                i++;
+                j--;
             }
-            else i = tamHeap;
-            Conta.somaComparacoes();
         }//Fim while
-    }//Fim reconstroiHeap
-
+        if(esq < j) this.ordenarNome(esq, j);
+        if(i < dir) this.ordenarNome(i, dir);
+    }//Fim ordenarSigla  
+    /**
+     * Pesquisa uma instituicao na Lista, por meio do nome da IES.
+     * @param nome Nome da instituicao a ser buscada.
+     * @return Verdadeiro se encontrar na lista, falso caso contrario.
+     */
+    public boolean pesquisa(String nome)
+    {//Inicio pesquisaBinaria
+        int inicio = 0, meio, fim = numElementos - 1;
+        boolean encontrei = false;
+        int compareResult;
+        while(inicio <= fim && !encontrei){
+            meio = inicio + ((fim - inicio) / 2);
+            compareResult = array[meio].getSigla().compareToIgnoreCase(nome);
+            Conta.somaComparacoes();
+            if(compareResult == 0)
+                encontrei = true;
+            else if(compareResult < 0) inicio = meio + 1;
+            else if(compareResult > 0) fim = meio - 1;
+        }//Fim while
+        return encontrei;
+    }//Fim pesquisaBinaria 
 }//Fim classe Lista

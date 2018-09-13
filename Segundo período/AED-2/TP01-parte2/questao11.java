@@ -99,7 +99,7 @@ public class questao11
             }
 
             tempoInicial = System.currentTimeMillis();
-            listaInstituicao.ordenarCodigo();//Ordena a lista com base no codigo das IES
+            listaInstituicao.ordenarUF();//Ordena a lista com base no codigo das IES
             tempoFinal = System.currentTimeMillis();
 
             listaInstituicao.mostrar();
@@ -904,7 +904,7 @@ class Lista
      * Algoritmo de ordenacao Shellsort,
      * com base na UF das IES.
      */
-    public void ordenarCodigo() throws Exception
+    public void ordenarUF() throws Exception
     {//Inicio ordenarCodigo
         int passo = 1;
         do{passo = (passo * 3) + 1;}while(passo < numElementos);
