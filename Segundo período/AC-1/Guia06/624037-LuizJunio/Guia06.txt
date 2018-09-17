@@ -1,0 +1,72 @@
+
+Nome: Luiz Junio Veloso Dos Santos
+Matricula: 624037
+
+
+Modelo Mapa de Veitch-Karnaugh:
+
+    3 variaveis min-termos:
+
+        ------y'--|---y----
+        x'| 0 | 1 | 3 | 2 |
+        --|---|---|---|---|
+        x | 4 | 5 | 7 | 6 |
+        ----z'|---z---|-z'-
+
+Guia 06:
+
+    Questão 01: 
+    Montar o mapa de Veitch-Karnaugh e simplificar as funções lógicas abaixo 
+    e verificar pelas respectivas tabelas-verdades implementadas em Verilog: 
+
+    a) f(x,y,z) = Σ m(1, 5, 7)
+    
+        ------y'--|---y----
+        x'| 0 | 1 | 0 | 0 |
+        --|---|---|---|---|
+        x | 0 | 1 | 1 | 0 |
+        ----z'|---z---|-z'-
+    
+        = y'*z + x*z
+
+
+    b) f(x,y,z) = Σ m(0, 2, 6)
+ 
+        ------y'--|---y----
+        x'| 1 | 0 | 0 | 1 |
+        --|---|---|---|---|
+        x | 0 | 0 | 0 | 1 |
+        ----z'|---z---|-z'-
+
+        = z'*y + x'*y'*z'
+
+
+    c) f(x,y,z) = Σ m(0, 1, 4, 5)
+    
+        ------y'--|---y----
+        x'| 1 | 1 | 0 | 0 |
+        --|---|---|---|---|
+        x | 1 | 1 | 0 | 0 |
+        ----z'|---z---|-z'-
+        
+        = y'
+
+    d) f(x,y,z) = Σ m(2, 3, 5, 7)
+ 
+        ------y'--|---y----
+        x'| 0 | 0 | 1 | 1 |
+        --|---|---|---|---|
+        x | 0 | 1 | 1 | 0 |
+        ----z'|---z---|-z'-
+        
+        = x'*y + x*z
+
+    e) f(x,y,z) = Σ m(0, 3, 4, 6)
+
+        ------y'--|---y----
+        x'| 1 | 0 | 1 | 0 |
+        --|---|---|---|---|
+        x | 1 | 1 | 0 | 1 |
+        ----z'|---z---|-z'-
+ 
+        = y'*z' + x*y' + x'*y*z + x*z'
