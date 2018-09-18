@@ -955,7 +955,14 @@ class Lista
             else
                 if(receitaL == receitaR)
                 {//Inicio elseif
-                
+                    if(L[i].getSigla().compareTo(R[j].getSigla()) < 0){
+                        array[k] = L[i].getClone();
+                        i++;
+                    }
+                    else{
+                        array[k] = R[j].getClone();
+                        j++;
+                    }
                 }//Fim elseif
             else{
                 array[k] = R[j].getClone();
