@@ -903,20 +903,80 @@ class Lista
 
     public void ordenarReceita()
     {//Inicio ordenarReceita
-
+        sort(0, numElementos - 1);
     }//Fim ordenarReceita
 
     private void sort(int inicio, int fim)
     {//Inicio sort
-
-        if(inicio < fim){
+        if(inicio < fim)
+        {//Inicio if
             //Encontra o meio
-            int m = (inicio + fim)/2;
+            int meio = (inicio + fim)/2;
 
             //Sorteia a primeira e segunda metades
             sort(inicio, meio);
             sort(meio+1, fim);
-        }
+
+            // Une as metades sortidas
+            merge(inicio, meio, fim);
+        }//Fim if
     }//Fim sort
+
+    private void merge(int inicio, int meio, int fim)
+    {//Inicio merge
+        // Encontra o tamanho de 2 sub-arrays para serem unidos
+        int tam1 = meio - inicio + 1;
+        int tam2 = fim - meio;
+
+        // Cria arrays temporario
+        Instituicao[] L = new Instituicao[tam1];
+        Instituicao[] R = new Instituicao[tam2];
+
+        int i, j;
+        // Copia os datos para os arrays temporarios
+        for(i = 0; i < tam1; ++i) L[i] = array[inicio + i].getClone();
+        for(j = 0; j < tam2; ++j) R[j] = array[meio + 1 + j].getClone();
+
+        //Indices iniciais dos dois subarrays
+        i = 0; j = 0;
+
+        //Indice inicial do array mesclado
+        int k = inicio;
+        
+        double receitaL, receitaR;
+        while(i < tam1 && j < tam2)
+        {//Inicio while 1
+            receitaL = L[i].getReceita();
+            receitaR = R[j].getReceita();
+            if(receitaL < receitaR){
+                array[k] = L[i].getClone();
+                i++;
+            }
+            else
+                if(receitaL == receitaR)
+                {//Inicio elseif
+                
+                }//Fim elseif
+            else{
+                array[k] = R[j].getClone();
+                j++;
+            }
+            k++;
+        }//Fim while 1
+
+        //Copia elementos restantes de L[] se houverem
+        while(i < tam1)
+        {//Inicio while 2
+            array[k] = L[i].getClone();
+            i++; k++;
+        }//Fim while 2
+
+        //Copia elementos restantes de R[] se houverem
+        while(j < tam2)
+        {//Inicio while 3
+            array[k] = R[j].getClone();
+            j++; k++;
+        }//Fim while 3
+    }//Fim merge
 
 }//Fim classe Lista
