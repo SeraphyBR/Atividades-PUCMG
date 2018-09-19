@@ -951,22 +951,29 @@ class Lista
             if(receitaL < receitaR){
                 array[k] = L[i].getClone();
                 i++;
+                Conta.somaMovimentacoes();
+                Conta.somaComparacoes();
             }
-            else
-                if(receitaL == receitaR)
-                {//Inicio elseif
-                    if(L[i].getSigla().compareTo(R[j].getSigla()) < 0){
-                        array[k] = L[i].getClone();
-                        i++;
-                    }
-                    else{
-                        array[k] = R[j].getClone();
-                        j++;
-                    }
-                }//Fim elseif
+            else if(receitaL == receitaR)
+            {//Inicio elseif
+                Conta.somaComparacoes(2);
+                if(L[i].getSigla().compareTo(R[j].getSigla()) < 0){
+                    array[k] = L[i].getClone();
+                    i++;
+                    Conta.somaMovimentacoes();
+                }
+                else{
+                    array[k] = R[j].getClone();
+                    j++;
+                    Conta.somaMovimentacoes();
+                }
+                Conta.somaComparacoes();
+            }//Fim else if
             else{
                 array[k] = R[j].getClone();
                 j++;
+                Conta.somaMovimentacoes();
+                Conta.somaComparacoes(2);
             }
             k++;
         }//Fim while 1
@@ -976,6 +983,7 @@ class Lista
         {//Inicio while 2
             array[k] = L[i].getClone();
             i++; k++;
+            Conta.somaMovimentacoes();
         }//Fim while 2
 
         //Copia elementos restantes de R[] se houverem
@@ -983,6 +991,7 @@ class Lista
         {//Inicio while 3
             array[k] = R[j].getClone();
             j++; k++;
+            Conta.somaMovimentacoes();
         }//Fim while 3
     }//Fim merge
 
