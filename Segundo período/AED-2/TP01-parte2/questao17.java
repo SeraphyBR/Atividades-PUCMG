@@ -72,7 +72,7 @@ class Conta
  * @author Luiz Junio Veloso Dos Santos
  * @version 1.5
  */            
-public class questao16
+public class questao17
 {//Inicio classe questao01
     public static void main(String[] args)
     {//Inicio main
@@ -99,7 +99,7 @@ public class questao16
             }
 
             tempoInicial = System.currentTimeMillis();
-            listaInstituicao.ordenarReceita();//Ordena a lista com base na quantidade de livros eletronicos
+            listaInstituicao.ordenarCodigo();//Ordena a lista com base no codigo das IES
             tempoFinal = System.currentTimeMillis();
 
             listaInstituicao.mostrar();
@@ -108,7 +108,7 @@ public class questao16
             exception.printStackTrace();
         }
 
-        Arq.openWrite("matrícula_mergesort.txt");//Abrindo arquivo de Log para escrita
+        Arq.openWrite("matrícula_radixsort.txt");//Abrindo arquivo de Log para escrita
         Arq.println("624037" + "\t" + Conta.getNumComparacoes() + "\t" + Conta.getNumMovimentacoes() + "\t" + (tempoFinal - tempoInicial));
         Arq.close();
     }//Fim main
@@ -900,113 +900,60 @@ class Lista
         array[posicao2] = temp;
         Conta.somaMovimentacoes(3);//Soma as 3 movimentacoes entre elementos do array do swap.
     }//Fim swap
+    
+    /**
+     * Algoritmo de ordenacao Radixsort, com base no codigo da IES.
+     */
+    public void ordenarCodigo()
+    {//Inicio ordenarCodigo
+        //Obter o maior valor para saber a maior quantidade de digitos
+        int m = this.getMaiorCodigo();
+
+        //Fazer countingsort para cada digito
+        for(int exp = 1; m/exp > 0; exp *= 10){
+            this.countingsort(exp);
+        }
+    }//Fim ordenarCodigo
 
     /**
-     * Metodo de ordenacao MergeSort baseado no atributo Receita das IES
+     * Algoritmo de ordenacao Countingsort, com base no codigo IES, modificado para uso no Radixsort
      */
-    public void ordenarReceita()
-    {//Inicio ordenarReceita
-        sort(0, numElementos - 1);
-    }//Fim ordenarReceita
+    private void countingsort(int exp)
+    {//Inicio ordenarPeriodico
+        //Array para contar o numero de ocorrencias de cada elemento
+        int[] count = new int[this.getMaiorCodigo() + 1];
+        Instituicao[] ordenado = new Instituicao[numElementos];
 
+        //Inicializar cada posicao do array de contagem
+        for(int i = 0; i < count.length; count[i] = 0, i++);
+
+        //Agora, o count[i] conte, o numero de elementos iguais a i
+        for(int i = 0; i < numElementos; count[(array[i].getCodigo()/exp)%10]++, i++);
+
+        //Agora, o count[i] contem o numero de elementos menores ou iguais a i
+        for(int i = 1; i < count.length; count[i] += count[i-1], i++);
+
+        //Ordenando
+        for(int i = numElementos-1; i>= 0; ordenado[count[(array[i].getCodigo()/exp)%10] - 1] = array[i].getClone(), count[(array[i].getCodigo()/exp)%10]--, i--);
+
+        //Copiando para o array original
+        for(int i = 0; i < numElementos; array[i] = ordenado[i].getClone(), i++);
+    }//Fim ordenarPeriodico
+     
     /**
-     * Metodo Sort pertencente ao algoritmo de ordenacao Mergesort
-     * @param inicio Posicao inicial do array
-     * @param fim Posicao final do array
+     * Retorna o maior codigo da Lista
+     * @return O maior codigo de uma IES
      */
-    private void sort(int inicio, int fim)
-    {//Inicio sort
-        if(inicio < fim)
-        {//Inicio if
-            //Encontra o meio
-            int meio = (inicio + fim)/2;
-
-            //Sorteia a primeira e segunda metades
-            sort(inicio, meio);
-            sort(meio+1, fim);
-
-            // Une as metades sortidas
-            merge(inicio, meio, fim);
-        }//Fim if
-    }//Fim sort
-
-    /**
-     * Metodo Merge pertencente ao algoritmo de ordenacao Mergesort
-     * @param inicio Posicao inicial do array
-     * @param meio Posicao do meio do array
-     * @param fim Posicao final do array
-     */
-    private void merge(int inicio, int meio, int fim)
-    {//Inicio merge
-        // Encontra o tamanho de 2 sub-arrays para serem unidos
-        int tam1 = meio - inicio + 1;
-        int tam2 = fim - meio;
-
-        // Cria arrays temporario
-        Instituicao[] L = new Instituicao[tam1];
-        Instituicao[] R = new Instituicao[tam2];
-
-        int i, j;
-        // Copia os datos para os arrays temporarios
-        for(i = 0; i < tam1; ++i) L[i] = array[inicio + i].getClone();
-        for(j = 0; j < tam2; ++j) R[j] = array[meio + 1 + j].getClone();
-
-        //Indices iniciais dos dois subarrays
-        i = 0; j = 0;
-
-        //Indice inicial do array mesclado
-        int k = inicio;
-        
-        double receitaL, receitaR;
-        while(i < tam1 && j < tam2)
-        {//Inicio while 1
-            receitaL = L[i].getReceita();
-            receitaR = R[j].getReceita();
-            if(receitaL < receitaR){
-                array[k] = L[i].getClone();
-                i++;
-                Conta.somaMovimentacoes();
-                Conta.somaComparacoes();
+    private int getMaiorCodigo()
+    {//Inicio getMaiorPeriodico
+        int maior = array[0].getCodigo();
+        int tmp;
+        for(int i = 1; i < numElementos; i++){
+            tmp = array[i].getCodigo();
+            if(maior < tmp){
+                maior = tmp;
             }
-            else if(receitaL == receitaR)
-            {//Inicio elseif
-                Conta.somaComparacoes(2);
-                if(L[i].getSigla().compareTo(R[j].getSigla()) < 0){
-                    array[k] = L[i].getClone();
-                    i++;
-                    Conta.somaMovimentacoes();
-                }
-                else{
-                    array[k] = R[j].getClone();
-                    j++;
-                    Conta.somaMovimentacoes();
-                }
-                Conta.somaComparacoes();
-            }//Fim else if
-            else{
-                array[k] = R[j].getClone();
-                j++;
-                Conta.somaMovimentacoes();
-                Conta.somaComparacoes(2);
-            }
-            k++;
-        }//Fim while 1
-
-        //Copia elementos restantes de L[] se houverem
-        while(i < tam1)
-        {//Inicio while 2
-            array[k] = L[i].getClone();
-            i++; k++;
-            Conta.somaMovimentacoes();
-        }//Fim while 2
-
-        //Copia elementos restantes de R[] se houverem
-        while(j < tam2)
-        {//Inicio while 3
-            array[k] = R[j].getClone();
-            j++; k++;
-            Conta.somaMovimentacoes();
-        }//Fim while 3
-    }//Fim merge
-
+        }
+        return maior;
+    }//Fim getMaiorPeriodico 
 }//Fim classe Lista
