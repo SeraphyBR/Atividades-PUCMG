@@ -984,6 +984,7 @@ class Lista
                         swap(i,filho);
                         i = filho;
                     }
+                    else i = tamHeap;
                     Conta.somaComparacoes();
                 }
                 else{
