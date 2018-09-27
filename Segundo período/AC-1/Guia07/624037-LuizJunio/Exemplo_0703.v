@@ -24,13 +24,13 @@ module mux (output s, input key, input a, input b);
 endmodule //mux
 
 // ------------------------- 
-//  Unidade Logica com AND e OR,
+//  Unidade Logica com AND/OR e NAND/NOR
 //  Selecionavel (paralelas, 1 resposta)
 //  1-bit
 // ------------------------- 
-module lu (output sa, output sb, input key, input a, input b); 
+module lu (output s, input key, input keyb, input a, input b); 
     
-    wire s0, s1, s2, s3;
+    wire s0, s1, s2, s3, sa, sb;
 
     // descrever por portas 
     and AND1   ( s0, a, b );
@@ -38,8 +38,9 @@ module lu (output sa, output sb, input key, input a, input b);
     or  OR1    ( s2, a, b );
     nor NOR1   ( s3, a, b );
 
-    mux MUX1 (sa, key, s0, s1);
-    mux MUX2 (sb, key, s2, s3);
+    mux MUX1 (sa, key, s0, s2);
+    mux MUX2 (sb, key, s1, s3);
+    mux MUX3 (s, keyb, sa, sb);
 
 endmodule // mux 
  
@@ -49,10 +50,10 @@ module main;
        reg  x; 
        reg  y;
        reg key;
-       wire s0;
-       wire s1;
+       reg keyb;
+       wire s;
  
-       lu LU1 (s0, s1, key, x, y); 
+       lu LU1 (s, key, keyb,  x, y); 
  
 // ------------------------- parte principal 
  
@@ -60,17 +61,25 @@ module main;
    begin : main 
         $display("Exemplo_0703 - Luiz Junio Veloso Dos Santos"); 
         $display("Test LU's module"); 
-        $display("  key   x    y    s0    s1"); 
+        $display("  keyb key   x    y    s"); 
         // projetar testes do modulo 
-        $monitor("%4b %4b %4b %4b %4b", key, x, y, s0, s1); 
-        key = 1'b0;  x = 1'b0; y = 1'b0; 
-    #1  key = 1'b0;  x = 1'b0; y = 1'b1;
-    #1  key = 1'b0;  x = 1'b1; y = 1'b0;
-    #1  key = 1'b0;  x = 1'b1; y = 1'b1;
-    #1  key = 1'b1;  x = 1'b0; y = 1'b0;
-    #1  key = 1'b1;  x = 1'b0; y = 1'b1;
-    #1  key = 1'b1;  x = 1'b1; y = 1'b0;
-    #1  key = 1'b1;  x = 1'b1; y = 1'b1;
+        $monitor("%4b %4b %4b %4b %4b", keyb, key, x, y, s); 
+        keyb = 1'b0; key = 1'b0;  x = 1'b0; y = 1'b0; 
+    #1  keyb = 1'b0; key = 1'b0;  x = 1'b0; y = 1'b1;
+    #1  keyb = 1'b0; key = 1'b0;  x = 1'b1; y = 1'b0;
+    #1  keyb = 1'b0; key = 1'b0;  x = 1'b1; y = 1'b1;
+    #1  keyb = 1'b0; key = 1'b1;  x = 1'b0; y = 1'b0;
+    #1  keyb = 1'b0; key = 1'b1;  x = 1'b0; y = 1'b1;
+    #1  keyb = 1'b0; key = 1'b1;  x = 1'b1; y = 1'b0;
+    #1  keyb = 1'b0; key = 1'b1;  x = 1'b1; y = 1'b1;
+    #1  keyb = 1'b1; key = 1'b0;  x = 1'b0; y = 1'b0; 
+    #1  keyb = 1'b1; key = 1'b0;  x = 1'b0; y = 1'b1;
+    #1  keyb = 1'b1; key = 1'b0;  x = 1'b1; y = 1'b0;
+    #1  keyb = 1'b1; key = 1'b0;  x = 1'b1; y = 1'b1;
+    #1  keyb = 1'b1; key = 1'b1;  x = 1'b0; y = 1'b0;
+    #1  keyb = 1'b1; key = 1'b1;  x = 1'b0; y = 1'b1;
+    #1  keyb = 1'b1; key = 1'b1;  x = 1'b1; y = 1'b0;
+    #1  keyb = 1'b1; key = 1'b1;  x = 1'b1; y = 1'b1;
    end 
  
 endmodule // test_f6 
