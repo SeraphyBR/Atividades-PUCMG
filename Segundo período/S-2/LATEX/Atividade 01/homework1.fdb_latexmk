@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1538006776 "homework1.tex" "homework1.pdf" "homework1" 1538006776
+["pdflatex"] 1538073604 "homework1.tex" "homework1.pdf" "homework1" 1538073604
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -52,9 +52,9 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1535300447 325073 705aa03b367ab71bc75db4c747a42f57 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1533585081 728368 c4ad729f0b40b48d0b92b1dd58a4153b ""
   "Imagens/jdf.png" 1537998408 83951 86182be878304713da2576daee936fcc ""
-  "homework1.aux" 1538006776 182 9a1ca30b194bd545f26a173e7817d613 ""
-  "homework1.tex" 1538006776 3488 0ed71768e608f11ededad9d83a04973f ""
+  "homework1.aux" 1538073604 182 9a1ca30b194bd545f26a173e7817d613 ""
+  "homework1.tex" 1538073603 3512 3873eb4ef50d52a59dae1cf85f04d793 ""
   (generated)
+  "homework1.log"
   "homework1.aux"
   "homework1.pdf"
-  "homework1.log"
