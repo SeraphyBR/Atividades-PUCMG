@@ -1,5 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1538073604 "homework1.tex" "homework1.pdf" "homework1" 1538073604
+["pdflatex"] 1538256474 "homework1.tex" "homework1.pdf" "homework1" 1538256474
+  "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -11,10 +12,13 @@
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
+  "/usr/share/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1136768653 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1248133631 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texmf-dist/tex/generic/babel-portuges/portuges.ldf" 1367878976 6605 2bd2937f1ce929b4a1367cc2d320364e ""
   "/usr/share/texmf-dist/tex/generic/babel/babel.def" 1495227874 56906 5fe966833cc01ad71361044f6df6de8f ""
@@ -52,8 +56,8 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1535300447 325073 705aa03b367ab71bc75db4c747a42f57 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1533585081 728368 c4ad729f0b40b48d0b92b1dd58a4153b ""
   "Imagens/jdf.png" 1537998408 83951 86182be878304713da2576daee936fcc ""
-  "homework1.aux" 1538073604 182 9a1ca30b194bd545f26a173e7817d613 ""
-  "homework1.tex" 1538073603 3512 3873eb4ef50d52a59dae1cf85f04d793 ""
+  "homework1.aux" 1538256474 182 9a1ca30b194bd545f26a173e7817d613 ""
+  "homework1.tex" 1538256473 5163 bcd7a75e7dd95f3c12a53502b852cb23 ""
   (generated)
   "homework1.log"
   "homework1.aux"
