@@ -82,16 +82,16 @@ Instituicao* cloneInstituicao( Instituicao* i )
 {//Inicio cloneInstituicao
     Instituicao* clone = (Instituicao*) malloc(sizeof(Instituicao));      
     clone->codigo = i->codigo;
-    strncpy(clone->nome, i->nome, 200);
-    strncpy(clone->sigla, i->sigla, 20);
+    strlcpy(clone->nome, i->nome, TAM_NOME + 1);
+    strlcpy(clone->sigla, i->sigla, TAM_SIGLA + 1);
     clone->codigoMantenedora = i->codigoMantenedora;
-    strncpy(clone->mantenedora, i->mantenedora, 200);
+    strlcpy(clone->mantenedora, i->mantenedora, TAM_MANTENEDORA + 1);
     clone->categoria = i->categoria;
     clone->organizacao = i->organizacao;
     clone->codigoMunicio = i->codigoMunicio;
-    strcpy(clone->municipio, i->municipio);
-    strcpy(clone->uf, i->uf);
-    strcpy(clone->regiao, i->regiao);
+    strlcpy(clone->municipio, i->municipio, TAM_MUNICIPIO + 1);
+    strlcpy(clone->uf, i->uf, TAM_UF + 1);
+    strlcpy(clone->regiao, i->regiao, TAM_REGIAO + 1);
     clone->tecnico = i->tecnico;
     clone->periodico = i->periodico;
     clone->livro = i->livro;
@@ -121,16 +121,16 @@ Instituicao* strToInstituicao(char* string)
     }
      
     new->codigo = atoi(valor[0]);
-    strncpy(new->nome, valor[1], 200);
-    strncpy(new->sigla, valor[2], 20);
+    strlcpy(new->nome, valor[1], TAM_NOME + 1);
+    strlcpy(new->sigla, valor[2], TAM_SIGLA + 1);
     new->codigoMantenedora = atoi(valor[3]);
-    strncpy(new->mantenedora, valor[4], 200);
-    new->categoria = 0;
-    new->organizacao = 0;
-    new->codigoMunicio = 0;
-    strcpy(new->municipio, "");
-    strcpy(new->uf, "");
-    strcpy(new->regiao, "");
+    strlcpy(new->mantenedora, valor[4], TAM_MANTENEDORA + 1);
+    new->categoria = atoi(valor[5]);
+    new->organizacao = atoi(valor[6]);
+    new->codigoMunicio = atoi(valor[7]);
+    strlcpy(new->municipio, valor[8], TAM_MUNICIPIO + 1);
+    strlcpy(new->uf, valor[9], TAM_UF + 1);
+    strlcpy(new->regiao, valor[10], TAM_REGIAO + 1);
     new->tecnico = 0;
     new->periodico = 0;
     new->livro = 0;
