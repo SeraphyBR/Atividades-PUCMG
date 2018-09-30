@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.8.6)  29 SEP 2018 18:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.8.6)  29 SEP 2018 19:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -525,22 +525,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 41--55
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 74--75
-
- []
-
 [2] (./homework1.aux) ) 
 Here is how much of TeX's memory you used:
  2790 strings out of 494919
  36848 string characters out of 6180670
- 107679 words of memory out of 5000000
+ 108679 words of memory out of 5000000
  6059 multiletter control sequences out of 15000+600000
  7636 words of font info for 27 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  39i,7n,31p,242b,283s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on homework1.pdf (2 pages, 179654 bytes).
+Output written on homework1.pdf (2 pages, 179708 bytes).
 PDF statistics:
  36 PDF objects out of 1000 (max. 8388607)
  24 compressed objects within 1 object stream
