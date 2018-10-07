@@ -39,18 +39,18 @@ module test_fullAdder;
     wire  [3:0] carry; // “vai-um” 
     wire  [4:0] soma; 
  
-   fullAdder  FA0 ( carry[0], soma[0], 1'b0, x[0], y[0] ); 
+   fullAdder  FA0 ( carry[0], soma[0], 1'b0, x[0], y[0] );
+   fullAdder  FA1 ( carry[1], soma[1], carry[0], x[1], y[1] );
+   fullAdder  FA2 ( carry[2], soma[2], carry[1], x[2], y[2] );
+   fullAdder  FA3 ( carry[3], soma[3], carry[2], x[3], y[3] );
  
 // ------------------------- parte principal 
  initial begin 
     $display("Exemplo0801 - Luiz Junio - 624037"); 
     $display("Test ALU’s full adder");
-    $display("  Carry   x   y   soma");
-    $monitor("%4b %4b %4b %4b", carry, x, y, soma);
-        x = 3'b010; y = 3'b110;
-    #1  x = 1'b0; y = 1'b1;
-    #1  x = 1'b1; y = 1'b0;
-    #1  x = 1'b1; y = 1'b1;
+    $display("  Carry    x        y      soma");
+    $monitor("  %4b    %4b      %4b     %4b", carry, x, y, soma);
+        x = 3'b100; y = 3'b011;
 end 
  
 endmodule // test_fullAdder 
