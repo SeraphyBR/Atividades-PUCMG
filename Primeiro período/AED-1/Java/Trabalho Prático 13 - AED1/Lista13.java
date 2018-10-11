@@ -17,15 +17,15 @@ public class Lista13
         while(executando)
         {//Inicio while executando
             System.out.printf(
-                "\n\t MENU DOS TRIANGULOS\n" +
-                "0 - Sair do programa\n"   +
-                "1 - Criar um triângulo\n" +
-                "2 - Listar Triângulos\n"  +
-                "3 - Triângulos Iguais\n"  +
-                "4 - Listar os triângulos de um determinado tipo\n" +
-                "5 - Verificar inconsistências\n" +
-                "\n=> "
-            );
+                    "\n\t MENU DOS TRIANGULOS\n" +
+                    "0 - Sair do programa\n"   +
+                    "1 - Criar um triângulo\n" +
+                    "2 - Listar Triângulos\n"  +
+                    "3 - Triângulos Iguais\n"  +
+                    "4 - Listar os triângulos de um determinado tipo\n" +
+                    "5 - Verificar inconsistências\n" +
+                    "\n=> "
+                    );
             int opcao = leia.nextInt(); 
             switch(opcao)
             {//Inicio switch
@@ -87,12 +87,12 @@ public class Lista13
         for(int cont = 0; cont < i; cont++)
         {//Inicio for
             System.out.println(
-                "Triangulo " + (cont + 1) + ":" +
-                "\n\tLado A: " + tri[cont].getA() + 
-                "\n\tLado B: " + tri[cont].getB() +
-                "\n\tLado C: " + tri[cont].getC() +
-                "\n\tPerimetro: " + tri[cont].perimetro() + "\n"
-            );
+                    "Triangulo " + (cont + 1) + ":" +
+                    "\n\tLado A: " + tri[cont].getA() + 
+                    "\n\tLado B: " + tri[cont].getB() +
+                    "\n\tLado C: " + tri[cont].getC() +
+                    "\n\tPerimetro: " + tri[cont].perimetro() + "\n"
+                    );
         }//Fim for
     }//FIm listaTriangulos
 
@@ -104,12 +104,12 @@ public class Lista13
         {//Inicio for
             if(tri[cont].tipo() == tipo){
                 System.out.println(
-                    "Triangulo " + (cont + 1) + ":" +
-                    "\n\tLado A: " + tri[cont].getA() + 
-                    "\n\tLado B: " + tri[cont].getB() +
-                    "\n\tLado C: " + tri[cont].getC() +
-                    "\n\tPerimetro: " + tri[cont].perimetro() + "\n"
-                );//Fim println
+                        "Triangulo " + (cont + 1) + ":" +
+                        "\n\tLado A: " + tri[cont].getA() + 
+                        "\n\tLado B: " + tri[cont].getB() +
+                        "\n\tLado C: " + tri[cont].getC() +
+                        "\n\tPerimetro: " + tri[cont].perimetro() + "\n"
+                        );//Fim println
             }//Fim if 
         }//Fim for
     }//Fim listaTriangulos tipo 
@@ -129,7 +129,7 @@ public class Lista13
                 System.out.printf("O triângulo %d é inválido!\n", cont + 1);
                 invalidos++;
             }//Fim if 
-            
+
         }//Fim for
         if(invalidos == 0) System.out.println("Não há casos de inválidez!");
     }//Fim listaTriangulosInvalidos
@@ -168,7 +168,7 @@ class Triangulo
         setC(0);
         instancias++;
     }//Fim construtor
-    
+
     Triangulo(double ladoA, double ladoB, double ladoC)
     {//Contrutor 3 lados
         setA(ladoA);
@@ -186,7 +186,7 @@ class Triangulo
         if(ladoB < 0) this.ladoB = 0;
         else this.ladoB = ladoB;
     }//Fim setB
-    
+
     public void setC(double ladoC){
         if(ladoA < 0) this.ladoC = 0;
         else this.ladoC = ladoC;
@@ -235,7 +235,7 @@ class Triangulo
 
         System.out.print("Digite o lado B: ");
         lado2 = ler.nextDouble();
-            
+
         System.out.print("Digite o lado C: ");
         lado3 = ler.nextDouble();
 
@@ -247,11 +247,11 @@ class Triangulo
     public static boolean ehTrianguloValido(double A, double B, double C)
     {//Inicio ehTrianguloValido
         /*
-        Para construir um triângulo é necessário que a medida de 
-        qualquer um dos lados seja menor que a soma das medidas 
-        dos outros dois e maior que o valor absoluto da diferença 
-        entre essas medidas.
-        */
+           Para construir um triângulo é necessário que a medida de 
+           qualquer um dos lados seja menor que a soma das medidas 
+           dos outros dois e maior que o valor absoluto da diferença 
+           entre essas medidas.
+           */
         boolean caso1 = Math.abs(B - C) < A && A < (B + C);
         boolean caso2 = Math.abs(A - C) < B && B < (A + C);
         boolean caso3 = Math.abs(A - B) < C && C < (A + B);

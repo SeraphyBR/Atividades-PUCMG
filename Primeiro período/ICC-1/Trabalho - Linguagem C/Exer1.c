@@ -7,7 +7,7 @@ int main()
     int cont = 1, genero = 0, homens = 0, mulheres = 0;
     float mediaMulheres = 0, mediaTurma = 0;
     float maiorAltura = 0, menorAltura = 3;
-    
+
     printf("Digite a altura da %dª pessoa: ", cont);
     scanf("%f", &valor);
     while(valor > 0)

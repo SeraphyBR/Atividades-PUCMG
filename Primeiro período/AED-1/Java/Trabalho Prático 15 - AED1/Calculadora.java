@@ -27,15 +27,15 @@ public class Calculadora
     {//Fim menu
         Scanner ler = new Scanner(System.in);
         System.out.print(
-            "\n\tMenu Calculadora" +
-            "\nDigite uma opção seguinte: " +
-            "\n0 - Sair" +
-            "\t1 - Adição" +
-            "\n2 - Subtração" +
-            "\t3 - Multiplicação" +
-            "\n\t4 - Divisão" +
-            "\n=> "
-        );//Fim println
+                "\n\tMenu Calculadora" +
+                "\nDigite uma opção seguinte: " +
+                "\n0 - Sair" +
+                "\t1 - Adição" +
+                "\n2 - Subtração" +
+                "\t3 - Multiplicação" +
+                "\n\t4 - Divisão" +
+                "\n=> "
+                );//Fim println
         int op = ler.nextInt();
         return op;
     }//Fim menu 

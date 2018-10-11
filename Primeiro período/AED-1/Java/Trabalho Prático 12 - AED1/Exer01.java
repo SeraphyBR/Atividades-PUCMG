@@ -41,7 +41,7 @@ class Triangulo
     private void setB(double ladoB){
         this.ladoB = ladoB;
     }//Fim setB
-    
+
     private void setC(double ladoC){
         this.ladoC = ladoC;
     }//Fim setC
@@ -114,11 +114,11 @@ class Triangulo
     public static boolean ehTrianguloValido(double A, double B, double C)
     {//Inicio ehTrianguloValido
         /*
-        Para construir um triângulo é necessário que a medida de 
-        qualquer um dos lados seja menor que a soma das medidas 
-        dos outros dois e maior que o valor absoluto da diferença 
-        entre essas medidas.
-        */
+           Para construir um triângulo é necessário que a medida de 
+           qualquer um dos lados seja menor que a soma das medidas 
+           dos outros dois e maior que o valor absoluto da diferença 
+           entre essas medidas.
+           */
         boolean caso1 = Math.abs(B - C) < A && A < (B + C);
         boolean caso2 = Math.abs(A - C) < B && B < (A + C);
         boolean caso3 = Math.abs(A - B) < C && C < (A + B);

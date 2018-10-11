@@ -700,7 +700,7 @@ class Celula
 }//Fim classe Celula
 
 /**
- * Lista estatica de Instituicao
+ * Lista flexivel de Instituicao
  * @author Luiz Junio Veloso Dos Santos
  * @version 1.0
  */
