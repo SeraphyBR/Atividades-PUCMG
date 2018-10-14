@@ -1,3 +1,33 @@
+
+public class questao05
+{//Inicio classe principal
+    public static void main(String[] args){
+        try{
+            int numTestes = MyIO.readInt();
+            for(int cont = 0; cont < numTestes; cont++){
+                int numLinhasA = MyIO.readInt();
+                int numColunasA = MyIO.readInt();
+                Matriz matrizA = new Matriz(numLinhasA, numColunasA);
+                matrizA.setValores();
+                int numLinhasB = MyIO.readInt();
+                int numColunasB = MyIO.readInt();
+                Matriz matrizB = new Matriz(numLinhasB, numColunasB);
+                matrizB.setValores();
+
+                matrizA.mostrarDiagonalPrincipal();
+                matrizA.mostrarDiagonalSecundaria();
+                matrizA.soma(matrizB).mostrar();
+                matrizA.multiplica(matrizB).mostrar();
+            }
+
+        }
+        catch(Exception exception){
+            exception.printStackTrace();
+        }
+    }
+}//Fim classe principal
+
+
 /**
  * Classe Celula de Inteiro
  * @author Luiz Junio Veloso Dos Santos
@@ -47,26 +77,34 @@ class Matriz
         int contL = 0;
         int contC = 0;
         this.inicio = new Celula();
-        for(Celula l = inicio; contL < this.numLinhas; contL++)
+        for(Celula l = this.inicio; contL < this.numLinhas; contL++)
         {//Inicio for l
-            contL = 0;
-            for(Celula c = l; contC < this.numColunas; contC++)
+            contC = 0;
+            for(Celula c = l; contC < this.numColunas - 1; contC++)
             {//Inicio for c
                 c.dir = new Celula();
-                c.dir.esq = c.dir;
+                c.dir.esq = c;
                 c = c.dir;
-                if(contC != 0){
+                if(contL != 0){
                     c.esq.sup.dir.inf = c;
                     c.sup = c.esq.sup.dir;
                 }
             }//Fim for c
-            if(contL != this.numLinhas){
+            if(contL != this.numLinhas - 1){
                 l.inf = new Celula();
                 l.inf.sup = l;
                 l = l.inf;  
             }          
         }//Fim for l
     }//Fim construtor linha, coluna
+
+    public void setValores(){
+        for(Celula j = this.inicio; j != null; j = j.inf){
+            for(Celula i = j; i != null; i = i.dir){
+                i.elemento = MyIO.readInt();
+            }
+        }   
+    }
 
     public Matriz soma(Matriz m) throws Exception
     {//Inicio soma
@@ -93,9 +131,9 @@ class Matriz
         if(m != null && this.numColunas == m.numLinhas)
         {//Inicio if
             produto = new Matriz(this.numLinhas, m.numColunas);
-            for(Celula p1 = produto.inicio, m1 = m.inicio, t1 = this.inicio; p1 != null; p1 = p1.inf, t1 = t1.inf)
+            for(Celula p1 = produto.inicio, t1 = this.inicio; p1 != null; p1 = p1.inf, t1 = t1.inf)
             {//Inicio for p linha
-                for(Celula p2 = p1; p2 != null; p2 = p2.dir, m1 = m1.dir)
+                for(Celula p2 = p1, m1 = m.inicio; p2 != null && m1 != null; p2 = p2.dir, m1 = m1.dir)
                 {//Inicio for p coluna
                     for(Celula t2 = t1, m2 = m1; t2 != null; t2 = t2.dir, m2 = m2.inf){
                         p2.elemento += t2.elemento * m2.elemento; 
@@ -114,9 +152,11 @@ class Matriz
     public void mostrarDiagonalPrincipal()
     {//Inicio mostrarDiagonalPrincipal
         if(this.ehQuadrada()){
-            for(Celula i = inicio; i != null; i = i.inf.dir){
-                System.out.println(i.elemento);
+            Celula i;
+            for(i = this.inicio; i.inf != null; i = i.inf.dir){
+                MyIO.print(i.elemento + " ");
             }
+            MyIO.println(i.elemento + " ");
         }
     }//Fim mostrarDiagonalPrincipal
 
@@ -125,20 +165,21 @@ class Matriz
         if(this.ehQuadrada()){
             Celula i;
             for(i = this.inicio; i.dir != null; i = i.dir);
-            for(Celula j = i; j != null; j = j.inf.esq){
-                System.out.println(j.elemento);
+            for(/**/; i.inf != null; i = i.inf.esq){
+                MyIO.print(i.elemento + " ");
             }
+            MyIO.println(i.elemento + " ");
         }
-        else System.out.println("É necessario que a matriz seja quadrada!");
+        else MyIO.println("É necessario que a matriz seja quadrada!");
     }//Fim mostrarDiagonalSecundaria
 
     public void mostrar()
     {//Inicio mostrar
         for(Celula j = this.inicio; j != null; j = j.inf){
             for(Celula i = j; i != null; i = i.dir){
-                System.out.print(i.elemento + " ");
+                MyIO.print(i.elemento + " ");
             }
-            System.out.println();
+            MyIO.println("");
         }
     }//Fim mostrar
 }//Fim classe Matriz      
