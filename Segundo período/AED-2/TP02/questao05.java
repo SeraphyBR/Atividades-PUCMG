@@ -1,4 +1,7 @@
-
+/**
+ * Classe Principal
+ * @author Luiz Junio Veloso Dos Santos
+ */
 public class questao05
 {//Inicio classe principal
     public static void main(String[] args){
@@ -30,7 +33,6 @@ public class questao05
 
 /**
  * Classe Celula de Inteiro
- * @author Luiz Junio Veloso Dos Santos
  * @version 1
  */
 class Celula 
@@ -38,14 +40,29 @@ class Celula
     public int elemento;
     public Celula inf, sup, esq, dir;
 
+    /**
+     * Construtor vazio de Celula
+     */
     public Celula(){
         this(0, null, null, null, null);
     }
 
+    /**
+     * Construtor de Celula
+     * @param elemento Numero a ser guardado na celula
+     */
     public Celula(int elemento){
         this(elemento, null, null, null, null);
     }
-
+    
+    /**
+     * Construtor de Celula.
+     * @param elemento Numero a ser guardado na celula.
+     * @param inf Celula abaixo. 
+     * @param sup Celula acima.
+     * @param esq Celula a esquerda.
+     * @param dir Celula a direita.
+     */
     public Celula(int elemento, Celula inf, Celula sup, Celula esq, Celula dir){
         this.elemento = elemento;
         this.inf = inf;
@@ -65,10 +82,18 @@ class Matriz
     private Celula inicio;
     private int numLinhas, numColunas;
 
+    /**
+     * Construtor de Matriz, padrao 3x3.
+     */
     public Matriz (){
         this(3, 3);
     }
 
+    /**
+     * Construtor de Matriz
+     * @param linha Numero de linhas da matriz.
+     * @param coluna Numero de colunas da matriz.
+     */
     public Matriz (int linha, int coluna)
     {//Inicio construtor linha, coluna
         this.numLinhas = linha;
@@ -86,6 +111,8 @@ class Matriz
                 c.dir.esq = c;
                 c = c.dir;
                 if(contL != 0){
+                    //Se tiver mais de 1 linha, ligar o ponteiro da celula nova
+                    //com a celula localizada acima (superior).
                     c.esq.sup.dir.inf = c;
                     c.sup = c.esq.sup.dir;
                 }
@@ -98,6 +125,9 @@ class Matriz
         }//Fim for l
     }//Fim construtor linha, coluna
 
+    /**
+     * Atribue os valores para uma matriz.
+     */
     public void setValores(){
         for(Celula j = this.inicio; j != null; j = j.inf){
             for(Celula i = j; i != null; i = i.dir){
@@ -105,7 +135,13 @@ class Matriz
             }
         }   
     }
-
+    
+    /**
+     * Soma a matriz atual com outra matriz.
+     * @param m A matriz com que sera somada.
+     * @return A matriz contendo a soma.
+     * @throws Exception Caso a matriz passada como parametro nao tiver as mesmas dimensoes.
+     */
     public Matriz soma(Matriz m) throws Exception
     {//Inicio soma
         Matriz resp = null;
@@ -125,6 +161,12 @@ class Matriz
         return resp;
     }//Fim soma
 
+    /**
+     * Multiplica a matriz atual com outra.
+     * @param m A segunda matriz para ser multiplicada
+     * @return A matriz resultante do calculo.
+     * @throws Exception Se o numero de colunas de uma for diferente do numero de linhas da outra.
+     */
     public Matriz multiplica(Matriz m) throws Exception
     {//Inicio multiplica
         Matriz produto = null;
@@ -145,10 +187,17 @@ class Matriz
         return produto;
     }//Fim multiplica
 
+    /**
+     * Metodo para saber se a matriz e quadrada.
+     * @return True se tiver o mesmo numero de linhas e colunas, false caso contrario.
+     */
     public boolean ehQuadrada(){
         return (this.numLinhas == this.numColunas);
     }
 
+    /**
+     * Metodo para mostrar a diagonal principal da matriz.
+     */
     public void mostrarDiagonalPrincipal()
     {//Inicio mostrarDiagonalPrincipal
         if(this.ehQuadrada()){
@@ -160,6 +209,9 @@ class Matriz
         }
     }//Fim mostrarDiagonalPrincipal
 
+    /**
+     * Metodo para mostrar a diagonal secundaria da matriz.
+     */
     public void mostrarDiagonalSecundaria()
     {//Inicio mostrarDiagonalSecundaria
         if(this.ehQuadrada()){
@@ -173,6 +225,9 @@ class Matriz
         else MyIO.println("É necessario que a matriz seja quadrada!");
     }//Fim mostrarDiagonalSecundaria
 
+    /**
+     * Metodo para mostrar todos os elementos da Matriz.
+     */
     public void mostrar()
     {//Inicio mostrar
         for(Celula j = this.inicio; j != null; j = j.inf){
