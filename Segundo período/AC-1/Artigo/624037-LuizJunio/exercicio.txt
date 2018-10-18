@@ -1,0 +1,36 @@
+
+Nome: Luiz Junio Veloso Dos Santos
+Matricula: 624037
+
+
+3) Segundo o texto, caracterizar as siglas:
+
+    ASIC: 
+    A sigla significa "Application Specific Integrated Circuits", são circuitos elaborados para tarefas muito
+    especificas, em domínios bem definidos. Exemplo: Um chip projetado para rodar somente em um Micro-ondas.
+
+    SPLD:
+    A sigla significa "Simple Programmable Logic Devices", e basicamente se trata de um componente eletrônico
+    usado para construir circuitos digitais reconfiguráveis.
+
+    CPLD:
+    A sigla significa "Complex Programmable Logic Devices", e basicamente se trata de um componente eletrônico
+    que contem diversos blocos de SPLD internamente, chamados de macro célula, que estão interconectados por
+    uma matriz que também pode ser programada.
+
+    FPGA:
+    A sigla significa "Field Programmable Gate Array", em outras palavras, é um chip reprogramável a nível de
+    portas logicas. Não possuem planos de portar OR ou AND, na verdade possuem blocos lógicos.
+
+
+4) Diferenciar PROM, PLA e PAL:
+
+    |------PROM---------------------|------PLA---------------|----------PAL----------------------|
+    |                               |                        |                                   |
+    | Memoria não volátil,          | Matrizes de AND e OR   |  Consiste de uma PROM, e          |
+    | programável                   | Programáveis.          |  possuem uma matriz de OR fixa e  |   
+    | somente uma vez.              |                        |  uma matriz de AND programável    |
+    | Possue portas AND fixas e     |                        |                                   |
+    | permite ser usado para        |                        |                                   |
+    | programar funções logicas     |                        |                                   |
+    ----------------------------------------------------------------------------------------------
