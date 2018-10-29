@@ -1,4 +1,10 @@
 
+/*
+ * Autor: Luiz Junio Veloso Dos Santos
+ * Criado em: 27/10/2018
+ * Modificado em: 29/10/2018
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -29,19 +35,16 @@ void selectionSort(int* array, int numElementos)
 }//Fim selectionSort
 
 void imprimeArray(int* array, int tamanho)
-{
-    if(array != NULL && tamanho > 0)
-    {
+{//Inicio imprimeArray
+    if(array != NULL && tamanho > 0){
         for(int i = 0; i < tamanho; i++){
             printf("%d\n", array[i]);
         }
-    }
-    else
-    {
+    } 
+    else{
         printf("Parametros possuem valores invalidos!");
     }
-}
-
+}//Fim imprimeArray
 
 int main()
 {//Programa principal
