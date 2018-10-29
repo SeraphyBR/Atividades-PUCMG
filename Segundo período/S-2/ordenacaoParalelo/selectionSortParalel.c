@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include <stdlib.h>
 
 void swap(int *a, int *b)
 {//Inicio swap
@@ -8,10 +9,11 @@ void swap(int *a, int *b)
     *b = tmp;
 }//Fim swap
 
-void selectionSort(int array[], int numElementos)
+void selectionSort(int* array, int numElementos)
 {//Inicio selectionSort
     int i, j, posMenor;
 
+    #pragma omp parallel for private(j)
     for(i = 0; i < numElementos - 1; i++)
     {//Inicio for i
         posMenor = i;
@@ -26,14 +28,13 @@ void selectionSort(int array[], int numElementos)
 
 }//Fim selectionSort
 
-void imprimeArray(int array[], int tamanho)
+void imprimeArray(int* array, int tamanho)
 {
     if(array != NULL && tamanho > 0)
     {
         for(int i = 0; i < tamanho; i++){
-            printf("%d", array[i]);
+            printf("%d\n", array[i]);
         }
-        printf("\n"); 
     }
     else
     {
@@ -41,13 +42,17 @@ void imprimeArray(int array[], int tamanho)
     }
 }
 
+
 int main()
 {//Programa principal
-    int array[] = {9,8,7,6,5,4,3,2,1,0};
-    int tamanho = sizeof(array)/sizeof(array[0]);
-    imprimeArray(array, tamanho);
-    selectionSort(array, tamanho);
-    imprimeArray(array, tamanho);
+    int array[10000];
+    for(int i = 0; i < 10000; i++){
+        scanf("%d", &array[i]);
+    }
+
+    imprimeArray(array, 10000);
+    selectionSort(array, 10000);
+    imprimeArray(array, 10000);
 
     return 0;
 }//Programa principal 
