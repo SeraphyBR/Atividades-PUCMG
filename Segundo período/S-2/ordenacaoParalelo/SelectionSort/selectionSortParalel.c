@@ -63,14 +63,14 @@ void imprimeArray(int* array, int tamanho)
 
 int main()
 {//Programa principal
-    int array[10000];
-    for(int i = 0; i < 10000; i++){
+    int array[1000000];
+    for(int i = 0; i < 1000000; i++){
         scanf("%d", &array[i]);
     }
 
-    imprimeArray(array, 10000);
-    selectionSort(array, 10000);
-    imprimeArray(array, 10000);
+    imprimeArray(array, 1000000);
+    selectionSort(array, 1000000);
+    imprimeArray(array, 1000000);
 
     return 0;
 }//Programa principal 
