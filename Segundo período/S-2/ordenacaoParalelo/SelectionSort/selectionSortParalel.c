@@ -25,7 +25,7 @@ void selectionSort(int* array, int numElementos)
 {//Inicio selectionSort
     int i, j;
 
-    for(i = 0; i < numElementos - 1; i++)
+    for(i = numElementos - 1; i > 0; i--)
     {//Inicio for i
 
         // Declare the structure required for reduction
@@ -37,7 +37,7 @@ void selectionSort(int* array, int numElementos)
 
         // Parallel for loop with custom reduction, at the end of the loop, max will have the max element and its index.
         #pragma omp parallel for reduction(maximum:max)
-        for(j = i + 1; j < numElementos; j++)
+        for(j = numElementos - 1; j >= 0; --j)
         {//Inicio for j
             if(array[j] > max.val){
                 max.index = j;
