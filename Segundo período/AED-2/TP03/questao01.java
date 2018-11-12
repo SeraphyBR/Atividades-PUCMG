@@ -92,10 +92,13 @@ public class questao01
 
             String[] registro = leArquivo("/tmp/censo.dat");
 
-            Lista listaInstituicao = new Lista(1000);
+            ArvoreBinaria arv = new ArvoreBinaria();
 
             for(int cont = 0; cont < i; cont++){
-                listaInstituicao.inserirFim(new Instituicao(registro[linha[cont]]));
+                try{
+                    arv.inserir(new Instituicao(registro[linha[cont]]));
+                }
+                catch(Exception exception){}
             }
 
             //Inicio Parte 2
@@ -106,8 +109,10 @@ public class questao01
                 sigla = MyIO.readLine();
                 if(sigla.equals("FIM"))
                     ehFIM = true;
-                else
-                    imprimeBool(listaInstituicao.pesquisaSequencial(sigla));
+                else{
+                    MyIO.print(sigla + " ");
+                    imprimeBool(arv.pesquisar(sigla));
+                }
             }while(!ehFIM);
             tempoFinal = System.currentTimeMillis();
         }//Fim try
@@ -149,10 +154,7 @@ public class questao01
 
     public static void imprimeBool(boolean bool)
     {//Inicio booleanToString
-        if(bool)
-            MyIO.println("SIM");
-        else
-            MyIO.println("NÃO");
+        MyIO.println(bool ? "SIM" : "NÃO");
     }//Fim booleanToString
 }//Fim classe questao01
 
@@ -718,7 +720,8 @@ class Instituicao
 }//Fim classe Instituicao
 
 /**
- *
+ * No binario de Instituicao
+ * @author Luiz Junio Veloso Dos Santos
  */
 class No
 {//Inicio classe No Instituicao
@@ -766,22 +769,198 @@ class ArvoreBinaria
 
     /**
      * Metodo publico iterativo para pesquisar elemento.
-     * @param instituicao Elemento que sera procurado.
+     * @param sigla Sigla da Instituicao que sera procurado.
      * @return <code>true</code> Se o elemento existir,
      * <code>false</code> em caso contrario.
      */
-    public boolean pesquisar(Instituicao instituicao){
-        return this.pesquisar(instituicao, raiz);
+    public boolean pesquisar(String sigla){
+        MyIO.print("raiz ");
+        return this.pesquisar(sigla, raiz);
     }
     
     /**
      * Metodo privado recursivo para pesquisar elemento. 
-     * @param instituicao Elemento que sera procurado.
+     * @param sigla Sigla da Instituicao que sera procurado.
      * @param atual No em analise.
      * @return <code>true</code> se o elemento existir,
      * <code>
      */
-    private boolean pesquisar(Instituicao instituicao, No atual){
+    private boolean pesquisar(String sigla, No atual)
+    {//Inicio pesquisar 
+        boolean resultado;
+        if(atual == null){
+            resultado = false;
+        }
+        else if(sigla.compareTo(atual.elemento.getSigla()) == 0){
+            resultado = true;
+        }
+        else if(sigla.compareTo(atual.elemento.getSigla()) < 0){
+            MyIO.print("esq ");
+            resultado = pesquisar(sigla, atual.esq);
+        }
+        else {
+            MyIO.print("dir ");
+            resultado = pesquisar(sigla, atual.dir);
+        }
+        return resultado;
+    }//Fim pesquisar
 
+    /**
+     *  Metodo publico iterativo para exibir elementos.
+     */
+    public void mostrarCentral(){
+        System.out.print("[ ");
+        this.mostrarCentral(raiz);
+        System.out.println("]");
     }
+
+    /**
+     *  Metodo privado recursivo para exibir elementos.
+     *  @param i No em analise.
+     */
+    private void mostrarCentral(No i){
+        if(i != null){
+            this.mostrarCentral(i.esq); // Elementos da esquerda
+            i.elemento.imprime();       // Conteudo do no
+            this.mostrarCentral(i.dir); // Elementos da direita
+        }
+    }
+
+    /**
+     *  Metodo publico iterativo para exibir elementos.
+     */
+    public void mostrarPre(){
+        System.out.print("[ ");
+        this.mostrarPre(raiz);
+        System.out.println("]");
+    }
+
+    /**
+     *  Metodo privado recursivo para exibir elementos.
+     */
+    private void mostrarPre(No i){
+        if(i != null){
+            i.elemento.imprime();   // Conteudo do no
+            this.mostrarPre(i.esq); // Elementos da esquerda 
+            this.mostrarPre(i.dir); // Elementos da direita 
+        }
+    }
+
+    /**
+     *  Metodo publico iterativo para exibir Instituicoes.
+     */
+    public void mostrarPos(){
+        System.out.print("[ ");
+        this.mostrarPos(raiz);
+        System.out.println("]");
+    }
+
+    /**
+     *  Metodo privado recursivo para exibir Instituicoes.
+     *  @param i No em analise.
+     */
+    private void mostrarPos(No i){
+        if(i != null){
+            this.mostrarPos(i.esq);
+            this.mostrarPos(i.dir);
+            i.elemento.imprime();
+        }
+    }
+
+    /**
+     *  Metodo publico iterativo para inserir Instituicao.
+     *  @param inst Instituicao a ser inserido.
+     *  @throws Exception Se o elemento existir.
+     */
+    public void inserir(Instituicao inst) throws Exception{
+        raiz = inserir(inst, raiz);
+    }
+
+    /**
+     *  Metodo privado recursivo para inserir Instituicao.
+     *  @param inst Instituicao a ser inserido.
+     *  @param i No em analise.
+     *  @throws Exception Se o elemento existir.
+     *  @return No em analise, alterado ou nao.
+     */
+    private No inserir(Instituicao inst, No i) throws Exception
+    {//Inicio inserir privado
+        if(i == null){
+            i = new No(inst);
+        }
+        else if(inst.getSigla().compareTo(i.elemento.getSigla()) < 0){
+            i.esq = inserir(inst, i.esq);
+        } 
+        else if(inst.getSigla().compareTo(i.elemento.getSigla()) > 0){
+            i.dir = inserir(inst, i.dir);
+        } 
+        else{
+            throw new Exception("Erro ao inserir! Sigla ja esta na arvore!");
+        }
+        return i;
+    }//Fim inserir privado
+
+    /**
+     * Metodo publico interativo para remover Instituicao.
+     * @param sigla Sigla da Instituicao a ser removida.
+     * @throws Exception Se não encontrar a Instituicao.
+     */
+    public void remover(String sigla) throws Exception{
+        this.raiz = remover(sigla, raiz);
+    }
+
+    /**
+     * Metodo privado recursivo para remover Instituicao.
+     * @param sigla Sigla da Instituicao a ser removida.
+     * @param i No em analise. 
+     * @throws Exception Se não encontrar a Instituicao.
+     * @return No em analise, alterado ou nao.
+     */
+    public No remover(String sigla, No i) throws Exception
+    {//Inicio remover 
+        
+        if(i == null){
+            throw new Exception("Erro ao remover!");
+        }
+        else if (sigla.compareTo(i.elemento.getSigla()) < 0){
+            i.esq = remover(sigla, i.esq);
+        }
+        else if (sigla.compareTo(i.elemento.getSigla()) > 0){
+            i.dir = remover(sigla, i.dir);
+        } 
+        // Sem no a direita.
+        else if (i.dir == null) i = i.esq;  
+        // Sem no a esquerda. 
+        else if (i.esq == null) i = i.dir;
+        // No a esquerda e no a direita. 
+        else i.esq = this.antecessor(i, i.esq);
+
+        return i;
+
+    }//Fim remover
+
+    /**
+     *  Metodo para trocar No removido pelo antecessor.
+     *  @param i No que teve elemento removido.
+     *  @param j No da subarvore esquerda.
+     *  @return No em analise, alterado ou nao.
+     */
+    private No antecessor(No i, No j)
+    {//Inicio antecessor 
+    
+        // Existe No a direita
+        if(j.dir != null) j.dir = antecessor(i, j.dir);
+        // Encontrou o maximo da subarvore esquerda.
+        else
+        {
+            i.elemento = j.elemento; // Substitui i por j.
+            j = j.esq; // Substitui j por j.ESQ.
+        }
+        return j;
+
+    }//Fim antecessor
+
 }//Fim classe ArvoreBinaria
+
+
+

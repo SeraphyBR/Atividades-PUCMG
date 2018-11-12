@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1533584502 "TP02.tex" "TP02.pdf" "TP02" 1533584502
+["pdflatex"] 1541610140 "TP02.tex" "TP02.pdf" "TP02" 1541610140
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm" 1136768653 1332 1fde11373e221473104d6cc5993f046e ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -17,6 +17,8 @@
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/share/texmf-dist/tex/generic/babel-portuges/portuges.ldf" 1367878976 6605 2bd2937f1ce929b4a1367cc2d320364e ""
+  "/usr/share/texmf-dist/tex/generic/babel/babel.def" 1495227874 56906 5fe966833cc01ad71361044f6df6de8f ""
   "/usr/share/texmf-dist/tex/generic/babel/babel.sty" 1495227874 15289 de2791ae2b2b7f83883060d1307dfea0 ""
   "/usr/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1480098815 1458 43ab4710dc82f3edeabecd0d099626b2 ""
   "/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty" 1490564930 1251 d170e11a3246c3392bc7f59595af42cb ""
@@ -30,12 +32,12 @@
   "/usr/share/texmf-dist/tex/latex/base/utf8.def" 1487721667 7784 325a2a09984cb5c4ff230f9867145ad3 ""
   "/usr/share/texmf-dist/tex/latex/geometry/geometry.sty" 1480098829 40502 e003406220954b0716679d7928aedd8a ""
   "/usr/share/texmf-dist/tex/latex/graphics/keyval.sty" 1480098830 2594 d18d5e19aa8239cf867fa670c556d2e9 ""
-  "/usr/share/texmf-dist/web2c/texmf.cnf" 1533584375 31833 7c9db31fccecd78c04a65a31762d97e6 ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1533584361 323103 19d468b4e440d310dad16ba17dbde88e ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1533584359 721289 c9c037b99931911958c36e30b9890558 ""
-  "TP02.aux" 1529278491 52 90828fdd2848999dee98c4b834b2948b ""
-  "TP02.tex" 1529278491 1731 c66e7a3b0c0a9256d12991321ddb268a ""
+  "/usr/share/texmf-dist/web2c/texmf.cnf" 1535300447 31833 7c9db31fccecd78c04a65a31762d97e6 ""
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1535300447 325073 705aa03b367ab71bc75db4c747a42f57 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1533585081 728368 c4ad729f0b40b48d0b92b1dd58a4153b ""
+  "TP02.aux" 1541610140 194 a646c4b2bcee332214a87b0a0dfe52cc ""
+  "TP02.tex" 1541610139 1786 1e7c684c5e8869800e3fbb831dd22f09 ""
   (generated)
-  "TP02.aux"
   "TP02.pdf"
+  "TP02.aux"
   "TP02.log"

@@ -20,6 +20,9 @@ INPUT /usr/share/texmf-dist/tex/latex/base/omsenc.dfu
 INPUT /usr/share/texmf-dist/tex/latex/base/omsenc.dfu
 INPUT /usr/share/texmf-dist/tex/generic/babel/babel.sty
 INPUT /usr/share/texmf-dist/tex/generic/babel/babel.sty
+INPUT /usr/share/texmf-dist/tex/generic/babel-portuges/portuges.ldf
+INPUT /usr/share/texmf-dist/tex/generic/babel-portuges/portuges.ldf
+INPUT /usr/share/texmf-dist/tex/generic/babel/babel.def
 INPUT /usr/share/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/share/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/share/texmf-dist/tex/latex/graphics/keyval.sty
