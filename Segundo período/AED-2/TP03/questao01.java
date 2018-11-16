@@ -793,10 +793,12 @@ class ArvoreBinaria
         }
         else if(sigla.compareTo(atual.elemento.getSigla()) == 0){
             resultado = true;
+            Conta.somaComparacoes();
         }
         else if(sigla.compareTo(atual.elemento.getSigla()) < 0){
             MyIO.print("esq ");
             resultado = pesquisar(sigla, atual.esq);
+            Conta.somaComparacoes();
         }
         else {
             MyIO.print("dir ");

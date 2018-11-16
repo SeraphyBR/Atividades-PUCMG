@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex resumo-somatorio"] 1535724573 "resumo-somatorio.aux" "resumo-somatorio.bbl" "resumo-somatorio" 1535724573
+["bibtex resumo-somatorio"] 1542138382 "resumo-somatorio.aux" "resumo-somatorio.bbl" "resumo-somatorio" 1542138382
   "resumo-somatorio.aux" 1535724573 220 650e8da3fcae0513476884d73b8385c0 ""
   "sbc-template.bib" 0 -1 0 ""
   "sbc.bst" 0 -1 0 ""
   (generated)
-  "resumo-somatorio.blg"
   "resumo-somatorio.bbl"
-["pdflatex"] 1535724573 "resumo-somatorio.tex" "resumo-somatorio.pdf" "resumo-somatorio" 1535724573
+  "resumo-somatorio.blg"
+["pdflatex"] 1535724573 "resumo-somatorio.tex" "resumo-somatorio.pdf" "resumo-somatorio" 1542138382
   "/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136768653 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -80,9 +80,9 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1533585081 728368 c4ad729f0b40b48d0b92b1dd58a4153b ""
   "resumo-somatorio.aux" 1535724573 220 650e8da3fcae0513476884d73b8385c0 ""
   "resumo-somatorio.bbl" 0 -1 0 "bibtex resumo-somatorio"
-  "resumo-somatorio.tex" 1535724572 2634 02d978fd30652b37d70faabc17c22fee ""
+  "resumo-somatorio.tex" 1535726931 2634 02d978fd30652b37d70faabc17c22fee ""
   "sbc-template.sty" 1535651037 6074 ecc54df5124d8db4ac67c42cc728f3a5 ""
   (generated)
   "resumo-somatorio.pdf"
-  "resumo-somatorio.aux"
   "resumo-somatorio.log"
+  "resumo-somatorio.aux"
