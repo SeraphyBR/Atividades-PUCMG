@@ -786,6 +786,10 @@ class ArvoreAVL
         raiz = null;
     }
 
+    /**
+     * Metodo para obter a altura da Arvore.
+     * @return Altura da arvore.
+     */
     public int getAltura(){
         return No.getNivel(raiz) - 1;
     }
@@ -927,6 +931,10 @@ class ArvoreAVL
         return i;
     }//Fim inserir privado
 
+    /**
+     * Metodo para balancear a AVL.
+     * @return No balanceado.
+     */
     private No balancear(No i) throws Exception
     {//Inicio balancear
         if(i != null){
@@ -962,6 +970,10 @@ class ArvoreAVL
         return i;
     }//Fim balancear
 
+    /**
+     * Metodo para rotacionar para esquerda a subarvore ("No").
+     * @return No rotacionado para a esquerda.
+     */
     private No rotacionarDir(No no){
         No noEsq = no.esq;
         No noEsqDir = noEsq.dir;
@@ -975,6 +987,10 @@ class ArvoreAVL
         return noEsq;
     }
 
+    /**
+     * Metodo para rotacionar para a direita a subarvore ("No").
+     * @return No rotacionado para a direita.
+     */
     private No rotacionarEsq(No no){
         No noDir = no.dir;
         No noDirEsq = noDir.esq;
