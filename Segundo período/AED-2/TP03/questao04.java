@@ -826,9 +826,8 @@ class ArvoreBicolor
     /**
      *  Metodo publico iterativo para inserir Instituicao.
      *  @param inst Instituicao a ser inserido.
-     *  @throws Exception Se o elemento existir.
      */
-    public void inserir(Instituicao elemento) throws Exception
+    public void inserir(Instituicao elemento)
     {//Inicio inserir iterativo
 
         // Se a arvore estiver vazia
@@ -859,7 +858,7 @@ class ArvoreBicolor
                 raiz.elemento = raiz.dir.elemento;
                 raiz.dir.elemento = elemento;
             }
-            raiz.esq.cor = raiz.dir.cor = branco;
+            raiz.esq.cor = raiz.dir.cor = preto;
 
         }//Fim else if 2 (raiz e dir)
 
@@ -879,7 +878,7 @@ class ArvoreBicolor
                 raiz.elemento = raiz.esq.elemento;
                 raiz.esq.elemento = elemento;
             }
-            raiz.esq.cor = raiz.dir.cor = branco;
+            raiz.esq.cor = raiz.dir.cor = preto;
 
         }//Fim else if 2 (raiz e esq)
 
@@ -897,9 +896,8 @@ class ArvoreBicolor
      * @param avo No em analise.
      * @param pai No em analise.
      * @param i No em analise.
-     * @throws Exception Se o elemento existir.
      */
-    private void inserir(Instituicao elemento, No bisavo, No avo, No pai, No i) throws Exception 
+    private void inserir(Instituicao elemento, No bisavo, No avo, No pai, No i)
     {//Inicio inserir recursivo
 
         if(i == null){
@@ -919,6 +917,12 @@ class ArvoreBicolor
                 if(i == raiz) i.cor = branco;
                 else if (pai.cor == preto) this.balancear(bisavo, avo, pai, i);
 
+            }
+            if(elemento.getSigla().compareTo(i.elemento.getSigla()) < 0){
+                this.inserir(elemento, avo, pai, i, i.esq);
+            }
+            else if(elemento.getSigla().compareTo(i.elemento.getSigla()) > 0){
+                this.inserir(elemento, avo, pai, i, i.dir);
             }
         }
     }//Fim inserir recursivo
@@ -940,11 +944,11 @@ class ArvoreBicolor
             // 4 tipos de reequilibrios e acoplamento
             if(pai.elemento.getSigla().compareTo(avo.elemento.getSigla()) > 0)
             {//Rotacao a esquerda ou direita-esquerda
-                avo = i.elemento.getSigla().compareTo(pai.elemento.getSigla()) > 0 ? rotacaoEsq(avo) : rotacaoDirEsq(avo);
+                avo = (i.elemento.getSigla().compareTo(pai.elemento.getSigla()) > 0) ? rotacaoEsq(avo) : rotacaoDirEsq(avo);
             }//Rotacao a esquerda ou direita-esquerda
             else
             {//Rotacao a direita ou esquerda-direita
-                avo = i.elemento.getSigla().compareTo(pai.elemento.getSigla()) < 0 ? rotacaoDir(avo) : rotacaoEsqDir(avo);
+                avo = (i.elemento.getSigla().compareTo(pai.elemento.getSigla()) < 0) ? rotacaoDir(avo) : rotacaoEsqDir(avo);
             }//Rotacao a direita ou esquerda-direita
 
             if(bisavo == null) raiz = avo;
@@ -994,65 +998,6 @@ class ArvoreBicolor
         return rotacaoDir(no);
     } 
 
-    /**
-     * Metodo publico interativo para remover Instituicao.
-     * @param sigla Sigla da Instituicao a ser removida.
-     * @throws Exception Se não encontrar a Instituicao.
-     */
-    public void remover(String sigla) throws Exception{
-        this.raiz = remover(sigla, raiz);
-    }
-
-    /**
-     * Metodo privado recursivo para remover Instituicao.
-     * @param sigla Sigla da Instituicao a ser removida.
-     * @param i No em analise. 
-     * @throws Exception Se não encontrar a Instituicao.
-     * @return No em analise, alterado ou nao.
-     */
-    public No remover(String sigla, No i) throws Exception
-    {//Inicio remover 
-        
-        if(i == null){
-            throw new Exception("Erro ao remover!");
-        }
-        else if (sigla.compareTo(i.elemento.getSigla()) < 0){
-            i.esq = remover(sigla, i.esq);
-        }
-        else if (sigla.compareTo(i.elemento.getSigla()) > 0){
-            i.dir = remover(sigla, i.dir);
-        } 
-        // Sem no a direita.
-        else if (i.dir == null) i = i.esq;  
-        // Sem no a esquerda. 
-        else if (i.esq == null) i = i.dir;
-        // No a esquerda e no a direita. 
-        else i.esq = this.antecessor(i, i.esq);
-
-        return i;
-
-    }//Fim remover
-
-    /**
-     *  Metodo para trocar No removido pelo antecessor.
-     *  @param i No que teve elemento removido.
-     *  @param j No da subarvore esquerda.
-     *  @return No em analise, alterado ou nao.
-     */
-    private No antecessor(No i, No j)
-    {//Inicio antecessor 
-    
-        // Existe No a direita
-        if(j.dir != null) j.dir = antecessor(i, j.dir);
-
-        // Encontrou o maximo da subarvore esquerda.
-        else{
-            i.elemento = j.elemento; // Substitui i por j.
-            j = j.esq; // Substitui j por j.ESQ.
-        }
-        return j;
-
-    }//Fim antecessor
 
 }//Fim classe ArvoreBinaria
 
