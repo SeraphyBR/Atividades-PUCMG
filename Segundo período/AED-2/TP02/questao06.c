@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 #define TAM_NOME 200
 #define TAM_SIGLA 20
 #define TAM_MANTENEDORA 200
@@ -17,7 +16,7 @@
 #define MAX_TAM_LINE 3000
 #define MAX_NUM_LINES 3000
 
-//##############################################################################
+// ##############################################################################
 /*
  * Descreve uma Instituicao de Ensino Superior (IES)
  * @author Luiz Junio Veloso Dos Santos
