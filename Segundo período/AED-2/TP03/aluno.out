@@ -1,40 +1,40 @@
-UFRJ raiz dir dir esq dir dir esq esq NÃO
-PUCRS raiz dir dir esq esq dir esq esq NÃO
-UCLA raiz dir dir esq dir esq esq NÃO
-PUCMG raiz dir dir esq esq dir esq esq NÃO
-UFRGS raiz dir dir esq dir dir esq esq NÃO
-UFMG raiz dir dir esq dir esq dir dir NÃO
-PUCPR raiz dir dir esq esq dir esq esq NÃO
-PUCRIO raiz dir dir esq esq dir esq esq NÃO
-FATERJ raiz dir esq esq dir dir esq esq SIM
-FACESTA raiz esq esq dir dir SIM
-CEUB raiz esq esq esq dir dir NÃO
-FAZAG raiz dir esq esq dir dir SIM
-AVANTIS raiz esq esq esq dir SIM
-FASAR raiz dir esq esq esq SIM
-PUCGO raiz dir dir esq esq dir esq esq NÃO
-MIT raiz dir dir esq esq dir esq esq NÃO
-FAEX raiz esq dir esq esq SIM
-FLF raiz dir esq dir dir esq SIM
-ENSITEC raiz esq esq dir esq dir esq SIM
-UNIFRA raiz dir dir dir esq dir SIM
-EMSM raiz esq esq dir esq SIM
-UNINCOR raiz dir dir dir SIM
-Laboro raiz dir dir esq esq SIM
-FAMETA raiz esq dir dir dir SIM
-IFRR raiz dir dir esq esq esq esq SIM
-FCAT raiz dir esq esq dir dir dir SIM
-FAT raiz dir esq esq esq dir SIM
-UFPE raiz dir dir esq dir dir esq esq NÃO
-SENAC raiz dir dir esq esq dir esq SIM
-FARESI raiz dir esq esq esq esq dir SIM
-SENAI raiz dir dir esq esq dir SIM
-FAJANSSEN raiz esq dir esq dir esq SIM
-UFERSA raiz dir dir esq dir esq dir SIM
-FSA raiz dir esq dir dir dir esq dir SIM
-OXFORD raiz dir dir esq esq dir esq esq NÃO
-FAMA raiz esq dir SIM
-USP raiz dir dir dir dir dir esq NÃO
-FMO raiz dir esq dir dir esq dir dir SIM
-UFMA raiz dir dir esq dir esq dir dir NÃO
-FASPI raiz dir esq esq esq dir esq dir SIM
+UFRJ	NÃO
+PUCRS	NÃO
+UCLA	NÃO
+PUCMG	NÃO
+UFRGS	NÃO
+UFMG	NÃO
+PUCPR	NÃO
+PUCRIO	NÃO
+FATERJ	NÃO
+FACESTA	NÃO
+CEUB	NÃO
+FAZAG	NÃO
+AVANTIS	(28) SIM
+FASAR	NÃO
+PUCGO	NÃO
+MIT	NÃO
+FAEX	NÃO
+FLF	(29) SIM
+ENSITEC	(13) SIM
+UNIFRA	NÃO
+EMSM	NÃO
+UNINCOR	(6) SIM
+Laboro	NÃO
+FAMETA	NÃO
+IFRR	NÃO
+FCAT	NÃO
+FAT	NÃO
+UFPE	NÃO
+SENAC	NÃO
+FARESI	NÃO
+SENAI	NÃO
+FAJANSSEN	NÃO
+UFERSA	NÃO
+FSA	NÃO
+OXFORD	NÃO
+FAMA	(5) SIM
+USP	NÃO
+FMO	NÃO
+UFMA	NÃO
+FASPI	NÃO
