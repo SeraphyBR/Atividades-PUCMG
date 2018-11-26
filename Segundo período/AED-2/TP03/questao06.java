@@ -72,7 +72,7 @@ class Conta
  * @author Luiz Junio Veloso Dos Santos
  * @version 1.2
  */            
-public class questao05
+public class questao06
 {//Inicio classe questao01
     public static void main(String[] args)
     {//Inicio main
@@ -92,7 +92,7 @@ public class questao05
 
             String[] registro = leArquivo("/tmp/censo.dat");
 
-            TabelaHash tbh = new TabelaHash(21, 9);
+            TabelaHash tbh = new TabelaHash(21);
 
             for(int cont = 0; cont < i; cont++){
                 try{
@@ -120,7 +120,7 @@ public class questao05
             System.err.println(exception);
         }
 
-        Arq.openWrite("624037_hashReserva.txt");//Abrindo arquivo de Log para escrita
+        Arq.openWrite("624037_hashRehash.txt");//Abrindo arquivo de Log para escrita
         Arq.print("624037" + "\t" + (tempoFinal - tempoInicial) + "\t" + Conta.getNumComparacoes());
         Arq.close();
     }//Fim main
@@ -752,14 +752,12 @@ class No
 }//Fim classe No Instituicao
 
 /**
- *  Classe Tabela Hash Direta com Reserva.
+ *  Classe Tabela Hash Direta com Rehash.
  */
 class TabelaHash
 {//Inicio classe TabelaHash
     private Instituicao tabela[];
     private int tamanho;
-    private int tamanhoReserva;
-    private int numElementosReserva;
 
     /**
      * Construtor tabela hash.
@@ -773,31 +771,30 @@ class TabelaHash
      * @param tamanho Tamanho da tabela.
      */
     public TabelaHash(int tamanho){
-        this(tamanho, tamanho / 2);
+        this.tamanho = tamanho;
+        this.tabela = new Instituicao[tamanho];
     }
 
     /**
-     * Construtor tabela hash
-     * @param tamanho Tamanho da tabela.
-     * @param tamanhoReserva Tamanho da area de reserva.
+     * Funcao de transformacao ou Hash da tabela.
+     * @param inst Instituicao.
+     * @return Posicao relativa na tabela.
      */
-    public TabelaHash(int tamanho, int tamanhoReserva){
-        this.tamanho = tamanho;
-        this.tamanhoReserva = tamanhoReserva;
-        this.numElementosReserva = 0;
-        this.tabela = new Instituicao[tamanho + tamanhoReserva];
-    }
-
-    private boolean reservaCheia(){
-        return numElementosReserva == tamanhoReserva;
-    }
-
     private int hash(Instituicao inst){
         return  inst.getCodigoMantenedora() % this.tamanho;
+    } 
+                
+    /**
+     * Funcao de transformacao 2 ou ReHash da tabela.
+     * @param inst Instituicao.
+     * @return Posicao 2 relativa na tabela.
+     */         
+    private int rehash(Instituicao inst){
+        return  (inst.getCodigoMantenedora() + 1) % this.tamanho;
     }
 
     /**
-     * Metodo de insercao na tabela hash com reserva.
+     * Metodo de Insercao
      * @param inst Instituicao a ser inserida.
      * @throws Exception Se nao foi possivel inserir.
      */
@@ -808,24 +805,24 @@ class TabelaHash
             tabela[posIns] = inst;
         }
         else{
-            if(!reservaCheia()){
-                this.tabela[tamanho + numElementosReserva] = inst;
-                this.numElementosReserva++;
+            posIns = this.rehash(inst);
+            if(tabela[posIns] == null){
+                this.tabela[posIns] = inst;
             }
             else throw new Exception("Nao foi possivel inserir!");
         }
     }//Fim inserir 
 
     /**
-     * Metodo de pesquisa sequencial.
-     * @param sigla Sigla a ser pesquisada.
-     * @return <code> true </code> se encontrar,
+     * Metodo de Pesquisa Sequencial.
+     * @param sigla Sigla da Instituicao.
+     * @return <code> true </code> se encontrar, 
      * <code> false </code> caso contrario.
      */
     public boolean pesquisar(String sigla)
     {//Inicio pesquisar
         boolean encontrei = false;
-        for(int i = 0; !encontrei && i < tamanho + tamanhoReserva; i++){
+        for(int i = 0; !encontrei && i < tamanho; i++){
             if(tabela[i] != null && tabela[i].getSigla().equals(sigla)){
                 System.out.print("(" + i + ") " );
                 encontrei = true;
