@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2019.1.12)  20 FEB 2019 18:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2019.1.12)  22 FEB 2019 10:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -50,7 +50,12 @@ Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 ) (/usr/share/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-) (/usr/share/texmf-dist/tex/latex/base/inputenc.sty
+) (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2017/02/22 v2.0g Standard LaTeX package
+ (/usr/share/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2017/02/22 v2.0g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+)) (/usr/share/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks15
 \inpenc@posthook=\toks16
@@ -374,21 +379,25 @@ File: babel.def 2017/05/19 3.10 Babel common definitions
 )
 \l@brazil = a dialect from \language\l@portuges 
 Package babel Info: Making " an active character on input line 145.
+)) (/usr/share/texmf-dist/tex/latex/a4wide/a4wide.sty
+Package: a4wide 1994/08/30
+ (/usr/share/texmf-dist/tex/latex/ntgclass/a4.sty
+Package: a4 2004/04/15 v1.2g A4 based page layout
 )) (./relatorio01.aux)
 \openout1 = `relatorio01.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
  (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count89
@@ -439,42 +448,59 @@ Package grfext Info: Graphics extension search list:
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 11.
+(Font)              <12> on input line 13.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 11.
+(Font)              <8> on input line 13.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 11.
+(Font)              <6> on input line 13.
  <./imagens/logisim-halfadder.png, id=1, 644.4075pt x 249.93375pt>
 File: ./imagens/logisim-halfadder.png Graphic file (type png)
  <use ./imagens/logisim-halfadder.png>
-Package pdftex.def Info: ./imagens/logisim-halfadder.png used on input line 18.
-(pdftex.def)             Requested size: 227.62204pt x 88.2828pt.
+Package pdftex.def Info: ./imagens/logisim-halfadder.png used on input line 20.
+(pdftex.def)             Requested size: 284.52756pt x 110.35637pt.
  <./imagens/logisim-fulladder.png, id=3, 817.0525pt x 320.19624pt>
 File: ./imagens/logisim-fulladder.png Graphic file (type png)
  <use ./imagens/logisim-fulladder.png>
-Package pdftex.def Info: ./imagens/logisim-fulladder.png used on input line 23.
-(pdftex.def)             Requested size: 227.62204pt x 89.19995pt.
+Package pdftex.def Info: ./imagens/logisim-fulladder.png used on input line 26.
+(pdftex.def)             Requested size: 284.52756pt x 111.5036pt.
  <./imagens/logisim-fulladder4.png, id=4, 839.135pt x 548.0475pt>
 File: ./imagens/logisim-fulladder4.png Graphic file (type png)
  <use ./imagens/logisim-fulladder4.png>
-Package pdftex.def Info: ./imagens/logisim-fulladder4.png used on input line 28.
-(pdftex.def)             Requested size: 256.0748pt x 167.24205pt.
+Package pdftex.def Info: ./imagens/logisim-fulladder4.png used on input line 32.
+(pdftex.def)             Requested size: 284.52756pt x 185.82356pt.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./imagens/logisim-halfadder.png> <./imagens/logisim-fulladder.png> <./imagens/logisim-fulladder4.png>] (./relatorio01.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./imagens/logisim-halfadder.png> <./imagens/logisim-fulladder.png> <./imagens/logisim-fulladder4.png>] <./imagens/simulador97-meioSomador.png, id=17, 710.655pt x 532.99126pt>
+File: ./imagens/simulador97-meioSomador.png Graphic file (type png)
+ <use ./imagens/simulador97-meioSomador.png>
+Package pdftex.def Info: ./imagens/simulador97-meioSomador.png used on input line 40.
+(pdftex.def)             Requested size: 312.9803pt x 234.73647pt.
+ <./imagens/simulador97-somadorCompleto.png, id=18, 727.71875pt x 458.71375pt>
+File: ./imagens/simulador97-somadorCompleto.png Graphic file (type png)
+ <use ./imagens/simulador97-somadorCompleto.png>
+Package pdftex.def Info: ./imagens/simulador97-somadorCompleto.png used on input line 46.
+(pdftex.def)             Requested size: 312.9803pt x 197.29205pt.
+ [2 <./imagens/simulador97-meioSomador.png> <./imagens/simulador97-somadorCompleto.png>]
+Overfull \hbox (3.37776pt too wide) in paragraph at lines 66--90
+\T1/cmr/m/n/10.95 No se-gundo so-ma-dor não é con-si-de-rado o tempo do pri-meiro con-junto de XOR/AND,
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 100.
+[3] [4] (./relatorio01.aux) ) 
 Here is how much of TeX's memory you used:
- 2352 strings out of 494919
- 30531 string characters out of 6180669
- 91340 words of memory out of 5000000
- 5631 multiletter control sequences out of 15000+600000
- 7283 words of font info for 26 fonts, out of 8000000 for 9000
+ 2603 strings out of 494919
+ 33112 string characters out of 6180669
+ 94695 words of memory out of 5000000
+ 5865 multiletter control sequences out of 15000+600000
+ 10376 words of font info for 30 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 39i,6n,25p,250b,311s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on relatorio01.pdf (1 page, 65277 bytes).
+ 39i,6n,25p,247b,317s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
+Output written on relatorio01.pdf (4 pages, 156522 bytes).
 PDF statistics:
- 31 PDF objects out of 1000 (max. 8388607)
- 17 compressed objects within 1 object stream
+ 65 PDF objects out of 1000 (max. 8388607)
+ 39 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
