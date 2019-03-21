@@ -18,7 +18,9 @@ void loop() {
     // put your main code here, to run repeatedly:
     if(Serial.avaliable() > 0){
         entrada = Serial.parseInt();
-        estado(entrada);
+        if (Serial.read() == '\n'){
+            estado(entrada);
+        }
     }
 }
 
