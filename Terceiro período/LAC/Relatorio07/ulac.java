@@ -82,8 +82,11 @@ public class ulac
                 "-e\tRun code to Arduino.\n" +
                 "-s\tRun instruction step by step (Use on Begin/End of options)\n" +
                 "-p\tArduino Port\n" +
-                "-r\tCompile and Run code to Arduino\n"
-                );
+                "-r\tCompile and Run code to Arduino\n" + 
+                "\nExamples:\n" +
+                "Just compile: ulac -c file.ula\n" +
+                "Run code in Arduino: ulac -e file.hex"
+        );
     }
 
     private static void executionStatus(byte returnCode)
