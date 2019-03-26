@@ -35,7 +35,7 @@ public class ulac
                         break;
                     case "-p":
                         if(args[2].equals("-e")) exitCode = executionStatus(run(args[3], args[1], false));
-                        else if(args[2] == "-r") exitCode = executionStatus(compileAndRun(args[3], args[1], false));
+                        else if(args[2].equals("-r")) exitCode = executionStatus(compileAndRun(args[3], args[1], false));
                         else exitCode = executionStatus(1);   
                         break;
                     default:
@@ -48,7 +48,7 @@ public class ulac
                 String arg = args[0];
                 if (arg.equals("-s")) p = 1;
                 else if (!args[4].equals("-s")) arg = " "; 
-                switch(arg){
+                switch(args[p]){
                     case "-e":
                         if (args[p + 2].equals("-p")) exitCode = executionStatus(run(args[p + 1], args[p + 3], true));
                         else exitCode = executionStatus(1); 
@@ -59,7 +59,7 @@ public class ulac
                         break;
                     case "-p":
                         if(args[p + 2].equals("-e")) exitCode = executionStatus(run(args[p + 3], args[p + 1], true));
-                        else if(args[p + 2] == "-r") exitCode = executionStatus(compileAndRun(args[p + 3], args[p + 1], true));
+                        else if(args[p + 2].equals("-r")) exitCode = executionStatus(compileAndRun(args[p + 3], args[p + 1], true));
                         else exitCode = executionStatus(1);  
                         break;
                     default:
@@ -106,6 +106,9 @@ public class ulac
                 break;
             case 9:
                 System.out.println("Is missing 'inicio:'");
+                break;
+            case 10:
+                System.out.println("File does not have .hex extension!");
                 break;
             default:
                 break;
@@ -194,7 +197,7 @@ public class ulac
                 String line;
                 char a, b, instruction;
                 program = new RandomAccessFile(filename, "r");
-                bin = new RandomAccessFile(filename + ".hex", "rw");
+                bin = new RandomAccessFile(filename.replace(".ula", ".hex"), "rw");
                 if(program.readLine().equals("inicio:")){
                     a = b = instruction = ' ';
                     while((line = program.readLine()) != null && !line.equals("fim.")){
@@ -226,28 +229,38 @@ public class ulac
 
     private static int run(String filename, String port, boolean stepByStep){
         int returnCode = 0;
+        if(filename.contains(".hex")){
+            try{
+                String line;
+                Console c = System.console();
+                Process p;
+                ProcessBuilder pb = new ProcessBuilder();
+                bin = new RandomAccessFile(filename, "r");
+                while((line = bin.readUTF()) != null){
+                    if(stepByStep){
+                        c.format("Press ENTER to send: " + line);
+                        c.readLine();
+                    }
+                    pb.command("envia.exe", port, line);
+                    p = pb.start();
+                    p.waitFor();
+                }
+            }
+            catch(FileNotFoundException ex){
+                returnCode = 6;
+            }
+            catch(Exception ex){
+                returnCode = 8;
+            }
+        }
+        else returnCode = 10;
         return returnCode;
     }
 
     private static int compileAndRun(String filename, String port, boolean stepByStep){
-        int returnCode = 0;
+        int returnCode = compile(filename);
+        if (returnCode == 0) returnCode = run(filename.replace(".ula", ".hex"), port, stepByStep);
         return returnCode;
     }
-
-    private static int sendArduino(String val, String port)
-    {//Begin sendArduino
-        int returnCode = 0;
-        Process p;
-        ProcessBuilder pb;
-        try{
-            pb = new ProcessBuilder("envia.exe", port, val);
-            p = pb.start();
-            p.waitFor( ); 
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
-        return returnCode;
-    }//End sendArduino   
 
 }//End class ulac 
