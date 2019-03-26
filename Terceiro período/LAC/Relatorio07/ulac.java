@@ -73,7 +73,7 @@ public class ulac
         }//End switch args.length
         System.exit(exitCode);
     }//End main
-    
+
     private static int executionStatus(int returnCode)
     {//Begin executionStatus
         switch(returnCode){
@@ -101,13 +101,20 @@ public class ulac
             case 7:
                 System.out.println("File does not have .ula extension!");
                 break;
+            case 8:
+                System.out.println("Something wrong happened!");
+                break;
+            case 9:
+                System.out.println("Is missing 'inicio:'");
+                break;
             default:
                 break;
         }
         return returnCode;
     }//End returnCode
 
-    private static void getHelp(){
+    private static void getHelp()
+    {//Begin getHelp
         System.out.println(
                 "Usage: ulac [Options] file.[ula,hex]\n" + 
                 "Options: \n" + 
@@ -121,21 +128,101 @@ public class ulac
                 "Just compile: ulac -c file.ula\n" +
                 "Run code in Arduino: ulac -e file.hex"
                 );
-    }
+    }//End getHelp
 
-    private static int compile(String filename){
+    private static char instructionToHex(String mnemonic)
+    {//Begin instructionToHex
+        char hex = ' ';
+        switch(mnemonic){
+            case "zeroL;":
+                hex = '0';
+                break;
+            case "umL;":
+                hex = '1';
+                break;
+            case "An;":
+                hex = '2';
+                break;
+            case "Bn;":
+                hex = '3';
+                break;
+            case "AouB;":
+                hex = '4';
+                break;
+            case "AeB;":
+                hex = '5';
+                break;
+            case "AxorB;":
+                hex = '6';
+                break;
+            case "AnandB;":
+                hex = '7';
+                break;
+            case "AnorB;":
+                hex = '8';
+                break;
+            case "AxnorB;":
+                hex = '9';
+                break;
+            case "AnouB;":
+                hex = 'A';
+                break;
+            case "AouBn;":
+                hex = 'B';
+                break;
+            case "AneB;":
+                hex = 'C';
+                break;
+            case "AeBn;":
+                hex = 'D';
+                break;
+            case "AnouBn;":
+                hex = 'E';
+                break;
+            case "AneBn;":
+                hex = 'F';
+                break;
+        }
+        return hex;
+    }//End instructionToHex
+
+    private static int compile(String filename)
+    {//Begin compile
         int returnCode = 0;
         if(filename.contains(".ula")){
             try{
+                String line;
+                char a, b, instruction;
                 program = new RandomAccessFile(filename, "r");
+                bin = new RandomAccessFile(filename + ".hex", "rw");
+                if(program.readLine().equals("inicio:")){
+                    a = b = instruction = ' ';
+                    while((line = program.readLine()) != null && !line.equals("fim.")){
+                        if(line.contains("=")){
+                            if(line.charAt(0) == 'A') a = line.charAt(2);
+                            else if (line.charAt(0) == 'B') b = line.charAt(2);
+                        }
+                        else{
+                            instruction = instructionToHex(line);
+                            if (a != ' ' && b != ' ' && instruction != ' '){
+                                bin.writeUTF(a + "" + b + "" + instruction + "\n");
+                            }
+                        }
+                    }
+                }
+                else returnCode = 9;
             }
             catch(FileNotFoundException ex){
                 returnCode = 6;
-            }  
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+                returnCode = 8;
+            }
         }
         else returnCode = 7;
         return returnCode;
-    }
+    }//End compile
 
     private static int run(String filename, String port, boolean stepByStep){
         int returnCode = 0;
