@@ -1,11 +1,20 @@
 import java.io.*;
 
+/**
+ * @author SeraphyBR (Luiz Junio Veloso Dos Santos)
+ * @version 1.0
+ */
 public class ulac
 {//Begin classe ulac
 
     private static RandomAccessFile program;
     private static RandomAccessFile bin;
 
+    /**
+     * Main method that checks the arguments passed and performs 
+     * the instructions accordingly, terminating the application 
+     * with its error code or success of the operation performed.
+     * */
     public static void main (String[] args)
     {//Begin main
         int exitCode = 0;
@@ -74,6 +83,11 @@ public class ulac
         System.exit(exitCode);
     }//End main
 
+    /**
+     * Method that receives a value and shows its respective error or success message.
+     * @param returnCode The return code of a method
+     * @return The int received
+     */
     private static int executionStatus(int returnCode)
     {//Begin executionStatus
         switch(returnCode){
@@ -116,6 +130,9 @@ public class ulac
         return returnCode;
     }//End returnCode
 
+    /**
+     * Method that prints the help screen.
+     * */
     private static void getHelp()
     {//Begin getHelp
         System.out.println(
@@ -133,6 +150,10 @@ public class ulac
                 );
     }//End getHelp
 
+    /**
+     * @param mnemonic The statement to be verified
+     * @return A char representing the instruction to be sent to the Arduino
+     * */
     private static char instructionToHex(String mnemonic)
     {//Begin instructionToHex
         char hex = ' ';
@@ -189,6 +210,12 @@ public class ulac
         return hex;
     }//End instructionToHex
 
+    /**
+     * I method that read the .ula code and generates a .hex file containing 
+     * the arduino instructions.
+     * @param filename Filename with .ula extension
+     * @return Return code representing the error or success of the operation
+     * */
     private static int compile(String filename)
     {//Begin compile
         int returnCode = 0;
@@ -227,6 +254,13 @@ public class ulac
         return returnCode;
     }//End compile
 
+    /**
+     * Method that read instructions in .hex and send to arduino.
+     * @param filename Filename with .hex extension
+     * @param port Serial port that is connected to the Arduino
+     * @param stepByStep Enable step-by-step sending, with enter
+     * @return Return code representing the error or success of the operation
+     * */   
     private static int run(String filename, String port, boolean stepByStep){
         int returnCode = 0;
         if(filename.contains(".hex")){
@@ -257,6 +291,14 @@ public class ulac
         return returnCode;
     }
 
+    /**
+     * Method that read the .ula code, generates the .hex file containing 
+     * the arduino instructions and sends them to the arduino.
+     * @param filename Filename with .ula extension 
+     * @param port Serial port that is connected to the Arduino
+     * @param stepByStep Enable step-by-step sending, with enter  
+     * @return Return code representing the error or success of the operation
+     * */  
     private static int compileAndRun(String filename, String port, boolean stepByStep){
         int returnCode = compile(filename);
         if (returnCode == 0) returnCode = run(filename.replace(".ula", ".hex"), port, stepByStep);
