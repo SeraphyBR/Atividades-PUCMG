@@ -1,5 +1,6 @@
-import java.io.*;
-
+import java.io.RandomAccessFile;
+import java.io.FileNotFoundException;
+import java.io.Console;
 /**
  * @author SeraphyBR (Luiz Junio Veloso Dos Santos)
  * @version 1.0
