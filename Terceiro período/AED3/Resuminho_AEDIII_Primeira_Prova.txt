@@ -1,0 +1,136 @@
+=======================================================================================================================================================================
+Tipos de dados:
+
+Registro: é a descrição de uma entidade através de vários campos;
+
+O char é comumente UNICODE [ representação em 2 bytes (16 bits)];
+
+Exemplos de tipos de dados:
+-Short: Quantidade de produtos em um cupom de compra,
+-Long: Registro de operações bancárias,
+-Float: Preços em geral,
+
+Datas: são geralmente armazenadas em long pois armazena os milissegundos desde 00:00 de 01/01/1970 
+(curiosidade que em Excel, temos a representação em Double - a parte inteira indica os dias passados, e a decimal a fração de um dia );
+No caso de datas de nascimento, o armazenamento é feito em INT;
+
+Para campos como CPF ou telefone usamos Strings;
+
+Identificadores:
+* Não carregam significado, são exclusivos e devem ser sequenciais;
+
+Codificação:
+* No ASCII, temos a representação em 8 bits, Podendo representar 127 símbolos (7 bits) e tendo o oitavo bit com a função de controle de erro,
+
+UNICODE:
+* Capaz de representar texto de qualquer sistema de escrita existente ( mais de 100 mil símbolos ),
+* 3 tipos: UTF-8  = Comprimento de tamanho variável (1 a 4 bytes) e é o padrão da Internet,
+	   UTF-16 = Comprimento de tamanho variável (2 a 4 bytes) para países asiáticos;
+	   UTF-32 = Comprimento fixo de 4 bytes;	 
+
+String
+* Tamanho fixo: Estimar o tamanho por desvio padrão (estatística);
+* Tamanho variável: 2 alternativas = Com indicador de tamanho (no início) ou,
+				     Com delimitador, [\n ou \0 ou ; ou | (entre outros) no final e esse delimitador não pode ser parte da string];
+Registros
+* Tamanho fixo: Int, long, short, double, float e byte - são de tamanho fixo,
+		String pode variar se a soma der o tamanho fixo (cada campo deve ter um delimitador no fim),
+ 		Vantagem em consideração a movimentação, pois admite saltos grandes;
+
+* Tamanho Variável: Poupa espaço em disco,
+		    Admite 3 alternativas de processamento: - Se todos os registros tiverem os mesmos campos e estiverem em ordem,
+							    - Uso de indicadores de tamanho (antes de cada registro),
+							    - Uso de delimitadores de registro (fim de cada registro),
+		    Para criptografia, é essencial o uso de indicadores de tamanho;
+
+=======================================================================================================================================================================
+
+Arquivos:
+
+Os discos rígidos são dispositivos de acesso aleatório, mas como este tipo de acesso requer a movimentação de partes mecânicas no disco, é considerada lenta. 
+Caso se esteja querendo uma rápida movimentação, priorize o acesso sequencial, onde as movimentações mecânicas são mínimas;
+
+Apesar da existência de diversos tipos de memória, existem três principais:
+
+	Memória principal/Primária: Memórias de rápido acesso e alta velocidade, porém tem o custo por byte relativamente alto. 
+                                    Em sua maioria são voláteis (se apagam quando a maquina é desligada). Exemplo: RAM;
+
+	Memória secundária: Tendo como principal exemplo o disco rígido, este tipo de memória é usada para armazenar grandes quantidades de dados que 
+                            excedem a capacidade das memórias principais e também programas que não estão em uso imediato, mas que devem estar facilmente acessíveis. 
+                            Por consequência, é significativamente mais lenta.
+
+	Memória terciária:  Muito utilizada para cópias de segurança (backups), as memórias terciárias são utilizadas para guardar gigantescos volumes de dados, 
+                            onde o tempo de acesso não é um fator preocupante. Como exemplo temos CDs, DVDs e fitas;
+			    O tempo de recuperação da memória secundária em relação a memória principal é cerca de 1000 vezes mais lenta;
+
+
+* Sequenciais: 	São aqueles cuja ordem de acesso ao registro é a ordem em que eles estão fisicamente armazenados,
+		O acesso é muito rápido,
+		Chave de ordenação é o conjunto de critérios que estabelece a ordem dos registros,
+	
+	> Indicadores:
+	
+		-Características dos Indicadores: 
+					Numérico: Poder usar ao máximo o conjunto de bits,
+					Sequenciais: Para não desperdiçar valores,
+					Exclusivos: Não podem ser ambíguos (não ter risco de identificar duas coisas com o mesmo códigos),
+					Não significativos: Não podem ser alterados;
+		                        Os indicadores ficam sempre no início do arquivo, sendo na maioria das vezes um INT,
+		Buscas:
+			Se os registros forem de tamanho fixo, a busca será sequencial ou binária, uma vez que
+                        você sabe o tamanho de cada registro e pode movimentar-se dando saltos no arquivo,
+			Se eles forem de tamanho variável, podemos usar a busca sequencial, mas por ser bem inviável, 
+                        usaremos um arquivo complementar chamado índice,	
+		    	
+		Inclusão:
+			Ordenado:
+				ler o ultimo código usado;
+				novo código = ultimo  + 1;
+				ir para o primeiro;
+				faça uma busca sequencial;
+				vá para a posição anterior à saída da busca
+				crie um arquivo temporário,
+				passe blocos para o arquivo temporário,
+				insira o novo registro,
+				volte com os blocos após o novo registro;
+		Área de extensão: 
+                                  Otimiza o processo de inclusão, quando o arquivo é muito grande;
+				  Combina o acesso sequencial com listas encadeadas;
+				  A atualização é feita periodicamente;
+		Alteração:
+			Se for mudança de posição do registro, então exclui e, logo após, inclui o registro alterado;
+			Se não for mudança de posição, verificar se é de tamanho fixo (altera no local) ou se é de tamanho variável (repete a inclusão)
+		Exclusão:
+			Marca com uma lápide (campo de 1 bit);
+			Se novo registro maior, coloca no novo no fim do arquivo, se não, adiciona um pouco de lixo para preencher;
+		Listagem:
+			Sequencial;
+			Se for feito na mesma ordem do armazenamento, basta sair listando, se não, deve verificar todos os registros um à um;
+
+* Indexados:
+	
+	> É um arquivo que possui um ou mais índices que permitem acesso aleatório a um registro, dada uma determinada chave.
+	> Sempre que um registro for adicionado no arquivo, deve ser inserido no índice; o mesmo vale para a exclusão;
+	> O índice é composto de chave + endereço/posição;
+	> No índice, por ser ordenado, pode-se fazer busca binária;
+	> Pode-se ter quantos índices quiser, porém terá mais manutenção;
+
+	>Tipos de índices:
+		Primários: Existem para não precisar fazer busca sequencial no arquivo;
+			   Segue a mesma ordem do arquivo de dados;
+			   Baseado ou não na chave primária;
+			   Pode apontar para blocos de registros;
+			   Não há repetições(caso houver, cria-se um índice de agrupamento);
+		
+		Secundários: Não segue a mesma ordem do arquivo de dados;
+		
+		Diretos: Aponta diretamente para a posição do registro no arquivo de dados;
+		
+		Indiretos: Aponta para o índice direto que aponta para o arquivo (não aponta diretamente para a posição no arquivo);
+		
+		Densos: Todos os registros registrados no índice;
+		
+		Esparsos: Apenas alguns registros tem lugar no índice:
+				> Por agrupamento, faixas ou;
+				> por critério de seleção(Ex: sexo, estado);
+
