@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1556018224 "relatorio08.tex" "relatorio08.pdf" "relatorio08" 1556018224
+["pdflatex"] 1556044857 "relatorio08.tex" "relatorio08.pdf" "relatorio08" 1556044857
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1480098666 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm" 1480098696 3584 21b378cca2e40816b0e6d74a4dc98f04 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1480098696 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
@@ -57,9 +57,9 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1547329831 31833 7c9db31fccecd78c04a65a31762d97e6 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1535300447 325073 705aa03b367ab71bc75db4c747a42f57 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1547329836 728369 0539bdd6cef7a2a8e9b80b7e53674e55 ""
-  "relatorio08.aux" 1556018224 182 9a1ca30b194bd545f26a173e7817d613 ""
-  "relatorio08.tex" 1556018222 7130 741caf43a4d591f2f1eb31dcd5ba55b5 ""
+  "relatorio08.aux" 1556044857 182 9a1ca30b194bd545f26a173e7817d613 ""
+  "relatorio08.tex" 1556044847 8423 ae68758685f0e0debdc2ea1528c83b75 ""
   (generated)
   "relatorio08.pdf"
-  "relatorio08.aux"
   "relatorio08.log"
+  "relatorio08.aux"
