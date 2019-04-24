@@ -1,4 +1,9 @@
 **/.vscode
 *.class
 *.bin
+*.log
+*.fls
+*.aux
+*.fdb_latexmk
+*.synctex.gz
 **/.ccls-cache
