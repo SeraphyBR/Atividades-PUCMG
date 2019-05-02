@@ -1,0 +1,147 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx,url}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{a4wide}
+\usepackage{booktabs}
+\graphicspath{{./imagens/}}
+\usepackage{color} % the following is needed for syntax highlighting
+\usepackage{listings} % For display code
+\usepackage{mips} % MIPS highlighting for listings package
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+    language=[mips]Assembler,       % the language of the code
+    basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+    numbers=left,                   % where to put the line-numbers
+    numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+    stepnumber=1,                   % the step between two line-numbers. If it's 1, each line will be numbered
+    numbersep=5pt,                  % how far the line-numbers are from the code
+    backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+    showspaces=false,               % show spaces adding particular underscores
+    showstringspaces=false,         % underline spaces within strings
+    showtabs=false,                 % show tabs within strings adding particular underscores
+    frame=single,                   % adds a frame around the code
+    rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+    tabsize=4,                      % sets default tabsize to 4 spaces
+    captionpos=b,                   % sets the caption-position to bottom
+    breaklines=true,                % sets automatic line breaking
+    breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+    title=\lstname,                 % show the filename of files included with \lstinputlisting;
+    % also try caption instead of title
+    keywordstyle=\color{blue},          % keyword style
+    commentstyle=\color{dkgreen},       % comment style
+    stringstyle=\color{mauve},         % string literal style
+    escapeinside={\%*}{*)},            % if you want to add a comment within your code
+    morekeywords={*,...}               % if you want to add more keywords to the set
+}
+
+\title{\vspace{-4cm}Relatório 10 - Laboratório de Arquitetura de Computadores}
+\author{Luiz Junio Veloso Dos Santos - Matricula: 624037}
+
+\begin{document} 
+
+\maketitle
+
+\begin{enumerate}
+    \item{Se tivermos 2 inteiros, cada um com 32 bits, quantos bits podemos esperar para o produto?}
+        \begin{enumerate}
+            \item{16}
+            \item{32}
+            \item{64}
+            \item{128}
+        \end{enumerate}
+        \textbf{R: c) 64}
+
+    \item{Quais os registradores que armazenam os resultados na multiplicação?}
+        \begin{enumerate}
+            \item{high e low}
+            \item{hi e lo}
+            \item{R0 e R1}
+            \item{\$0 e \$1}
+        \end{enumerate}
+        \textbf{R: b) hi e lo}
+
+    \item{Qual a operação usada para multiplicar inteiros em comp.\ de dois?}
+        \begin{enumerate}
+            \item{mult}
+            \item{multu}
+            \item{multi}
+            \item{mutt}
+        \end{enumerate}
+        \textbf{R: a) mult}
+
+    \item{Qual instrução move os bits menos significativos da multiplicação para o reg.\ 8?}
+        \begin{enumerate}
+            \item{move \$8,lo}
+            \item{mvlo \$8,lo}
+            \item{mflo \$8}
+            \item{addu \$8,\$0,lo}
+        \end{enumerate}
+        \textbf{R: c) mflo \$8}
+
+    \item{Se tivermos dois inteiros, cada um com 32 bits, quantos bits deveremos estar preparados para
+            receber no \textbf{quociente}?}
+        \begin{enumerate}
+            \item{16}
+            \item{32}
+            \item{64}
+            \item{128}
+        \end{enumerate}
+        \textbf{R: }
+
+    \item{Após a instrução div, qual registrador possui o quociente?}
+        \begin{enumerate}
+            \item{lo}
+            \item{hi}
+            \item{high}
+            \item{\$2}
+        \end{enumerate}
+        \textbf{R: }
+
+    \item{Qual a inst.\ usada para dividir dois inteiros em comp.\ de dois?}
+        \begin{enumerate}
+            \item{dv}
+            \item{divide}
+            \item{divu}
+            \item{div}
+        \end{enumerate}
+        \textbf{R: d) div}
+
+    \item{Faça um arithmetic shift right de dois no seguinte padrão de bits: 1001 1011}
+        \begin{enumerate}
+            \item{1110 0110}
+            \item{0010 0110}
+            \item{1100 1101}
+            \item{0011 0111}
+        \end{enumerate}
+        \textbf{R: a) 1110 0110}
+
+    \item{Qual o efeito de um \textbf{arithmetic shift right} de uma posição?}
+        \begin{enumerate}
+            \item{Se o inteiro for unsigned, o shift divide por 2. Se o inteiro for signed, o shift o
+                    divide por 2.}
+            \item{Se o inteiro for unsigned, o shift o divide por 2. Se o inteiro for signed, o shift
+                    pode resultar em um valor errado.}
+            \item{Se o inteiro for unsigned, o shift pode ocasionar um valor errado. Se o inteiro for
+                    signed, o shift o divide por 2.}
+            \item{O shift multiplica o número por dois.}
+        \end{enumerate}
+        \textbf{R: b) }
+        \newpage
+
+    \item{Qual sequencia de instruções avalia 3x + 7, onde x é iniciado no reg.\ \$8 e o resultado
+            armazenado em \$9?}
+        \begin{enumerate}
+            \item{ori \$3,\$0,3 \newline mult \$8,\$3 \newline mflo \$9 \newline addi \$9,\$9,7}
+            \item{ori \$3,\$0,3 \newline mult \$8,\$3 \newline addi \$9,\$8,7}
+            \item{ori \$3,\$0,3 \newline mult \$8,\$3 \newline mfhi \$9 \newline addi \$9,\$9,7}
+            \item{mult \$8,\$3 \newline mflo \$9 \newline addi \$9,\$9,7}
+        \end{enumerate}
+        \textbf{R:}
+\end{enumerate}
+\end{document}
