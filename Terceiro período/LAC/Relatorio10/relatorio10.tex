@@ -1,10 +1,11 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,11pt,fleqn]{article}
 \usepackage{graphicx,url}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
 \usepackage{a4wide}
 \usepackage{booktabs}
+\usepackage{amsmath}
 \graphicspath{{./imagens/}}
 \usepackage{color} % the following is needed for syntax highlighting
 \usepackage{listings} % For display code
@@ -47,6 +48,8 @@
 
 \maketitle
 
+
+\centering{\Large \textbf{Exercícios}}
 \begin{enumerate}
     \item{Se tivermos 2 inteiros, cada um com 32 bits, quantos bits podemos esperar para o produto?}
         \begin{enumerate}
@@ -143,5 +146,57 @@
             \item{mult \$8,\$3 \newline mflo \$9 \newline addi \$9,\$9,7}
         \end{enumerate}
         \textbf{R:}
+\end{enumerate}
+\newpage
+\centering{\Large \textbf{Programas}}
+\begin{enumerate}
+    \item{Escreva um programa que leia um valor A da memória, identifique se o número é negativo ou não e
+            encontre o seu módulo. O valor deverá ser reescrito sobre o A.}
+    \item{Escreva um programa que leia da memória um valor de temperatura TEMP.\@ Se TEMP >= 30 e TEMP <= 50
+            uma variável FLAG, também na memória, deverá receber o valor 1, caso contrário, FLAG deverá
+            ser zero.}
+
+    \item{Escrever um programa que crie um vetor de 100 elementos na memória onde \\ vetor[i] = 2*i + 1.
+            Após a ultima posição do vetor criado, escrever a soma de todos os valores armazenados do
+            vetor.}
+
+    \item{Considere que a partir da primeira posição livre da memória temos um vetor com 100 elementos.
+            Escrever um programa que ordene esse vetor de acordo com o algoritmo da bolha. Faça o teste
+            colocando um vetor totalmente desordenado e verifique se o algoritmo funciona.}
+    \item{
+            \[
+                y = 
+                \begin{cases}
+                    x^4 + x^3 - 2x^2 \text{\qquad se x for par} \\
+                    x^5 - x^3 + 1 \text{\qquad se x for impar}
+                \end{cases}
+            \]
+            Os valores de x devem ser lidos da primeira posição livre da memória e o valor y deverá ser
+            escrito na segunda posição livre.
+        }
+
+     \item{
+            \[
+                y = 
+                \begin{cases}
+                    x^3 + 1  \text{\qquad se x > 0} \\
+                    x^4 - 1 \text{\qquad se x <= 0}
+                \end{cases}
+            \]
+            Os valores de x devem ser lidos da primeira posição livre da memória e o valor y deverá ser
+            escrito na segunda posição livre.
+        }
+
+    \item{Escreva um programa que avalie a expressão: (x*y)/z.\\Use x = 1600000 (=0x186A00), y = 80000
+            (=0x13880), e z = 400000 (=0x61A80). Inicializar os registradores com os valores acima.}
+
+    \item{Escreva um programa que gere um vetor com os números ímpares até 100. O valor 1 deverá estar na
+            primeira posição livre da memória.\\Após gerar e armazenar o vetor, seu programa deverá varrer
+            todo o vetor, ler cada termo, somar em uma variável auxiliar e armazenar a última posição a
+            soma de todos os elementos.\\Mostre a tabela de porcentagens das instruções utilizadas.}
+
+    \item{Escreva um programa que gere um vetor de inteiros até 100. Seu programa deverá armazenar na
+            memória os números pares separados dos ímpares. Armazene primeiro os pares e logo a seguir os
+            ímpares.\\Mostre a tabela de porcentagens das instruções utilizadas.}
 \end{enumerate}
 \end{document}
