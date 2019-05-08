@@ -1,7 +1,9 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
 \documentclass[a4paper,11pt,fleqn]{article}
 \usepackage{graphicx,url}
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
 \usepackage{a4wide}
 \usepackage{booktabs}
@@ -9,7 +11,9 @@
 \graphicspath{{./imagens/}} % Images directory
 \usepackage{color} % the following is needed for syntax highlighting
 \usepackage{listings} % For display code
-\usepackage{mips} % MIPS highlighting for listings package
+\usepackage{mips} % MIPS highlighting for listings package 
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -155,12 +159,14 @@
 
         \textbf{R:}
         \lstinputlisting{programa13.asm}
+        \newpage
 
     \item{Escreva um programa que leia da memória um valor de temperatura TEMP.\@ Se TEMP >= 30 e TEMP <= 50
             uma variável FLAG, também na memória, deverá receber o valor 1, caso contrário, FLAG deverá
             ser zero.}
 
         \textbf{R:}
+        \lstinputlisting{programa14.asm}
 
     \item{Escrever um programa que crie um vetor de 100 elementos na memória onde \\ $vetor[i] = 2*i + 1$.
             Após a ultima posição do vetor criado, escrever a soma de todos os valores armazenados do
@@ -202,7 +208,7 @@
         \textbf{R:}
 
     \item{Escreva um programa que avalie a expressão: $(x*y)/z$.\\Use x = 1600000 (=0x186A00), y = 80000
-            (=0x13880), e z = 400000 (=0x61A80). Inicializar os registradores com os valores acima.}
+            (=0x13880), \\e z = 400000 (=0x61A80). Inicializar os registradores com os valores acima.}
 
         \textbf{R:}
 
