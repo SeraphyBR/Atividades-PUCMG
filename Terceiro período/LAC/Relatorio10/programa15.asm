@@ -4,7 +4,7 @@
 .globl main
 main:
 	# Colocar endereco base da memoria em t0
-	addi $t0,$t0,0x1001
+	addi $t0,$zero,0x1001
 	sll  $t0,$t0,16
 	
 	addi $s0,$zero,0 # comeca i = 0
