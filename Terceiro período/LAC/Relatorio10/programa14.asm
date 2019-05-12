@@ -23,7 +23,7 @@ teste2:
 	slt $t2,$t2,$s0 # 1 se for 50 < TEMP, 0 se for 50 >= TEMP
 	
 	# Se igual a 0, FLAG = 1
-	beq $t1,$zero,um
+	beq $t2,$zero,um
 	j zero
 	
 um:
