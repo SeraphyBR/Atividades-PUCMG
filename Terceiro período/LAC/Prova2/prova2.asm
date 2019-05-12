@@ -4,8 +4,7 @@ RADIX DEC
 #INCLUDE <P16F628A.INC>
  __CONFIG H'3F10'
 
- CBLOCK 0x20 ;ENDEREÇO INICIAL DA MEMÓRIA DE
-     ;USUÁRIO
+ CBLOCK 0x20 ;ENDEREÇO INICIAL DA MEMÓRIA DE USUÁRIO
  CONTADOR1
  CONTADOR2
  CONTADOR3
@@ -30,32 +29,32 @@ REPETE
  GOTO REPETE
 
 
-ATRASO    
- MOVLW 162
- MOVWF CONTADOR1 
-ATRASO1 
- MOVLW 162
- MOVWF CONTADOR2 
-ATRASO2
- MOVLW 159
- MOVWF CONTADOR3
-ATRASO3
- DECFSZ CONTADOR3
- GOTO ATRASO3
- DECFSZ CONTADOR2
- GOTO ATRASO2
- DECFSZ CONTADOR1
- GOTO ATRASO1
- CALL OFFSET      
- RETURN 
+ATRASO            ; atraso(){
+ MOVLW 162        ;     for(contador1 = 162; contador1 != 0; contador1--){
+ MOVWF CONTADOR1  ;         for(contador2 = 162; contador2 != 0; contador2--){
+ATRASO1           ;             for(contador3 = 159; contador3 != 0; contador3--);
+ MOVLW 162        ;         }
+ MOVWF CONTADOR2  ;     }
+ATRASO2           ;     offset();
+ MOVLW 159        ;
+ MOVWF CONTADOR3  ;
+ATRASO3           ;
+ DECFSZ CONTADOR3 ;
+ GOTO ATRASO3     ;
+ DECFSZ CONTADOR2 ;
+ GOTO ATRASO2     ;
+ DECFSZ CONTADOR1 ;
+ GOTO ATRASO1     ;
+ CALL OFFSET      ;
+ RETURN           ; }
  
-OFFSET
- MOVLW 5
- MOVWF CONTADOR4
-ATRASO4
- DECFSZ CONTADOR4
- GOTO ATRASO4
- RETURN
+OFFSET            ; offset(){
+ MOVLW 5          ;     for(contador4 = 5; contador4 != 0; contador4--);
+ MOVWF CONTADOR4  ;
+ATRASO4           ;
+ DECFSZ CONTADOR4 ;
+ GOTO ATRASO4     ;
+ RETURN           ; }
     
 END
 
