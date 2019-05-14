@@ -21,12 +21,12 @@ INICIO
  CLRF TRISB
  BCF STATUS, RP0
 
-REPETE
- BSF PORTB, 1
- CALL ATRASO
- BCF PORTB, 1
- CALL ATRASO
- GOTO REPETE
+REPETE        ; while(true){
+ BSF PORTB, 1 ;     RB1 = 1; 
+ CALL ATRASO  ;     atraso();
+ BCF PORTB, 1 ;     RB1 = 0;
+ CALL ATRASO  ;     atraso();
+ GOTO REPETE  ; }
 
 
 ATRASO            ; atraso(){
