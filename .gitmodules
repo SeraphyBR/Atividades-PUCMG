@@ -4,3 +4,6 @@
 [submodule "Terceiro período/AED3/CRUD"]
 	path = Terceiro período/AED3/CRUD
 	url = https://github.com/SeraphyBR/CRUD.git
+[submodule "Terceiro período/AED3/CRUD3"]
+	path = Terceiro período/AED3/CRUD3
+	url = https://github.com/SeraphyBR/CRUD3
