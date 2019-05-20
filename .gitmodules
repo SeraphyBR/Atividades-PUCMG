@@ -7,3 +7,6 @@
 [submodule "Terceiro período/AED3/-f"]
 	path = Terceiro período/AED3/CRUD2
 	url = https://github.com/HenriqueFQuick/CRUD2
+[submodule "Terceiro período/AED3/CRUD2"]
+	path = Terceiro período/AED3/CRUD2
+	url = https://github.com/HenriqueFQuick/CRUD2
