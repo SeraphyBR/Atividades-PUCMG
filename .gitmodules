@@ -4,9 +4,6 @@
 [submodule "Terceiro período/AED3/CRUD3"]
 	path = Terceiro período/AED3/CRUD3
 	url = https://github.com/SeraphyBR/CRUD3
-[submodule "Terceiro período/AED3/-f"]
-	path = Terceiro período/AED3/CRUD2
-	url = https://github.com/HenriqueFQuick/CRUD2
 [submodule "Terceiro período/AED3/CRUD2"]
 	path = Terceiro período/AED3/CRUD2
 	url = https://github.com/HenriqueFQuick/CRUD2
