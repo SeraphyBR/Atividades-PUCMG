@@ -1,1 +1,0 @@
-/home/seraphybr-fun/Atividades-PUCMG/Primeiro\ período/AED-1/Rust/Trabalho\ Prático\ 01\ -\ AED1/area_circulo/target/debug/area_circulo: /home/seraphybr-fun/Atividades-PUCMG/Primeiro\ período/AED-1/Rust/Trabalho\ Prático\ 01\ -\ AED1/area_circulo/src/main.rs
