@@ -14,7 +14,7 @@ class Pontos {
       double xb = s.nextDouble();
       System.out.print("Digite a coordenada Y do ponto B: ");
       double yb = s.nextDouble();
-      double dist = Math.sqrt(Math.pow((xa - xb),2) + Math.pow((yb - ya),2));
+      double dist = Math.sqrt(Math.pow((xb - xa),2) + Math.pow((yb - ya),2));
       System.out.printf("A distancia entre o ponto A e B é: %.2f ",dist);
    }
 }  
