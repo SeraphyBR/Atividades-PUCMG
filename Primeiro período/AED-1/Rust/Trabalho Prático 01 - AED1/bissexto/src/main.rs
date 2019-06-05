@@ -2,7 +2,7 @@ use std::io;
 use std::io::Write;
 
 fn main() {
-    let input = String::new();
+    let mut input = String::new();
     print!("Digite um ano: ");
     io::stdout().flush().unwrap();
     io::stdin().read_line(&mut input).unwrap();

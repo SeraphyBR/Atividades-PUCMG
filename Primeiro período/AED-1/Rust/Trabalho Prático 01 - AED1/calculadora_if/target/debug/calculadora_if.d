@@ -1,0 +1,1 @@
+/home/seraphybr-fun/Atividades-PUCMG/Primeiro\ período/AED-1/Rust/Trabalho\ Prático\ 01\ -\ AED1/calculadora_if/target/debug/calculadora_if: /home/seraphybr-fun/Atividades-PUCMG/Primeiro\ período/AED-1/Rust/Trabalho\ Prático\ 01\ -\ AED1/calculadora_if/src/main.rs
