@@ -20,6 +20,8 @@ fn main() {
     println!("Seu peso ideal é: {:.2}kg", peso);
 }
 
+// sexo = true, masculino
+// sexo = false, feminino
 fn peso_ideal(altura: f32, sexo: bool) -> f32 {
     match sexo {
         true => (72.7 * altura) - 58.0,
