@@ -28,6 +28,6 @@ fn main() {
     let yb = input.trim().parse::<f32>().expect("Não foi converter para ponto flutuante!");
     input.clear();
 
-    let result: f32 = ((xb - xa).powf(2.0) + (yb - ya).powf(2.0)).sqrt();
+    let result: f32 = ((xb - xa).powi(2) + (yb - ya).powi(2)).sqrt();
     println!("A distancia entre os pontos A e B é {:.3}", result);
 }
