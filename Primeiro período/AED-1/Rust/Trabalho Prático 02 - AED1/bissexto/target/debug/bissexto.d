@@ -1,1 +1,0 @@
-/home/seraphybr-fun/Atividades-PUCMG/Primeiro\ período/AED-1/Rust/Trabalho\ Prático\ 02\ -\ AED1/bissexto/target/debug/bissexto: /home/seraphybr-fun/Atividades-PUCMG/Primeiro\ período/AED-1/Rust/Trabalho\ Prático\ 02\ -\ AED1/bissexto/src/main.rs

@@ -1,1 +1,0 @@
-/home/seraphybr-fun/Atividades-PUCMG/Primeiro\ período/AED-1/Rust/Trabalho\ Prático\ 02\ -\ AED1/ordem_decrescente/target/debug/ordem_decrescente: /home/seraphybr-fun/Atividades-PUCMG/Primeiro\ período/AED-1/Rust/Trabalho\ Prático\ 02\ -\ AED1/ordem_decrescente/src/main.rs
