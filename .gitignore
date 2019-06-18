@@ -8,3 +8,5 @@
 *.synctex.gz
 **/.ccls-cache
 **/tags
+tags.*
+tags.*
