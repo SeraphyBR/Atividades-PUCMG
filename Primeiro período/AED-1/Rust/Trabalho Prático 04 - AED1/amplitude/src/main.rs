@@ -17,7 +17,6 @@ fn main() {
             input.clear();
             if num < 0 {println!("Valor inválido!\nDigite novamente.\n")}
             if num >= 0 {break}
-
         }//Fim loop
         if num >= maior && num != 0 {maior = num}
         if num <= menor && num != 0 {menor = num}
