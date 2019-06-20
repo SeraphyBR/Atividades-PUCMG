@@ -27,14 +27,13 @@ public class  ProgressaoAritmedica
              
          do{
             valor = primeirotermo + ( cont - 1) * razao;
-            // System.out.println( cont + "º => " + valor);
+            System.out.println( cont + "º => " + valor);
             cont = cont + 1;
-            if ( cont % x == 0 ) divisiveis++; 
-            
+            if ( valor % x == 0 ) divisiveis++; 
          }  while (cont <= termos );
          
          System.out.println(" A quantidade de termos que é divisivel por " + x + " é: " + divisiveis);
-      
+    
          do{
             exec = 0;
             System.out.print("Deseja fazer um novo calculo? [s/n]: ");
