@@ -1,5 +1,0 @@
-PWD /home/seraphybr-fun/Atividades-PUCMG/Primeiro período/Textos no Latex/Computadores e sociedade
-INPUT /usr/share/texmf-dist/web2c/texmf.cnf
-INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT TP02.tex
-OUTPUT TP02.log

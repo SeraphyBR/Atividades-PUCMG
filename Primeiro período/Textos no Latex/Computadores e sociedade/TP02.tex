@@ -34,22 +34,22 @@
 % ------------------------------------------------------------------------
 
 \documentclass[
-	% -- opções da classe memoir --
-	12pt,				% tamanho da fonte
-	% openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
-    oneside,			% para impressão somente frente. Oposto a twoside (frente e verso)
-	a4paper,			% tamanho do papel. 
-	% -- opções da classe abntex2 --
-	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
-	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
-	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
-	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
-	% -- opções do pacote babel --
-	english,			% idioma adicional para hifenização
-	french,				% idioma adicional para hifenização
-	spanish,			% idioma adicional para hifenização
-	brazil,				% o último idioma é o principal do documento
-	]{abntex2}
+% -- opções da classe memoir --
+12pt,				% tamanho da fonte
+% openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+oneside,			% para impressão somente frente. Oposto a twoside (frente e verso)
+a4paper,			% tamanho do papel. 
+% -- opções da classe abntex2 --
+%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+% -- opções do pacote babel --
+english,			% idioma adicional para hifenização
+french,				% idioma adicional para hifenização
+spanish,			% idioma adicional para hifenização
+brazil,				% o último idioma é o principal do documento
+]{abntex2}
 
 
 % ---
@@ -74,7 +74,7 @@
 \usepackage{multicol}
 \usepackage{multirow}
 % ---
-	
+
 % ---
 % Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
 % ---
@@ -99,13 +99,13 @@
 \renewcommand{\backref}{}
 % Define os textos da citação
 \renewcommand*{\backrefalt}[4]{
-	\ifcase #1 %
-		Nenhuma citação no texto.%
-	\or
-		Citado na página #2.%
-	\else
-		Citado #1 vezes nas páginas #2.%
-	\fi}%
+    \ifcase #1 %
+        Nenhuma citação no texto.%
+        \or
+        Citado na página #2.%
+    \else
+        Citado #1 vezes nas páginas #2.%
+\fi}%
 % ---
 
 % ---
@@ -116,11 +116,11 @@
 \local{Brasil}
 \data{20 de novembro de 2014}
 \instituicao{%
-  Universidade Federal do Paraná
-  \par
-  Setor Palotina
-  \par
-  Engenharia de Aquicultura}
+    Universidade Federal do Paraná
+    \par
+    Setor Palotina
+    \par
+Engenharia de Aquicultura}
 \tipotrabalho{Relatório técnico}
 % O preambulo deve conter o tipo do trabalho, o objetivo, 
 % o nome da instituição e a área de concentração 
@@ -138,18 +138,18 @@ com as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 % informações do PDF
 \makeatletter
 \hypersetup{
-     	%pagebackref=true,
-		pdftitle={\@title}, 
-		pdfauthor={\@author},
-    	pdfsubject={\imprimirpreambulo},
-	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório técnico}, 
-		colorlinks=true,       		% false: boxed links; true: colored links
-    	linkcolor=blue,          	% color of internal links
-    	citecolor=blue,        		% color of links to bibliography
-    	filecolor=magenta,      		% color of file links
-		urlcolor=blue,
-		bookmarksdepth=4
+    %pagebackref=true,
+    pdftitle={\@title}, 
+    pdfauthor={\@author},
+    pdfsubject={\imprimirpreambulo},
+    pdfcreator={LaTeX with abnTeX2},
+    pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório técnico}, 
+    colorlinks=true,       		% false: boxed links; true: colored links
+    linkcolor=blue,          	% color of internal links
+    citecolor=blue,        		% color of links to bibliography
+    filecolor=magenta,      		% color of file links
+    urlcolor=blue,
+    bookmarksdepth=4
 }
 \makeatother
 % --- 
@@ -201,17 +201,17 @@ com as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 % Agradecimentos
 % ---
 \begin{agradecimentos}
-O agradecimento principal é direcionado a Youssef Cherem, autor do
-\nameref{formulado-identificacao} (\autopageref{formulado-identificacao}).
+    O agradecimento principal é direcionado a Youssef Cherem, autor do
+    \nameref{formulado-identificacao} (\autopageref{formulado-identificacao}).
 
-Os agradecimentos especiais são direcionados ao Centro de Pesquisa em
-Arquitetura da Informação\footnote{\url{http://www.cpai.unb.br/}} da Universidade de
-Brasília (CPAI), ao grupo de usuários
-\emph{latex-br}\footnote{\url{http://groups.google.com/group/latex-br}} e aos
-novos voluntários do grupo
-\emph{\abnTeX}\footnote{\url{http://groups.google.com/group/abntex2} e
-\url{http://abntex2.googlecode.com/}}~que contribuíram e que ainda
-contribuirão para a evolução do abn\TeX.
+    Os agradecimentos especiais são direcionados ao Centro de Pesquisa em
+    Arquitetura da Informação\footnote{\url{http://www.cpai.unb.br/}} da Universidade de
+    Brasília (CPAI), ao grupo de usuários
+    \emph{latex-br}\footnote{\url{http://groups.google.com/group/latex-br}} e aos
+    novos voluntários do grupo
+    \emph{\abnTeX}\footnote{\url{http://groups.google.com/group/abntex2} e
+    \url{http://abntex2.googlecode.com/}}~que contribuíram e que ainda
+    contribuirão para a evolução do abn\TeX.
 
 \end{agradecimentos}
 % ---
@@ -222,19 +222,19 @@ contribuirão para a evolução do abn\TeX.
 
 % resumo na língua vernácula (obrigatório)
 \begin{resumo} %% AQUI COMEÇA A PÁGINA DE RESUMO
- Segundo a \citeonline{NBR6028:2003}, o resumo deve ressaltar o
- objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão
- destes itens dependem do tipo de resumo (informativo ou indicativo) e do
- tratamento que cada item recebe no documento original. O resumo deve ser
- precedido da referência do documento, com exceção do resumo inserido no
- próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do
- resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
- ponto e finalizadas também por ponto. Bla bla bla bla bla \cite{fulano} %% EXEMPLO DE CITAÇÃO (vá em abntex2-modelo-references.bib)
+    Segundo a \citeonline{NBR6028:2003}, o resumo deve ressaltar o
+    objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão
+    destes itens dependem do tipo de resumo (informativo ou indicativo) e do
+    tratamento que cada item recebe no documento original. O resumo deve ser
+    precedido da referência do documento, com exceção do resumo inserido no
+    próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do
+    resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
+    ponto e finalizadas também por ponto. Bla bla bla bla bla \cite{fulano} %% EXEMPLO DE CITAÇÃO (vá em abntex2-modelo-references.bib)
 
- \vspace{\onelineskip}
-    
- \noindent
- \textbf{Palavras-chaves}: latex. abntex. editoração de texto.
+    \vspace{\onelineskip}
+
+    \noindent
+    \textbf{Palavras-chaves}: latex. abntex. editoração de texto.
 \end{resumo} %AQUI TERMINA A PÁGINA DE RESUMO
 % ---
 
@@ -258,10 +258,10 @@ contribuirão para a evolução do abn\TeX.
 % inserir lista de abreviaturas e siglas
 % ---
 \begin{siglas}
-  \item[Fig.] Area of the $i^{th}$ component
-  \item[456] Isto é um número
-  \item[123] Isto é outro número
-  \item[lauro cesar] este é o meu nome
+\item[Fig.] Area of the $i^{th}$ component
+\item[456] Isto é um número
+\item[123] Isto é outro número
+\item[lauro cesar] este é o meu nome
 \end{siglas}
 % ---
 
@@ -269,10 +269,10 @@ contribuirão para a evolução do abn\TeX.
 % inserir lista de símbolos
 % ---
 \begin{simbolos}
-  \item[$ \Gamma $] Letra grega Gama
-  \item[$ \Lambda $] Lambda
-  \item[$ \zeta $] Letra grega minúscula zeta
-  \item[$ \in $] Pertence
+\item[$ \Gamma $] Letra grega Gama
+\item[$ \Lambda $] Lambda
+\item[$ \zeta $] Letra grega minúscula zeta
+\item[$ \in $] Pertence
 \end{simbolos}
 % ---
 
@@ -302,16 +302,16 @@ conforme a ABNT NBR 10719:2011 \textit{Informação e documentação - Relatóri
 técnico e/ou científico - Apresentação}.
 
 \begin{table}[hbt] %% EXEMPLO DE TABELA FEITA POR MEIO DO http://www.tablesgenerator.com/
-\begin{center}
-\caption{Nome da tabela.} %% LEGENDA (REPARE QUE ELE JÁ COLOCA A NUMERAÇÃO AUTOMATICAMENTE E JÁ ADICIONA À LISTA DE TABELAS
-\begin{tabular}{|l|l|lll}
-\cline{1-2}
-Produto & Valor   &  &  &  \\ \cline{1-2}\cline{1-2}
-sdadasd & asdasd  &  &  &  \\ \cline{1-2}
-asdasd  & asasdas &  &  &  \\ \cline{1-2}
-dsad    & asdas   &  &  &  \\ \cline{1-2}
-\end{tabular}
-\end{center}
+    \begin{center}
+        \caption{Nome da tabela.} %% LEGENDA (REPARE QUE ELE JÁ COLOCA A NUMERAÇÃO AUTOMATICAMENTE E JÁ ADICIONA À LISTA DE TABELAS
+        \begin{tabular}{|l|l|lll}
+            \cline{1-2}
+            Produto & Valor   &  &  &  \\ \cline{1-2}\cline{1-2}
+            sdadasd & asdasd  &  &  &  \\ \cline{1-2}
+            asdasd  & asasdas &  &  &  \\ \cline{1-2}
+            dsad    & asdas   &  &  &  \\ \cline{1-2}
+        \end{tabular}
+    \end{center}
 \end{table}
 
 A expressão \textit{\textbf{``Modelo canônico''}} é utilizada para indicar que \abnTeX\ não é
@@ -320,11 +320,11 @@ somente os requisitos das normas da ABNT. Uma lista completa das normas
 observadas pelo \abnTeX\ é apresentada em \citeonline{abntex2classe}. %% USE \citeonline PARA CITAR NO MEIO DA FRASE
 
 \begin{figure} [hbt] 
-%% hbt SIGNIFICA QUE ELE PRIMEIRO VAI TENTAR COLOCAR A IMAGEM NESTE LUGAR (h de "here"). SENÃO DER, ELE TENTA COLOCAR MAIS PRA BAIXO (b de "bottom"). SENÃO ELE COLOCA MAIS PARA CIMA (t de "top").
-\label{figura1} 
-%% LABEL SERVE PARA VOCÊ REFERENCIAR A FIGURA NO MEIO DO TEXTO (VEJA LINHA 330: \ref{figura1}). ASSIM VOCÊ NÃO PERDE A REFERÊNCIA QUANDO MUDA A FIGURA DE LUGAR
-\caption{Exemplo de figura.}
-\includegraphics[width=0.95\textwidth]{nemo.jpeg} %% PARA COLOCAR O ARQUIVO DA IMAGEM NO SHARELATEX, CLIQUE NO ÍCONE QUE PARECE UMA FLECHINHA PARA CIMA (ATUALIZAR), CLIQUE EM UPLOAD E PROCURE A IMAGEM EM SEU COMPUTADOR.
+    %% hbt SIGNIFICA QUE ELE PRIMEIRO VAI TENTAR COLOCAR A IMAGEM NESTE LUGAR (h de "here"). SENÃO DER, ELE TENTA COLOCAR MAIS PRA BAIXO (b de "bottom"). SENÃO ELE COLOCA MAIS PARA CIMA (t de "top").
+    \label{figura1} 
+    %% LABEL SERVE PARA VOCÊ REFERENCIAR A FIGURA NO MEIO DO TEXTO (VEJA LINHA 330: \ref{figura1}). ASSIM VOCÊ NÃO PERDE A REFERÊNCIA QUANDO MUDA A FIGURA DE LUGAR
+    \caption{Exemplo de figura.}
+    \includegraphics[width=0.95\textwidth]{nemo.jpeg} %% PARA COLOCAR O ARQUIVO DA IMAGEM NO SHARELATEX, CLIQUE NO ÍCONE QUE PARECE UMA FLECHINHA PARA CIMA (ATUALIZAR), CLIQUE EM UPLOAD E PROCURE A IMAGEM EM SEU COMPUTADOR.
 \end{figure}
 
 
@@ -404,20 +404,20 @@ Lauro César Araujo
 % ---
 \begin{apendicesenv}
 
-% Imprime uma página indicando o início dos apêndices
-\partapendices
+    % Imprime uma página indicando o início dos apêndices
+    \partapendices
 
-% ----------------------------------------------------------
-\chapter{Quisque libero justo}
-% ----------------------------------------------------------
+    % ----------------------------------------------------------
+    \chapter{Quisque libero justo}
+    % ----------------------------------------------------------
 
-\lipsum[50]
+    \lipsum[50]
 
-% ----------------------------------------------------------
-\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
-ac pretium ante justo a nulla curabitur tristique arcu eu metus}
-% ----------------------------------------------------------
-\lipsum[55-57]
+    % ----------------------------------------------------------
+    \chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+    ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+    % ----------------------------------------------------------
+    \lipsum[55-57]
 
 \end{apendicesenv}
 % ---
@@ -432,26 +432,26 @@ ac pretium ante justo a nulla curabitur tristique arcu eu metus}
 % ---
 \begin{anexosenv}
 
-% Imprime uma página indicando o início dos anexos
-\partanexos
+    % Imprime uma página indicando o início dos anexos
+    \partanexos
 
-% ---
-\chapter{Morbi ultrices rutrum lorem.}
-% ---
-\lipsum[30]
+    % ---
+    \chapter{Morbi ultrices rutrum lorem.}
+    % ---
+    \lipsum[30]
 
-% ---
-\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
-parturient montes nascetur ridiculus mus}
-% ---
+    % ---
+    \chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
+    parturient montes nascetur ridiculus mus}
+    % ---
 
-\lipsum[31]
+    \lipsum[31]
 
-% ---
-\chapter{Fusce facilisis lacinia dui}
-% ---
+    % ---
+    \chapter{Fusce facilisis lacinia dui}
+    % ---
 
-\lipsum[32]
+    \lipsum[32]
 
 \end{anexosenv}
 
@@ -475,40 +475,40 @@ norma, ele é o último elemento pós-textual e opcional do relatório.
 \bigskip
 
 \begin{tabular}{|p{9cm}|p{5cm}|} %% EXEMPLO DE TABELA MAIS COMPLEXA
-\hline
-\multicolumn{2}{|c|}{\textbf{\large Dados do Relatório Técnico e/ou científico}}\\
-\hline
-\multirow{4}{10cm}[24pt]{Título e subtítulo}& Classificação de segurança\\
-                   & \\
-                   \cline{2-2}
-                   & No.\\
-                   & \\
-				
-\hline
-Tipo de relatório & Data\\
-\hline
-Título do projeto/programa/plano & No.\\
-\hline
-\multicolumn{2}{|l|}{Autor(es)} \\
-\hline
-\multicolumn{2}{|l|}{Instituição executora e endereço completo} \\
-\hline
-\multicolumn{2}{|l|}{Instituição patrocinadora e endereço completo} \\
-\hline
-\multicolumn{2}{|l|}{Resumo}\\[3cm]
-\hline
-\multicolumn{2}{|l|}{Palavras-chave/descritores}\\
-\hline
-\multicolumn{2}{|l|}{
-Edição \hfill No. de páginas \hfill No. do volume \hfill Nº de classificação \phantom{XXXX}} \\
-\hline
-\multicolumn{2}{|l|}{
-ISSN \hfill \hfill Tiragem \hfill Preço \phantom{XXXXXXXX}} \\
-\hline
-\multicolumn{2}{|l|}{Distribuidor} \\
-\hline
-\multicolumn{2}{|l|}{Observações/notas}\\[3cm]
-\hline
+    \hline
+    \multicolumn{2}{|c|}{\textbf{\large Dados do Relatório Técnico e/ou científico}}\\
+    \hline
+    \multirow{4}{10cm}[24pt]{Título e subtítulo}& Classificação de segurança\\
+                                                & \\
+                                                \cline{2-2}
+                                                & No.\\
+                                                & \\
+
+                                                \hline
+    Tipo de relatório & Data\\
+    \hline
+    Título do projeto/programa/plano & No.\\
+    \hline
+    \multicolumn{2}{|l|}{Autor(es)} \\
+    \hline
+    \multicolumn{2}{|l|}{Instituição executora e endereço completo} \\
+    \hline
+    \multicolumn{2}{|l|}{Instituição patrocinadora e endereço completo} \\
+    \hline
+    \multicolumn{2}{|l|}{Resumo}\\[3cm]
+    \hline
+    \multicolumn{2}{|l|}{Palavras-chave/descritores}\\
+    \hline
+    \multicolumn{2}{|l|}{
+    Edição \hfill No. de páginas \hfill No. do volume \hfill Nº de classificação \phantom{XXXX}} \\
+    \hline
+    \multicolumn{2}{|l|}{
+    ISSN \hfill \hfill Tiragem \hfill Preço \phantom{XXXXXXXX}} \\
+    \hline
+    \multicolumn{2}{|l|}{Distribuidor} \\
+    \hline
+    \multicolumn{2}{|l|}{Observações/notas}\\[3cm]
+    \hline
 \end{tabular}
 
 \end{document}
