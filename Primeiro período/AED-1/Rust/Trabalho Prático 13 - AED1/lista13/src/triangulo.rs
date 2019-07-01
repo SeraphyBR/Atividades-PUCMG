@@ -7,40 +7,16 @@ pub struct Triangulo {
 
 #[allow(dead_code)]
 impl Triangulo {
-    pub fn new(lado_a: f32, lado_b: f32, lado_c: f32) -> Triangulo {
-        let mut triangulo = Triangulo::new_empty();
-        triangulo.set_lados(lado_a, lado_b, lado_c);
-        triangulo
-    }
-
-    pub fn new_empty() -> Triangulo {
+    pub fn new(a: f32, b: f32, c: f32) -> Triangulo {
         Triangulo {
-            lado_a: 0.0,
-            lado_b: 0.0,
-            lado_c: 0.0,
+            lado_a: a.abs(),
+            lado_b: b.abs(),
+            lado_c: c.abs(),
         }
     }
 
     pub fn get_lados(&self) -> (f32, f32, f32) {
         (self.lado_a, self.lado_b, self.lado_c)
-    }
-
-    pub fn set_lados(&mut self, a: f32, b: f32, c: f32) {
-        if a < 0.0 {
-            self.lado_a = 0.0
-        } else {
-            self.lado_a = a
-        }
-        if b < 0.0 {
-            self.lado_b = 0.0
-        } else {
-            self.lado_b = b
-        }
-        if c < 0.0 {
-            self.lado_c = 0.0
-        } else {
-            self.lado_c = c
-        }
     }
 
     pub fn perimetro(&self) -> f32 {
@@ -73,7 +49,7 @@ impl Triangulo {
     }
 } //Fim impl Triangulo
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum TrianguloType {
     Equilatero,
     Isoscele,
