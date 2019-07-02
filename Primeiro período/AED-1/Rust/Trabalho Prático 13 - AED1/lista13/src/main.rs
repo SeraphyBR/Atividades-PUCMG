@@ -1,14 +1,16 @@
 use std::io;
 use std::io::Write;
+use human_panic::setup_panic;
 
 mod triangulo;
 use triangulo::Triangulo;
 use triangulo::TrianguloType;
 
 fn main() {
+    setup_panic!();
     let mut tri: Vec<Triangulo> = Vec::with_capacity(100);
     menu(&mut tri);
-}
+}//Fim main()
 
 fn menu(tri: &mut Vec<Triangulo>) {
     loop {
@@ -30,7 +32,7 @@ fn menu(tri: &mut Vec<Triangulo>) {
             _ => println!("Opção invalida!"),
         }
     }
-}
+}//Fim menu()
 
 fn cria_triangulo(tri: &mut Vec<Triangulo>) {
     if tri.len() < tri.capacity() {
@@ -40,7 +42,7 @@ fn cria_triangulo(tri: &mut Vec<Triangulo>) {
                 Err(_) => {
                     println!("Valor inválido!");
                     continue;
-                },
+                }
             }
         };
         let b = loop {
@@ -53,7 +55,7 @@ fn cria_triangulo(tri: &mut Vec<Triangulo>) {
             }
         };
         let c = loop {
-            match read("Digite o lado B: ").trim().parse::<f32>() {
+            match read("Digite o lado C: ").trim().parse::<f32>() {
                 Ok(c) => break c,
                 Err(_) => {
                     println!("Valor inválido!");
@@ -63,31 +65,60 @@ fn cria_triangulo(tri: &mut Vec<Triangulo>) {
         };
         tri.push(Triangulo::new(a, b, c));
         println!("Concluído!");
-    }
-    else {
+    } else {
         println!("Oops!... Limite foi alcançado!");
     }
-}
+}//Fim cria_triangulo()
 
 fn mostra_triangulos(tri: &Vec<Triangulo>) {
     for (i, t) in tri.iter().enumerate() {
-        let (a,b,c) = t.get_lados();
+        let (a, b, c) = t.get_lados();
         println!("\nTriangulo {}:", i + 1);
         println!("Lado A: {}", a);
         println!("Lado B: {}", b);
         println!("Lado C: {}", c);
         println!("Perimetro: {}", t.perimetro());
     }
-}
+}//Fim mostra_triangulos()
 
 fn triangulos_iguais(tri: &Vec<Triangulo>) {
-
-}
+    println!(
+        "Deseja comparar com base em qual triangulo? [1..{}]",
+        tri.len()
+    );
+    let op = loop {
+        match read(": ").trim().parse::<usize>() {
+            Ok(op) => {
+                if op < 1 || op > tri.len() {
+                    println!("Triangulo inexistente!\nDigite novamente");
+                    continue;
+                } else {
+                    break op - 1;
+                }
+            }
+            Err(_) => {
+                println!("Oops! Não entendi, digite novamente.");
+                continue;
+            }
+        }
+    };
+    let mut iguais = 0;
+    for (i, t) in tri.iter().enumerate() {
+        if op != i && tri[op].eh_igual(t) {
+            iguais += 1;
+        }
+    }
+    match iguais {
+        0 => println!("Não há triangulos iguais a este!"),
+        1 => println!("Tem um triangulo igual a este!"),
+        _ => println!("Há {} triangulos iguais a este!", iguais),
+    }
+}//Fim triangulos_iguais()
 
 fn lista_triangulos(tri: &Vec<Triangulo>, ty: TrianguloType) {
     for (i, t) in tri.iter().enumerate() {
-        let (a,b,c) = t.get_lados();
-        if Triangulo::eh_valido(a,b,c) && t.tipo() == ty {
+        let (a, b, c) = t.get_lados();
+        if Triangulo::eh_valido(a, b, c) && t.tipo() == ty {
             println!("\nTriangulo {:?} {}:", ty, i + 1);
             println!("Lado A: {}", a);
             println!("Lado B: {}", b);
@@ -95,10 +126,20 @@ fn lista_triangulos(tri: &Vec<Triangulo>, ty: TrianguloType) {
             println!("Perimetro: {}", t.perimetro());
         }
     }
-}
+}//Fim lista_triangulos()
 
 fn lista_triangulos_invalidos(tri: &Vec<Triangulo>) {
-
+    let mut invalidos = 0;
+    for (i, t) in tri.iter().enumerate() {
+        let (a, b, c) = t.get_lados();
+        if !Triangulo::eh_valido(a, b, c) {
+            println!("O triangulo {} é inválido!", i);
+            invalidos += 1;
+        }
+    }
+    if invalidos == 0 {
+        println!("Não há casos de invalidez!");
+    }
 }
 
 fn escolhe_tipo() -> TrianguloType {
@@ -112,7 +153,7 @@ fn escolhe_tipo() -> TrianguloType {
             _ => println!("Opção invalida!"),
         }
     }
-}
+}//Fim lista_triangulos_invalidos()
 
 fn read(msg: &str) -> String {
     let mut input = String::new();
@@ -122,4 +163,4 @@ fn read(msg: &str) -> String {
         .read_line(&mut input)
         .expect("Erro ao ler do teclado!");
     input
-}
+}//Fim read()

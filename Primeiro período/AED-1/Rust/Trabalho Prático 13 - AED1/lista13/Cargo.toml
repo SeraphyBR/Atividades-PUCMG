@@ -5,3 +5,4 @@ authors = ["SeraphyBR <luisjuniorbr@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+human-panic = "1.0.1"

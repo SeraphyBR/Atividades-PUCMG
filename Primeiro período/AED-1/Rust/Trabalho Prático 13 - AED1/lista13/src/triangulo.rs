@@ -40,8 +40,7 @@ impl Triangulo {
     pub fn tipo(&self) -> TrianguloType {
         if (self.lado_a == self.lado_b) && (self.lado_b == self.lado_c) {
             TrianguloType::Equilatero
-        }
-        else if (self.lado_a == self.lado_b)||(self.lado_a == self.lado_c)||(self.lado_b == self.lado_c) {
+        } else if (self.lado_a == self.lado_b)||(self.lado_a == self.lado_c)||(self.lado_b == self.lado_c) {
             TrianguloType::Isoscele
         } else {
             TrianguloType::Escaleno

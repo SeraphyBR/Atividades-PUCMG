@@ -8,18 +8,18 @@ public class AquecimentoRecursivo
 {//Inicio classe AquecimentoRecursivo
     public static void main(String[] args)
     {//Inicio main
-      String[] entrada = new String[1000];
-      int numEntrada = 0;
+        String[] entrada = new String[1000];
+        int numEntrada = 0;
 
-      //Leitura da entrada padrao
-      do{
-         entrada[numEntrada] = MyIO.readLine();
-      }while(!ehIgual(entrada[numEntrada++], "FIM"));
-      numEntrada--;   //Desconsiderar ultima linha contendo a palavra FIM
+        //Leitura da entrada padrao
+        do{
+            entrada[numEntrada] = MyIO.readLine();
+        }while(!ehIgual(entrada[numEntrada++], "FIM"));
+        numEntrada--;   //Desconsiderar ultima linha contendo a palavra FIM
 
-      for(int i = 0; i < numEntrada; i++){
-          MyIO.println(contaLetrasMaiusculas(entrada[i]));
-      }
+        for(int i = 0; i < numEntrada; i++){
+            MyIO.println(contaLetrasMaiusculas(entrada[i]));
+        }
 
     }//Fim main
 
@@ -56,15 +56,15 @@ public class AquecimentoRecursivo
 
     private static boolean ehIgual(String p1, String p2, int i)
     {//Inicio ehIgual
-     /***************************************************************
-      * Nome do método: ehIgual
-      * Data da elaboração: 23/08/2018
-      * Data da última alteração: 23/08/2018
-      * Autor: Luiz Junio <luisjuniorbr@gmail.com>
-      * Contexto de ação: Verifica se uma String é igual a outra.
-      * Valor gerado: verdadeiro se forem iguais, falso caso contrário.
-      ****************************************************************
-      */ 
+        /***************************************************************
+         * Nome do método: ehIgual
+         * Data da elaboração: 23/08/2018
+         * Data da última alteração: 23/08/2018
+         * Autor: Luiz Junio <luisjuniorbr@gmail.com>
+         * Contexto de ação: Verifica se uma String é igual a outra.
+         * Valor gerado: verdadeiro se forem iguais, falso caso contrário.
+         ****************************************************************
+         */ 
         boolean igual = true;
         if(i < p1.length()){
             if(p1.charAt(i) == p2.charAt(i))

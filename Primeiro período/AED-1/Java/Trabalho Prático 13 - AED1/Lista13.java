@@ -130,7 +130,6 @@ public class Lista13
                 System.out.printf("O triângulo %d é inválido!\n", cont + 1);
                 invalidos++;
             }//Fim if
-
         }//Fim for
         if(invalidos == 0) System.out.println("Não há casos de inválidez!");
     }//Fim listaTriangulosInvalidos
