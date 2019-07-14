@@ -1,13 +1,13 @@
 use std::io;
 use std::io::Write;
+
 use human_panic::setup_panic;
 
 mod triangulo;
-use triangulo::Triangulo;
-use triangulo::TrianguloType;
+use triangulo::{Triangulo, TrianguloType};
 
 fn main() {
-    setup_panic!();
+    setup_panic!();// Nice error message
     let mut tri: Vec<Triangulo> = Vec::with_capacity(100);
     menu(&mut tri);
 }//Fim main()

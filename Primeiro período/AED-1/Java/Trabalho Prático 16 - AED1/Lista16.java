@@ -58,19 +58,19 @@ public class Lista16
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int op = 0;
         System.out.print(
-            "\n\n\tSistema de Gestão de Funcionários" +
-            "\nDigite uma opção seguinte: " +
-            "\n0 - Sair" +
-            "\n1 - Adicionar um novo Funcionário" +
-            "\n2 - Buscar Funcionario por Nome" +
-            "\n3 - Buscar Funcionario pelo CPF" +
-            "\n4 - Salvar todos os funcionários em arquivo" +
-            "\n5 - Ler os Funcionarios do arquivo" +
-            "\n6 - Listar Funcionarios com salario acima de X" +
-            "\n7 - Listar Funcionarios admitidos na Data dd/mm/aa" +
-            "\n8 - Listar Funcionarios aniversariantes do Mês" +
-            "\n=> "
-        );//Fim println
+                "\n\n\tSistema de Gestão de Funcionários" +
+                "\nDigite uma opção seguinte: " +
+                "\n0 - Sair" +
+                "\n1 - Adicionar um novo Funcionário" +
+                "\n2 - Buscar Funcionario por Nome" +
+                "\n3 - Buscar Funcionario pelo CPF" +
+                "\n4 - Salvar todos os funcionários em arquivo" +
+                "\n5 - Ler os Funcionarios do arquivo" +
+                "\n6 - Listar Funcionarios com salario acima de X" +
+                "\n7 - Listar Funcionarios admitidos na Data dd/mm/aa" +
+                "\n8 - Listar Funcionarios aniversariantes do Mês" +
+                "\n=> "
+                );//Fim println
         op = Integer.parseInt(br.readLine());
         return op;
     }//Fim menu 
@@ -143,7 +143,7 @@ class Data implements Serializable
 {//Inicio classe Data
 
     private static final long serialVersionUID = 1L;
-	private int dia;
+    private int dia;
     private int mes;
     private int ano;
 
@@ -189,7 +189,7 @@ class Data implements Serializable
         if ((ano%4 == 0)&&((ano%100 !=0)||(ano%400 == 0))) bissexto = true;
         return bissexto;
     }
-        
+
     public String mesExtenso()
     {//Inicio mesExtenso
         int mes = this.getMes() - 1;
@@ -212,20 +212,20 @@ class Data implements Serializable
 
         if(ano < 1) valido = false;
         else if(mes > 12 || mes < 1) valido = false;
-            else if(dia < 1) valido = false;
-                else if(mes == 1 && dia > 31) valido = false;
-                else if(mes == 2 && !ehAnoBissexto && dia > 28) valido = false;
-                else if(mes == 2 && ehAnoBissexto && dia > 29) valido = false;
-                else if(mes == 3 && dia > 31) valido = false;
-                else if(mes == 4 && dia > 30) valido = false;
-                else if(mes == 5 && dia > 31) valido = false;
-                else if(mes == 6 && dia > 30) valido = false;
-                else if(mes == 7 && dia > 31) valido = false;
-                else if(mes == 8 && dia > 31) valido = false;
-                else if(mes == 9 && dia > 30) valido = false;
-                else if(mes == 10 && dia > 31) valido = false;
-                else if(mes == 11 && dia > 30) valido = false;
-                else if(mes == 12 && dia > 31) valido = false;
+        else if(dia < 1) valido = false;
+        else if(mes == 1 && dia > 31) valido = false;
+        else if(mes == 2 && !ehAnoBissexto && dia > 28) valido = false;
+        else if(mes == 2 && ehAnoBissexto && dia > 29) valido = false;
+        else if(mes == 3 && dia > 31) valido = false;
+        else if(mes == 4 && dia > 30) valido = false;
+        else if(mes == 5 && dia > 31) valido = false;
+        else if(mes == 6 && dia > 30) valido = false;
+        else if(mes == 7 && dia > 31) valido = false;
+        else if(mes == 8 && dia > 31) valido = false;
+        else if(mes == 9 && dia > 30) valido = false;
+        else if(mes == 10 && dia > 31) valido = false;
+        else if(mes == 11 && dia > 30) valido = false;
+        else if(mes == 12 && dia > 31) valido = false;
         return valido;
     }//Fim ehValido
 
@@ -269,7 +269,7 @@ class Data implements Serializable
 class Funcionario implements Serializable
 {//Inicio classe Funcionario
     private static final long serialVersionUID = 1L;
-	private String nome;
+    private String nome;
     private long cpf;
     private Data nascimento;
     private Data admissao;
@@ -295,7 +295,7 @@ class Funcionario implements Serializable
         this.setSalario(salario);
         quantidade++;
     }//Fim Construtor
-    
+
     Funcionario(Funcionario funcionario){
         this.setNome(funcionario.getNome());
         this.setCPF(funcionario.getCPF());
@@ -526,7 +526,7 @@ class Funcionario implements Serializable
 class OpcaoNaoDefinida extends Exception {
     private static final long serialVersionUID = 1L;
 
-	@Override
+    @Override
     public String getMessage(){
         return "Opção inexistente!";
     }
