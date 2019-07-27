@@ -4,6 +4,7 @@ use std::io::Write;
 mod funcionario;
 use funcionario::Funcionario;
 
+use brids::Cpf;
 use chrono::prelude::*;
 use human_panic::setup_panic;
 
@@ -11,7 +12,7 @@ fn main() {
     setup_panic!(); //Nice error mensage
     println!("Para começar a usar o sistema,");
     let qnt = loop {
-        match read("Digite a quantidade maxima de funcionarios: ").trim().parse::<usize>(){
+        match read("Digite a quantidade máxima de funcionarios: ").trim().parse::<usize>(){
             Ok(qnt) => {
                 if qnt == 0 {
                     println!("Quantidade inválida!");
@@ -36,15 +37,25 @@ fn main() {
                 Ok(f) => println!("{}", f),
                 Err(e) => println!("{}", e),
             },
-            '3' => match busca_func_cpf(&registro, read("Digite o cpf: ")) {
-                Ok(f) => println!("{}", f),
-                Err(e) => println!("{}", e),
+            '3' => {
+                match read("Digite o CPF: ").trim().parse::<Cpf>() {
+                    Ok(cpf) => {
+                        match busca_func_cpf(&registro, cpf) {
+                            Ok(f) => println!("{}", f),
+                            Err(e) => println!("{}", e),
+                        }
+                    },
+                    Err(_) => {
+                        println!("CPF inválido!");
+                    }
+                }
             },
             '4' => lista_func_sal(&registro),
             '5' => lista_func_data(&registro),
             '6' => lista_func_aniv(&registro),
             '7' => ler_arq(&mut registro),
             '8' => salvar_arq(&registro),
+            _ => println!("Ação Inexistente!"),
         }
     }
 } //Fim main()
@@ -73,6 +84,7 @@ fn add_funcionario(registro: &mut Vec<Funcionario>) {
     if registro.len() < registro.capacity() {
         registro.push(le_funcionario());
         registro.sort_by(|f1, f2| f1.get_cpf().cmp(&f2.get_cpf()));
+        println!("Funcionario adicionado com sucesso.");
     } else {
         println!("Número máximo de funcionarios atingido!");
     }
@@ -81,12 +93,13 @@ fn add_funcionario(registro: &mut Vec<Funcionario>) {
 fn le_funcionario() -> Funcionario {
     let nome = read("\nDigite o nome do funcionario: ");
     let cpf = loop {
-        let cpf = read("Digite o CPF: ");
-        if Funcionario::cpf_valido(cpf) {
-            break cpf;
-        } else {
-            println!("CPF inválido\nTente novamente!");
-            continue;
+        let input = read("Digite o CPF: ");
+        match input.trim().parse::<Cpf>() {
+            Ok(cpf) => break cpf,
+            Err(_) => {
+                println!("CPF inválido!");
+                continue;
+            },
         }
     };
     let nascimento: Date<Local> = loop {
@@ -165,11 +178,31 @@ fn busca_func_nome(registro: &Vec<Funcionario>, nome: String) -> Result<Funciona
     Err("Funcionario não encontrado!")
 }
 
-fn busca_func_cpf(registro: &Vec<Funcionario>, cpf: String) -> Result<Funcionario, &str> {
+fn busca_func_cpf(registro: &Vec<Funcionario>, cpf: Cpf) -> Result<Funcionario, &str> {
     match registro.binary_search_by(|func| func.get_cpf().cmp(&cpf)) {
-        Ok(index) => Ok(registro[index]),
+        Ok(index) => Ok(registro[index].clone()),
         Err(_) => Err("Funcionario não encontrado!"),
     }
+}
+
+fn lista_func_aniv(registro: &Vec<Funcionario>) {
+
+}
+
+fn lista_func_data(registro: &Vec<Funcionario>) {
+
+}
+
+fn lista_func_sal(registro: &Vec<Funcionario>) {
+
+}
+
+fn ler_arq(registro: &mut Vec<Funcionario>) {
+
+}
+
+fn salvar_arq(registro: &Vec<Funcionario>) {
+
 }
 
 fn read(msg: &str) -> String {
