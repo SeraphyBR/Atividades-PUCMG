@@ -1,24 +1,25 @@
 use chrono::prelude::*;
 use brids::Cpf;
 use std::fmt;
+use serde::{Serialize, Deserialize};
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Funcionario {
     nome: String,
     cpf: Cpf,
-    nascimento: Date<Local>,
-    admissao: Date<Local>,
+    nascimento: NaiveDate,
+    admissao: NaiveDate,
     salario: f32,
 }
 
 #[allow(dead_code)]
 impl Funcionario {
-    pub fn new(nome: String, cpf: Cpf, nascimento: Date<Local>, salario: f32) -> Funcionario {
+    pub fn new(nome: String, cpf: Cpf, nascimento: NaiveDate, salario: f32) -> Funcionario {
         Funcionario {
             nome,
             cpf,
             nascimento,
-            admissao: Local::today(),
+            admissao: Utc::today().naive_utc(),
             salario,
         }
     }
@@ -39,8 +40,12 @@ impl Funcionario {
         self.cpf
     }
 
-    pub fn get_nascimento(&self) -> Date<Local> {
+    pub fn get_nascimento(&self) -> NaiveDate {
         self.nascimento
+    }
+
+    pub fn get_admissao(&self) -> NaiveDate {
+        self.admissao
     }
 }
 
