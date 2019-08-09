@@ -1,7 +1,7 @@
-use chrono::prelude::*;
 use brids::Cpf;
+use chrono::prelude::*;
+use serde::{Deserialize, Serialize};
 use std::fmt;
-use serde::{Serialize, Deserialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Funcionario {

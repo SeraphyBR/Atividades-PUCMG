@@ -1,9 +1,9 @@
-use std::io;
-use std::io::Write;
-use std::fs::File;
-use std::io::BufReader;
 use std::error::Error;
+use std::fs::File;
 use std::fs::OpenOptions;
+use std::io;
+use std::io::BufReader;
+use std::io::Write;
 
 mod funcionario;
 use funcionario::Funcionario;
@@ -21,7 +21,8 @@ fn main() {
                 if qnt == 0 {
                     println!("Quantidade inválida!");
                     continue;
-                } else {
+                }
+                else {
                     break qnt;
                 }
             }
@@ -41,28 +42,22 @@ fn main() {
                 Ok(f) => println!("{}", f),
                 Err(e) => println!("{}", e),
             },
-            '3' => {
-                match read("Digite o CPF: ").trim().parse::<Cpf>() {
-                    Ok(cpf) => {
-                        match busca_func_cpf(&registro, cpf) {
-                            Ok(f) => println!("{}", f),
-                            Err(e) => println!("{}", e),
-                        }
-                    },
-                    Err(_) => println!("CPF inválido!"),
-                }
+            '3' => match read("Digite o CPF: ").trim().parse::<Cpf>() {
+                Ok(cpf) => match busca_func_cpf(&registro, cpf) {
+                    Ok(f) => println!("{}", f),
+                    Err(e) => println!("{}", e),
+                },
+                Err(_) => println!("CPF inválido!"),
             },
-            '4' => {
-                match read("Digite o salario: ").trim().parse::<f32>() {
-                    Ok(sal) => {
-                        let lista = lista_func_sal(&registro, sal);
-                        println!("Encontrado {} funcionários com salario >= {}:", lista.len(), sal);
-                        for f in lista {
-                            println!("{}", f);
-                        }
-                    },
-                    Err(_) => println!("Valor inválido!"),
-                }
+            '4' => match read("Digite o salario: ").trim().parse::<f32>() {
+                Ok(sal) => {
+                    let lista = lista_func_sal(&registro, sal);
+                    println!("Encontrado {} funcionários com salario >= {}:",lista.len(),sal);
+                    for f in lista {
+                        println!("{}", f);
+                    }
+                },
+                Err(_) => println!("Valor inválido!"),
             },
             '5' => {
                 let ano = le_ano();
@@ -72,27 +67,23 @@ fn main() {
                 for f in lista {
                     println!("{}", f);
                 }
-            },
+            }
             '6' => {
                 let lista = lista_func_aniv(&registro, le_data());
                 for f in lista {
                     println!("{}", f);
                 }
+            }
+            '7' => match ler_arq() {
+                Ok(lido) => {
+                    registro = lido;
+                    println!("Arquivo lido com sucesso!");
+                },
+                Err(err) => eprintln!("{}", err),
             },
-            '7' => {
-                match ler_arq() {
-                    Ok(lido) => {
-                        registro = lido;
-                        println!("Arquivo lido com sucesso!");
-                    },
-                    Err(err) => eprintln!("{}", err),
-                }
-            },
-            '8' => {
-                match salvar_arq(&registro) {
-                    Ok(_) => println!("Registro salvo com sucesso!"),
-                    Err(err) => eprintln!("{}", err),
-                }
+            '8' => match salvar_arq(&registro) {
+                Ok(_) => println!("Registro salvo com sucesso!"),
+                Err(err) => eprintln!("{}", err),
             },
             _ => println!("Ação Inexistente!"),
         }
@@ -124,7 +115,8 @@ fn add_funcionario(registro: &mut Vec<Funcionario>) {
         registro.push(le_funcionario());
         registro.sort_by(|f1, f2| f1.get_cpf().cmp(&f2.get_cpf()));
         println!("Funcionario adicionado com sucesso.");
-    } else {
+    }
+    else {
         println!("Número máximo de funcionarios atingido!");
     }
 }
@@ -138,7 +130,7 @@ fn le_funcionario() -> Funcionario {
             Err(_) => {
                 println!("CPF inválido!");
                 continue;
-            },
+            }
         }
     };
     let nascimento: NaiveDate = loop {
@@ -146,7 +138,8 @@ fn le_funcionario() -> Funcionario {
         let data = le_data();
         if Utc::today().year() - data.year() >= 16 {
             break data;
-        } else {
+        }
+        else {
             println!("Não é permitido menores de 16 anos!");
             continue;
         }
@@ -220,7 +213,7 @@ fn le_ano() -> i32 {
     }
 }
 
-fn busca_func_nome(registro: &Vec<Funcionario>, nome: String) -> Result<Funcionario, &str> {
+fn busca_func_nome(registro: &[Funcionario], nome: String) -> Result<Funcionario, &str> {
     for f in registro {
         if f.get_nome() == nome {
             return Ok(f.clone());
@@ -229,14 +222,14 @@ fn busca_func_nome(registro: &Vec<Funcionario>, nome: String) -> Result<Funciona
     Err("Funcionario não encontrado!")
 }
 
-fn busca_func_cpf(registro: &Vec<Funcionario>, cpf: Cpf) -> Result<Funcionario, &str> {
+fn busca_func_cpf(registro: &[Funcionario], cpf: Cpf) -> Result<Funcionario, &str> {
     match registro.binary_search_by(|func| func.get_cpf().cmp(&cpf)) {
         Ok(index) => Ok(registro[index].clone()),
         Err(_) => Err("Funcionario não encontrado!"),
     }
 }
 
-fn lista_func_aniv(registro: &Vec<Funcionario>, data: NaiveDate) -> Vec<&Funcionario> {
+fn lista_func_aniv(registro: &[Funcionario], data: NaiveDate) -> Vec<&Funcionario> {
     let mut aniver = Vec::new();
     for f in registro {
         let fday = f.get_nascimento().day();
@@ -248,7 +241,7 @@ fn lista_func_aniv(registro: &Vec<Funcionario>, data: NaiveDate) -> Vec<&Funcion
     aniver
 }
 
-fn lista_func_data(registro: &Vec<Funcionario>, month: u32, year: i32) -> Vec<&Funcionario> {
+fn lista_func_data(registro: &[Funcionario], month: u32, year: i32) -> Vec<&Funcionario> {
     let mut admitidos = Vec::new();
     for f in registro {
         let fmonth = f.get_admissao().month();
@@ -258,8 +251,7 @@ fn lista_func_data(registro: &Vec<Funcionario>, month: u32, year: i32) -> Vec<&F
                 if fmonth == month {
                     admitidos.push(f);
                 }
-            }
-            else {
+            } else {
                 admitidos.push(f);
             }
         }
@@ -267,7 +259,7 @@ fn lista_func_data(registro: &Vec<Funcionario>, month: u32, year: i32) -> Vec<&F
     admitidos
 }
 
-fn lista_func_sal(registro: &Vec<Funcionario>, valor: f32) -> Vec<&Funcionario> {
+fn lista_func_sal(registro: &[Funcionario], valor: f32) -> Vec<&Funcionario> {
     let mut lista = Vec::new();
     for f in registro {
         if f.get_salario() >= valor {
@@ -277,19 +269,19 @@ fn lista_func_sal(registro: &Vec<Funcionario>, valor: f32) -> Vec<&Funcionario> 
     lista
 }
 
-fn ler_arq() -> Result<Vec<Funcionario>, Box<dyn Error>>{
+fn ler_arq() -> Result<Vec<Funcionario>, Box<dyn Error>> {
     let file = File::open("funcionario.db")?;
     let buffer = BufReader::new(file);
     let reg = serde_json::from_reader(buffer)?;
     Ok(reg)
 }
 
-fn salvar_arq(registro: &Vec<Funcionario>) -> Result<(), Box<dyn Error>>{
+fn salvar_arq(registro: &[Funcionario]) -> Result<(), Box<dyn Error>> {
     let file = OpenOptions::new()
-                .write(true)
-                .append(false)
-                .create(true)
-                .open("funcionario.db")?;
+        .write(true)
+        .append(false)
+        .create(true)
+        .open("funcionario.db")?;
     serde_json::to_writer(file, registro)?;
     Ok(())
 }
