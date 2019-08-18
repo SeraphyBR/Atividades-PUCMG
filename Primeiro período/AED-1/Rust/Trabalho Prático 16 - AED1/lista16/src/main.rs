@@ -1,9 +1,9 @@
-use std::error::Error;
-use std::fs::File;
-use std::fs::OpenOptions;
-use std::io;
-use std::io::BufReader;
-use std::io::Write;
+use std::{
+    io,
+    error::Error,
+    fs::{File, OpenOptions},
+    io::{Write, BufReader},
+};
 
 mod funcionario;
 use funcionario::Funcionario;
