@@ -1,7 +1,0 @@
-[package]
-name = "amplitude"
-version = "0.1.0"
-authors = ["SeraphyBR <luisjuniorbr@gmail.com>"]
-edition = "2018"
-
-[dependencies]
