@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <list>
 #include <cmath>
 using namespace std;
 
@@ -20,6 +19,8 @@ int indice_menor(vector<float> vec){
 	return indice;
 }
 
+// Função baseada no PRIM que retorna a soma
+// dos pesos da aresta da AGM
 float prim(vector<vector<float>> matriz_dist){
 	int size = matriz_dist.capacity();
 	vector<float> chave(size,__FLT_MAX__);
@@ -53,8 +54,8 @@ int main() {
 		//Criação e incialização da matriz de distancias.
 		vector<vector<float>> matriz_dist(num_pessoas, vector<float>(num_pessoas));
 
-		int x[num_pessoas] {-1};
-		int y[num_pessoas] {-1};
+		vector<int> x(num_pessoas, -1);
+		vector<int> y(num_pessoas, -1);
 
 		for (int p = 0; p < num_pessoas; p++){
 			cin >> x[p] >> y[p];
@@ -71,9 +72,8 @@ int main() {
 		compr_minimo = prim(matriz_dist);
 		cout.precision(2);
 		cout << fixed;
-		cout << (compr_minimo / 100.0) << "\n\n";
-
+		cout << (compr_minimo / 100.0) << endl;
+		cout << endl;
 	}
-
 	return 0;
-}
+}//end main();

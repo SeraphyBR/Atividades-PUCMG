@@ -13,7 +13,7 @@ class Grafo {
 	private:
 		int **matriz_adj;
 		int numVertices;
-		void dfs_visit(Cor *cor,int v,list<int> &lcomp);
+		void dfs_visit(vector<Cor> &cor,int v,list<int> &lcomp);
 	public:
 		Grafo(int vertices);
 		~Grafo();
@@ -66,7 +66,7 @@ void Grafo::add_conexao(int v1, int v2) {
 	}
 }//end Grafo::add_conexao();
 
-void Grafo::dfs_visit(Cor *cor,int v,list<int> &lcomp) {
+void Grafo::dfs_visit(vector<Cor> &cor,int v,list<int> &lcomp) {
 	cor[v] = Cinza;
 	lcomp.push_back(v);
 	for (int i = 0; i < numVertices; i++){
@@ -84,7 +84,7 @@ void Grafo::dfs_visit(Cor *cor,int v,list<int> &lcomp) {
 vector<list<int>> Grafo::componentes() {
 	vector<list<int>> componentes {};
 	list<int> lcomp {};
-	Cor cor[numVertices] {Branco};
+	vector<Cor> cor(numVertices, Branco);
 	for (int i = 0; i < numVertices; i++){
 		if(cor[i] == Branco){
 			dfs_visit(cor, i, lcomp);
