@@ -10,3 +10,6 @@
 [submodule "Terceiro periodo/AED3/CRUD_2.0"]
 	path = Terceiro periodo/AED3/CRUD_2.0
 	url = https://github.com/HenriqueFQuick/CRUD_2.0
+[submodule "Quarto periodo/AC-3/TP2-AC3"]
+	path = Quarto periodo/AC-3/TP2-AC3
+	url = https://github.com/SeraphyBR/TP2-AC3.git

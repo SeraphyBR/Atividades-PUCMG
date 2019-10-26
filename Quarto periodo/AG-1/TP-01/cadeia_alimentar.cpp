@@ -17,7 +17,7 @@ class Grafo {
 		int numVertices;
         bool orientado;
 	public:
-		Grafo(int vertices);
+		Grafo(int vertices) : Grafo(vertices, false){};
         Grafo(int vertices, bool ehOrientado);
 		~Grafo();
 		void display();
@@ -44,9 +44,9 @@ Grafo::~Grafo() {
 }
 
 void Grafo::display() {
-	for (int i = 0; i < numVertices; i++){
-		for (int j = 0; j < numVertices; j++){
-			cout << matriz_adj->at(i).at(j) << " ";
+	for (auto& coluna : *matriz_adj){
+		for (auto v : coluna){
+			cout << v << " ";
 		}
 		cout << endl;
 	}
@@ -63,7 +63,7 @@ void Grafo::add_conexao(int v1, int v2) {
             }
             else {
                 matriz_adj->at(v1).at(v2) = 1;
-                matriz_adj->at(v1).at(v2) = 1;
+                matriz_adj->at(v2).at(v1) = 1;
             }
 		}
 	}
@@ -88,9 +88,8 @@ Grafo* Grafo::grafo_transposto() {
 	return gt;
 }
 
-// Metodo modificado da busca em largura para preencher uma matriz
-// de booleanos que indica se existe um caminho de v -> u ou u -> v
-// Caso exista um caminho de v -> u, a posicao [u][v] e [v][u] serão true
+// Implementação do algoritmo de busca em largura
+// que retorna o vetor de distancias em relação a v.
 vector<int> Grafo::busca_largura(int v) {
 	vector<int> dist(numVertices,__INT_MAX__);
 	vector<Cor> cor(numVertices,Branco);
@@ -151,9 +150,8 @@ int main() {
 		cout << "Bolada" << endl;
 	}
 	else{
-		cout << "Nao bolada" << endl;
+		cout << "Nao Bolada" << endl;
 	}
-
 	delete g;
 	return 0;
 }//end main();

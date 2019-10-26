@@ -7,12 +7,12 @@ float dist_pontos(int x1, int y1, int x2, int y2){
 	return (float) sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
 }
 
-int indice_menor(vector<float> vec){
+int indice_menor(vector<float> &vec){
 	int indice {};
 	float menor {__FLT_MAX__};
 	for(int i = 0; i < vec.capacity(); i++){
-		if((vec[i] != -1) && (vec[i] < menor)){
-			menor = vec[i];
+		if((vec.at(i) != -1) && (vec.at(i) < menor)){
+			menor = vec.at(i);
 			indice = i;
 		}
 	}
@@ -21,7 +21,7 @@ int indice_menor(vector<float> vec){
 
 // Função baseada no PRIM que retorna a soma
 // dos pesos da aresta da AGM
-float prim(vector<vector<float>> matriz_dist){
+float prim(vector<vector<float>> &matriz_dist){
 	int size = matriz_dist.capacity();
 	vector<float> chave(size,__FLT_MAX__);
 	float contador {};
@@ -31,14 +31,14 @@ float prim(vector<vector<float>> matriz_dist){
 	for (int i = 1; i < size; i++){
 		for (int j = 0; j < size; j++){
 			if((menor != j) && (chave[j])){
-				if(matriz_dist[menor][j] < chave[j]){
-					chave[j] = matriz_dist[menor][j];
+				if(matriz_dist.at(menor).at(j) < chave.at(j)){
+					chave.at(j) = matriz_dist.at(menor).at(j);
 				}
 			}
 		}
 		menor = indice_menor(chave);
-		contador += chave[menor];
-		chave[menor] = -1;
+		contador += chave.at(menor);
+		chave.at(menor) = -1;
 	}
 	return contador;
 }
@@ -58,13 +58,13 @@ int main() {
 		vector<int> y(num_pessoas, -1);
 
 		for (int p = 0; p < num_pessoas; p++){
-			cin >> x[p] >> y[p];
+			cin >> x.at(p) >> y.at(p);
 		}
 
 		for(int i = 0; i < num_pessoas; i++){
 			for(int j = 0; j < num_pessoas; j++){
 				if (i != j){
-					matriz_dist[i][j] = dist_pontos(x[i], y[i], x[j], y[j]);
+					matriz_dist.at(i).at(j) = dist_pontos(x.at(i), y.at(i), x.at(j), y.at(j));
 				}
 			}
 		}

@@ -11,7 +11,7 @@ enum Cor {
 
 class Grafo {
 	private:
-		int **matriz_adj;
+		vector<vector<int>> *matriz_adj;
 		int numVertices;
 		void dfs_visit(vector<Cor> &cor,int v,list<int> &lcomp);
 	public:
@@ -25,28 +25,17 @@ class Grafo {
 
 Grafo::Grafo(int vertices) {
 	numVertices = vertices;
-	matriz_adj = new int*[numVertices];
-	for (int i = 0; i < numVertices; i++){
-		matriz_adj[i] = new int[numVertices];
-	}
-	for (int i = 0; i < numVertices; i++){
-		for (int j = 0; j < numVertices; j++){
-			matriz_adj[i][j] = 0;
-		}
-	}
+	matriz_adj = new vector<vector<int>>(numVertices, vector<int>(numVertices, 0));
 }
 
 Grafo::~Grafo() {
-	for (int i = 0; i < numVertices; i++){
-		delete[] matriz_adj[i];
-	}
-	delete[] matriz_adj;
+	delete matriz_adj;
 }
 
 void Grafo::display() {
-	for (int i = 0; i < numVertices; i++){
-		for (int j = 0; j < numVertices; j++){
-			cout << matriz_adj[i][j] << " ";
+	for (auto& coluna : *matriz_adj){
+		for (auto v : coluna){
+			cout << v << " ";
 		}
 		cout << endl;
 	}
@@ -55,26 +44,26 @@ void Grafo::display() {
 void Grafo::add_conexao(int v1, int v2) {
 	if(v1 < numVertices && v2 < numVertices){
 		if(v1 == v2) {
-			matriz_adj[v1][v2] = 2;
+			matriz_adj->at(v1).at(v2) = 2;
 		}
 		else{
 			// Como os grafos lidos são não orientados,
 			// acrecenta-se  as arestas nos dois sentidos.
-			matriz_adj[v1][v2] = 1;
-			matriz_adj[v2][v1] = 1;
+			matriz_adj->at(v1).at(v2) = 1;
+			matriz_adj->at(v2).at(v1) = 1;
 		}
 	}
 }//end Grafo::add_conexao();
 
 void Grafo::dfs_visit(vector<Cor> &cor,int v,list<int> &lcomp) {
-	cor[v] = Cinza;
+	cor.at(v) = Cinza;
 	lcomp.push_back(v);
 	for (int i = 0; i < numVertices; i++){
-		if (matriz_adj[i][v] == 1 && cor[i] == Branco){
+		if (matriz_adj->at(i).at(v) == 1 && cor.at(i) == Branco){
 			dfs_visit(cor, i, lcomp);
 		}
 	}
-	cor[v] = Preto;
+	cor.at(v) = Preto;
 }//end Grafo::dfs_visit();
 
 // Uso do algoritmo de busca em profundidade
@@ -86,7 +75,7 @@ vector<list<int>> Grafo::componentes() {
 	list<int> lcomp {};
 	vector<Cor> cor(numVertices, Branco);
 	for (int i = 0; i < numVertices; i++){
-		if(cor[i] == Branco){
+		if(cor.at(i) == Branco){
 			dfs_visit(cor, i, lcomp);
 			lcomp.sort();
 			componentes.push_back(lcomp);
