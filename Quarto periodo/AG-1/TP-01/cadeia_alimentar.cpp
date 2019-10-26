@@ -127,7 +127,6 @@ int main() {
         for(int v = 0; v < dist.size(); v++){
             if (i != v && dist.at(v) != __INT_MAX__) {
                 matriz_caminho.at(i).at(v) = true;
-                matriz_caminho.at(v).at(i) = true;
             }
         }
     }
@@ -135,7 +134,7 @@ int main() {
     for (int i = 0; i < num_especies && bolada; i++){
         for (int j = 0; j < num_especies && bolada; j++){
             if(i != j){
-                bolada = matriz_caminho.at(i).at(j);
+                bolada = matriz_caminho.at(i).at(j) || matriz_caminho.at(j).at(i);
             }
         }
     }

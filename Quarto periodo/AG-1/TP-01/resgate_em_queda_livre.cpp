@@ -4,7 +4,7 @@
 using namespace std;
 
 float dist_pontos(int x1, int y1, int x2, int y2){
-    return (float) sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+    return sqrt(pow(x2 - x1, 2.0) + pow(y2 - y1, 2.0));
 }
 
 int indice_menor(vector<float> &vec){
@@ -30,7 +30,7 @@ float prim(vector<vector<float>> &matriz_dist){
     chave[0] = -1;
     for (int i = 1; i < size; i++){
         for (int j = 0; j < size; j++){
-            if((menor != j) && (chave[j])){
+            if(menor != j){
                 if(matriz_dist.at(menor).at(j) < chave.at(j)){
                     chave.at(j) = matriz_dist.at(menor).at(j);
                 }
@@ -52,7 +52,7 @@ int main() {
     for(int t = 0; t < num_testes; t++){
         cin >> num_pessoas;
         //Criação e incialização da matriz de distancias.
-        vector<vector<float>> matriz_dist(num_pessoas, vector<float>(num_pessoas));
+        vector<vector<float>> matriz_dist(num_pessoas, vector<float>(num_pessoas, 0.0));
 
         vector<int> x(num_pessoas, -1);
         vector<int> y(num_pessoas, -1);
