@@ -120,7 +120,7 @@ int main() {
         }
         cout << vec_comp.size() << " connected components" << endl;
         cout << endl;
+        delete g;
     }
-    delete g;
     return 0;
 }//end main();
