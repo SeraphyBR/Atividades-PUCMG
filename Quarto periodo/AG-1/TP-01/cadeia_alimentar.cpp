@@ -110,7 +110,7 @@ int main() {
     int num_especies {};
     int num_relacoes {};
     int v1, v2;
-    bool bolada = true;
+    bool bolada {};
 
     cin >> num_especies >> num_relacoes;
 
