@@ -1,8 +1,7 @@
 #include <iostream>
-#include <vector>
 #include <list>
-#include <tuple>
 #include <queue>
+#include <vector>
 using namespace std;
 
 enum Cor {
@@ -147,6 +146,7 @@ int main() {
             cout << "N" << endl;
         }
         cout << endl;
+        delete g;
     }
     return 0;
 }//end main();
