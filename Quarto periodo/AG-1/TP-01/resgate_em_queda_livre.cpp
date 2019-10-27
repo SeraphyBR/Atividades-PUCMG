@@ -27,7 +27,7 @@ float prim(vector<vector<float>> &matriz_dist){
     float contador {};
     int menor {};
 
-    chave[0] = -1;
+    chave.at(0) = -1;
     for (int i = 1; i < size; i++){
         for (int j = 0; j < size; j++){
             if(menor != j){
