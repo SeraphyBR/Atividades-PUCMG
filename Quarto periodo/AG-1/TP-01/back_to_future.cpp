@@ -2,6 +2,7 @@
 #include <list>
 #include <queue>
 #include <vector>
+#include <cmath>
 using namespace std;
 
 enum Cor {
@@ -18,13 +19,10 @@ enum GrafoType {
 };
 
 class Grafo {
-    using MinHeap = priority_queue<int, vector<int>, greater<int>>;
-
     private:
         vector<vector<int>> *matriz_adj;
         int numVertices;
         GrafoType tipo;
-        void dfs_visit(vector<Cor> &cor,int v,list<int> &lcomp);
     public:
         Grafo(int vertices) : Grafo(vertices, GrafoType::Comum){};
         Grafo(int vertices, GrafoType tipo);
@@ -38,13 +36,12 @@ class Grafo {
         int grau_vertice(int v);
         int dijkstra(bool caminho_unico);
         int dijkstra();
-        vector<list<int>> componentes();
 };
 
 Grafo::Grafo(int vertices, GrafoType t) {
     tipo = t;
     numVertices = vertices;
-    matriz_adj = new vector<vector<int>>(numVertices,vector<int>(numVertices, 0));
+    matriz_adj = new vector<vector<int>>(numVertices,vector<int>(numVertices, -1));
 }
 
 Grafo::~Grafo() {
@@ -91,11 +88,11 @@ void Grafo::add_conexao(int v1, int v2){
 void Grafo::del_conexao(int v1, int v2){
     if (v1 < numVertices && v2 < numVertices){
         if(tipo == Orientado || tipo == Orientado_Ponderado){
-            matriz_adj->at(v1).at(v2) = 0;
+            matriz_adj->at(v1).at(v2) = -1;
         }
         else {
-            matriz_adj->at(v1).at(v2) = 0;
-            matriz_adj->at(v2).at(v1) = 0;
+            matriz_adj->at(v1).at(v2) = -1;
+            matriz_adj->at(v2).at(v1) = -1;
         }
     }
 }
@@ -107,36 +104,6 @@ int Grafo::get_conexao(int v1, int v2){
 int Grafo::get_numVertices(){
     return numVertices;
 }
-
-void Grafo::dfs_visit(vector<Cor> &cor,int v,list<int> &lcomp) {
-    cor.at(v) = Cinza;
-    lcomp.push_back(v);
-    for (int i = 0; i < numVertices; i++){
-        if (matriz_adj->at(i).at(v) == 1 && cor.at(i) == Branco){
-            dfs_visit(cor, i, lcomp);
-        }
-    }
-    cor.at(v) = Preto;
-}//end Grafo::dfs_visit();
-
-// Uso do algoritmo de busca em profundidade
-// retorna um vetor contendo uma lista para cada componente
-// do grafo, essa lista contem o numero dos vetores pertencentes
-// ao componente.
-vector<list<int>> Grafo::componentes() {
-    vector<list<int>> componentes {};
-    list<int> lcomp {};
-    vector<Cor> cor(numVertices, Branco);
-    for (int i = 0; i < numVertices; i++){
-        if(cor.at(i) == Branco){
-            dfs_visit(cor, i, lcomp);
-            lcomp.sort();
-            componentes.push_back(lcomp);
-            lcomp.clear();
-        }
-    }
-    return componentes;
-}//end Grafo::componentes()
 
 int menor_nao_visitado(vector<int> &vec, vector<int> &visitado){
     int indice {};
@@ -153,22 +120,20 @@ int menor_nao_visitado(vector<int> &vec, vector<int> &visitado){
 // Algoritmo de dijkstra que retorna o somatorio dos pesos do caminho
 // Modificado de forma a não usar o mesmo caminho na proxima chamada
 int Grafo::dijkstra(bool caminho_unico){
-    vector<int> dist {numVertices, __INT_MAX__};
-    vector<int> pai {numVertices, -1};
-    vector<int> visitado {numVertices,0};
+    vector<int> dist (numVertices, __INT_MAX__);
+    vector<int> pai (numVertices, -1);
+    vector<int> visitado (numVertices,0);
     dist.at(0) = 0;
     visitado.at(0) = 1;
     int menor {};
     for (int i = 0; i < numVertices; i++){
         for (int j = 0; j < numVertices; j++){
-            if(visitado.at(j) != 1 && j != menor && matriz_adj->at(menor).at(j) != 0){
+            if(visitado.at(j) != 1 && j != menor && matriz_adj->at(menor).at(j) != -1){
                 if(dist.at(j) > dist.at(menor) + matriz_adj->at(menor).at(j)){
                     dist.at(j) = dist.at(menor) + matriz_adj->at(menor).at(j);
                     pai.at(j) = menor;
                 }
             }
-
-            cout << "teste" << endl;
         }
         visitado.at(menor) = 1;
         menor = menor_nao_visitado(dist, visitado);
@@ -208,7 +173,6 @@ int main(){
             g->add_conexao(a - 1,b - 1,c);
         }
         cin >> num_amigos >> assentos_livres;
-        g->display();
         while(num_amigos > 0) {
             preco_unitario = g->dijkstra(true);
             if(num_amigos > assentos_livres){
@@ -216,14 +180,16 @@ int main(){
             }
             else preco_final += preco_unitario * num_amigos;
             num_amigos -= assentos_livres;
-            if(preco_final == -1) break;//Caso impossivel
+            if(preco_final <= 0) break;//Caso impossivel
         }
-
         cout << "Instancia " << instancia << endl;
-        cout << (preco_final == -1 ? string("impossivel") : to_string(preco_final)) << endl;
-        cout << endl << endl << endl;
+        cout << endl;//Verde
+        if(preco_final <= 0 || preco_final > pow(10, 15)){
+            cout << "impossivel" << endl;
+        }
+        else cout << preco_final << endl;
+        cout << endl;
+        cout << endl << endl;//Verde
     }
-
-
     return 0;
 }
