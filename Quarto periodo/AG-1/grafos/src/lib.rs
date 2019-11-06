@@ -8,6 +8,13 @@ enum GrafoType {
     OrientadoPonderado,
 }
 
+#[derive(Clone, PartialEq)]
+enum Cor {
+    Branco,
+    Cinza,
+    Preto,
+}
+
 pub struct Grafo {
     matriz_adj: Array2<i32>,
     num_vertices: usize,
@@ -89,7 +96,19 @@ impl Grafo {
         self.num_vertices
     }
 
-    fn num_componentes(&self) -> usize {
+    fn componentes(&self) -> Vec<Vec<i32>> {
+        let mut componentes: Vec<Vec<i32>> = Vec::new();
+        let mut lcomp: Vec<i32> = Vec::new();
+        let mut cor: Vec<Cor> = vec![Cor::Branco; self.num_vertices];
+        for (i, c) in cor.iter().enumerate() {
+            if *c == Cor::Branco {
+                self.dfs_visit(&cor, i, &lcomp);
+                lcomp.sort_unstable();
+                componentes.push(lcomp);
+                lcomp.clear();
+            }
+        }
+        componentes
     }
 
     pub fn grau_vertice(&self, v: usize) -> i32 {
