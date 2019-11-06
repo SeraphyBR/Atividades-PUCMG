@@ -96,13 +96,24 @@ impl Grafo {
         self.num_vertices
     }
 
-    fn componentes(&self) -> Vec<Vec<i32>> {
-        let mut componentes: Vec<Vec<i32>> = Vec::new();
-        let mut lcomp: Vec<i32> = Vec::new();
+    fn dfs_visit(&self, cor: &Vec<Cor>, v: usize, lcomp: &Vec<usize>){
+        cor[v] = Cor::Cinza;
+        lcomp.push(v);
+        for i in 0..self.num_vertices {
+            if self.matriz_adj[(i,v)] == 1 && cor[i] == Cor::Branco{
+                self.dfs_visit(cor, i, lcomp);
+            }
+        }
+        cor[v] = Cor::Preto;
+    }
+
+    pub fn componentes(&self) -> Vec<Vec<usize>> {
+        let mut componentes: Vec<Vec<usize>> = Vec::new();
+        let mut lcomp: Vec<usize> = Vec::new();
         let mut cor: Vec<Cor> = vec![Cor::Branco; self.num_vertices];
-        for (i, c) in cor.iter().enumerate() {
+        for (v, c) in cor.iter().enumerate() {
             if *c == Cor::Branco {
-                self.dfs_visit(&cor, i, &lcomp);
+                self.dfs_visit(&cor, v, &lcomp);
                 lcomp.sort_unstable();
                 componentes.push(lcomp);
                 lcomp.clear();
