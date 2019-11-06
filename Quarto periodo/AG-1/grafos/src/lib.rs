@@ -1,31 +1,98 @@
 use ndarray::prelude::*;
 use std::fmt;
 
+enum GrafoType {
+    Comum,
+    Orientado,
+    Ponderado,
+    OrientadoPonderado,
+}
+
 pub struct Grafo {
-    matriz_adj: Array2<u8>,
+    matriz_adj: Array2<i32>,
+    num_vertices: usize,
+    tipo: GrafoType,
 }
 
 #[allow(dead_code)]
 impl Grafo {
-    fn new(&mut self, vertices: usize) -> Self {
+    fn new(vertices: usize, t: GrafoType) -> Self {
         Grafo {
-            matriz_adj: Array2::zeros((vertices,vertices)),
+            matriz_adj: Array::from_elem((vertices,vertices), -1),
+            num_vertices: vertices,
+            tipo: t,
         }
     }
 
-    fn add_conexao(&mut self, v1: usize, v2: usize) {
-        if v1 == v2 {
-            self.matriz_adj[(v1,v2)] = 2;
+    pub fn comum(vertices: usize) -> Self {
+        Grafo::new(vertices, GrafoType::Comum)
+    }
+
+    pub fn orientado(vertices: usize) -> Self {
+        Grafo::new(vertices, GrafoType::Orientado)
+    }
+
+    pub fn ponderado(vertices: usize) -> Self {
+        Grafo::new(vertices, GrafoType::Ponderado)
+    }
+
+    pub fn OrientadoPonderado(vertices: usize) -> Self {
+        Grafo::new(vertices, GrafoType::OrientadoPonderado)
+    }
+
+    pub fn add_conexao(&mut self, v1: usize, v2: usize, peso: i32) {
+        match self.tipo {
+            GrafoType::Comum => {
+                if v1 == v2 {
+                    self.matriz_adj[(v1,v2)] = 2;
+                }
+                else {
+                    self.matriz_adj[(v1,v2)] = 1;
+                    self.matriz_adj[(v2,v1)] = 1;
+                }
+            },
+            GrafoType::Ponderado => {
+                self.matriz_adj[(v1,v2)] = peso;
+                self.matriz_adj[(v2,v1)] = peso;
+            },
+            GrafoType::Orientado => {
+                self.matriz_adj[(v1,v2)] = 1;
+            },
+            GrafoType::OrientadoPonderado => {
+                self.matriz_adj[(v1,v2)] = peso;
+            }
         }
-        else {
-            self.matriz_adj[(v1,v2)] = 1;
+    }//end add_conexao()
+
+    pub fn del_conexao(&mut self, v1: usize, v2: usize){
+        if v1 < self.num_vertices && v2 < self.num_vertices {
+            match self.tipo {
+                GrafoType::Orientado => {
+                    self.matriz_adj[(v1,v2)] = -1;
+                },
+                GrafoType::OrientadoPonderado => {
+                    self.matriz_adj[(v1,v2)] = -1;
+                },
+                _ => {
+                    self.matriz_adj[(v1,v2)] = -1;
+                    self.matriz_adj[(v2,v1)] = -1;
+                },
+            }
         }
+    }//end del_conexao()
+
+    pub fn get_conexao(&self, v1: usize, v2: usize) -> i32 {
+        self.matriz_adj[(v1,v2)]
+    }
+
+    pub fn num_vertices(&self) -> usize {
+        self.num_vertices
     }
 
     fn num_componentes(&self) -> usize {
     }
 
-    fn grau_vertice(&self, v: usize) -> u8 {
+    pub fn grau_vertice(&self, v: usize) -> i32 {
         let iter = self.matriz_adj.row(v);
         let mut grau = 0;
         for i in iter {
@@ -41,10 +108,76 @@ impl Grafo {
     fn busca_largura(&self) -> Vec<usize> {
 
     }
+
+    fn menor_nao_visitado(vec: &Vec<i32>, visitado: &Vec<i32>) -> usize {
+        let mut indice = 0;
+        let mut menor = i32::max_value();
+        let mut i = 0;
+        while i < vec.capacity() && i < visitado.capacity() {
+            if visitado[i] != 1 && vec[i] < menor {
+                menor = vec[i];
+                indice = i;
+            }
+            i += 1;
+        }
+        indice
+    }
+
+    fn dijkstra_b(&self, caminho_unico: bool) -> i32 {
+        let dist: Vec<i32> = vec![i32::max_value(); self.num_vertices];
+        let pai: Vec<i32> = vec![-1; self.num_vertices];
+        let visitado: Vec<i32> = vec![0; self.num_vertices];
+        dist[0] = 0;
+        visitado[0] = 1;
+        let mut menor = 0;
+        for i in 0..self.num_vertices {
+            for j in 0..self.num_vertices{
+                if visitado[j] != 1 && j != menor && self.matriz_adj[(menor,j)] != -1 {
+                    if dist[j] > dist[menor] + self.matriz_adj[(menor,j)] {
+                        dist[j] = dist[menor] + self.matriz_adj[(menor,j)];
+                        pai[j] = menor as i32;
+                    }
+                }
+            }
+            visitado[menor] = 1;
+            menor = Grafo::menor_nao_visitado(&dist, &visitado);
+        }
+
+        if caminho_unico {
+            let mut v = self.num_vertices - 1;
+            while pai[v] != -1 {
+                self.del_conexao(pai[v] as usize, v);
+                v = pai[v] as usize;
+            }
+            if v != 0 {
+                //Caso a volta não seja possivel
+                return -1;
+            }
+        }
+
+        match dist.last(){
+            Some(x) => *x,
+            None => i32::max_value(),
+        }
+    }//End dijkstra_b()
+
+    pub fn dijkstra_unico(&self) -> i32 {
+        self.dijkstra_b(true)
+    }
+
+    pub fn dijkstra(&self) -> i32 {
+        self.dijkstra_b(false)
+    }
 }
 
 impl fmt::Display for Grafo {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        writeln!(f, "")
+        for linha in self.matriz_adj.genrows() {
+            for v in linha {
+                write!(f, "{}", v)?;
+            }
+            writeln!(f,"")?;
+        }
+        write!(f, "")
     }
 }
