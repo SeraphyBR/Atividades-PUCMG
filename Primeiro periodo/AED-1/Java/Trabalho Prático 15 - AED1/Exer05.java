@@ -8,21 +8,21 @@ public class Exer05
     {
         Triangulo[] tri = new Triangulo[5];
         Scanner ler = new Scanner(System.in);
-       try{//Inicio try 
+        try{//Inicio try
             for(int i = 0; i < tri.length; i++)
             {//Inicio for
                 tri[i] = new Triangulo();
                 System.out.printf("\nValores do Triangulo %d:\n", i + 1);
                 tri[i].leLados();
                 System.out.println("Tipo do triângulo: " + tri[i].tipo());
-            }//Fim for 
+            }//Fim for
 
             System.out.println("Deseja comparar quais triângulos? [1..5]:");
             int op1 = ler.nextInt();
             int op2 = ler.nextInt();
             if(tri[op1 - 1].ehIgual(tri[op2 - 1])) System.out.println("Os dois Triangulos são iguais!");
             else System.out.println("Não são iguais!");
-        }//Fim try 
+        }//Fim try
         catch(InputMismatchException inputMismatchException){
             System.out.println("Digito incompativel!");
         }
@@ -34,7 +34,7 @@ public class Exer05
         }
     }
 
-}//Fim classe Exer01 
+}//Fim classe Exer01
 
 class Triangulo
 {//Inicio classe Triangulo
@@ -53,7 +53,7 @@ class Triangulo
     private void setB(double ladoB){
         this.ladoB = ladoB;
     }//Fim setB
-    
+
     private void setC(double ladoC){
         this.ladoC = ladoC;
     }//Fim setC
@@ -76,19 +76,19 @@ class Triangulo
     }//FIm perimetro
 
     public int tipo()
-    {//Inicio tipo 
+    {//Inicio tipo
         int tipo = 0;
 
-        if(getA() == getB() && getB() == getC()){//Todos os lados iguais 
+        if(getA() == getB() && getB() == getC()){//Todos os lados iguais
             tipo = 1;
-        }    
-        else if(getA() == getB() || getA() == getC() || getB() == getC()){//Dois dados iguais 
+        }
+        else if(getA() == getB() || getA() == getC() || getB() == getC()){//Dois dados iguais
             tipo = 2;
         }
         else tipo = 3;
 
         return tipo;// 1=Equilátero; 2=Isóscele; 3=Escaleno
-    }//Fim tipo 
+    }//Fim tipo
 
     public void leLados() throws InputMismatchException
     {//Inicio leLados
@@ -113,24 +113,24 @@ class Triangulo
             }while(lado3 <= 0);
 
             if(ehTrianguloValido(lado1, lado2, lado3))
-            {//Inicio if 
+            {//Inicio if
                 setA(lado1);
                 setB(lado2);
                 setC(lado3);
                 ehErro = false;
-            }//Fim if 
+            }//Fim if
             else System.out.println("Os valores inseridos não correspondem a um triângulo!");
-        }//Fim while         
+        }//Fim while
     }//Fim leLados
 
     public static boolean ehTrianguloValido(double A, double B, double C)
     {//Inicio ehTrianguloValido
         /*
-        Para construir um triângulo é necessário que a medida de 
-        qualquer um dos lados seja menor que a soma das medidas 
-        dos outros dois e maior que o valor absoluto da diferença 
-        entre essas medidas.
-        */
+           Para construir um triângulo é necessário que a medida de
+           qualquer um dos lados seja menor que a soma das medidas
+           dos outros dois e maior que o valor absoluto da diferença
+           entre essas medidas.
+           */
         boolean caso1 = Math.abs(B - C) < A && A < (B + C);
         boolean caso2 = Math.abs(A - C) < B && B < (A + C);
         boolean caso3 = Math.abs(A - B) < C && C < (A + B);

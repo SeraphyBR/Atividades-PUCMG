@@ -5,6 +5,7 @@ use lib::Grafo;
 
 fn main() {
     setup_panic!(); // Nice error message
-    let mut g = Grafo::comum(4);
+    let g = Grafo::comum(4);
+    println!("{}", g);
     println!("Hello, world!");
 }
