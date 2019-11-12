@@ -33,13 +33,14 @@ Grafo::Grafo(int vertices, bool ehOrientado) {
     matriz_adj = new vector<vector<int>>(numVertices,vector<int>(numVertices, 0));
 }
 
+
 Grafo::~Grafo() {
     delete matriz_adj;
 }
 
 void Grafo::display() {
-    for (auto& coluna : *matriz_adj){
-        for (auto v : coluna){
+    for (auto& linha : *matriz_adj){
+        for (auto v : linha){
             cout << v << " ";
         }
         cout << endl;
@@ -115,6 +116,8 @@ int main() {
     cin >> num_especies >> num_relacoes;
 
     Grafo *g = new Grafo(num_especies,true);
+
+    // Matriz que indica se existe um caminho entre 2 vertices.
     vector<vector<bool>> matriz_caminho(num_especies, vector<bool>(num_especies, false));
 
     for (int i = 0; i < num_relacoes; i++){
@@ -122,6 +125,10 @@ int main() {
         g->add_conexao(v1 - 1,v2 - 1);
     }
 
+    // Para cada vertice chamo a busca em largura
+    // para obter um vetor de distancias apartir do vertice i,
+    // e então para cada valor do vetor, verifico se a distancia até
+    // um vertice v, a partir de i, não é nula e adiciono na matriz de caminhos
     for (int i = 0; i < num_especies; i++){
         auto dist = g->busca_largura(i);
         for(int v = 0; v < dist.size(); v++){
@@ -131,6 +138,8 @@ int main() {
         }
     }
 
+    // é cadeia bolada se existir um caminho de i a j
+    // ou de j a i para todo par de vertices.
     for (int i = 0; i < num_especies && bolada; i++){
         for (int j = 0; j < num_especies && bolada; j++){
             if(i != j){

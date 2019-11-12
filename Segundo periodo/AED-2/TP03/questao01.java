@@ -20,7 +20,7 @@ class Conta
         numComparacoes = 0;
         numMovimentacoes = 0;
     }
-    
+
     /**
      * Metodo para obter o numero de comparacoes.
      * @return Numero de comparacoes.
@@ -36,7 +36,7 @@ class Conta
     public static int getNumMovimentacoes(){
         return numMovimentacoes;
     }
-    
+
     /**
      * Atribue um valor a ser somado ao numero de comparacoes.
      * @param quantidade Valor a ser somado.
@@ -51,7 +51,7 @@ class Conta
     public static void somaComparacoes(){
         numComparacoes++;
     }
-    
+
     /**
      * Atribue um valor a ser somado ao numero de movimentacoes.
      * @param quantidade Valor a ser somado.
@@ -67,11 +67,11 @@ class Conta
         numMovimentacoes++;
     }
 }//Fim classe conta
- 
+
 /**
  * @author Luiz Junio Veloso Dos Santos
  * @version 1.2
- */            
+ */
 public class questao01
 {//Inicio classe questao01
     public static void main(String[] args)
@@ -132,7 +132,7 @@ public class questao01
      */
     public static String[] leArquivo(String arquivo)
     {//Inicio ler
-        String[] linha = new String[3000]; 
+        String[] linha = new String[3000];
         try{
             RandomAccessFile file = new RandomAccessFile(arquivo, "r");
             String temp;
@@ -229,7 +229,7 @@ class Instituicao
         this.setDespesaCusteio(0.0);
         this.setDespesaInvestimento(0.0);
         this.setDespesaPesquisa(0.0);
-        this.setDespesaOutras(0.0); 
+        this.setDespesaOutras(0.0);
     }//Fim construtor 2
 
     /**
@@ -263,13 +263,13 @@ class Instituicao
         this.setDespesaCusteio(Double.parseDouble(valor[20]));
         this.setDespesaInvestimento(Double.parseDouble(valor[21]));
         this.setDespesaPesquisa(Double.parseDouble(valor[22]));
-        this.setDespesaOutras(Double.parseDouble(valor[23])); 
+        this.setDespesaOutras(Double.parseDouble(valor[23]));
     }//Fim construtor 3 String
 
     /**
      * Metodo construtor para clonar objeto de Instituicao
      * @param instituicao Objeto de Instituicao
-     */  
+     */
     private Instituicao(Instituicao instituicao)
     {//Inicio construtor Clone
         this.setCodigo(              instituicao.getCodigo()                );
@@ -301,22 +301,22 @@ class Instituicao
     /**
      * Metodo clone
      * @return Um clone de Instituicao
-     */  
+     */
     public Instituicao getClone()
     {//Inicio clone
         return new Instituicao(this);
-    }//Fim clone 
-    
+    }//Fim clone
+
     /**
      * Imprime os dados de uma Instituicao de Ensino Superior
-     */  
+     */
     public void imprime()
     {//Inicio imprime
         MyIO.println(
         //Inicio println
             this.getCodigo() + " " + this.getNome() + " " + this.getSigla() + " " +
             this.getCodigoMantenedora() + " " + this.getMantenedora() + " " +
-            this.getCategoria() + " " + this.getOrganizacao() + " " + 
+            this.getCategoria() + " " + this.getOrganizacao() + " " +
             this.getCodigoMunicipio() + " " + this.getMunicipio() + " " + this.getUF() + " " +
             this.getRegiao() + " " + this.getTecnico() + " " + this.getPeriodico() + " " +
             this.getLivro() + " " + this.getReceita() + " " + this.getTransferencia() + " " +
@@ -417,7 +417,7 @@ class Instituicao
     }
 
     /**
-     * Metodo para obter o codigo da organizacao academica 
+     * Metodo para obter o codigo da organizacao academica
      * @return O codigo da organizacao academica
      */
     public int getOrganizacao(){
@@ -517,7 +517,7 @@ class Instituicao
 
     /**
      * Atribue a Quantidade de titulos de periódicos eletronicos adquiridos
-     * pela biblioteca da IES por meio de compra, doacao ou permuta. 
+     * pela biblioteca da IES por meio de compra, doacao ou permuta.
      */
     public void setPeriodico(int periodico){
         this.periodico = periodico;
@@ -525,7 +525,7 @@ class Instituicao
 
     /**
      * Metodo para obter a Quantidade de titulos de livros eletronicos
-     * disponibilizados pela biblioteca convertidos ao formato digital 
+     * disponibilizados pela biblioteca convertidos ao formato digital
      * ou originalmente produzidos nesse formato para serem lidos em computador
      * ou outros dispositivos.
      * @return A quantidade de titulos de livros eletronicos digitais da IES
@@ -545,7 +545,7 @@ class Instituicao
     }
 
     /**
-     * Metodo para obter o valor das receitas proprias auferidas 
+     * Metodo para obter o valor das receitas proprias auferidas
      * pela Mantenedora ou pela IES no ano de referencia
      * @return O valor das receitas proprias auferidas pela mantenedora ou IES
      */
@@ -616,7 +616,7 @@ class Instituicao
     /**
      * Metodo para obter as despesas com remuneração de pessoal
      * tecnico-administrativo/pedagogicos da IES ou da mantenedora.
-     * @return As despesas com remuneracao de pessoal tecnico-administrativo/pedagogicos 
+     * @return As despesas com remuneracao de pessoal tecnico-administrativo/pedagogicos
      */
     public double getDespesaTecnico(){
         return this.despesaTecnico;
@@ -648,7 +648,7 @@ class Instituicao
     }
 
     /**
-     * Metodo para obter as despesas para a manutencao 
+     * Metodo para obter as despesas para a manutencao
      * e custeio da IES ou da mantenedora
      * (Não inclui  despesas com pessoal.)
      * @return As despesas para manutencao
@@ -669,7 +669,7 @@ class Instituicao
     /**
      * Metodo para obter as despesas de investimentos (despesas de capital)
      * realizadas nas IES ou na mantenedora.
-     * @return As despesas de investimentos 
+     * @return As despesas de investimentos
      */
     public double getDespesaInvestimento(){
         return this.despesaInvestimento;
@@ -701,7 +701,7 @@ class Instituicao
     }
 
     /**
-     * Metodo para obter o valor de dispendios 
+     * Metodo para obter o valor de dispendios
      * nao contemplados nos demais campos relativos a despesa
      * @return O valor de dispendios nao contemplados nos demais campos
      */
@@ -738,8 +738,8 @@ class No
     }
 
     /**
-     *  Construtor da classe 
-     *  @param elemento Conteudo do No 
+     *  Construtor da classe
+     *  @param elemento Conteudo do No
      *  @param esq No da esquerda
      *  @param dir No da direita
      */
@@ -752,8 +752,8 @@ class No
 }//Fim classe No Instituicao
 
 /**
- * Arvore binaria de pesquisa 
- * @author Luiz Junio Veloso Dos Santos 
+ * Arvore binaria de pesquisa
+ * @author Luiz Junio Veloso Dos Santos
  */
 class ArvoreBinaria
 {//Inicio classe ArvoreBinaria
@@ -777,16 +777,16 @@ class ArvoreBinaria
         MyIO.print("raiz ");
         return this.pesquisar(sigla, raiz);
     }
-    
+
     /**
-     * Metodo privado recursivo para pesquisar elemento. 
+     * Metodo privado recursivo para pesquisar elemento.
      * @param sigla Sigla da Instituicao que sera procurado.
      * @param atual No em analise.
      * @return <code>true</code> se o elemento existir,
      * <code>
      */
     private boolean pesquisar(String sigla, No atual)
-    {//Inicio pesquisar 
+    {//Inicio pesquisar
         boolean resultado;
         if(atual == null){
             resultado = false;
@@ -843,8 +843,8 @@ class ArvoreBinaria
     private void mostrarPre(No i){
         if(i != null){
             i.elemento.imprime();   // Conteudo do no
-            this.mostrarPre(i.esq); // Elementos da esquerda 
-            this.mostrarPre(i.dir); // Elementos da direita 
+            this.mostrarPre(i.esq); // Elementos da esquerda
+            this.mostrarPre(i.dir); // Elementos da direita
         }
     }
 
@@ -892,10 +892,10 @@ class ArvoreBinaria
         }
         else if(inst.getSigla().compareTo(i.elemento.getSigla()) < 0){
             i.esq = inserir(inst, i.esq);
-        } 
+        }
         else if(inst.getSigla().compareTo(i.elemento.getSigla()) > 0){
             i.dir = inserir(inst, i.dir);
-        } 
+        }
         else{
             throw new Exception("Erro ao inserir! Sigla ja esta na arvore!");
         }
@@ -914,13 +914,13 @@ class ArvoreBinaria
     /**
      * Metodo privado recursivo para remover Instituicao.
      * @param sigla Sigla da Instituicao a ser removida.
-     * @param i No em analise. 
+     * @param i No em analise.
      * @throws Exception Se não encontrar a Instituicao.
      * @return No em analise, alterado ou nao.
      */
     public No remover(String sigla, No i) throws Exception
-    {//Inicio remover 
-        
+    {//Inicio remover
+
         if(i == null){
             throw new Exception("Erro ao remover!");
         }
@@ -929,12 +929,12 @@ class ArvoreBinaria
         }
         else if (sigla.compareTo(i.elemento.getSigla()) > 0){
             i.dir = remover(sigla, i.dir);
-        } 
+        }
         // Sem no a direita.
-        else if (i.dir == null) i = i.esq;  
-        // Sem no a esquerda. 
+        else if (i.dir == null) i = i.esq;
+        // Sem no a esquerda.
         else if (i.esq == null) i = i.dir;
-        // No a esquerda e no a direita. 
+        // No a esquerda e no a direita.
         else i.esq = this.antecessor(i, i.esq);
 
         return i;
@@ -948,8 +948,8 @@ class ArvoreBinaria
      *  @return No em analise, alterado ou nao.
      */
     private No antecessor(No i, No j)
-    {//Inicio antecessor 
-    
+    {//Inicio antecessor
+
         // Existe No a direita
         if(j.dir != null) j.dir = antecessor(i, j.dir);
         // Encontrou o maximo da subarvore esquerda.

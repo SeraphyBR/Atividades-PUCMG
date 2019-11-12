@@ -49,8 +49,8 @@ Grafo::~Grafo() {
 }
 
 void Grafo::display() {
-    for (auto& coluna : *matriz_adj){
-        for (auto v : coluna){
+    for (auto& linha : *matriz_adj){
+        for (auto v : linha){
             cout << v << " ";
         }
         cout << endl;
@@ -105,6 +105,7 @@ int Grafo::get_numVertices(){
     return numVertices;
 }
 
+// função que retorna o indice do menor vertice não visitado
 int menor_nao_visitado(vector<int> &vec, vector<int> &visitado){
     int indice {};
     int menor {__INT_MAX__};
