@@ -48,7 +48,11 @@ impl Grafo {
         Grafo::new(vertices, GrafoType::OrientadoPonderado)
     }
 
-    pub fn add_conexao(&mut self, v1: usize, v2: usize, peso: i32) {
+    pub fn add_conexao(&mut self, v1: usize, v2: usize){
+        self.add_peso(v1, v2, 1)
+    }
+
+    pub fn add_peso(&mut self, v1: usize, v2: usize, peso: i32) {
         match self.tipo {
             GrafoType::Comum => {
                 if v1 == v2 {

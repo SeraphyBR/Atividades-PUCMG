@@ -1,0 +1,111 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[a4paper,11pt,fleqn]{article}
+\usepackage{graphicx,url}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{a4wide}
+\usepackage{booktabs}
+\usepackage{amsmath} % For math
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\title{\vspace{-4cm}Prática investigativa $-$ Algoritmos em Grafos}
+\author{Luiz Junio Veloso Dos Santos $-$ Matricula: 624037}
+
+\begin{document}
+\maketitle
+
+\centering{\large{Responda às seguintes perguntas com relação ao artigo\\
+“\textit{Multicast Tree Construction and Flooding in Wireless Ad Hoc Networks}”}
+}
+
+\begin{enumerate}
+    \item{Defina redes \textit{Ad Hoc}.}
+    \newline
+    \textbf{R:}
+        Uma rede \textit{Ad Hoc} consiste em hosts móveis sem fio que formam uma rede
+        temporária sem o auxilio da infraestrutura estabelecida ou da administração
+        centralizada.
+
+    \item{Quais são os desafios enfrentados pelo roteamento em redes \textit{Ad Hoc}?}
+    \newline
+    \textbf{R:}
+        Os desafios são a topologia da rede, que muda dinamicamente, e
+        a largura de banda limitada em uma rede sem fios \textit{Ad Hoc}.
+
+    \item{Qual é a motivação deste artigo?}
+    \newline
+    \textbf{R:}
+        A motivação do artigo é de se criar mecanismos mais eficientes de roteamento
+        para \textit{multicast} e \textit{broadcast} em uma rede \textit{Ad Hoc} sem fio.
+
+    \item{Como as redes \textit{Ad Hoc} são modeladas como grafos?}
+    \newline
+    \textbf{R:}
+        Cada terminal móvel é representado como um vértice e
+        2 vértices estão conectados por uma aresta quando eles estão dentro
+        da área de transmissão de cada um.
+        \newline
+        Obs: Embora em um ambiente sem fio real, alguns links podem ser unidirecional
+        devido a área de transmissão de 2 vértices serem diferentes, isso pode ser mascarado
+        usando mecanismos de detecção de link unidirecional, assim pode se assumir
+        que todos os links/arestas são bidirecional, se o vértice $v_i$ pode se
+        comunicar com $v_j$, então $v_j$ pode também se comunicar com $v_i$.
+        \newline
+        $N(v)$ é definido como os vértices adjacentes do vértice v.
+
+    \item{Defina o problema MCDS (\textit{Minimum Connected Dominating Set}).}
+    \newline
+    \textbf{R:}
+        O problema MCDS é encontrar o subconjunto conectado minimo S de V
+        onde todos os elementos em $V - S$ é adjacente para ao menos um elemento de S,
+        dado o grafo $G(V,E)$.
+
+    \item{Explique o funcionamento das duas heurísticas para inundação (\textit{flooding}) propostas.}
+    \newline
+    \textbf{R:}
+        \begin{itemize}
+            \item{\textit{Self pruning}:}
+            Cada vértice troca uma lista de seus vértices adjacentes com
+            seus vizinhos. Cada vértice emite um pacote ``Quem eu sou'' periodicamente
+            para informar sua existência para os vértices vizinhos.
+            O vértice $v_i$, que deseja encaminhar um pacote, ``pega carona'' na lista
+            de vértices adjacentes $N(v_i)$ no pacote ``inundado''.
+            O vértice $v_j$, que recebe o pacote, verifica se o conjunto $N(v_j) - V(v_i) - \{v_i\}$
+            está vazio. Se estiver, o vértice $v_j$ se abstém de encaminhar o pacote, pois
+            ele sabe que todos os seus vértices adjacentes devem ter recebido o pacote
+            quando o vértice $v_i$ encaminhou. Caso contrário, o vértice $v_j$ encaminha o pacote.
+            \newline
+            Para decidir se deve encaminhar o pacote recebido ou não, $v_j$ deve iterar para
+            cada $v \in N(v_i)$ descobrindo e removendo v de $N(v_j) - \{v_i\}$. Se todos os elementos
+            foram removidos de $N(v_j) - \{v_i\}$, $v_j$ não encaminha o pacote. Senão, $v_j$ encaminha
+            o pacote.
+
+        \item{\textit{Dominating pruning}:}
+            Enquanto \textit{Self pruning} explora o conhecimento de vizinhos diretamente conectados
+            apenas, \textit{Dominant pruning} estende a área de informações da vizinhança em 2
+            arestas de distancia $N(N(v))$. Essa informação de vizinhos de ``2 saltos'' pode ser
+            obtida trocando as listas de vértices adjacentes com os vizinhos.
+            \newline
+            No \textit{Dominant pruning}, o vértice de envio seleciona os vértices adjacentes que
+            deve retransmitir o pacote para completar a transmissão. Os IDs dos vértices
+            adjacentes são reescritos no pacote como uma linha de encaminhamento. Um vértice
+            adjacente que é requisitado para retransmitir o pacote novamente determina a
+            lista de encaminhamento. Esse processo é iterado até que a transmissão seja
+            concluída.
+
+        \end{itemize}
+    \item{Escreva sucintamente as contribuições deste artigo.}
+    \newline
+    \textbf{R:}
+        Esse artigo contribuiu ao apresentar 2 novos algoritmos que podem
+        melhorar a transmissão de pacotes em redes Ad Hoc sem fio, o que irá
+        contribuir com uma maior velocidade de troca de dados nos ambientes que
+        fazem uso desse tipo de rede, como campos de combate e áreas de resgate cujo
+        tempo é um fator crucial.
+
+\end{enumerate}
+
+\end{document}

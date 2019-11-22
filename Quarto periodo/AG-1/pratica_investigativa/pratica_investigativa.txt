@@ -1,0 +1,90 @@
+Algoritmos em Grafos
+
+Aluno: Luiz Junio Veloso Dos Santos
+Matricula: 624037
+
+
+Responda às seguintes perguntas com relação ao artigo 
+"Multicast Tree Construction and Flooding in Wireless Ad Hoc Networks"
+
+1) Defina redes ad hoc:
+
+    Uma rede ad hoc consiste em hosts móveis sem fio que formam uma rede temporária
+    sem o auxilio da infraestrutura estabelecida ou da administração centralizada.
+
+2) Quais são os desafios enfrentados pelo roteamento em redes ad hoc?
+    
+3) Qual é a motivação deste artigo?
+
+4) Como as redes ad hoc são modeladas como grafos?
+
+    Cada terminal móvel é representado como um vértice e
+    2 vértices estão conectados por uma aresta quando eles estão dentro 
+    da área de transmissão de cada um. 
+
+    Obs: Embora em um ambiente sem fio real, alguns links podem ser unidirecional 
+    devido a área de transmissão de 2 vértices serem diferentes, isso pode ser mascarado
+    usando mecanismos de detecção de link unidirecional, assim pode se assumir
+    que todos os links/arestas são bidirecional, se o vértice Vi pode se
+    comunicar com Vj, então Vj pode também se comunicar com Vi.
+
+    N(v) é definido como os vértices adjacentes do vértice v.
+
+
+5) Defina o problema MCDS (Minimum Connected Dominating Set):
+
+    O problema MCDS é encontrar o subconjunto conectado minimo S de V em
+    onde todos os elementos em V - S é adjacente para ao menos um elemento de S,
+    dado o grafo G(V,E).
+
+6) Explique o funcionamento das duas heurísticas para inundação (flooding) propostas:
+    Self pruning: 
+        Cada vértice troca uma lista de seus vértices adjacentes com 
+        seus vizinhos. Cada vértice emite um pacote "Quem eu sou" periodicamente
+        para informar sua existência para os vértices vizinhos.
+        O vértice Vi, que deseja encaminhar um pacote, "pega carona" na lista
+        de vértices adjacentes N(Vi) no pacote "inundado".
+        O vértice Vj, que recebe o pacote, verifica se o conjunto N(Vj) - V(Vi) - {Vi}
+        está vazio. Se estiver, o vértice Vj se abstém de encaminhar o pacote, pois
+        ele sabe que todos os seus vértices adjacentes devem ter recebido o pacote
+        quando o vértice Vi encaminhou. Caso contrário, o vértice Vj encaminha o pacote.
+
+        Para decidir se deve encaminhar o pacote recebido ou não, Vj deve iterar para
+        cada v E N(Vi) descobrindo e removendo v de N(Vj) - {Vi}. Se todos os elementos
+        foram removidos de N(Vj) - {Vi}, Vj não encaminha o pacote. Senão, Vj encaminha
+        o pacote.
+
+    Dominant pruning:
+        Enquanto "Self pruning" explora o conhecimento de vizinhos diretamente conectados
+        apenas, "Dominant pruning" estende a área de informações da vizinhança em 2
+        arestas de distancia N(N(v)). Essa informação de vizinhos de "2 saltos" pode ser
+        obtida trocando as listas de vértices adjacentes com os vizinhos.
+
+        No "Dominant pruning", o vértice de envio seleciona os vértices adjacentes que
+        deve retransmitir o pacote para completar a transmissão. Os IDs dos vértices
+        adjacentes são reescritos no pacote como uma linha de encaminhamento. Um vértice
+        adjacente que é requisitado para retransmitir o pacote novamente determina a
+        lista de encaminhamento. Esse processo é iterado até que a transmissão seja 
+        concluída.
+
+        Vamos ver como
+
+7) Escreva sucintamente as contribuições deste artigo:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
