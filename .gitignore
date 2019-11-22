@@ -4,6 +4,7 @@
 *.log
 *.fls
 *.aux
+**/.idea
 *.fdb_latexmk
 *.synctex.gz
 **/.ccls-cache
