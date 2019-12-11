@@ -12,11 +12,9 @@ fn main() {
 }
 
 fn show_fibonacci(n: i32) {
-    let mut f = (1,1);
-    for step in 0..n {
-        if step > 1 {
-            f = (f.1,f.0 + f.1);
-        }
+    let mut f = (0,1);
+    for _ in 0..n {
         println!("{}", f.1);
+        f = (f.1,f.0 + f.1);
     }
 }
