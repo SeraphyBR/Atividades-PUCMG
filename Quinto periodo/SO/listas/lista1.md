@@ -66,13 +66,13 @@
    zero. Se um processo necessita de T segundos para completar sua operação (sem
    concorrência), quanto tempo gastará se o processador for compartilhado com n processos?
 
-    **R:** O processador gastará n \* T segundos.
+    **R:** Um processo gastará `N * T - (N - 1)` segundos.
 
 8. Escalonamento round-robin mantém uma lista de processos executáveis, com cada processo
    aparecendo apenas uma única vez na lista. O que aconteceria se um processo aparecesse
    mais de uma vez? Por que motivo poderíamos permitir tal fato?
 
-    **R:** Se um processo ocorre múltiplas vezes na lista, significa múltiplos quanta por
+    **R:** Se um processo ocorre múltiplas vezes na lista, significa múltiplos quantum por
     ciclo para este processo. Poderiamos permitir tal fato para dar um maior
     compartilhamento de CPU para processos de maior importância. Entretanto, caso este
     processo seja bloqueado, é preciso remover todas as suas entradas na lista de processos
@@ -91,10 +91,10 @@
 
     **R:**
 
-    - A.
-    - B.
-    - C.
-    - D.
+    - A. <br>![T / (T + S)](https://latex.codecogs.com/png.latex?\frac{T}{T+S})
+    - B. <br>![T / (T + S)](https://latex.codecogs.com/png.latex?\frac{T}{T+S})
+    - C. <br>![T / (T + (S * teto(T/Q)))](<https://latex.codecogs.com/png.latex?\frac{T}{T+S*\left&space;\lceil&space;(T/Q)&space;\right&space;\rceil}>)
+    - D. <br>![1/2](https://latex.codecogs.com/png.latex?\frac{T}{T+T}&space;=&space;\frac{1}{2})
     - E.
 
 10. Cinco tarefas são disparadas ao mesmo tempo. Seus tempos estimados de
