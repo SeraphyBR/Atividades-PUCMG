@@ -11,7 +11,7 @@ class Node {
         Node *left;
         Node *right;
         Node(T value, Node* left, Node* right);
-        Node(T value) : Node(value, NULL, NULL){};
+        Node(T value) : Node(value, nullptr, nullptr){};
 };
 
 template <class T>
@@ -21,7 +21,7 @@ Node<T>::Node(T value, Node* left, Node* right){
     this->right = right;
 }
 
-///// begin BinaryTree
+// begin BinaryTree
 template <class T>
 class BinaryTree {
     private:
@@ -45,28 +45,29 @@ class BinaryTree {
 
 template <class T>
 BinaryTree<T>::BinaryTree(){
-    this->root = NULL;
+    this->root = nullptr;
 }
 
 template <class T>
 BinaryTree<T>::~BinaryTree(){
-    if(root != NULL){
+    if(root != nullptr){
         this->delete_all(root);
     }
 }
 
 template <class T>
 void BinaryTree<T>::delete_all(Node<T> *node){
-    if(node != NULL){
+    if(node != nullptr){
         this->delete_all(node->left);
         this->delete_all(node->right);
         delete node;
+        node = nullptr;
     }
 }
 
 template <class T>
 Node<T>* BinaryTree<T>::insert(T value, Node<T> *node){
-    if (node == NULL){
+    if (node == nullptr){
         node = new Node<T>(value);
     }
     else if (value < node->value){
@@ -85,19 +86,19 @@ void BinaryTree<T>::insert(T value){
 
 template <class T>
 Node<T>* BinaryTree<T>::remove(T value, Node<T> *node){
-    if(node != NULL){
+    if(node != nullptr){
         if(value < node->value){
             node->left = remove(value, node->left);
         }
         else if(value > node->value){
             node->right = remove(value, node->right);
         }
-        else if (node->left == NULL){
+        else if (node->left == nullptr){
             auto tmp = node->right;
             delete node;
             node = tmp;
         }
-        else if (node->right == NULL){
+        else if (node->right == nullptr){
             auto tmp = node->left;
             delete node;
             node = tmp;
@@ -116,7 +117,7 @@ Node<T>* BinaryTree<T>::remove(T value){
 
 template <class T>
 Node<T>* BinaryTree<T>::predecessor(Node<T> *n1, Node<T> *n2){
-    if(n2->right != NULL){
+    if(n2->right != nullptr){
         n2->right = predecessor(n1, n2->right);
     }
     else{
@@ -130,7 +131,7 @@ Node<T>* BinaryTree<T>::predecessor(Node<T> *n1, Node<T> *n2){
 
 template <class T>
 void BinaryTree<T>::print(Node<T> *node){
-    if(node != NULL){
+    if(node != nullptr){
         this->print(node->left);
         cout << node->value << " ";
         this->print(node->right);
@@ -144,7 +145,7 @@ void BinaryTree<T>::print(){
 
 template <class T>
 void BinaryTree<T>::print_esq(Node<T> *node){
-    if(node != NULL){
+    if(node != nullptr){
         cout << node->value << " ";
         this->print_esq(node->left);
         this->print_esq(node->right);
@@ -158,7 +159,7 @@ void BinaryTree<T>::print_esq(){
 
 template <class T>
 void BinaryTree<T>::print_dir(Node<T> *node){
-    if(node != NULL){
+    if(node != nullptr){
         this->print_dir(node->left);
         this->print_dir(node->right);
         cout << node->value << " ";
@@ -169,7 +170,7 @@ template <class T>
 void BinaryTree<T>::print_dir(){
     this->print_dir(root);
 }
-///// end BinaryTree
+// end BinaryTree
 
 int main() {
     int num {};
@@ -184,6 +185,7 @@ int main() {
         bt->print_esq();
         cout << endl;
         delete bt;
+        bt = nullptr;
         cin >> num;
     }
     return 0;

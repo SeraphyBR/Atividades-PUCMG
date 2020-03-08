@@ -36,6 +36,7 @@ Grafo::Grafo(int vertices, bool ehOrientado) {
 
 Grafo::~Grafo() {
     delete matriz_adj;
+    matriz_adj = nullptr;
 }
 
 void Grafo::display() {

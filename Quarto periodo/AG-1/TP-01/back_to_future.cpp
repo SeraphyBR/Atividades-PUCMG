@@ -46,6 +46,7 @@ Grafo::Grafo(int vertices, GrafoType t) {
 
 Grafo::~Grafo() {
     delete matriz_adj;
+    matriz_adj = nullptr;
 }
 
 void Grafo::display() {
@@ -191,6 +192,9 @@ int main(){
         else cout << preco_final << endl;
         cout << endl;
         cout << endl << endl;//Verde
+
+        delete g;
+        g = nullptr;
     }
     return 0;
 }

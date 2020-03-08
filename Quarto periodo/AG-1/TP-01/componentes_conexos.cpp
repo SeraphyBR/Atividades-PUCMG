@@ -30,6 +30,7 @@ Grafo::Grafo(int vertices) {
 
 Grafo::~Grafo() {
     delete matriz_adj;
+    matriz_adj = nullptr;
 }
 
 void Grafo::display() {
@@ -121,6 +122,7 @@ int main() {
         cout << vec_comp.size() << " connected components" << endl;
         cout << endl;
         delete g;
+        g = nullptr;
     }
     return 0;
 }//end main();

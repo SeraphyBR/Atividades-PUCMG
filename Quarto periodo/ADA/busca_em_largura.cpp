@@ -33,6 +33,7 @@ Grafo::Grafo(int numVertices) {
 
 Grafo::~Grafo(){
     delete matriz_adj;
+    matriz_adj = nullptr;
 }
 
 void Grafo::add_conexao(int v1, int v2, int peso){
@@ -109,6 +110,8 @@ int main() {
         }
         cout << endl;
         cin >> vertices;
+        delete g;
+        g = nullptr;
     }
     return 0;
 }

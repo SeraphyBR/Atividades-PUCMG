@@ -36,6 +36,7 @@ Grafo::Grafo(int vertices, bool ehOrientado) {
 
 Grafo::~Grafo() {
     delete matriz_adj;
+    matriz_adj = nullptr;
 }
 
 void Grafo::display() {
@@ -155,5 +156,6 @@ int main() {
         cout << "Nao Bolada" << endl;
     }
     delete g;
+    g = nullptr;
     return 0;
 }//end main();

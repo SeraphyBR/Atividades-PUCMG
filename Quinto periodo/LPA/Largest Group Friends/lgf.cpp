@@ -30,6 +30,7 @@ Grafo::Grafo(int vertices) {
 
 Grafo::~Grafo() {
     delete matriz_adj;
+    matriz_adj = nullptr;
 }
 
 void Grafo::display() {
@@ -98,14 +99,11 @@ int main() {
         g = new Grafo(num_citizens);
         for (int a = 0; a < num_pairs_people; a++){
             cin >> p1 >> p2;
-            g->add_conexao(p1,p2);
+            g->add_conexao(p1 - 1,p2 - 1);
         }
         auto vec_comp = g->componentes();
         int max_num_people = 0;
         for(auto componente : vec_comp){
-            for(auto vertice : componente){
-                cout << vertice << endl;
-            }
             if(componente.size() > max_num_people){
                 max_num_people = componente.size();
             }
@@ -113,7 +111,6 @@ int main() {
         cout << max_num_people << endl;
         delete g;
     }
+    g = nullptr;
     return 0;
 }//end main();
-
-
