@@ -3,6 +3,7 @@
 #include <queue>
 #include <vector>
 #include <cmath>
+#include <map>
 using namespace std;
 
 enum Cor {
@@ -23,6 +24,7 @@ class Grafo {
         vector<vector<int>> *matriz_adj;
         int numVertices;
         GrafoType tipo;
+        int indice_menor(vector<int> &vec);
     public:
         Grafo(int vertices) : Grafo(vertices, GrafoType::Comum){};
         Grafo(int vertices, GrafoType tipo);
@@ -34,8 +36,7 @@ class Grafo {
         void add_conexao(int v1, int v2);
         void del_conexao(int v1, int v2);
         int grau_vertice(int v);
-        int dijkstra(bool caminho_unico);
-        int dijkstra();
+        int prim();
 };
 
 Grafo::Grafo(int vertices, GrafoType t) {
@@ -106,12 +107,11 @@ int Grafo::get_numVertices(){
     return numVertices;
 }
 
-// função que retorna o indice do menor vertice não visitado
-int menor_nao_visitado(vector<int> &vec, vector<int> &visitado){
+int Grafo::indice_menor(vector<int> &vec){
     int indice {};
     int menor {__INT_MAX__};
-    for(int i = 0; i < vec.capacity() && i < visitado.capacity(); i++){
-        if(visitado.at(i) != 1 && vec.at(i) < menor){
+    for(int i = 0; i < vec.capacity(); i++){
+        if((vec.at(i) != -1) && (vec.at(i) < menor)){
             menor = vec.at(i);
             indice = i;
         }
@@ -119,55 +119,66 @@ int menor_nao_visitado(vector<int> &vec, vector<int> &visitado){
     return indice;
 }
 
-// Algoritmo de dijkstra que retorna o somatorio dos pesos do caminho
-// Modificado de forma a não usar o mesmo caminho na proxima chamada
-int Grafo::dijkstra(bool caminho_unico){
-    vector<int> dist (numVertices, __INT_MAX__);
-    vector<int> pai (numVertices, -1);
-    vector<int> visitado (numVertices,0);
-    dist.at(0) = 0;
-    visitado.at(0) = 1;
+// Função baseada no PRIM que retorna a soma
+// dos pesos da aresta da AGM
+int Grafo::prim(){
+    int size = matriz_adj->capacity();
+    vector<int> chave(size,__INT_MAX__);
+    int contador {};
     int menor {};
-    for (int i = 0; i < numVertices; i++){
-        for (int j = 0; j < numVertices; j++){
-            if(visitado.at(j) != 1 && j != menor && matriz_adj->at(menor).at(j) != -1){
-                if(dist.at(j) > dist.at(menor) + matriz_adj->at(menor).at(j)){
-                    dist.at(j) = dist.at(menor) + matriz_adj->at(menor).at(j);
-                    pai.at(j) = menor;
+
+    chave.at(0) = -1;
+    for (int i = 1; i < size; i++){
+        for (int j = 0; j < size; j++){
+            if(menor != j){
+                if(matriz_adj->at(menor).at(j) != -1 && matriz_adj->at(menor).at(j) < chave.at(j)){
+                    chave.at(j) = matriz_adj->at(menor).at(j);
                 }
             }
         }
-        visitado.at(menor) = 1;
-        menor = menor_nao_visitado(dist, visitado);
+        menor = indice_menor(chave);
+        contador += chave.at(menor);
+        chave.at(menor) = -1;
     }
-
-    if(caminho_unico) {
-        int v = numVertices - 1;
-        while(pai.at(v) != -1){
-            del_conexao(pai.at(v), v);
-            v = pai.at(v);
-        }
-        if (v != 0) return -1;//Caso a volta não seja possivel
-    }
-    return dist.at(numVertices - 1);
+    return contador;
 }
-
-int Grafo::dijkstra() {
-    return dijkstra(false);
-}
-
 
 int main(){
     int number_stations {};
     int number_connections {};
+    cin >> number_stations >> number_connections;
     while(number_stations != 0 && number_connections != 0){
         Grafo* g = new Grafo(number_stations, GrafoType::Ponderado);
-        vector<string> stations(number_stations, "");
+        map<string,int> stations;
         for(int i = 0; i < number_stations; i++){
-            string temp {};
-            cin >> temp;
-            stations.push_back(temp);
+            string station_name {};
+            cin >> station_name;
+            stations[station_name] = i;
         }
+        for(int i = 0; i < number_connections; i++){
+            string station1_name {};
+            string station2_name {};
+            int price {};
+            cin >> station1_name >> station2_name >> price;
+            g->add_conexao(stations[station1_name], stations[station2_name], price);
+
+        }
+        // Essa informação não é relevante para o algoritmo
+        string initial_station {};
+        cin >> initial_station;
+
+        int final_price = g->prim();
+        if(final_price > 0){
+            cout << final_price << endl;
+        }
+        else {
+            cout << "impossible" << endl;
+        }
+
+        delete g;
+        g = nullptr;
+
+        cin >> number_stations >> number_connections;
     }
 
     return 0;

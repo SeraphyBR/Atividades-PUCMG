@@ -23,6 +23,7 @@ class Grafo {
         vector<vector<int>> *matriz_adj;
         int numVertices;
         GrafoType tipo;
+        int menor_nao_visitado(vector<int> &vec, vector<int> &visitado);
     public:
         Grafo(int vertices) : Grafo(vertices, GrafoType::Comum){};
         Grafo(int vertices, GrafoType tipo);
@@ -107,7 +108,7 @@ int Grafo::get_numVertices(){
 }
 
 // função que retorna o indice do menor vertice não visitado
-int menor_nao_visitado(vector<int> &vec, vector<int> &visitado){
+int Grafo::menor_nao_visitado(vector<int> &vec, vector<int> &visitado){
     int indice {};
     int menor {__INT_MAX__};
     for(int i = 0; i < vec.capacity() && i < visitado.capacity(); i++){
