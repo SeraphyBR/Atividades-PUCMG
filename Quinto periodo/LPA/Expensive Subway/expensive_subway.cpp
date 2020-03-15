@@ -25,6 +25,7 @@ class Grafo {
         int numVertices;
         GrafoType tipo;
         int indice_menor(vector<int> &vec);
+        void dfs_visit(vector<Cor> &cor,int v,list<int> &lcomp);
     public:
         Grafo(int vertices) : Grafo(vertices, GrafoType::Comum){};
         Grafo(int vertices, GrafoType tipo);
@@ -36,6 +37,7 @@ class Grafo {
         void add_conexao(int v1, int v2);
         void del_conexao(int v1, int v2);
         int grau_vertice(int v);
+        vector<list<int>> componentes();
         int prim();
 };
 
@@ -107,6 +109,37 @@ int Grafo::get_numVertices(){
     return numVertices;
 }
 
+void Grafo::dfs_visit(vector<Cor> &cor,int v,list<int> &lcomp) {
+    cor.at(v) = Cinza;
+    lcomp.push_back(v);
+    for (int i = 0; i < numVertices; i++){
+        if (matriz_adj->at(i).at(v) != -1 && cor.at(i) == Branco){
+            dfs_visit(cor, i, lcomp);
+        }
+    }
+    cor.at(v) = Preto;
+}//end Grafo::dfs_visit();
+
+// Uso do algoritmo de busca em profundidade
+// retorna um vetor contendo uma lista para cada componente
+// do grafo, essa lista contem o numero dos vetores pertencentes
+// ao componente.
+vector<list<int>> Grafo::componentes() {
+    vector<list<int>> componentes {};
+    list<int> lcomp {};
+    vector<Cor> cor(numVertices, Branco);
+    for (int i = 0; i < numVertices; i++){
+        if(cor.at(i) == Branco){
+            dfs_visit(cor, i, lcomp);
+            lcomp.sort();
+            componentes.push_back(lcomp);
+            lcomp.clear();
+        }
+    }
+    return componentes;
+}//end Grafo::componentes()
+
+
 int Grafo::indice_menor(vector<int> &vec){
     int indice {};
     int menor {__INT_MAX__};
@@ -147,7 +180,7 @@ int main(){
     int number_stations {};
     int number_connections {};
     cin >> number_stations >> number_connections;
-    while(number_stations != 0 && number_connections != 0){
+    while(number_stations > 0 && number_connections > 0){
         Grafo* g = new Grafo(number_stations, GrafoType::Ponderado);
         map<string,int> stations;
         for(int i = 0; i < number_stations; i++){
@@ -160,7 +193,15 @@ int main(){
             string station2_name {};
             int price {};
             cin >> station1_name >> station2_name >> price;
-            g->add_conexao(stations[station1_name], stations[station2_name], price);
+            int value = g->get_conexao(stations.at(station1_name), stations.at(station2_name));
+            if(value != -1){
+                if(value > price){
+                    g->add_conexao(stations.at(station1_name), stations.at(station2_name), price);
+                }
+            }
+            else {
+                g->add_conexao(stations.at(station1_name), stations.at(station2_name), price);
+            }
 
         }
         // Essa informação não é relevante para o algoritmo
@@ -168,11 +209,11 @@ int main(){
         cin >> initial_station;
 
         int final_price = g->prim();
-        if(final_price > 0){
+        if(final_price > 0 && g->componentes().size() == 1){
             cout << final_price << endl;
         }
         else {
-            cout << "impossible" << endl;
+            cout << "Impossible" << endl;
         }
 
         delete g;
