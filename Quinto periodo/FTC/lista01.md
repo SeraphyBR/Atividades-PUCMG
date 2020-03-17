@@ -1,15 +1,33 @@
-# Lista 01 da disciplina de Fundamentos Teóricos da Computação
+## Lista 01 de Fundamentos Teóricos da Computação
 
 1. Dê a definição recursiva do conjunto de strings sobre o alfabeto {a, b} que contenha um número par de b´s.
+   - **R:**
+     ```tex
+      Σ={a,b} Par(b)
+      Caso Base: λ ϵ Par(b)
+      Passo Recursivo:
+         Se w ϵ Par(b), então
+         aw ϵ Par(b) e wa ϵ Par(b)
+         bbw ϵ Par(b), bwb ϵ Par(b), wbb ϵ Par(b)
+     ```
 
 2. Mostre que:
-   - `(ba)+ (a*b* U a*) = (ba)* ba+ (b* U λ)`
-   - `b+ (a*b*  U  λ ) b  =  b (b*a* U λ)  b+`
+   - a) `(b.a)+ (a*.b* U a*) = (b.a)* b.a+ (b* U λ)`
+   - b) `b+ (a*.b* U λ) b  =  b (b*.a* U λ) b+`
+     - **R:**
+       ```tex
+         b+ (a*.b* U λ) b
+         b.b* (a*.b* U λ) b
+         b (b*.a*.b* U λ.b*) b
+         b (b*.a* U λ) b*.b
+         b (b*.a* U λ) b+
+       ```
 
 3. Forneça as expressões regulares para o conjunto de strings sobre:
    - a) Σ = {a, b} de tamanho >= 2, no qual todos os a’s precedem todos os b’s.
    - b) Σ = {a, b} que contém o substring aa.
    - c) Σ = {a, b} que possui exatamente um par aa.
+     - **R:** `(b U a.b)* a.a (b U b.a)*`
    - d) Σ = {a, b, c} que começa com a, contém exatamente dois b’s e termina com cc.
    - e) Σ = {a, b} que contém o substring  ab  e  o substring ba.
    - f) Σ = {a, b, c} que contém o substring aa, bb e cc.
