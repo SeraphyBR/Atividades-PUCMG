@@ -25,6 +25,7 @@
 
 3. Forneça as expressões regulares para o conjunto de strings sobre:
    - a) Σ = {a, b} de tamanho >= 2, no qual todos os a’s precedem todos os b’s.
+     - **R:** `a+.b+ U b.b+ U a.a+`
    - b) Σ = {a, b} que contém o substring aa.
    - c) Σ = {a, b} que possui exatamente um par aa.
      - **R:** `(b U a.b)* a.a (b U b.a)*`
