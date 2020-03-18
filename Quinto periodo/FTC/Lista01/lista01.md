@@ -61,7 +61,7 @@
 5. Para cada uma das linguagens abaixo, dê um λ-AFN correspondente:
 
     - a) `(ab)*ba`
-        - **R:**
+        - **R:** ![(ab)*ba](Imagens/λ-AFN/(ab)*ba.png)
     - b) `(ab)*(ba)*`
         - **R:**
     - c) `(ab)*ba ∪ (ab)*(ba)*`
@@ -70,6 +70,15 @@
         - **R:**
 
 6. Para cada um dos autômatos acima gere o AFD equivalente.
+
+    - a) `(ab)*ba`
+        - **R:**
+    - b) `(ab)*(ba)*`
+        - **R:**
+    - c) `(ab)*ba ∪ (ab)*(ba)*`
+        - **R:**
+    - d) `(aa(a ∪ b)+bb)*`
+        - **R:**
 
 7. As seguintes linguagens são regulares? Prove.
     - a) `{ 0^n 1^m | m, n ≥ 0 }`
