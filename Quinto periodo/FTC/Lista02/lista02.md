@@ -1,4 +1,4 @@
-## Lista 01 de Fundamentos Teóricos da Computação
+## Lista 02 de Fundamentos Teóricos da Computação
 
 1. Dê a definição recursiva do conjunto de strings sobre o alfabeto {a, b} que contenha um número par de b´s.
 
@@ -61,24 +61,26 @@
 5. Para cada uma das linguagens abaixo, dê um λ-AFN correspondente:
 
     - a) `(ab)*ba`
-        - **R:** ![(ab)*ba](Imagens/λ-AFN/(ab)*ba.png)
+        - **R:** <img src="Imagens/λ-AFN/(ab)*ba.png" width="400"/>
+
     - b) `(ab)*(ba)*`
         - **R:**
     - c) `(ab)*ba ∪ (ab)*(ba)*`
-        - **R:**
+        - **R:** `(ab)*ba ∪ (ab)*(ba)* == (ab)* [ba U (ba)*] == (ab)*(ba)*`
     - d) `(aa(a ∪ b)+bb)*`
         - **R:**
 
 6. Para cada um dos autômatos acima gere o AFD equivalente.
 
     - a) `(ab)*ba`
-        - **R:**
+        - **R:** <img src="Imagens/AFD/(ab)*ba.png" width="340"/>
     - b) `(ab)*(ba)*`
         - **R:**
     - c) `(ab)*ba ∪ (ab)*(ba)*`
         - **R:**
     - d) `(aa(a ∪ b)+bb)*`
         - **R:**
+
 
 7. As seguintes linguagens são regulares? Prove.
     - a) `{ 0^n 1^m | m, n ≥ 0 }`
