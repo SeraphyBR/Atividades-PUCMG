@@ -60,25 +60,31 @@
 
 5. Para cada uma das linguagens abaixo, dê um λ-AFN correspondente:
 
-    - a) `(ab)*ba`
-        - **R:** <img src="Imagens/λ-AFN/(ab)*ba.png" width="400"/>
+    - a) `(a.b)* b.a`
 
-    - b) `(ab)*(ba)*`
-        - **R:**
-    - c) `(ab)*ba ∪ (ab)*(ba)*`
-        - **R:** `(ab)*ba ∪ (ab)*(ba)* == (ab)* [ba U (ba)*] == (ab)*(ba)*`
-    - d) `(aa(a ∪ b)+bb)*`
+        - **R:** <img src="Imagens/λ-AFN/(ab)*ba.png" width="390"/>
+
+    - b) `(a.b)* (b.a)*`
+
+        - **R:** <img src="Imagens/λ-AFN/(ab)*(ba)*.png" width="340"/>
+
+    - c) `(a.b)* b.a ∪ (a.b)* (b.a)*`
+
+        - **R:** `(a.b)* b.a ∪ (a.b)* (b.a)* == (a.b)* [b.a U (b.a)*] == (a.b)* (b.a)*`
+          <img src="Imagens/λ-AFN/(ab)*(ba)*.png" width="340"/>
+
+    - d) `(a.a (a ∪ b)+ b.b)*`
         - **R:**
 
 6. Para cada um dos autômatos acima gere o AFD equivalente.
 
-    - a) `(ab)*ba`
+    - a) `(a.b)* b.a`
         - **R:** <img src="Imagens/AFD/(ab)*ba.png" width="340"/>
-    - b) `(ab)*(ba)*`
+    - b) `(a.b)* (b.a)*`
         - **R:**
-    - c) `(ab)*ba ∪ (ab)*(ba)*`
+    - c) `(a.b)* b.a ∪ (a.b)* (b.a)*`
         - **R:**
-    - d) `(aa(a ∪ b)+bb)*`
+    - d) `(a.a (a ∪ b)+ b.b)*`
         - **R:**
 
 
