@@ -31,11 +31,11 @@
     - a) Σ = {a, b} de tamanho >= 2, no qual todos os a’s precedem todos os b’s.
         - **R:** `a+.b+ U b.b+ U a.a+`
     - b) Σ = {a, b} que contém o substring aa.
-        - **R:**
+        - **R:** `(b U a.b U a.a+ b)* a.a+`
     - c) Σ = {a, b} que possui exatamente um par aa.
         - **R:** `(b U a.b)* a.a (b U b.a)*`
     - d) Σ = {a, b, c} que começa com a, contém exatamente dois b’s e termina com cc.
-        - **R:**
+        - **R:** `a (a U c)* b (a U c)* b (a U c)* c.c`
     - e) Σ = {a, b} que contém o substring ab e o substring ba.
         - **R:**
     - f) Σ = {a, b, c} que contém o substring aa, bb e cc.
@@ -49,7 +49,7 @@
     - j) Σ = {a, b, c} com tamanho maior que 3.
         - **R:**
     - k) Σ = {a, b} com um número par de a’s e impar de b´s.
-        - **R:**
+        - **R:** `(a.b (b.b)* b.a U aa)* (a.b (b.b)* a U b) [(a (b.b)* a) U (b U a (b.b)* b.a) (a.b (b.b)* b.a U a.a)* (a.b (b.b)* a U b)]*`
 
 4. Nos seguintes exercícios, construa AFD’s segundo os enunciados.
 
@@ -75,6 +75,7 @@
 
     - d) `(a.a (a ∪ b)+ b.b)*`
         - **R:**
+          <img src="Imagens/λ-AFN/(aa(aUb)+bb)*.png" width="320"/>
 
 6. Para cada um dos autômatos acima gere o AFD equivalente.
 
