@@ -60,41 +60,48 @@
 4. Nos seguintes exercícios, construa AFD’s segundo os enunciados.
 
     - a) O conjunto de strings sobre Σ = {a, b} que não contém o substring aaa.
-        - **R:** <img src="Imagens/AFD/4a.png" width="390"/>
+
+        - **R:** <br><img src="Imagens/AFD/4a.png" width="390"/>
 
     - b) O conjunto de strings sobre Σ = {a, b, c} que começa com a, tem exatamente dois b’s e termina com exatamente cc.
-        - **R:** <img src="Imagens/AFD/4b.png" width="320"/>
+        - **R:** <br><img src="Imagens/AFD/4b.png" width="320"/>
 
 5. Para cada uma das linguagens abaixo, dê um λ-AFN correspondente:
 
     - a) `(a.b)* b.a`
 
-        - **R:** <img src="Imagens/λ-AFN/(ab)*ba.png" width="390"/>
+        - **R:** <br><img src="Imagens/λ-AFN/5a.png" width="390"/>
 
     - b) `(a.b)* (b.a)*`
 
-        - **R:** <img src="Imagens/λ-AFN/(ab)*(ba)*.png" width="340"/>
+        - **R:** <br><img src="Imagens/λ-AFN/5b.png" width="340"/>
 
     - c) `(a.b)* b.a ∪ (a.b)* (b.a)*`
 
         - **R:** `(a.b)* b.a ∪ (a.b)* (b.a)* == (a.b)* [b.a U (b.a)*] == (a.b)* (b.a)*`
-          <img src="Imagens/λ-AFN/(ab)*(ba)*.png" width="340"/>
+          <br><img src="Imagens/λ-AFN/5b.png" width="340"/>
 
     - d) `(a.a (a ∪ b)+ b.b)*`
         - **R:**
-          <img src="Imagens/λ-AFN/(aa(aUb)+bb)*.png" width="320"/>
+          <br><img src="Imagens/λ-AFN/5d.png" width="320"/>
 
 6. Para cada um dos autômatos acima gere o AFD equivalente.
 
     - a) `(a.b)* b.a`
-        - **R:** <img src="Imagens/AFD/(ab)*ba.png" width="340"/>
-    - b) `(a.b)* (b.a)*`
-        - **R:**
-    - c) `(a.b)* b.a ∪ (a.b)* (b.a)*`
-        - **R:**
-    - d) `(a.a (a ∪ b)+ b.b)*`
-        - **R:**
 
+        - **R:** <br><img src="Imagens/AFD/6a.png" width="340"/>
+
+    - b) `(a.b)* (b.a)*`
+
+        - **R:** <br><img src="Imagens/AFD/6b.png" width="340"/>
+
+    - c) `(a.b)* b.a ∪ (a.b)* (b.a)*`
+
+        - **R:** `(a.b)* b.a ∪ (a.b)* (b.a)* == (a.b)* [b.a U (b.a)*] == (a.b)* (b.a)*`
+          <br><img src="Imagens/AFD/6b.png" width="340"/>
+
+    - d) `(a.a (a ∪ b)+ b.b)*`
+        - **R:** <br><img src="Imagens/AFD/6d.png" width="340"/>
 
 7. As seguintes linguagens são regulares? Prove.
     - a) `{ 0^n 1^m | m, n ≥ 0 }`
