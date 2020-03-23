@@ -63,7 +63,7 @@
         - **R:** <img src="Imagens/AFD/4a.png" width="390"/>
 
     - b) O conjunto de strings sobre Σ = {a, b, c} que começa com a, tem exatamente dois b’s e termina com exatamente cc.
-        - **R:**
+        - **R:** <img src="Imagens/AFD/4b.png" width="320"/>
 
 5. Para cada uma das linguagens abaixo, dê um λ-AFN correspondente:
 
