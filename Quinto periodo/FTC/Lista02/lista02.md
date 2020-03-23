@@ -5,11 +5,11 @@
     - **R:**
         ```tex
         Σ={a,b} Par(b)
-        Caso Base: λ ϵ Par(b)
+        Caso Base: λ ∈ Par(b)
         Passo Recursivo:
-            Se w ϵ Par(b), então
-            a.w ϵ Par(b) e w.a ϵ Par(b)
-            b.b.w ϵ Par(b), b.w.b ϵ Par(b), w.b.b ϵ Par(b)
+            Se w ∈ Par(b), então
+            a.w ∈ Par(b) e w.a ∈ Par(b)
+            b.b.w ∈ Par(b), b.w.b ∈ Par(b), w.b.b ∈ Par(b)
         ```
 
 2. Mostre que:
