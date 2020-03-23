@@ -4,26 +4,32 @@
 
     - **R:**
         ```tex
-         Σ={a,b} Par(b)
-         Caso Base: λ ϵ Par(b)
-         Passo Recursivo:
+        Σ={a,b} Par(b)
+        Caso Base: λ ϵ Par(b)
+        Passo Recursivo:
             Se w ϵ Par(b), então
-            aw ϵ Par(b) e wa ϵ Par(b)
-            bbw ϵ Par(b), bwb ϵ Par(b), wbb ϵ Par(b)
+            a.w ϵ Par(b) e w.a ϵ Par(b)
+            b.b.w ϵ Par(b), b.w.b ϵ Par(b), w.b.b ϵ Par(b)
         ```
 
 2. Mostre que:
 
     - a) `(b.a)+ (a*.b* U a*) = (b.a)* b.a+ (b* U λ)`
         - **R:**
+            ```tex
+            (b.a)+ (a*.b* U a*)
+            (b.a)* b.a (a*.b* U a*)
+            (b.a)* b.a.a* (b* U λ)
+            (b.a)* b.a+ (b* U λ)
+            ```
     - b) `b+ (a*.b* U λ) b = b (b*.a* U λ) b+`
         - **R:**
             ```tex
-              b+ (a*.b* U λ) b
-              b.b* (a*.b* U λ) b
-              b (b*.a*.b* U λ.b*) b
-              b (b*.a* U λ) b*.b
-              b (b*.a* U λ) b+
+            b+ (a*.b* U λ) b
+            b.b* (a*.b* U λ) b
+            b (b*.a*.b* U λ.b*) b
+            b (b*.a* U λ) b*.b
+            b (b*.a* U λ) b+
             ```
 
 3. Forneça as expressões regulares para o conjunto de strings sobre:
@@ -54,7 +60,8 @@
 4. Nos seguintes exercícios, construa AFD’s segundo os enunciados.
 
     - a) O conjunto de strings sobre Σ = {a, b} que não contém o substring aaa.
-        - **R:**
+        - **R:** <img src="Imagens/AFD/4a.png" width="390"/>
+
     - b) O conjunto de strings sobre Σ = {a, b, c} que começa com a, tem exatamente dois b’s e termina com exatamente cc.
         - **R:**
 
