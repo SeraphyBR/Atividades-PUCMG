@@ -47,7 +47,7 @@
     - f) Σ = {a, b, c} que contém o substring aa, bb e cc.
         - **R:**
     - g) Σ = {a, b, c} no qual cada b é imediatamente seguido por pelo menos um c.
-        - **R:**
+        - **R:** `(a U b.c+ U c)*`
     - h) Σ = {a, b, c} de tamanho 3.
         - **R:**
     - i) Σ = {a, b, c} com tamanho menor que 3.
