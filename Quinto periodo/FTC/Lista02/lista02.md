@@ -45,7 +45,7 @@
     - e) Σ = {a, b} que contém o substring ab e o substring ba.
         - **R:** `((a.b)+ (b.a)+) U ((b.a)+ (a.b)+)`
     - f) Σ = {a, b, c} que contém o substring aa, bb e cc.
-        - **R:** `(a U b U c)* (a.a U b.b U c.c) (a U b U c)* (a.a U b.b U c.c) (a U b U c)* (a.a U b.b U c.c) (a U b U c)*` U<br>
+        - **R:** `(a U b U c)* (a.a U b.b U c.c) (a U b U c)* (a.a U b.b U c.c) (a U b U c)* (a.a U b.b U c.c) (a U b U c)*`
     - g) Σ = {a, b, c} no qual cada b é imediatamente seguido por pelo menos um c.
         - **R:** `(a U b.c+ U c)*`
     - h) Σ = {a, b, c} de tamanho 3.
