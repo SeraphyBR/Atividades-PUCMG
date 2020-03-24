@@ -60,7 +60,7 @@
     - i) Σ = {a, b, c} com tamanho menor que 3.
         - **R:**
     - j) Σ = {a, b, c} com tamanho maior que 3.
-        - **R:**
+        - **R:** `(a U b U c)+ (a U b u c)+ (a U b U c)+`
     - k) Σ = {a, b} com um número par de a’s e impar de b´s.
         - **R:** `(a.b (b.b)* b.a U aa)* (a.b (b.b)* a U b) [(a (b.b)* a) U (b U a (b.b)* b.a) (a.b (b.b)* b.a U a.a)* (a.b (b.b)* a U b)]*`
 
@@ -115,3 +115,6 @@
         - **R:** `== 0* 1*`
     - b) `{ 0^n 1^m 0^n | m, n ≥ 0 }`
         - **R:**
+          ```
+
+          ```
