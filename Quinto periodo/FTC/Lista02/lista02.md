@@ -45,20 +45,13 @@
     - e) Σ = {a, b} que contém o substring ab e o substring ba.
         - **R:** `((a.b)+ (b.a)+) U ((b.a)+ (a.b)+)`
     - f) Σ = {a, b, c} que contém o substring aa, bb e cc.
-
-        - **R:** `(a U b U c)* aa (a U b U c)* bb (a U b U c)* cc (a U b U c)*` U<br>
-                 `(a U b U c)* aa (a U b U c)* cc (a U b U c)* bb (a U b U c)*` U<br>
-                 `(a U b U c)* bb (a U b U c)* cc (a U b U c)* aa (a U b U c)*` U<br>
-                 `(a U b U c)* bb (a U b U c)* aa (a U b U c)* cc (a U b U c)*` U<br>
-                 `(a U b U c)* cc (a U b U c)* aa (a U b U c)* bb (a U b U c)*` U<br>
-                 `(a U b U c)* cc (a U b U c)* bb (a U b U c)* aa (a U b U c)*`
-
+        - **R:** `(a U b U c)* (a.a U b.b U c.c) (a U b U c)* (a.a U b.b U c.c) (a U b U c)* (a.a U b.b U c.c) (a U b U c)*` U<br>
     - g) Σ = {a, b, c} no qual cada b é imediatamente seguido por pelo menos um c.
         - **R:** `(a U b.c+ U c)*`
     - h) Σ = {a, b, c} de tamanho 3.
-        - **R:**
+        - **R:** `(a U b U c) (a U b U c) (a U b U c)`
     - i) Σ = {a, b, c} com tamanho menor que 3.
-        - **R:** ``
+        - **R:** `(a U b U c U λ) (a U b U c U λ)`
     - j) Σ = {a, b, c} com tamanho maior que 3.
         - **R:** `(a U b U c)+ (a U b u c)+ (a U b U c)+ (a U b U c)+`
     - k) Σ = {a, b} com um número par de a’s e impar de b´s.
@@ -111,10 +104,13 @@
         - **R:** <br><img src="Imagens/AFD/6d.png" width="340"/>
 
 7. As seguintes linguagens são regulares? Prove.
+
     - a) `{ 0^n 1^m | m, n ≥ 0 }`
         - **R:** `== 0* 1*`
     - b) `{ 0^n 1^m 0^n | m, n ≥ 0 }`
-        - **R:**
-          ```
 
-          ```
+        - **R:**
+
+            ```
+
+            ```
