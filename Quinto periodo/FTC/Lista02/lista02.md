@@ -112,6 +112,6 @@
 
 7. As seguintes linguagens são regulares? Prove.
     - a) `{ 0^n 1^m | m, n ≥ 0 }`
-        - **R:**
+        - **R:** `== 0* 1*`
     - b) `{ 0^n 1^m 0^n | m, n ≥ 0 }`
         - **R:**
