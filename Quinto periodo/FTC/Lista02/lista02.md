@@ -43,9 +43,16 @@
     - d) Σ = {a, b, c} que começa com a, contém exatamente dois b’s e termina com cc.
         - **R:** `a (a U c)* b (a U c)* b (a U c)* c.c`
     - e) Σ = {a, b} que contém o substring ab e o substring ba.
-        - **R:**
+        - **R:** `((a.b)+ (b.a)+) U ((b.a)+ (a.b)+)`
     - f) Σ = {a, b, c} que contém o substring aa, bb e cc.
-        - **R:**
+
+        - **R:** `(a U b U c)* aa (a U b U c)* bb (a U b U c)* cc (a U b U c)*` U<br>
+                 `(a U b U c)* aa (a U b U c)* cc (a U b U c)* bb (a U b U c)*` U<br>
+                 `(a U b U c)* bb (a U b U c)* cc (a U b U c)* aa (a U b U c)*` U<br>
+                 `(a U b U c)* bb (a U b U c)* aa (a U b U c)* cc (a U b U c)*` U<br>
+                 `(a U b U c)* cc (a U b U c)* aa (a U b U c)* bb (a U b U c)*` U<br>
+                 `(a U b U c)* cc (a U b U c)* bb (a U b U c)* aa (a U b U c)*`
+
     - g) Σ = {a, b, c} no qual cada b é imediatamente seguido por pelo menos um c.
         - **R:** `(a U b.c+ U c)*`
     - h) Σ = {a, b, c} de tamanho 3.
