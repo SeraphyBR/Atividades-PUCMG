@@ -40,14 +40,25 @@
     - Discuta a correção da solução apresentada.
         - **R:**
 
-2. Cite as condições necessárias para ocorrencia de deadlock.
+2. Cite as condições necessárias para ocorrencia de *deadlock*.
    Descreva cada uma em detalhe.
 
-    - **R:**
+    - **R:** As seguintes condições são necessarias, mas não garantem a existencia de *deadlock*.
+        - **Exclusão mútua:**
+          Se um processo usa um recurso, o outro processo deve esperar
+          o primeiro terminar.
+        - **Posse e espera:** Um processo, que está de posse de ao menos um
+          recurso, espera por outros recursos que já estão sendo usados por
+          outros processos.
+        - **Não preempção:** Um recurso só pode ser liberado pelo processo
+          que o utiliza, após terminar sua tarefa.
+        - **Espera circular:** Existe um conjunto de processos {A, B, C, D}
+          e '&rarr;' demostra uma relação de dependencia de recursos mantidos por outros processos.<br>
+          A &rarr; B &rarr; C &rarr; D &rarr; A
 
 3. Um computador tem 6 fitas, com N processos competindo pelas mesmas.
    Cada processo necessita de 2 fitas. Para quais valores de N o sistema
-   é livre de deadlocks?
+   é livre de *deadlocks*?
 
     - **R:**
 
@@ -64,6 +75,6 @@
 
     O processo D requisita a unidade de impressão, toma posse do recurso.
     Logo após o processo B faz a mesma requisição. Em seguida D requisita
-    uma unidade de disco. A situação leva a um impasse (deadlock)? Por quê?
+    uma unidade de disco. A situação leva a um impasse (*deadlock*)? Por quê?
 
     - **R:**
