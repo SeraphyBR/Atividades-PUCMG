@@ -8,21 +8,21 @@
 
     produtor {
         loop {
-            wait(s);
-            critico1;
-            n = n + 1;
-            if (n = 1) then signal(delay);
-            signal(s);
+           1: wait(s);
+           2: critico1;
+           3: n = n + 1;
+           4: if (n = 1) then 5: signal(delay);
+           6: signal(s);
         }
     }
     consumidor {
-        wait(delay);
+        7: wait(delay);
         loop {
-            wait(s);
-            critico2;
-            n = n - 1;
-            if(n = 0) then wait(delay);
-            signal(s);
+            8: wait(s);
+            9: critico2;
+            10: n = n - 1;
+            11: if(n = 0) then 12: wait(delay);
+            13: signal(s);
         }
     }
 
@@ -38,14 +38,20 @@
     ```
 
     - Discuta a correção da solução apresentada.
-        - **R:** Tem um problema na solução apresentada acima, se
-            n &gt; 1 o consumidor não poderá mais consumir,
-            deve ser alterado o if no produtor para n &ge; 1.
 
-2. Cite as condições necessárias para ocorrencia de *deadlock*.
+        - **R:** Tem um problema na solução apresentada acima.<br>
+          Ocorre um deadlock quando executado na seguinte sequencia de execução:
+
+            - 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1
+
+            O consumidor quando n &equals; 0 e delay &equals; 0, ele dá um wait(delay)
+            suspendendo seu processo, mas não libera o semaforo S para que o produtor
+            possa produzir, pois foi suspenso.
+
+2. Cite as condições necessárias para ocorrencia de _deadlock_.
    Descreva cada uma em detalhe.
 
-    - **R:** As seguintes condições são necessarias, mas não garantem a existencia de *deadlock*.
+    - **R:** As seguintes condições são necessarias, mas não garantem a existencia de _deadlock_.
         - **Exclusão mútua:**
           Se um processo usa um recurso, o outro processo deve esperar
           o primeiro terminar.
@@ -60,10 +66,10 @@
 
 3. Um computador tem 6 fitas, com N processos competindo pelas mesmas.
    Cada processo necessita de 2 fitas. Para quais valores de N o sistema
-   é livre de *deadlocks*?
+   é livre de _deadlocks_?
 
-    - **R:** Para N = {0, 1, 2, 3} o sistema é livre de *deadlocks*, para N > 3
-        pode ocorrer uma espera circular.
+    - **R:** Para N = {0, 1, 2, 3} o sistema é livre de _deadlocks_, para N > 3
+      pode ocorrer uma espera circular.
 
 4. Considere a situação em que 4 processos A, B, C, D concorrem por recursos
    da maquina onde existem 2 unidades de fita, 2 unidades de disco e uma
@@ -78,8 +84,8 @@
 
     O processo D requisita a unidade de impressão, toma posse do recurso.
     Logo após o processo B faz a mesma requisição. Em seguida D requisita
-    uma unidade de disco. A situação leva a um impasse (*deadlock*)? Por quê?
+    uma unidade de disco. A situação leva a um impasse (_deadlock_)? Por quê?
 
     - **R:** Sim, pois B requisita uma unidade de impressão que o processo D faz uso,
-        e o processo D requisita uma unidade de disco que B já tem posse, esta
-        é por sua vez uma espera circular.
+      e o processo D requisita uma unidade de disco que B já tem posse, esta
+      é por sua vez uma espera circular.
