@@ -38,7 +38,9 @@
     ```
 
     - Discuta a correção da solução apresentada.
-        - **R:**
+        - **R:** Tem um problema na solução apresentada acima, se
+            n &gt; 1 o consumidor não poderá mais consumir,
+            deve ser alterado o if no produtor para n &ge; 1.
 
 2. Cite as condições necessárias para ocorrencia de *deadlock*.
    Descreva cada uma em detalhe.
@@ -60,7 +62,8 @@
    Cada processo necessita de 2 fitas. Para quais valores de N o sistema
    é livre de *deadlocks*?
 
-    - **R:**
+    - **R:** Para N = {0, 1, 2, 3} o sistema é livre de *deadlocks*, para N > 3
+        pode ocorrer uma espera circular.
 
 4. Considere a situação em que 4 processos A, B, C, D concorrem por recursos
    da maquina onde existem 2 unidades de fita, 2 unidades de disco e uma
@@ -77,4 +80,6 @@
     Logo após o processo B faz a mesma requisição. Em seguida D requisita
     uma unidade de disco. A situação leva a um impasse (*deadlock*)? Por quê?
 
-    - **R:**
+    - **R:** Sim, pois B requisita uma unidade de impressão que o processo D faz uso,
+        e o processo D requisita uma unidade de disco que B já tem posse, esta
+        é por sua vez uma espera circular.
