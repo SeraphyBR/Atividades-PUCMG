@@ -68,8 +68,8 @@
    Cada processo necessita de 2 fitas. Para quais valores de N o sistema
    é livre de _deadlocks_?
 
-    - **R:** Para N = {0, 1, 2, 3} o sistema é livre de _deadlocks_, para N > 3
-      pode ocorrer uma espera circular.
+    - **R:** Para N &lt; Número de fitas, o sistema é livre de _deadlocks_, nos demais vai ocorrer
+      uma espera circular, assim garantindo as 4 condições necessarias para existência de _deadlocks_.
 
 4. Considere a situação em que 4 processos A, B, C, D concorrem por recursos
    da maquina onde existem 2 unidades de fita, 2 unidades de disco e uma
