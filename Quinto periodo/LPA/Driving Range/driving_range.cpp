@@ -38,7 +38,7 @@ class Grafo {
         void del_conexao(int v1, int v2);
         int grau_vertice(int v);
         vector<list<int>> componentes();
-        int prim();
+        pair<int,int> prim();
 };
 
 Grafo::Grafo(int vertices, GrafoType t) {
@@ -153,11 +153,12 @@ int Grafo::indice_menor(vector<int> &vec){
 }
 
 // Função baseada no PRIM que retorna a soma
-// dos pesos da aresta da AGM
-int Grafo::prim(){
+// dos pesos das arestas da AGM e o maior peso da AGM
+pair<int,int> Grafo::prim(){
     int size = matriz_adj->capacity();
     vector<int> chave(size,__INT_MAX__);
-    int contador {};
+    int soma_agm {};
+    int maior_peso {};
     int menor {};
 
     chave.at(0) = -1;
@@ -170,50 +171,43 @@ int Grafo::prim(){
             }
         }
         menor = indice_menor(chave);
-        contador += chave.at(menor);
+        maior_peso = maior_peso < chave.at(menor) ? chave.at(menor) : maior_peso;
+        soma_agm += chave.at(menor);
         chave.at(menor) = -1;
     }
-    return contador;
+    return pair<int,int>(soma_agm, maior_peso);
 }
 
 int main(){
-    int number_stations {};
-    int number_connections {};
-    cin >> number_stations >> number_connections;
-    while(number_stations > 0 && number_connections > 0){
-        Grafo* g = new Grafo(number_stations, GrafoType::Ponderado);
-        map<string,int> stations;
-        for(int i = 0; i < number_stations; i++){
-            string station_name {};
-            cin >> station_name;
-            stations[station_name] = i;
-        }
-        for(int i = 0; i < number_connections; i++){
-            string station1_name {};
-            string station2_name {};
-            int price {};
-            cin >> station1_name >> station2_name >> price;
-            int value = g->get_conexao(stations.at(station1_name), stations.at(station2_name));
-            if(value > price || value == -1){
-                g->add_conexao(stations.at(station1_name), stations.at(station2_name), price);
+    int number_cities {};
+    int number_roads {};
+    cin >> number_cities >> number_roads;
+    while(number_cities > 0 || number_roads > 0){
+        Grafo* g = new Grafo(number_cities, GrafoType::Ponderado);
+
+        for (int r = 0; r < number_roads; r++){
+            int city1 {};
+            int city2 {};
+            int road_lenght {};
+            cin >> city1 >> city2 >> road_lenght;
+            int old_value = g->get_conexao(city1, city2);
+            if(old_value > road_lenght || old_value == -1){
+                g->add_conexao(city1, city2, road_lenght);
             }
         }
-        // Essa informação não é relevante para o algoritmo
-        string initial_station {};
-        cin >> initial_station;
 
-        int final_price = g->prim();
-        if(final_price > 0 && g->componentes().size() == 1){
-            cout << final_price << endl;
+        if(g->componentes().size() == 1){
+            pair<int,int> result = g->prim();
+            cout << result.second << endl;
         }
         else {
-            cout << "Impossible" << endl;
+            cout << "IMPOSSIBLE" << endl;
         }
 
         delete g;
         g = nullptr;
 
-        cin >> number_stations >> number_connections;
+        cin >> number_cities >> number_roads;
     }
 
     return 0;
