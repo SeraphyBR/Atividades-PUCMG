@@ -34,9 +34,8 @@ int main(){
     int t_instances {};
     string k {};
     cin >> t_instances;
-    cin.ignore();
     for(int i = 0; i < t_instances; i++){
-        getline(cin, k);
+        cin >> k;
         cout << setw(3) << setfill('0') << fibo_pisano_1000N.at(mod(k, 1500) - 1) << endl;
     }
 
