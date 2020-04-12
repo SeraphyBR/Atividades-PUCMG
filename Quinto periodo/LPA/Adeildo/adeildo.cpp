@@ -69,6 +69,8 @@ SuffixAutomaton::SuffixAutomaton(string s){
 int SuffixAutomaton::distinct_substrings(){
     int count {};
     for(int i = 1; i < this->length.size(); i++){
+        // The number of distinct substrings is equal the sum of
+        // the length of each node substring minus the length of the parent node substring
         count += this->length.at(i) - this->length.at(this->link.at(i));
     }
     return count;
