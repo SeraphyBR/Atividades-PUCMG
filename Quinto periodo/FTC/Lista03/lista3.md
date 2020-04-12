@@ -2,122 +2,191 @@
 
 1. Dê a gramática para as seguintes linguagens:
 
-    - a. { a<sup>n</sup> b<sup>n</sup> | n ∈ N }
+    - **a.** { a<sup>n</sup> b<sup>n</sup> | n ∈ N }
 
-        - G: S &rarr; aSb | λ
+        - **G:** S &rarr; aSb | λ
 
-    - b. { a<sup>n</sup> b<sup>k</sup> c<sup>m</sup> | k = n + m }
+    - **b.** { a<sup>n</sup> b<sup>k</sup> c<sup>m</sup> | k = n + m }
 
         - a<sup>n</sup> b<sup>k = n + m</sup> c<sup>m</sup> \
           a<sup>n</sup> b<sup>n</sup>&emsp;b<sup>m</sup> c<sup>m</sup>
 
-        - G: S &rarr; AB \
+        - **G:** S &rarr; AB \
            &emsp; A &rarr; aAb | λ \
            &emsp; B &rarr; bBc | λ
 
-    - c. { a<sup>n</sup> b<sup>k</sup> c<sup>m</sup> | k = 2n + m }
+    - **c.** { a<sup>n</sup> b<sup>k</sup> c<sup>m</sup> | k = 2n + m }
 
         - a<sup>n</sup> b<sup>k = 2n + m</sup> c<sup>m</sup> \
           a<sup>n</sup> b<sup>2n</sup>&emsp;b<sup>m</sup> c<sup>m</sup>
 
-        - G: S &rarr; AB \
+        - **G:** S &rarr; AB \
            &emsp; A &rarr; aAbb | λ \
            &emsp; B &rarr; bBc | λ
 
-    - d. { a<sup>m</sup> b<sup>n</sup> c<sup>i</sup> | m > n + i }
+    - **d.** { a<sup>m</sup> b<sup>n</sup> c<sup>i</sup> | m > n + i }
 
         - a<sup>m > n + i</sup> b<sup>n</sup> c<sup>i</sup> \
            a<sup>m = n + i + 1</sup> b<sup>n</sup> c<sup>i</sup> \
            a (a<sup>i</sup> (a<sup>n</sup> b<sup>n</sup>) c<sup>i</sup>) \
            a . (a<sup>i</sup> (a.b)<sup>n</sup> c<sup>i</sup>)
 
-        - G: S &rarr; aA | aB \
+        - **G:** S &rarr; aA | aB \
            &emsp; A &rarr; aAc | B | λ \
            &emsp; B &rarr; aBb | λ
 
-    - e. { w ∈ {a, b}<sup>\*</sup> | w não contenha o substring aba }
+    - **e.** { w ∈ {a, b}<sup>\*</sup> | w não contenha o substring aba }
 
-        - G: S &rarr;
+        - **G:** S &rarr;
 
-    - f. { w | w contenha um número igual de a's b's }
+    - **f.** { w | w contenha um número igual de a's b's }
 
-        - G: S &rarr; aSb | bSa | λ
+        - **G:** S &rarr; aSb | bSa | λ
 
-    - g. { ww<sup>R</sup> | w ∈ {a, b}<sup>\*</sup> }
+    - **g.** { ww<sup>R</sup> | w ∈ {a, b}<sup>\*</sup> }
 
-        - G: S &rarr;
+        - **G:** S &rarr;
 
 2. Para cada uma das gramáticas a seguir, descreva a linguagem gerada pela gramática:
 
-    - a. S &rarr; aaSB | λ \
+    - **a.** S &rarr; aaSB | λ \
       &emsp; B &rarr; bB | λ
 
-        - L: { (aa)<sup>n</sup> b<sup>k</sup> | n,k ∈ N }
+        - **L:** { (aa)<sup>n</sup> b<sup>k</sup> | n,k ∈ N }
 
-    - b. S &rarr; aSbb | A \
+    - **b.** S &rarr; aSbb | A \
       &emsp; A &rarr; cA | c
 
-        - L: { a<sup>n</sup> b<sup>n + 1</sup> U c<sup>k</sup> | n > 0, k > 0 }
+        - **L:** { a<sup>n</sup> b<sup>n + 1</sup> U c<sup>k</sup> | n > 0, k > 0 }
 
-    - c. S &rarr; aS | bS | A \
+    - **c.** S &rarr; aS | bS | A \
       &emsp; A &rarr; cA | c | λ
 
-        - L: { a<sup>n</sup> b<sup>m</sup> c<sup>k</sup> | n,m,k &ge; 0 }
+        - **L:** { a<sup>n</sup> b<sup>m</sup> c<sup>k</sup> | n,m,k &ge; 0 }
 
-    - d. S &rarr; abSdc | A \
+    - **d.** S &rarr; abSdc | A \
       &emsp; A &rarr; cdAba | λ
 
-        - L: {}
+        - **L:** { (ab)<sup>n</sup>(dc)<sup>n</sup> U (cd)<sup>m</sup>(ba)<sup>m</sup> | n,m &ge; 0 }
 
-    - e. S &rarr; aA | λ \
+    - **e.** S &rarr; aA | λ \
       &emsp; A &rarr; bS
-        - L: {}
+        - **L:** { (ab)<sup>n</sup> | n &ge; 0}
 
 3. Para cada uma das gramáticas a seguir, obtenha uma gramática essencialmente não contratíl:
 
-    - a. S &rarr; aS | bS | B \
+    - **a.** S &rarr; aS | bS | B \
       &emsp; B &rarr; bb | C | λ \
       &emsp; C &rarr; cC | λ
 
-    - b. S &rarr; ABC | λ \
+    - **b.** S &rarr; ABC | λ \
       &emsp; A &rarr; aA | λ \
       &emsp; B &rarr; bB | λ \
       &emsp; C &rarr; cC | λ
 
-    - c. S &rarr; BSA | A \
+    - **c.** S &rarr; BSA | A \
       &emsp; A &rarr; aA | λ \
       &emsp; B &rarr; Bba | λ
 
 4. Para cada uma das gramáticas a seguir, obtenha uma gramática equivalente sem regras de cadeia:
 
-    - a. S &rarr; AS | A \
+    - **a.** S &rarr; AS | A \
        &emsp; A &rarr; aA | bB | C \
        &emsp; B &rarr; bB | b \
        &emsp; C &rarr; cC | B
 
-    - b. S &rarr; A | B | C \
+        - **1º** Tirando recursividade em S - aumentando a gramática \
+           **S' &rarr; S**\
+           S &rarr; AS | A \
+           A &rarr; aA | bB | C \
+           B &rarr; bB | b \
+           C &rarr; cC | B
+
+
+        - **2º** Eliminação de produções lambda - não tem!
+        - **3º** Remoção de cadeias
+            - Cadeia = {S', S, A, **C**} \
+              C &rarr; cC | B \
+              C &rarr; cC | **bB | b**
+            - Cadeia = {S', S, **A**, C} \
+              A &rarr; aA | bB | C \
+              A &rarr; aA | bB | **cC | bB | b**
+            - Cadeia = {S', **S**, A, C} \
+              S &rarr; AS | A \
+              S &rarr; AS | **aA | bB | cC | bB | b**
+            - Cadeia = {**S'**, S, A, C} \
+              S' &rarr; S \
+              S' &rarr; **AS | aA | bB | cC | bB | b**
+        - **G:** Resultado \
+            S' &rarr; **AS | aA | bB | cC | bB | b** \
+            S &rarr; AS | **aA | bB | cC | bB | b** \
+            A &rarr; aA | bB | **cC | bB | b** \
+            B &rarr; bB | b \
+            C &rarr; cC | **bB | b**
+
+
+
+    - **b.** S &rarr; A | B | C \
        &emsp; A &rarr; aa | B \
        &emsp; B &rarr; bb | C \
        &emsp; C &rarr; cC | A
 
+        - **1º** Tirando recursividade em S - não tem!
+
+        - **2º** Eliminação de produções lambda - não tem!
+
+        - **3º** Remoção de cadeias
+
+            - Cadeia = {S, A, B, **C**} \
+                C &rarr; cC | A \
+                C &rarr; cC | **aa | B**
+
+            - Cadeia = {S, A, **B**, C} \
+                B &rarr; bb | C \
+                B &rarr; bB | **cC | aa | B** \
+                B &rarr; bB | **cC | aa**
+
+            - Cadeia = {S, **A**, B, C} \
+                A &rarr; aa | B \
+                A &rarr; aA | **bB | cC | aa**
+
+            - Cadeia = {**S**, A, B, C} \
+                S &rarr; A | B | C \
+                S &rarr; **aA | bB | cC | aa | bB | cC | aa | cC | aa | B** \
+                S &rarr; aA | bB | cC | aa | B \
+                S &rarr; aA | bB | cC | aa | **bB | cC | aa** \
+                S &rarr; aA | **bB | cC | aa**
+
+            - **Extra:** remover cadeia remanescente em C \
+                C &rarr; cC | aa | B \
+                C &rarr; cC | aa | **bB | cC | aa** \
+                C &rarr; **cC | aa | bB**
+
+        - **G:** Resultado \
+            S &rarr; aA | bB | cC | aa \
+            A &rarr; aA | bB | cC | aa \
+            B &rarr; bB | cC | aa \
+            C &rarr; cC | aa | bB
+
 5. Para cada uma das gramáticas a seguir, obtenha uma gramática equivalente na FNC:
 
-    - a. S &rarr; aAbB | ABC | a \
+    - **a.** S &rarr; aAbB | ABC | a \
        &emsp; A &rarr; aA | a \
        &emsp; B &rarr; bBcC | b \
        &emsp; C &rarr; abc
 
-    - b. S &rarr; A | ABa | AbA \
+
+    - **b.** S &rarr; A | ABa | AbA \
        &emsp; A &rarr; aA | λ \
        &emsp; B &rarr; Bb | BC \
        &emsp; C &rarr; CB | CA | bB
 
-    - c. S &rarr; ABC \
+    - **c.** S &rarr; ABC \
        &emsp; A &rarr; a \
        &emsp; B &rarr; b | bb \
        &emsp; C &rarr; BaB | c
 
-    - d. S &rarr; ADE | ABa | AbA \
+    - **d.** S &rarr; ADE | ABa | AbA \
        &emsp; A &rarr; Aa | λ \
        &emsp; B &rarr; Bb | BC \
        &emsp; C &rarr; CB | CA | bB \
