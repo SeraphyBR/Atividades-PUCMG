@@ -79,6 +79,17 @@
       &emsp; B &rarr; bb | C | λ \
       &emsp; C &rarr; cC | λ
 
+        - **1º** Tirando recursividade em S - aumentando a gramática \
+           **S' &rarr; S** \
+           S &rarr; aS | bS | B \
+           B &rarr; bb | C | λ \
+           C &rarr; cC | λ
+
+            - **2º** Eliminação de produções lambda
+                - Anulaveis = {**C**, B, S, S´} \
+                  B &rarr; bb | **C** | λ \
+                  C &rarr; c**C** | **c**
+
     - **b.** S &rarr; ABC | λ \
       &emsp; A &rarr; aA | λ \
       &emsp; B &rarr; bB | λ \
@@ -103,8 +114,8 @@
            C &rarr; cC | B
 
 
-        - **2º** Eliminação de produções lambda - não tem!
-        - **3º** Remoção de cadeias
+      - **2º** Eliminação de produções lambda - não tem!
+      - **3º** Remoção de cadeias
             - Cadeia = {S', S, A, **C**} \
               C &rarr; cC | B \
               C &rarr; cC | **bB | b**
@@ -117,27 +128,25 @@
             - Cadeia = {**S'**, S, A, C} \
               S' &rarr; S \
               S' &rarr; **AS | aA | bB | cC | bB | b**
-        - **G:** Resultado \
+      - **G:** Resultado \
             S' &rarr; **AS | aA | bB | cC | bB | b** \
             S &rarr; AS | **aA | bB | cC | bB | b** \
             A &rarr; aA | bB | **cC | bB | b** \
             B &rarr; bB | b \
             C &rarr; cC | **bB | b**
 
-
-
     - **b.** S &rarr; A | B | C \
        &emsp; A &rarr; aa | B \
        &emsp; B &rarr; bb | C \
        &emsp; C &rarr; cC | A
 
-        - **1º** Tirando recursividade em S - não tem!
+      - **1º** Tirando recursividade em S - não tem!
 
-        - **2º** Eliminação de produções lambda - não tem!
+      - **2º** Eliminação de produções lambda - não tem!
 
-        - **3º** Remoção de cadeias
+      - **3º** Remoção de cadeias
 
-            - Cadeia = {S, A, B, **C**} \
+        - Cadeia = {S, A, B, **C**} \
                 C &rarr; cC | A \
                 C &rarr; cC | **aa | B**
 
@@ -162,7 +171,7 @@
                 C &rarr; cC | aa | **bB | cC | aa** \
                 C &rarr; **cC | aa | bB**
 
-        - **G:** Resultado \
+    - **G:** Resultado \
             S &rarr; aA | bB | cC | aa \
             A &rarr; aA | bB | cC | aa \
             B &rarr; bB | cC | aa \
