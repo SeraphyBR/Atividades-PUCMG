@@ -106,11 +106,19 @@
            B &rarr; bb | C \
            C &rarr; cC | c
 
-
     - **b.** S &rarr; ABC | λ \
       &emsp; A &rarr; aA | λ \
       &emsp; B &rarr; bB | λ \
       &emsp; C &rarr; cC | λ
+
+        - **1º** Tirando recursividade em S - não tem!
+        - **2º** Eliminação de produções lambda
+            - Anulaveis = {**C**, B, A, S} \
+                S &rarr; AB**C** | λ \
+                S &rarr; ABC | **AB** | λ \
+                **C** &rarr; c**C** | λ \
+                C &rarr; cC | **c**
+
 
     - **c.** S &rarr; BSA | A \
       &emsp; A &rarr; aA | λ \
