@@ -260,6 +260,20 @@
        &emsp; B &rarr; bBcC | b \
        &emsp; C &rarr; abc
 
+        - **1º** Tirando recursividade em S - não tem!
+
+        - **2º** Eliminação de produções lambda - não tem!
+
+        - **3º** Remoção de cadeias - não tem!
+
+        - **4º** Eliminação de simbolos inuteis
+            - **4.1** Não produzem terminal - não tem!
+            - **4.2** Não são alcançaveis - não tem!
+        - **G:** Resultado (a grámatica original já é FNC) \
+           S &rarr; aAbB | ABC | a \
+           A &rarr; aA | a \
+           B &rarr; bBcC | b \
+           C &rarr; abc
 
     - **b.** S &rarr; A | ABa | AbA \
        &emsp; A &rarr; aA | λ \
