@@ -141,6 +141,21 @@
       &emsp; A &rarr; aA | λ \
       &emsp; B &rarr; Bba | λ
 
+        - **1º** Tirando recursividade em S - aumentando a gramática \
+           **S' &rarr; S** \
+           S &rarr; BSA | A \
+           A &rarr; aA | λ \
+           B &rarr; Bba | λ
+
+        - **2º** Eliminação de produções lambda
+            - Anulaveis = {**B**, A, S, S'} \
+                S &rarr; **B**SA | A \
+                **B** &rarr; **B**ba | λ \
+                S &rarr; BSA | A | **SA** \
+                B &rarr; Bba | **ba**
+            - Anulaveis = {B, **A**, S, S'} \
+
+
 4. Para cada uma das gramáticas a seguir, obtenha uma gramática equivalente sem regras de cadeia:
 
     - **a.** S &rarr; AS | A \
