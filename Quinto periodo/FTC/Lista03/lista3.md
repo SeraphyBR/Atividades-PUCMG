@@ -276,9 +276,41 @@
            C &rarr; abc
 
     - **b.** S &rarr; A | ABa | AbA \
-       &emsp; A &rarr; aA | λ \
+       &emsp; A &rarr; Aa | λ \
        &emsp; B &rarr; Bb | BC \
        &emsp; C &rarr; CB | CA | bB
+
+        - **1º** Tirando recursividade em S - não tem!
+
+        - **2º** Eliminação de produções lambda
+
+            - Anulaveis = {**A**, S} \
+               S &rarr; **A** | **A**Ba | **A**b**A** \
+               **A** &rarr; **A**a | λ \
+               S &rarr; A | ABa | AbA | **Ba | Ab | bA | b | λ** \
+               A &rarr; Aa | **a**
+            - Anulaveis = {A, **S**} \
+               **S** &rarr; A | ABa | AbA | Ba | Ab | bA | b | λ
+
+        - **3º** Remoção de cadeias
+
+            - Cadeia = {S} \
+               **S** &rarr; A | ABa | AbA | Ba | Ab | bA | b | λ \
+               **S** &rarr; **Aa | a** | ABa | AbA | Ba | Ab | bA | b | λ
+
+        - **4º** Eliminação de simbolos inuteis
+
+            - **4.1** Não produzem terminal
+
+                - T = {S,A} \
+                  S &rarr; Aa | a | ~~**ABa**~~ | AbA | ~~**Ba**~~ | Ab | bA | b | λ \
+                  A &rarr; Aa | a
+
+            - **4.2** Não são alcançáveis - não tem!
+
+        - **G:** Resultado: \
+           S &rarr; Aa | a | AbA | Ab | bA | b | λ \
+           A &rarr; Aa | a
 
     - **c.** S &rarr; ABC \
        &emsp; A &rarr; a \
