@@ -114,10 +114,27 @@
         - **1º** Tirando recursividade em S - não tem!
         - **2º** Eliminação de produções lambda
             - Anulaveis = {**C**, B, A, S} \
-                S &rarr; AB**C** | λ \
-                S &rarr; ABC | **AB** | λ \
-                **C** &rarr; c**C** | λ \
-                C &rarr; cC | **c**
+               S &rarr; AB**C** | λ \
+               **C** &rarr; c**C** | λ \
+               S &rarr; ABC | **AB** | λ \
+               C &rarr; cC | **c**
+            - Anulaveis = {C, **B**, A, S} \
+               S &rarr; A**B**C | A**B** | λ \
+               **B** &rarr; b**B** | λ \
+               S &rarr; ABC | AB | **AC | A** | λ \
+               B &rarr; bB | **b**
+            - Anulaveis = {C, B, **A**, S} \
+               S &rarr; **A**BC | **A**B | **A**C | **A** | λ \
+               **A** &rarr; a**A** | λ \
+               S &rarr; ABC | AB | AC | A | **BC | B | C** | λ \
+               A &rarr; aA | **a**
+            - Anulaveis = {C, B, A, **S**} \
+               **S** &rarr; ABC | AB | AC | A | BC | B | C | λ
+        - **G:** Resultado \
+           S &rarr; ABC | AB | AC | A | BC | B | C | λ \
+           A &rarr; aA | a \
+           B &rarr; bB | b \
+           C &rarr; cC | c
 
 
     - **c.** S &rarr; BSA | A \
