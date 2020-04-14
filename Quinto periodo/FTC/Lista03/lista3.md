@@ -79,7 +79,7 @@
       &emsp; B &rarr; bb | C | λ \
       &emsp; C &rarr; cC | λ
 
-        - **1º** Tirando recursividade em S - aumentando a gramática \
+        - **1º** Tirando recursividade em S - aumentando a gramática
 
             - **S' &rarr; S** \
               S &rarr; aS | bS | B \
@@ -141,11 +141,11 @@
       &emsp; A &rarr; aA | λ \
       &emsp; B &rarr; Bba | λ
 
-        - **1º** Tirando recursividade em S - aumentando a gramática \
-           **S' &rarr; S** \
-           S &rarr; BSA | A \
-           A &rarr; aA | λ \
-           B &rarr; Bba | λ
+        - **1º** Tirando recursividade em S - aumentando a gramática
+           - **S' &rarr; S** \
+                S &rarr; BSA | A \
+                A &rarr; aA | λ \
+                B &rarr; Bba | λ
 
         - **2º** Eliminação de produções lambda
             - Anulaveis = {**B**, A, S, S'} \
@@ -154,7 +154,24 @@
                 S &rarr; BSA | A | **SA** \
                 B &rarr; Bba | **ba**
             - Anulaveis = {B, **A**, S, S'} \
+                S &rarr; BS**A** | **A** | S**A** \
+                **A** &rarr; a**A** | λ \
+                S &rarr; BSA | A | SA | **BS | S | λ** \
+                A &rarr; aA | **a**
+            - Anulaveis = {B, A, **S**, S'} \
+                S' &rarr; **S** \
+                **S** &rarr; B**S**A | A | **S**A | B**S** | λ \
+                S' &rarr; S | λ \
+                S &rarr; BSA | A | SA | BS | **BA | A | B** \
+                S &rarr; BSA | SA | BS | **BA | A | B**
+            - Anulaveis = {B, A, S, **S'**} \
+                **S'** &rarr; S | λ
 
+        - **G:** Resultado \
+                S' &rarr; S | λ \
+                S &rarr; BSA | SA | BS | BA | A | B \
+                A &rarr; aA | a \
+                B &rarr; Bba | ba
 
 4. Para cada uma das gramáticas a seguir, obtenha uma gramática equivalente sem regras de cadeia:
 
@@ -170,9 +187,10 @@
            B &rarr; bB | b \
            C &rarr; cC | B
 
-
         - **2º** Eliminação de produções lambda - não tem!
+
         - **3º** Remoção de cadeias
+
             - Cadeia = {S', S, A, **C**} \
               C &rarr; cC | B \
               C &rarr; cC | **bB | b**
@@ -185,12 +203,13 @@
             - Cadeia = {**S'**, S, A, C} \
               S' &rarr; S \
               S' &rarr; **AS | aA | bB | cC | bB | b**
+
         - **G:** Resultado \
-            S' &rarr; **AS | aA | bB | cC | bB | b** \
-            S &rarr; AS | **aA | bB | cC | bB | b** \
-            A &rarr; aA | bB | **cC | bB | b** \
-            B &rarr; bB | b \
-            C &rarr; cC | **bB | b**
+           S' &rarr; **AS | aA | bB | cC | bB | b** \
+           S &rarr; AS | **aA | bB | cC | bB | b** \
+           A &rarr; aA | bB | **cC | bB | b** \
+           B &rarr; bB | b \
+           C &rarr; cC | **bB | b**
 
     - **b.** S &rarr; A | B | C \
        &emsp; A &rarr; aa | B \
@@ -204,35 +223,35 @@
         - **3º** Remoção de cadeias
 
             - Cadeia = {S, A, B, **C**} \
-            C &rarr; cC | A \
-            C &rarr; cC | **aa | B**
+              C &rarr; cC | A \
+              C &rarr; cC | **aa | B**
 
             - Cadeia = {S, A, **B**, C} \
-            B &rarr; bb | C \
-            B &rarr; bB | **cC | aa | B** \
-            B &rarr; bB | **cC | aa**
+              B &rarr; bb | C \
+              B &rarr; bB | **cC | aa | B** \
+              B &rarr; bB | **cC | aa**
 
             - Cadeia = {S, **A**, B, C} \
-            A &rarr; aa | B \
-            A &rarr; aA | **bB | cC | aa**
+              A &rarr; aa | B \
+              A &rarr; aA | **bB | cC | aa**
 
             - Cadeia = {**S**, A, B, C} \
-            S &rarr; A | B | C \
-            S &rarr; **aA | bB | cC | aa | bB | cC | aa | cC | aa | B** \
-            S &rarr; aA | bB | cC | aa | B \
-            S &rarr; aA | bB | cC | aa | **bB | cC | aa** \
-            S &rarr; aA | **bB | cC | aa**
+              S &rarr; A | B | C \
+              S &rarr; **aA | bB | cC | aa | bB | cC | aa | cC | aa | B** \
+              S &rarr; aA | bB | cC | aa | B \
+              S &rarr; aA | bB | cC | aa | **bB | cC | aa** \
+              S &rarr; aA | **bB | cC | aa**
 
         - **Extra:** remover cadeia remanescente em C \
-            C &rarr; cC | aa | B \
-            C &rarr; cC | aa | **bB | cC | aa** \
-            C &rarr; **cC | aa | bB**
+           C &rarr; cC | aa | B \
+           C &rarr; cC | aa | **bB | cC | aa** \
+           C &rarr; **cC | aa | bB**
 
         - **G:** Resultado \
-            S &rarr; aA | bB | cC | aa \
-            A &rarr; aA | bB | cC | aa \
-            B &rarr; bB | cC | aa \
-            C &rarr; cC | aa | bB
+           S &rarr; aA | bB | cC | aa \
+           A &rarr; aA | bB | cC | aa \
+           B &rarr; bB | cC | aa \
+           C &rarr; cC | aa | bB
 
 5. Para cada uma das gramáticas a seguir, obtenha uma gramática equivalente na FNC:
 
