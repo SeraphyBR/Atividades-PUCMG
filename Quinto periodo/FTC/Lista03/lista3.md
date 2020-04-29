@@ -323,3 +323,23 @@
        &emsp; C &rarr; CB | CA | bB \
        &emsp; D &rarr; EdD | E \
        &emsp; E &rarr; bcdE | D
+
+6. Prove usando o pumping lemma que as seguintes linguagens não são livres de contexto:
+
+    - **a.** { a<sup>n</sup> b<sup>n</sup> a<sup>n</sup> b<sup>n</sup> | n > 0 }
+    - **b.** { 0<sup>n</sup> 1<sup>2n</sup> 2<sup>n</sup> | n > 0}
+    - **c.** { w w<sup>R</sup> w | w ∈ {a, b}\* }
+
+7. Construa autômatos de pilha que reconheçam as seguintes linguagens:
+
+    - **a.** { w0w<sup>R</sup> | w ∈ {a, b}\* }
+
+        - **R:** <br><img src="./imagens/pilha1.png" width="340"/>
+
+    - **b.** { a<sup>n</sup> b<sup>n</sup> a<sup>m</sup> | n, m &ge; 0 }
+
+        - **R:** <br><img src="./imagens/pilha2.png" width="340"/>
+
+    - **c.** { w | w ∈ {a, b, c}\* e o primeiro c seja precedido por aaa }
+
+        - **R:** <br><img src="./imagens/pilha3.png" width="340"/>
