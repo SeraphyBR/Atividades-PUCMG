@@ -118,10 +118,10 @@
 6. Prove usando o pumping lemma que as seguintes linguagens não são livres de contexto:
 
     - **Lema do bombeamento para LLC** \
-       z = uvwxy, onde: \
-       | vwx | &le; 2<sup>k</sup>, \
-       | v | + | x | > 0 e, \
-       ∀ i &ge; 0, uv<sup>i</sup>wx<sup>i</sup>y ∈ L.
+       z = uvwxy, onde:
+       1. | vwx | &le; 2<sup>k</sup>
+       2. | v | + | x | > 0
+       3. ∀ i &ge; 0, uv<sup>i</sup>wx<sup>i</sup>y ∈ L
 
 
     - **a.** L = { a<sup>n</sup> b<sup>n</sup> a<sup>n</sup> b<sup>n</sup> | n > 0 }
@@ -178,8 +178,15 @@
                   y = b<sub>1</sub> b<sub>1</sub> a<sub>2</sub><sup>n</sup> b<sub>2</sub><sup>n</sup>
 
                   Bombeando, aumenta ou diminui o número de a<sub>1</sub>'s e b<sub>1</sub>'s igualmente.
-                  z = a<sub>1</sub><sup>j</sup> b<sub>1</sub><sup>j</sup> a<sub>2</sub><sup>n</sup> b<sub>2</sub><sup>n</sup>,
-                  mas não altera o número de a<sub>2</sub>'s e b<sub>2</sub>'s!
+                  q = a<sub>1</sub><sup>j</sup> b<sub>1</sub><sup>j</sup> a<sub>2</sub><sup>n</sup> b<sub>2</sub><sup>n</sup>,
+                  mas não altera o número de a<sub>2</sub>'s e b<sub>2</sub>'s! : q ∉ L!
+
+                - análogo para v conter b1’s e x conter a2’s
+                - análogo para v conter a2’s e x conter b2’s
+
+                - Para v conter a1’s e x conter a2’s é impossível! (Viola a regra 1)
+                - análogo para v conter b1’s e x conter b2’s
+                - análogo para v conter a1’s e x conter b2’s
 
     - **b.** { 0<sup>n</sup> 1<sup>2n</sup> 2<sup>n</sup> | n > 0}
 
