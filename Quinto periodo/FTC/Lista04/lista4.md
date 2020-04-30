@@ -170,6 +170,13 @@
                 - para a<sub>1</sub> e a<sub>2</sub> é impossivel, por violar a regra 1.
                 - para b<sub>1</sub>'s b<sub>2</sub>'s é impossivel, por violar a regra 1.
 
+              - **2.2** v conter a<sub>1</sub>'s e x conter b<sub>1</sub>'s
+                - u = a<sub>1</sub><sup>n-2</sup> \
+                  v = a<sub>1</sub> a<sub>1</sub> \
+                  w = b<sub>1</sub><sup>n-4</sup> \
+                  x = b<sub>1</sub> b<sub>1</sub> \
+                  y = b<sub>1</sub> b<sub>1</sub> a<sub>2</sub><sup>n</sup> b<sub>2</sub><sup>n</sup>
+
     - **b.** { 0<sup>n</sup> 1<sup>2n</sup> 2<sup>n</sup> | n > 0}
 
     - **c.** { w w<sup>R</sup> w | w ∈ {a, b}\* }
