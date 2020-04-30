@@ -130,14 +130,14 @@
         - Considere uma gramatíca livre de contexto na forma normal de Chomsky com K váriaveis.\
           Seja z = a<sub>1</sub><sup>n</sup> b<sub>1</sub><sup>n</sup> a<sub>2</sub><sup>n</sup> b<sub>2</sub><sup>n</sup>,
           n = 2<sup>k</sup>.\
-          Como |z| = 4n = 4 \* 2<sup>k</sup> e |z| &ge; 2<sup>k</sup>, então pelo lema do bombeamento:
+          Como |z| = 4n = 4 \* 2<sup>K</sup> e |z| &ge; 2<sup>K</sup>, então pelo lema do bombeamento:
 
             - **1.** v, x só conter um tipo de terminal:
 
               - **1.1** a's. \
-                u = λ \
-                vwx = a<sub>1</sub><sup>n</sup> \
-                y = b<sub>1</sub><sup>n</sup> a<sub>2</sub><sup>n</sup> b<sub>2</sub><sup>n</sup>\
+                u = a<sub>1</sub> \
+                vwx = a<sub>1</sub><sup>n - 1</sup> \
+                y = b<sub>1</sub><sup>n</sup> a<sub>2</sub><sup>n</sup> b<sub>2</sub><sup>n</sup>
 
                 É obvio que, se bombear, aumentamos ou diminuimos o número de a<sub>1</sub>'s,\
                 mas não o número de b<sub>1</sub>'s, a<sub>2</sub>'s ou b<sub>2</sub>'s.
@@ -154,6 +154,21 @@
                 - u = a<sub>1</sub><sup>n</sup> b<sub>1</sub><sup>n</sup> a<sub>2</sub><sup>n</sup> \
                   vwx = b<sub>2</sub><sup>n</sup> \
                   y = λ
+
+            - **2.** v, x contendo 2 tipos de terminais:
+
+              - **2.1** v ou x conter a<sub>1</sub>'s e b<sub>1</sub>'s \
+                - u = a<sub>1</sub><sup>j</sup> \
+                  vwx = a<sub>1</sub><sup>n - j</sup> b<sub>1</sub><sup>n - h</sup> \
+                  y =  b<sub>1</sub><sup>h</sup> a<sub>2</sub><sup>n</sup> b<sub>2</sub><sup>n</sup>
+
+                  Bombeando v ou x, por exemplo v = ab, z = a<sub>1</sub>'s abababab b's a<sub>1</sub>'s a<sub>2</sub> b<sub>2</sub>,
+                  perde a ordem z ∉ L.
+
+                - análogo para b<sub>1</sub>'s a<sub>2</sub>'s
+                - análogo para a<sub>2</sub>'s b<sub>2</sub>'s
+                - para a<sub>1</sub> e a<sub>2</sub> é impossivel, por violar a regra 1.
+                - para b<sub>1</sub>'s b<sub>2</sub>'s é impossivel, por violar a regra 1.
 
     - **b.** { 0<sup>n</sup> 1<sup>2n</sup> 2<sup>n</sup> | n > 0}
 
