@@ -177,6 +177,10 @@
                   x = b<sub>1</sub> b<sub>1</sub> \
                   y = b<sub>1</sub> b<sub>1</sub> a<sub>2</sub><sup>n</sup> b<sub>2</sub><sup>n</sup>
 
+                  Bombeando, aumenta ou diminui o número de a<sub>1</sub>'s e b<sub>1</sub>'s igualmente.
+                  z = a<sub>1</sub><sup>j</sup> b<sub>1</sub><sup>j</sup> a<sub>2</sub><sup>n</sup> b<sub>2</sub><sup>n</sup>,
+                  mas não altera o número de a<sub>2</sub>'s e b<sub>2</sub>'s!
+
     - **b.** { 0<sup>n</sup> 1<sup>2n</sup> 2<sup>n</sup> | n > 0}
 
     - **c.** { w w<sup>R</sup> w | w ∈ {a, b}\* }
