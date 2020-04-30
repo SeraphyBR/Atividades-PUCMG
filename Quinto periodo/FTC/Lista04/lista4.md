@@ -23,7 +23,19 @@
            B &rarr; bBcC | b \
            C &rarr; abc
 
-        - **5º**
+        - **5º final:** Modificar as produções para a FNC \
+           S &rarr; A<sub>1</sub>A<sub>2</sub> | AB<sub>3</sub> | a \
+           A &rarr; A<sub>1</sub>A | a \
+           B &rarr; B<sub>1</sub>C<sub>1</sub> | b \
+           C &rarr; A<sub>1</sub>C<sub>3</sub> \
+           A<sub>1</sub> &rarr; a \
+           A<sub>2</sub> &rarr; AB<sub>1</sub> \
+           B<sub>1</sub> &rarr; B<sub>2</sub>B \
+           B<sub>2</sub> &rarr; b \
+           B<sub>3</sub> &rarr; BC \
+           C<sub>1</sub> &rarr; C<sub>2</sub>C \
+           C<sub>2</sub> &rarr; c \
+           C<sub>3</sub> &rarr; B<sub>2</sub>C<sub>2</sub>
 
     - **b.** S &rarr; A | ABa | AbA \
        &emsp; A &rarr; Aa | λ \
@@ -58,14 +70,41 @@
 
             - **4.2** Não são alcançáveis - não tem!
 
-        - **G:** Resultado: \
+        - **G:** Resultado dos passos acima: \
            S &rarr; Aa | a | AbA | Ab | bA | b | λ \
            A &rarr; Aa | a
+
+        - **5º final:** Modificar as produções para a FNC \
+           S &rarr; AA<sub>1</sub> | a | AA<sub>2</sub> | AA<sub>3</sub> | A<sub>3</sub>A | b | λ \
+           A &rarr; AA<sub>1</sub> | a \
+           A<sub>1</sub> &rarr; a \
+           A<sub>2</sub> &rarr; A<sub>3</sub>A \
+           A<sub>3</sub> &rarr; b
 
     - **c.** S &rarr; ABC \
        &emsp; A &rarr; a \
        &emsp; B &rarr; b | bb \
        &emsp; C &rarr; BaB | c
+
+        - **1º** Tirando recursividade em S - não tem!
+
+        - **2º** Eliminação de produções lambda - não tem!
+
+        - **3º** Remoção de cadeias - não tem!
+
+        - **4º** Eliminação de simbolos inuteis
+            - **4.1** Não produzem terminal - não tem!
+            - **4.2** Não são alcançaveis - não tem!
+
+        - **5º final:** Modificar as produções para a FNC \
+            S &rarr; AA<sub>1</sub> \
+            A &rarr; a \
+            B &rarr; b | B<sub>1</sub>B<sub>1</sub> \
+            C &rarr; BC<sub>1</sub> | c \
+            A<sub>1</sub> &rarr; BC \
+            B<sub>1</sub> &rarr; b \
+            C<sub>1</sub> &rarr; AB
+
 
     - **d.** S &rarr; ADE | ABa | AbA \
        &emsp; A &rarr; Aa | λ \
