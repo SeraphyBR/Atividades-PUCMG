@@ -14,6 +14,7 @@
         - **3º** Remoção de cadeias - não tem!
 
         - **4º** Eliminação de simbolos inuteis
+
             - **4.1** Não produzem terminal - não tem!
             - **4.2** Não são alcançaveis - não tem!
 
@@ -93,17 +94,18 @@
         - **3º** Remoção de cadeias - não tem!
 
         - **4º** Eliminação de simbolos inuteis
+
             - **4.1** Não produzem terminal - não tem!
             - **4.2** Não são alcançaveis - não tem!
 
         - **5º final:** Modificar as produções para a FNC \
-            S &rarr; AA<sub>1</sub> \
-            A &rarr; a \
-            B &rarr; b | B<sub>1</sub>B<sub>1</sub> \
-            C &rarr; BC<sub>1</sub> | c \
-            A<sub>1</sub> &rarr; BC \
-            B<sub>1</sub> &rarr; b \
-            C<sub>1</sub> &rarr; AB
+           S &rarr; AA<sub>1</sub> \
+           A &rarr; a \
+           B &rarr; b | B<sub>1</sub>B<sub>1</sub> \
+           C &rarr; BC<sub>1</sub> | c \
+           A<sub>1</sub> &rarr; BC \
+           B<sub>1</sub> &rarr; b \
+           C<sub>1</sub> &rarr; AB
 
 
     - **d.** S &rarr; ADE | ABa | AbA \
@@ -115,15 +117,43 @@
 
 6. Prove usando o pumping lemma que as seguintes linguagens não são livres de contexto:
 
+    - **Lema do bombeamento para LLC** \
+       z = uvwxy, onde: \
+       | vwx | &le; 2<sup>k</sup>, \
+       | v | + | x | > 0 e, \
+       ∀ i &ge; 0, uv<sup>i</sup>wx<sup>i</sup>y ∈ L.
+
+
     - **a.** L = { a<sup>n</sup> b<sup>n</sup> a<sup>n</sup> b<sup>n</sup> | n > 0 }
 
         - Hípotese: L é livre de contexto.
         - Considere uma gramatíca livre de contexto na forma normal de Chomsky com K váriaveis.\
-          Seja z = a <sup>k</sup> b<sup>k</sup> a<sup>k</sup> b<sup>k</sup>, k = 2<sup>n</sup>.\
-          Como |z| = 4k = 4 \* 2<sup>n</sup> e |z| &ge; 2<sup>n</sup>, então pelo lema do bombeamento:
+          Seja z = a<sub>1</sub><sup>n</sup> b<sub>1</sub><sup>n</sup> a<sub>2</sub><sup>n</sup> b<sub>2</sub><sup>n</sup>,
+          n = 2<sup>k</sup>.\
+          Como |z| = 4n = 4 \* 2<sup>k</sup> e |z| &ge; 2<sup>k</sup>, então pelo lema do bombeamento:
+
             - **1.** v, x só conter um tipo de terminal:
-              - **1.1** a's.
-               z = a <sup>k</sup> b<sup>k</sup> a<sup>k</sup> b<sup>k</sup>
+
+              - **1.1** a's. \
+                u = λ \
+                vwx = a<sub>1</sub><sup>n</sup> \
+                y = b<sub>1</sub><sup>n</sup> a<sub>2</sub><sup>n</sup> b<sub>2</sub><sup>n</sup>\
+
+                É obvio que, se bombear, aumentamos ou diminuimos o número de a<sub>1</sub>'s,\
+                mas não o número de b<sub>1</sub>'s, a<sub>2</sub>'s ou b<sub>2</sub>'s.
+
+              - **1.2** análogo para b<sub>1</sub>'s, a<sub>2</sub>'s e b<sub>2</sub>'s.
+                - u = a<sub>1</sub><sup>n</sup> \
+                  vwx = b<sub>1</sub><sup>n</sup> \
+                  y = a<sub>2</sub><sup>n</sup> b<sub>2</sub><sup>n</sup>
+
+                - u = a<sub>1</sub><sup>n</sup> b<sub>1</sub><sup>n</sup> \
+                  vwx = a<sub>2</sub><sup>n</sup> \
+                  y = b<sub>2</sub><sup>n</sup>
+
+                - u = a<sub>1</sub><sup>n</sup> b<sub>1</sub><sup>n</sup> a<sub>2</sub><sup>n</sup> \
+                  vwx = b<sub>2</sub><sup>n</sup> \
+                  y = λ
 
     - **b.** { 0<sup>n</sup> 1<sup>2n</sup> 2<sup>n</sup> | n > 0}
 
