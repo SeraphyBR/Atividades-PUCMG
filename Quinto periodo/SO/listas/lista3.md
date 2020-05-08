@@ -36,5 +36,13 @@
    O número de páginas depende dos 4 campos (justifique)?
    O espaço de endereçamento virtual depende dos 4 campos (justifique)?
    O tamanho da página depende de quais campos (justifique)?
-   - **R1:** O número de páginas não depende dos 4 campos, pois, independente
-      do número de campos que o endereço virtual é subdividido
+
+   - **R1:** O número de páginas depende apenas dos campos a, b, c. Pois \
+      são eles que servem para endereçar a página na memoria.
+
+   - **R2:** Não, o espaço de endereçamento virtual depende da máquina, \
+      a soma do número de bits dos campos é limitado ao número de bits da máquina.
+
+   - **R3** O tamanho da página depende apenas do campo d, pois após encontrar \
+      a página usando os campos a, b e c, o d irá servir de deslocamento dentro da \
+      página.
