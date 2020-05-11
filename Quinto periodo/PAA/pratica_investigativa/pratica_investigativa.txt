@@ -1,0 +1,34 @@
+
+
+2. R: Existem 3 formas básicas para selecionar o pivô:
+
+        1) O mais simples é selecionar um elemento de uma posição 
+        fixa do vetor A, tipicamente a primeira, como o pivô. Em geral
+        essa escolha do pivô não funciona bem, a não ser que a entrada
+        seja aleatória. Se a entrada for quase ordenada, a entrada sera 
+        particionada de forma muito desigual durante cada iteração, resultando
+        uma performance bem pobre do algoritmo como um todo.
+
+        2) A segunda forma para selecionar o pivô é tentar se aproximar da 
+        mediana do vetor A, calculando a mediana de uma pequena parte de A.
+        Uma forma comumente usada é selecionar o pivô para ser a mediana
+        dos primeiros, do meio e dos últimos elementos do vetor. Esse método
+        funciona bem, embora possamos acabar tendo partições desiguais a cada
+        iteração para algumas entradas.
+
+        3) Podemos selecionar aleatoriamente um elemento de A para ser 
+        o pivo, usando um gerador de números aleatórios. Nesse caso, podemos
+        provar rigorosamente que cada passo vai resultar em partições quase 
+        iguais com alta probabilidade, independente da entrada.
+
+3. R: 1,2,3,5,4,6,7,8,10,9
+
+4. R: O Quicksort é considerado o melhor algoritmo de ordenação, porque
+, embora o pior caso seja Omega de N2, sua complexidade média é a melhor 
+possível em certos modelos gerais de complexidade para ordenação.
+O Quicksort possui uma má performance para entradas quase ordenadas, mas
+é estremamente bom para a maioria das entradas com valores randômicos.
+
+5. R: Nas situações em que a entrada está quase ordenada.
+
+6

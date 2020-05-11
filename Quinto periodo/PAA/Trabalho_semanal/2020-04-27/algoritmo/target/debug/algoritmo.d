@@ -1,0 +1,1 @@
+/home/seraphybr-fun/Git/Atividades-PUCMG/Quinto\ periodo/PAA/Trabalho_semanal/2020-04-27/algoritmo/target/debug/algoritmo: /home/seraphybr-fun/Git/Atividades-PUCMG/Quinto\ periodo/PAA/Trabalho_semanal/2020-04-27/algoritmo/src/main.rs
