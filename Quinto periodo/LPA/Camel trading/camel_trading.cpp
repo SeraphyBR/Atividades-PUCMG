@@ -19,38 +19,44 @@ void display(vector<string> &v){
     cout << endl;
 }
 
+long max_interpret(string expression){
+    long max = 1;
+    vector<string> split_mult = split(expression,'*');
+    for(string &s : split_mult){
+        long sum {};
+        vector<string> split_sum = split(s, '+');
+        for(string &number : split_sum){
+            sum += stoi(number);
+        }
+        max *= sum;
+    }
+    return max;
+}
+
+long min_interpret(string expression){
+    long min {};
+    vector<string> split_sum = split(expression,'+');
+    for(string &s : split_sum){
+        long mult = 1;
+        vector<string> split_mult = split(s, '*');
+        for(string &number : split_mult){
+            mult *= stoi(number);
+        }
+        min += mult;
+    }
+    return min;
+}
+
 int main(){
     int num_expressions;
     cin >> num_expressions;
 
-    vector<string> expressions(num_expressions);
-
-    for(auto &exp : expressions) cin >> exp;
-
-    for(auto exp : expressions){
-        int max = 1;
-        vector<string> maxs = split(exp,'*');
-        for(string &s : maxs){
-            int sum {};
-            vector<string> s2 = split(s, '+');
-            for(string &number : s2){
-                sum += stoi(number);
-            }
-            max *= sum;
-        }
-        int min {};
-        vector<string> mins = split(exp,'+');
-        for(string &s : mins){
-            int mult = 1;
-            vector<string> s2 = split(s, '*');
-            for(string &number : s2){
-                mult *= stoi(number);
-            }
-            min += mult;
-        }
-        cout << max << endl;
-        cout << min << endl;
-
+    for(int i = 0; i < num_expressions; i++){
+        string expression {};
+        cin >> expression;
+        long max = max_interpret(expression);
+        long min = min_interpret(expression);
+        cout << "The maximum and minimum are " << max << " and " << min << "." << endl;
     }
 
     return 0;
