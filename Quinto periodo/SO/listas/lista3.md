@@ -25,11 +25,13 @@
       16.386 / 4096 = 4,.. = 5 páginas para dados \
       15.870 / 4096 = 3,.. = 4 páginas para pilha \
       16 - 8 - 5 - 4 = 16 - 17 = -1 \
-      Logo esse programa não caberá no espaço reservado. Se o tamanho da página \
-      diminuir para 512 bytes, eu vou apenas aumentar o número de páginas \
-      nesse endereçamento, o espaço não muda, e por isso o programa não vai caber \
-      com isso.
-
+      Logo esse programa não caberá no espaço reservado.
+   - Número de paginas = 65.536 / 512 = 128 \
+      32.768 / 512 = 64 \
+      16.386 / 512 = 32,.. = 33 \
+      15.870 / 512 = 30,.. = 31 \
+      64 - 33 - 31 = 0 \
+      Logo esse programa caberá no espaço reservado.
 
 5. Suponha que um endereço virtual é dividido em 4 campos: a, b, c, d.
    Os 3 primeiros são usados para uma tabela de paginas em 3 níveis.
