@@ -12,8 +12,8 @@
       1030, em binario = 0100 00000110\
       519, em binario = 0010 00000111
 
-      - **R:** 0100 na tabela abaixo aponta para 0000,\
-      e 0010 na tabela abaixo aponta para 0100, logo:\
+      - **R:** 0100 na tabela abaixo aponta para 000,\
+      e 0010 na tabela abaixo aponta para 100, logo:\
       endereço virtual 1030 é o endereço fisico 6 e \
       endereço virtual 519 é o endereço fisico 1031.
 
@@ -26,8 +26,22 @@
    apenas um nível.
    - **R:** 256 = 2<sup>8</sup> = 8 bits para localizar a pagina,\
          e 8 bits para deslocamento no frame/quadro.
-   ```
-   #code
+   ```rust
+   # Linguagem Rust
+   fn mmu(tabela_pagina: &[isize], endereco_logico: usize) -> Option<usize> {
+      let mut endereco_real: Option<usize> = None;
+      let index_pagina = endereco_logico / 256;
+
+      // Se pagina foi carregada
+      if tabela_pagina[index_pagina] != -1 {
+         let offset = endereco_logico % 256;
+
+         endereco_real = Some(tabela_pagina[index_pagina] * 256 + offset);
+      }
+
+      // Retorna
+      endereco_real
+   }
    ```
 
 3. Um computador tem 4 frames. O tempo de carga, do último acesso e o bit R
