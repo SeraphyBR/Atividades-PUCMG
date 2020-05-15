@@ -24,8 +24,7 @@
    endereços virtuais em endereços reais. A palavra é de 16 bits. O total
    páginas é de 256 com cada frame de 256 bytes. Considere um esquema com
    apenas um nível.
-   - **R:** 256 = 2<sup>8</sup> = 8 bits para localizar a pagina,\
-         e 8 bits para deslocamento no frame/quadro.
+   - **R:**
    ```rust
    # Linguagem Rust
    fn mmu(tabela_pagina: &[isize], endereco_logico: usize) -> Option<usize> {
