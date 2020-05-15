@@ -9,8 +9,13 @@
     2. Qual o tamanho de cada página?
       - **R:** 2<sup>12</sup> / 2<sup>4</sup> = 256
     3. Quais seriam os respectivos endereços dos endereços virtuais 1030 e 519?\
-      1030 -> 0100 00000110\
-      519 ->  0010 00000111
+      1030, em binario = 0100 00000110\
+      519, em binario = 0010 00000111\
+      <br/>
+      0100 na tabela abaixo aponta para 0000,\
+      e 0010 na tabela abaixo aponta para 0100, logo:\
+      endereço virtual 1030 é o endereço fisico 6 e \
+      endereço virtual 519 é o endereço fisico 1031.
 
    Considere que todos os quadros estão disponíveis e que a alocação é consecutiva.<br/>
    ![imagem](img1.png)
@@ -19,6 +24,8 @@
    endereços virtuais em endereços reais. A palavra é de 16 bits. O total
    páginas é de 256 com cada frame de 256 bytes. Considere um esquema com
    apenas um nível.
+   - **R:** 256 = 2<sup>8</sup> = 8 bits para localizar a pagina,\
+         e 8 bits para deslocamento no frame/quadro.
    ```
    #code
    ```
@@ -61,4 +68,4 @@
          T(Palavra) = 1 x 10<sup>-6</sup>s \
          Overhead = 1 x 10<sup>-6</sup>s a cada 1000 palavras \
          Disp.Paginação = 1000000 palavras por segundo. \
-         1000000p/s ÷ 1000 palavras/pagina = 1000 paginas por segundo.
+         1000000p/s ÷ 1000 palavras/pagina = 1000 paginas cada segundo.
