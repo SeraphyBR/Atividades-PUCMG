@@ -60,4 +60,5 @@
       - **R:** <br/>
          T(Palavra) = 1 x 10<sup>-6</sup>s \
          Overhead = 1 x 10<sup>-6</sup>s a cada 1000 palavras \
-         Disp.Paginação = 1000 palavras por segundo.
+         Disp.Paginação = 1000000 palavras por segundo. \
+         1000000p/s ÷ 1000 palavras/pagina = 1000 paginas por segundo.
