@@ -10,9 +10,9 @@
       - **R:** 2<sup>12</sup> / 2<sup>4</sup> = 256
     3. Quais seriam os respectivos endereços dos endereços virtuais 1030 e 519?\
       1030, em binario = 0100 00000110\
-      519, em binario = 0010 00000111\
-      <br/>
-      0100 na tabela abaixo aponta para 0000,\
+      519, em binario = 0010 00000111
+
+      - **R:** 0100 na tabela abaixo aponta para 0000,\
       e 0010 na tabela abaixo aponta para 0100, logo:\
       endereço virtual 1030 é o endereço fisico 6 e \
       endereço virtual 519 é o endereço fisico 1031.
