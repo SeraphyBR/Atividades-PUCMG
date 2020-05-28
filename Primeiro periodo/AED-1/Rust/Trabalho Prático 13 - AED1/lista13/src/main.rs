@@ -70,6 +70,7 @@ fn cria_triangulo(tri: &mut Vec<Triangulo>) {
     }
 }//Fim cria_triangulo()
 
+
 fn mostra_triangulos(tri: &Vec<Triangulo>) {
     for (i, t) in tri.iter().enumerate() {
         let (a, b, c) = t.get_lados();
