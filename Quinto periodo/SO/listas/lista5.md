@@ -50,6 +50,8 @@
 3. O que é uma FAT (Tabela de alocação de arquivos)? Qual seu papel no método de alocação encadeado?
 
     - **R:** O FAT é um sistema de arquivos da Microsoft, seu papel no método de alocação encadeado
+               é servir como uma tabela que irá dizer em que bloco começa cada arquivo e qual bloco
+               termina cada arquivo.
 
 4. Um disco tem oito setores de 512 bytes por trilha, e uma taxa de rotação de 300rpm. Quanto tempo leva para a leitura de todos os setores da
    trilha em ordem assumindo que o braço já está corretamente posicionado, que meia (0.5) rotação é necessária para localizar o setor 0 (zero),
