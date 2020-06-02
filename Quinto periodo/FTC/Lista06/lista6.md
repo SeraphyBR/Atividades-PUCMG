@@ -15,8 +15,9 @@
             - Teorema: L é decidivel.
             - Prova: Mostrar uma MT M<sub>A</sub> que decide L.
               - M<sub>A</sub> = Entrada: <A,w> onde A é um DFA e w é uma string.
-                1. Simula A com entrada w.
-                2. Se a simulação termina em um estado final, aceita; caso contrário, rejeita.
+                1. Transformar A em um DFA Completo A<sub>1</sub>.
+                2. Simula A<sub>1</sub> com entrada w.
+                3. Se a simulação termina em um estado final, aceita; caso contrário, rejeita.
 
     3. L = { \<A,B> | A,B é um DFA's tal que L(A) &ne; L(B) }.
         - **R:**
@@ -24,7 +25,7 @@
             - Prova: construir um DFA C tal que
               - L(C) = (L(A) &cap; L(B)') &cup; (L(A)' &cap; L(B))
                 - L(A) = L(B) somente se L(C) = &empty;
-              - MT M<sub>ED</sub> = Entrada: <A,B> onde A e B são DFA's
+              - MT M<sub>NE</sub> = Entrada: <A,B> onde A e B são DFA's
                 1. Constrói o DFA C descrito acima
                 2. Executa a MT M<sub>ED</sub> com entrada C.
                 3. Se M<sub>ED</sub> aceita, então rejeita; caso contrário, aceita.
