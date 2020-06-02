@@ -93,7 +93,7 @@
 
     - A. <br>![T / (T + S)](https://latex.codecogs.com/png.latex?\frac{T}{T+S})
     - B. <br>![T / (T + S)](https://latex.codecogs.com/png.latex?\frac{T}{T+S})
-    - C. <br>![T / (T + (S * teto(T/Q)))](<https://latex.codecogs.com/png.latex?\frac{T}{T+S*\left&space;\lceil&space;(T/Q)&space;\right&space;\rceil}>)
+    - C. <br>![T / (T + (S * teto(T/Q)))](https://latex.codecogs.com/png.latex?\frac{T}{T+S*\left&space;\lceil&space;(T/Q)&space;\right&space;\rceil})
     - D. <br>![1/2](https://latex.codecogs.com/png.latex?\frac{T}{T+T}&space;=&space;\frac{1}{2})
     - E.
 
