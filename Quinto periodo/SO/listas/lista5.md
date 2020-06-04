@@ -66,7 +66,8 @@
    e que a taxa de transferência do bloco demanda 15 msegundos? Seria possível adotar uma nova política para melhorar a performance?
    Faça o mesmo calculo para a nova situação (interleaving simples). E se a taxa de transferência demandar 40 msegundos o que aconteceria?
    Seria possível adotar uma nova política para melhorar a performance? (interleaving duplo).
-   - **R:**
+
+   - **R:** 220 ms
 
 5. Foi sugerido que a primeira parte de cada arquivo UNIX fosse mantido no mesmo bloco de disco
    com o seu i-node. Que benefícios está política gera?
