@@ -46,6 +46,14 @@
 
 2. Descreva o processo de transferência de dados de um disco para a memória, com acesso direto à memória (DMA).
    Deixe claros os papeis da CPU, driver, controladoras e barramentos neste processo.
+   - **R:**
+        - Inicialmente um programa pede ao SO para obter os dados de um arquivo em disco e colocar em um buffer.
+        - O SO então conversa com o driver do dispositivo informando qual o arquivo desejado e o endereço do buffer.
+        - O driver então, por meio de um barramento, fala para a controladora do disco para transferir X bytes do arquivo.
+        - A controladora de disco então transfere cada byte, por meio do barramento, para a controladora da DMA.
+        - A controladora da DMA então transfere os bytes para o endereço do buffer na memória, por outro barramento.
+        - Quando a controladora do DMA vê que a transferencia do arquivo terminou, ela interrompe a CPU informando que a transferencia foi
+          concluida.
 
 3. O que é uma FAT (Tabela de alocação de arquivos)? Qual seu papel no método de alocação encadeado?
 
@@ -58,6 +66,7 @@
    e que a taxa de transferência do bloco demanda 15 msegundos? Seria possível adotar uma nova política para melhorar a performance?
    Faça o mesmo calculo para a nova situação (interleaving simples). E se a taxa de transferência demandar 40 msegundos o que aconteceria?
    Seria possível adotar uma nova política para melhorar a performance? (interleaving duplo).
+   - **R:**
 
 5. Foi sugerido que a primeira parte de cada arquivo UNIX fosse mantido no mesmo bloco de disco
    com o seu i-node. Que benefícios está política gera?
