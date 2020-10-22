@@ -1,0 +1,73 @@
+Matricula: 624037
+
+i) compilar o código sum_cuda.cu e medir o seu tempo de execução com a função "time".
+    Sum = 799999980000000.000000
+
+    real    0m4.332s
+    user    0m0.487s
+    sys     0m0.969s
+
+ii) executar o código com o comando nvprof e anotar o tempo gasto com as seguintes funções:
+[CUDA memcpy HtoD] e sum_cuda(double*, double*, int).
+    nvprof --unified-memory-profiling off ./sum_cuda
+    Time(%)     Time     Calls       Avg       Min       Max  Name
+    95.51%  465.50ms         1  465.50ms  465.50ms  465.50ms  [CUDA memcpy HtoD]
+     4.41%  21.517ms         1  21.517ms  21.517ms  21.517ms  sum_cuda(double*, double*, int)
+
+iii) implementar o código sequencial do somatório e medir o tempo.
+    Sum = 799999980000000.000000
+
+    real    0m0.316s
+    user    0m0.099s
+    sys     0m0.214s
+
+iv) implementar a versão paralela para multicore em OpenMP e medir o tempo.
+    Sum = 799999980000000.000000
+
+    real    0m0.187s
+    user    0m0.261s
+    sys     0m0.399s
+
+v) implementar a versão paralela para GPU com OpenMP, medir o tempo e também executar o código
+com o comando nvprof e anotar o tempo gasto com as seguintes funções: [CUDA memcpy HtoD] e sum_cuda(double*, double*, int).
+    Sum = 799999980000000.000000
+
+    real    0m1.578s
+    user    0m0.556s
+    sys     0m0.932s
+
+    Time(%)      Time     Calls       Avg       Min       Max  Name
+    98.43%   463.40ms         5  92.680ms     832ns  463.40ms  [CUDA memcpy HtoD]
+    1.57%    7.3695ms         1  7.3695ms  7.3695ms  7.3695ms  main$_omp_fn$0
+
+vi) modificar o código sum_cuda.cu para que ele NÃO use a memória __shared__, medir o tempo e
+também executar o código com o comando nvprof e anotar o tempo gasto com as seguintes funções:
+[CUDA memcpy HtoD] e sum_cuda(double*, double*, int).
+    Sum = 799999980000000.000000
+
+    real    0m1.630s
+    user    0m0.546s
+    sys     0m0.986s
+
+    Time(%)      Time     Calls       Avg       Min       Max  Name
+    93.51%   463.84ms         1  463.84ms  463.84ms  463.84ms  [CUDA memcpy HtoD]
+     6.41%   31.816ms         1  31.816ms  31.816ms  31.816ms  sum_cuda(double*, double*, int)
+
+Q1: uma explicação sobre os resultados alcançados, principalmente sobre os tempos obtidos na execução
+com CUDA vs. OpenMP na GPU, com e sem memória local (__shared__), sobre as funções [CUDA memcpy HtoD] e
+sum_cuda(double*, double*, int).
+
+    R: Pelos dados obtidos nas questões anteriores, percebemos que em todos os casos de execução na GPU,
+    existe um gargalo de tempo muito grande para copiar os dados para a GPU (CUDA memcpy HtoD), do que o algoritmo em si,
+    o que torna a paralelização do algoritmo de somátorio ineficiente para GPU, sendo a melhor a versão openmp multicore.
+
+    É visto tambem que o uso do shared aumentou em 2% o tempo (CUDA memcpy HtoD) para copiar os dados, como esperado, e que por algum motivo
+    a versão com OpenMP gastou mais tempo ainda nessa parte, talvez por não ser tão otimizado quanto a escrever o código em
+    cuda diretamente, ou as flags usadas na versão com OpenMP GPU.
+
+    Considerando o tempo geral da aplicação, vemos que a versão CUDA com Shared (I) gastou muito mais tempo que sem (VI),
+    isso deve-se possivelmente ao tempo levado para a sincronização das threads que foi adicionada apenas para
+    copiar os dados de uma memoria para outra.
+
+    Interessante seria não termos que fazer essa copia dos dados do vetor, de ele já ter sido inicializado diretamente na memoria
+    da GPU, e apenas o resultado, a soma, fosse recebida de volta.

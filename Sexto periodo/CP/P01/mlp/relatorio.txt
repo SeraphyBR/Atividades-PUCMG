@@ -1,0 +1,6 @@
+
+tempo sequencial:
+
+real    30,862
+user    30,745
+sys     0,029
